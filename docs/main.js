@@ -392,7 +392,7 @@ ConfirmDialog.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ConfirmDialog, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
-            args: [{ selector: 'confirm-dialog', template: "<div class=\"mat-typography\">\n  <h2 mat-dialog-title>{{data?.title}}</h2>\n  <mat-dialog-content>\n    <p>{{data?.content}}</p>\n  </mat-dialog-content>\n  <mat-dialog-actions>\n    <button mat-button\n            [mat-dialog-close]=\"false\">Cancel</button>\n    <button mat-button\n            [mat-dialog-close]=\"true\"\n            color=\"warn\">Confirm</button>\n  </mat-dialog-actions>\n</div>\n" }]
+            args: [{ selector: 'confirm-dialog', template: "<div class=\"mat-typography\">\r\n  <h2 mat-dialog-title>{{data?.title}}</h2>\r\n  <mat-dialog-content>\r\n    <p>{{data?.content}}</p>\r\n  </mat-dialog-content>\r\n  <mat-dialog-actions>\r\n    <button mat-button\r\n            [mat-dialog-close]=\"false\">Cancel</button>\r\n    <button mat-button\r\n            [mat-dialog-close]=\"true\"\r\n            color=\"warn\">Confirm</button>\r\n  </mat-dialog-actions>\r\n</div>\r\n" }]
         }], function () {
         return [{ type: undefined, decorators: [{
                         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Inject,
