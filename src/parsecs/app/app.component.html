@@ -1,0 +1,20 @@
+<section class="mat-typography mat-app-background app-frame"
+         [ngClass]="themer.isLight ? 'app-light' : 'app-dark'">
+  <section fxLayout="row"
+           fxLayoutAlign="start center"
+           class="sticky-top p4">
+    <h1 class="mat-title m4"
+        fxFlex>Parsecs</h1>
+    <button mat-icon-button
+            class="m4"
+            [ngClass]="themer.isLight ? 'color-amber': 'color-text'"
+            (click)="themer.toggleTheme()">
+      <mat-icon>
+        {{themer.isLight ? 'brightness_5' : 'brightness_3'}}
+      </mat-icon>
+    </button>
+  </section>
+  <section class="app-container">
+    <router-outlet></router-outlet>
+  </section>
+</section>
