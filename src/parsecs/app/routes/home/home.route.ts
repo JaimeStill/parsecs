@@ -33,7 +33,7 @@ export class HomeRoute implements OnInit {
       case 'Strange':
         return 'color-red';
       default:
-        return 'color-yellow';
+        return 'color-amber';
     }
   }
 
