@@ -148,7 +148,7 @@ class HomeRoute {
                 case 'Strange':
                     return 'color-red';
                 default:
-                    return 'color-yellow';
+                    return 'color-amber';
             }
         };
         this.generate = () => this.character = this.characterSvc.generate();
