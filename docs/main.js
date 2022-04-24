@@ -115,18 +115,62 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HomeRoute": () => (/* binding */ HomeRoute)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ 4666);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/flex-layout/extended */ 3338);
 
+
+
+
+
+function HomeRoute_pre_5_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 3)(1, "code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "json");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+} if (rf & 2) {
+    const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.characterColor());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 2, ctx_r0.character), "\n");
+} }
 class HomeRoute {
-    constructor() { }
+    constructor(characterSvc) {
+        this.characterSvc = characterSvc;
+        this.characterColor = () => {
+            var _a, _b;
+            switch ((_b = (_a = this.character) === null || _a === void 0 ? void 0 : _a.race) === null || _b === void 0 ? void 0 : _b.species) {
+                case 'Human':
+                    return 'color-blue';
+                case 'Alien':
+                    return 'color-green';
+                case 'Strange':
+                    return 'color-red';
+                default:
+                    return 'color-yellow';
+            }
+        };
+        this.generate = () => this.character = this.characterSvc.generate();
+    }
     ngOnInit() {
+        this.generate();
     }
 }
-HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(); };
-HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 2, vars: 0, consts: [[1, "mat-title", "m8"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
+HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](core__WEBPACK_IMPORTED_MODULE_1__.CharacterService)); };
+HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 6, vars: 1, consts: [[1, "mat-title", "m8"], ["mat-stroked-button", "", 3, "click"], ["class", "p4", 3, "ngClass", 4, "ngIf"], [1, "p4", 3, "ngClass"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Home");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Generate Character Test");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-    } }, encapsulation: 2 });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div")(3, "button", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_3_listener() { return ctx.generate(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Generate Character");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HomeRoute_pre_5_Template, 4, 4, "pre", 2);
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.character);
+    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_2__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgClass, _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_4__.DefaultClassDirective], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.JsonPipe], encapsulation: 2 });
 
 
 /***/ }),
@@ -231,19 +275,62 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser().bootstr
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "Alien": () => (/* binding */ Alien),
+/* harmony export */   "AssaultBot": () => (/* binding */ AssaultBot),
 /* harmony export */   "BackdropDirective": () => (/* binding */ BackdropDirective),
+/* harmony export */   "BioUpgrade": () => (/* binding */ BioUpgrade),
+/* harmony export */   "Bot": () => (/* binding */ Bot),
 /* harmony export */   "BytesPipe": () => (/* binding */ BytesPipe),
+/* harmony export */   "Campaign": () => (/* binding */ Campaign),
+/* harmony export */   "Character": () => (/* binding */ Character),
+/* harmony export */   "CharacterService": () => (/* binding */ CharacterService),
 /* harmony export */   "Components": () => (/* binding */ Components),
 /* harmony export */   "ConfirmDialog": () => (/* binding */ ConfirmDialog),
 /* harmony export */   "CoreModule": () => (/* binding */ CoreModule),
 /* harmony export */   "CoreService": () => (/* binding */ CoreService),
+/* harmony export */   "Crew": () => (/* binding */ Crew),
+/* harmony export */   "DeConverted": () => (/* binding */ DeConverted),
 /* harmony export */   "Dialogs": () => (/* binding */ Dialogs),
+/* harmony export */   "Difficulty": () => (/* binding */ Difficulty),
 /* harmony export */   "Directives": () => (/* binding */ Directives),
+/* harmony export */   "EmoSuppressed": () => (/* binding */ EmoSuppressed),
+/* harmony export */   "Empath": () => (/* binding */ Empath),
+/* harmony export */   "Engineer": () => (/* binding */ Engineer),
+/* harmony export */   "Feeler": () => (/* binding */ Feeler),
+/* harmony export */   "Feral": () => (/* binding */ Feral),
+/* harmony export */   "GeneticUplift": () => (/* binding */ GeneticUplift),
+/* harmony export */   "Hakshan": () => (/* binding */ Hakshan),
+/* harmony export */   "HopefulRookie": () => (/* binding */ HopefulRookie),
+/* harmony export */   "Hulker": () => (/* binding */ Hulker),
+/* harmony export */   "Human": () => (/* binding */ Human),
+/* harmony export */   "KErin": () => (/* binding */ KErin),
+/* harmony export */   "Manipulator": () => (/* binding */ Manipulator),
 /* harmony export */   "MaterialModule": () => (/* binding */ MaterialModule),
+/* harmony export */   "MinorAlien": () => (/* binding */ MinorAlien),
+/* harmony export */   "Mutant": () => (/* binding */ Mutant),
+/* harmony export */   "MysteriousPast": () => (/* binding */ MysteriousPast),
 /* harmony export */   "Pipes": () => (/* binding */ Pipes),
+/* harmony export */   "Precursor": () => (/* binding */ Precursor),
+/* harmony export */   "Primitive": () => (/* binding */ Primitive),
+/* harmony export */   "Race": () => (/* binding */ Race),
 /* harmony export */   "SnackerService": () => (/* binding */ SnackerService),
+/* harmony export */   "Soulless": () => (/* binding */ Soulless),
+/* harmony export */   "Stalker": () => (/* binding */ Stalker),
+/* harmony export */   "Strange": () => (/* binding */ Strange),
+/* harmony export */   "Swift": () => (/* binding */ Swift),
 /* harmony export */   "ThemeService": () => (/* binding */ ThemeService),
-/* harmony export */   "TruncatePipe": () => (/* binding */ TruncatePipe)
+/* harmony export */   "Traveler": () => (/* binding */ Traveler),
+/* harmony export */   "TruncatePipe": () => (/* binding */ TruncatePipe),
+/* harmony export */   "UnityAgent": () => (/* binding */ UnityAgent),
+/* harmony export */   "d10": () => (/* binding */ d10),
+/* harmony export */   "d100": () => (/* binding */ d100),
+/* harmony export */   "d12": () => (/* binding */ d12),
+/* harmony export */   "d20": () => (/* binding */ d20),
+/* harmony export */   "d4": () => (/* binding */ d4),
+/* harmony export */   "d6": () => (/* binding */ d6),
+/* harmony export */   "d8": () => (/* binding */ d8),
+/* harmony export */   "dice": () => (/* binding */ dice),
+/* harmony export */   "roll": () => (/* binding */ roll)
 /* harmony export */ });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/dialog */ 5758);
@@ -451,6 +538,387 @@ const Directives = [
     BackdropDirective
 ];
 
+var Difficulty;
+(function (Difficulty) {
+    Difficulty["Easy"] = "Easy";
+    Difficulty["Normal"] = "Normal";
+    Difficulty["Challenging"] = "Challenging";
+    Difficulty["Hardcore"] = "Hardcore";
+    Difficulty["Insanity"] = "Insanity";
+})(Difficulty || (Difficulty = {}));
+
+class Race {
+    constructor(species, kind, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
+        this._species = species;
+        this._kind = kind;
+        this._reaction = reaction;
+        this._speed = speed;
+        this._combatSkill = combatSkill;
+        this._toughness = toughness;
+        this._savvy = savvy;
+        this._luck = luck;
+    }
+    get species() {
+        return this._species;
+    }
+    get kind() {
+        return this._kind;
+    }
+    get reaction() {
+        return this._reaction;
+    }
+    set reaction(value) {
+        this._reaction = value > 6
+            ? 6
+            : value;
+    }
+    get speed() {
+        return this._speed;
+    }
+    set speed(value) {
+        this._speed = value > 8
+            ? 8
+            : value;
+    }
+    get combatSkill() {
+        return this._combatSkill;
+    }
+    set combatSkill(value) {
+        this._combatSkill = value > 5
+            ? 5
+            : value;
+    }
+    get toughness() {
+        return this._toughness;
+    }
+    set toughness(value) {
+        this._toughness = value > 6
+            ? 6
+            : value;
+    }
+    get savvy() {
+        return this._savvy;
+    }
+    set savvy(value) {
+        this._savvy = value > 5
+            ? 5
+            : value;
+    }
+    get luck() {
+        return this._luck;
+    }
+    set luck(value) {
+        this._luck = value > 1
+            ? 1
+            : value;
+    }
+}
+
+class Alien extends Race {
+    constructor(kind, config) {
+        super('Alien', kind, config);
+    }
+}
+class Engineer extends Alien {
+    constructor() {
+        super('Engineer', {
+            toughness: 2,
+            savvy: 1
+        });
+    }
+    set toughness(value) {
+        this._toughness = value > 4
+            ? 4
+            : value;
+    }
+}
+class KErin extends Alien {
+    constructor() {
+        super(`K'Erin`, {
+            toughness: 4
+        });
+    }
+}
+class Soulless extends Alien {
+    constructor() {
+        super('Soulless', {
+            toughness: 4,
+            savvy: 1
+        });
+    }
+}
+class Precursor extends Alien {
+    constructor() {
+        super('Precursor', {
+            speed: 5,
+            toughness: 2
+        });
+    }
+}
+class Swift extends Alien {
+    constructor() {
+        super('Swift', {
+            speed: 5
+        });
+    }
+}
+class Feral extends Alien {
+    constructor() {
+        super('Feral');
+    }
+}
+class Hakshan extends Alien {
+    constructor() {
+        super('Hakshan');
+    }
+}
+class Manipulator extends Alien {
+    constructor() {
+        super('Manipulator', {
+            reaction: 2,
+            savvy: 1
+        });
+    }
+}
+
+class Bot extends Race {
+    constructor(kind = 'Base', config = {
+        reaction: 2,
+        combatSkill: 1,
+        toughness: 4,
+        savvy: 2
+    }) {
+        super('Bot', kind, config);
+    }
+}
+class AssaultBot extends Bot {
+    constructor() {
+        super('Assault Bot');
+    }
+}
+
+class Human extends Race {
+    constructor(kind = 'Base', config) {
+        super('Human', kind, config);
+    }
+    set luck(value) {
+        this._luck = value;
+    }
+}
+class MysteriousPast extends Human {
+    constructor() {
+        super('Mysterious Past');
+    }
+}
+class HopefulRookie extends Human {
+    constructor() {
+        super('Hopeful Rookie', {
+            luck: 1
+        });
+    }
+}
+class Mutant extends Human {
+    constructor() {
+        super('Mutant');
+    }
+}
+class Primitive extends Human {
+    constructor() {
+        super('Primitive');
+    }
+}
+class Feeler extends Human {
+    constructor() {
+        super('Feeler');
+    }
+}
+class EmoSuppressed extends Human {
+    constructor() {
+        super('Emo-suppressed');
+    }
+    set luck(value) {
+        this._luck = 0;
+    }
+}
+class MinorAlien extends Human {
+    constructor() {
+        super('Minor Alien');
+    }
+}
+class Empath extends Human {
+    constructor() {
+        super('Empath');
+    }
+}
+class BioUpgrade extends Human {
+    constructor() {
+        super('Bio-upgrade');
+    }
+}
+
+class Strange extends Race {
+    constructor(kind, config) {
+        super('Strange', kind, config);
+    }
+}
+class DeConverted extends Strange {
+    constructor() {
+        super('De-converted');
+    }
+    set savvy(value) {
+        this._savvy = 0;
+    }
+}
+class UnityAgent extends Strange {
+    constructor() {
+        super('Unity Agent', {
+            reaction: 2
+        });
+    }
+}
+class Stalker extends Strange {
+    constructor() {
+        super('Stalker');
+    }
+}
+class Hulker extends Strange {
+    constructor() {
+        super('Hulker', {
+            combatSkill: 1,
+            toughness: 5
+        });
+    }
+}
+class GeneticUplift extends Strange {
+    constructor() {
+        super('Genetic Uplift', {
+            reaction: 2,
+            speed: 5,
+            combatSkill: 1,
+            toughness: 4,
+            savvy: 1
+        });
+    }
+}
+class Traveler extends Strange {
+    constructor() {
+        super('Traveler', {
+            reaction: 3,
+            toughness: 4,
+            savvy: 2
+        });
+    }
+}
+
+const dice = (sides) => () => Math.floor(Math.random() * sides) + 1;
+const d4 = dice(4);
+const d6 = dice(6);
+const d8 = dice(8);
+const d10 = dice(10);
+const d12 = dice(12);
+const d20 = dice(20);
+const d100 = dice(100);
+const roll = ({ four = 0, six = 0, eight = 0, ten = 0, twelve = 0, twenty = 0, hundred = 0 }) => {
+    const result = {};
+    result.rolls = new Array();
+    if (four > 0) {
+        for (four; four > 0; four--)
+            result.rolls.push({ sides: 4, result: d4() });
+    }
+    if (six > 0) {
+        for (six; six > 0; six--)
+            result.rolls.push({ sides: 6, result: d6() });
+    }
+    if (eight > 0) {
+        for (eight; eight > 0; eight--)
+            result.rolls.push({ sides: 8, result: d8() });
+    }
+    if (ten > 0) {
+        for (ten; ten > 0; ten--)
+            result.rolls.push({ sides: 10, result: d10() });
+    }
+    if (twelve > 0) {
+        for (twelve; twelve > 0; twelve--)
+            result.rolls.push({ sides: 12, result: d12() });
+    }
+    if (twenty > 0) {
+        for (twenty; twenty > 0; twenty--)
+            result.rolls.push({ sides: 20, result: d20() });
+    }
+    if (hundred > 0) {
+        for (hundred; hundred > 0; hundred--)
+            result.rolls.push({ sides: 100, result: d100() });
+    }
+    result.total = result
+        .rolls
+        .map((roll) => roll.result)
+        .reduce((total = 0, current) => total + current);
+    return result;
+};
+
+class Campaign {
+    constructor({ crewSize = 6, useStory = true, useStars = true, difficulty = Difficulty.Normal } = {}) {
+        this._crew = null;
+        this.initStoryPoints = () => {
+            const points = d6();
+            switch (this._difficulty) {
+                case Difficulty.Hardcore:
+                    return points;
+                case Difficulty.Insanity:
+                    return 0;
+                default:
+                    return points + 1;
+            }
+        };
+        this.initCrew = (crew) => this._crew = this.crew === null
+            ? crew
+            : this.crew;
+        this.id = Symbol();
+        this._crewSize = crewSize;
+        this._useStory = useStory;
+        this._difficulty = difficulty;
+        this._useStars = difficulty === Difficulty.Insanity
+            ? false
+            : useStars;
+        this._storyPoints = this.initStoryPoints();
+    }
+    get crewSize() { return this._crewSize; }
+    get useStory() { return this._useStory; }
+    get useStars() { return this._useStars; }
+    get difficulty() { return this._difficulty; }
+    get crew() { return this._crew; }
+    get storyPoints() { return this._storyPoints; }
+    set storyPoints(value) {
+        this._storyPoints = this.difficulty === Difficulty.Insanity
+            ? 0
+            : value;
+    }
+}
+
+class Character {
+    constructor(race) {
+        this.id = Symbol();
+        this.race = race;
+    }
+}
+
+class Crew {
+    constructor(roster) {
+        this._leader = null;
+        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
+            && this.roster.push(character);
+        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
+        this._roster = roster;
+    }
+    get leader() { return this._leader; }
+    set leader(crew) {
+        this.leader && crew
+            ? this.leader
+            : crew;
+    }
+    get roster() { return this._roster; }
+}
+
 class BytesPipe {
     transform(value, precision = 2) {
         if (!value || value === 0)
@@ -492,6 +960,88 @@ const Pipes = [
     BytesPipe,
     TruncatePipe
 ];
+
+class CharacterService {
+    constructor() {
+        this.generateAlien = () => {
+            const alienRoll = d100();
+            if (alienRoll >= 1 && alienRoll <= 20)
+                return new Engineer();
+            else if (alienRoll >= 21 && alienRoll <= 40)
+                return new KErin();
+            else if (alienRoll >= 41 && alienRoll <= 55)
+                return new Soulless();
+            else if (alienRoll >= 56 && alienRoll <= 70)
+                return new Precursor();
+            else if (alienRoll >= 71 && alienRoll <= 90)
+                return new Feral();
+            else
+                return new Swift();
+        };
+        this.generateStrange = () => {
+            const strangeRoll = d100();
+            if (strangeRoll >= 1 && strangeRoll <= 2)
+                return new DeConverted();
+            else if (strangeRoll >= 3 && strangeRoll <= 8)
+                return new UnityAgent();
+            else if (strangeRoll >= 9 && strangeRoll <= 17)
+                return new MysteriousPast();
+            else if (strangeRoll >= 18 && strangeRoll <= 22)
+                return new Hakshan();
+            else if (strangeRoll >= 23 && strangeRoll <= 27)
+                return new Stalker();
+            else if (strangeRoll >= 28 && strangeRoll <= 34)
+                return new Hulker();
+            else if (strangeRoll >= 35 && strangeRoll <= 41)
+                return new HopefulRookie();
+            else if (strangeRoll >= 42 && strangeRoll <= 47)
+                return new GeneticUplift();
+            else if (strangeRoll >= 48 && strangeRoll <= 53)
+                return new Mutant();
+            else if (strangeRoll >= 54 && strangeRoll <= 58)
+                return new AssaultBot();
+            else if (strangeRoll >= 59 && strangeRoll <= 62)
+                return new Manipulator();
+            else if (strangeRoll >= 63 && strangeRoll <= 67)
+                return new Primitive();
+            else if (strangeRoll >= 68 && strangeRoll <= 73)
+                return new Feeler();
+            else if (strangeRoll >= 74 && strangeRoll <= 79)
+                return new EmoSuppressed();
+            else if (strangeRoll >= 80 && strangeRoll <= 85)
+                return new MinorAlien();
+            else if (strangeRoll >= 86 && strangeRoll <= 87)
+                return new Traveler();
+            else if (strangeRoll >= 88 && strangeRoll <= 93)
+                return new Empath();
+            else
+                return new BioUpgrade();
+        };
+        this.generate = () => {
+            let character;
+            const typeRoll = d100();
+            if (typeRoll >= 1 && typeRoll <= 60)
+                character = new Character(new Human());
+            else if (typeRoll >= 61 && typeRoll <= 80)
+                character = new Character(this.generateAlien());
+            else if (typeRoll >= 81 && typeRoll <= 90)
+                character = new Character(new Bot());
+            else
+                character = new Character(this.generateStrange());
+            return character;
+        };
+    }
+}
+CharacterService.ɵfac = function CharacterService_Factory(t) { return new (t || CharacterService)(); };
+CharacterService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: CharacterService, factory: CharacterService.ɵfac, providedIn: 'root' });
+(function () {
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CharacterService, [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
+            args: [{
+                    providedIn: 'root'
+                }]
+        }], null, null);
+})();
 
 class CoreService {
     constructor() {
