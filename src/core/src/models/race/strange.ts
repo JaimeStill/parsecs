@@ -4,18 +4,11 @@ import {
 } from './race';
 
 export abstract class Strange extends Race {
-  readonly specimen: string;
-
   constructor(
-    specimen: string,
+    kind: string,
     config?: Partial<RaceConfig>
   ) {
-    super('Strange', config);
-    this.specimen = specimen;
-  }
-
-  override get kind(): string {
-    return this.specimen;
+    super('Strange', kind, config);
   }
 }
 

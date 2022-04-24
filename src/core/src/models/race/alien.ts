@@ -4,18 +4,11 @@ import {
 } from './race';
 
 export abstract class Alien extends Race {
-  readonly species: string;
-
   constructor(
-    species: string,
+    kind: string,
     config?: Partial<RaceConfig>
   ) {
-    super('Alien', config);
-    this.species = species;
-  }
-
-  override get kind(): string {
-    return this.species;
+    super('Alien', kind, config);
   }
 }
 

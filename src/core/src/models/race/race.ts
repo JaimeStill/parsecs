@@ -8,6 +8,7 @@ export interface RaceConfig {
 }
 
 export abstract class Race {
+  protected _species: string;
   protected _kind: string;
   protected _reaction: number;
   protected _speed: number;
@@ -17,6 +18,7 @@ export abstract class Race {
   protected _luck: number;
 
   constructor(
+    species: string,
     kind: string,
     {
       reaction = 1,
@@ -27,6 +29,7 @@ export abstract class Race {
       luck = 0
     }: Partial<RaceConfig> = {}
   ) {
+    this._species = species;
     this._kind = kind;
     this._reaction = reaction;
     this._speed = speed;
@@ -34,6 +37,10 @@ export abstract class Race {
     this._toughness = toughness;
     this._savvy = savvy;
     this._luck = luck;
+  }
+
+  get species(): string {
+    return this._species;
   }
 
   get kind(): string {

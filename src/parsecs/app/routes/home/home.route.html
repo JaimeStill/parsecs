@@ -1,1 +1,10 @@
-<p class="mat-title m8">Home</p>
+<p class="mat-title m8">Generate Character Test</p>
+<div>
+  <button mat-stroked-button
+          (click)="generate()">Generate Character</button>
+</div>
+<pre *ngIf="character"
+     class="p4"
+     [ngClass]="characterColor()"><code>
+{{character | json}}
+</code></pre>

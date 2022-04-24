@@ -5,8 +5,8 @@ export class Crew {
   private _leader: Character<Race> | null  = null;
   private _roster: Character<Race>[];
 
-  constructor() {
-    this._roster = new Array<Character<Race>>();
+  constructor(roster: Array<Character<Race>>) {
+    this._roster = roster;
   }
 
   get leader(): Character<Race> | null { return this._leader; }
