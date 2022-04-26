@@ -322,6 +322,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Traveler": () => (/* binding */ Traveler),
 /* harmony export */   "TruncatePipe": () => (/* binding */ TruncatePipe),
 /* harmony export */   "UnityAgent": () => (/* binding */ UnityAgent),
+/* harmony export */   "WeaponTrait": () => (/* binding */ WeaponTrait),
 /* harmony export */   "d10": () => (/* binding */ d10),
 /* harmony export */   "d100": () => (/* binding */ d100),
 /* harmony export */   "d12": () => (/* binding */ d12),
@@ -546,6 +547,23 @@ var Difficulty;
     Difficulty["Hardcore"] = "Hardcore";
     Difficulty["Insanity"] = "Insanity";
 })(Difficulty || (Difficulty = {}));
+var WeaponTrait;
+(function (WeaponTrait) {
+    WeaponTrait["Area"] = "Resolve all shots against the initial target. They cannot be spread. Then resolve one bonus shot against every figure within 2\".";
+    WeaponTrait["Clumsy"] = "-1 to Brawling rolls, if opponent has higher Speed.";
+    WeaponTrait["Critical"] = "A natural 6 on the to Hit roll will inflict 2 Hits on the target.";
+    WeaponTrait["Elegant"] = "When Brawling, the fighter may reroll the die. Enemies will always reroll if they have a lower total than their opponent, and can improve the result.";
+    WeaponTrait["Focused"] = "All shots must be against a single target.";
+    WeaponTrait["Heavy"] = "-1 penalty to Hit if the firer moved this round.";
+    WeaponTrait["Impact"] = "If target is Stunned, place a second Stun marker.";
+    WeaponTrait["Melee"] = "+2 to Brawling rolls.";
+    WeaponTrait["Piercing"] = "Ignore Armor Saving Throws.";
+    WeaponTrait["Pistol"] = "+1 to Brawling rolls.";
+    WeaponTrait["SingleUse"] = "The item can be used only once and must be deducted from the available supply. The Panic Fire rule cannot be used with Single Use weapons.";
+    WeaponTrait["SnapShot"] = "+1 to Hit within 6\".";
+    WeaponTrait["Stun"] = "All targets are automatically Stunned. No damage rolls ake place.";
+    WeaponTrait["Terrifying"] = "Any target hit must retreat 1D6\" away from the firer.";
+})(WeaponTrait || (WeaponTrait = {}));
 
 class Race {
     constructor(species, kind, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
