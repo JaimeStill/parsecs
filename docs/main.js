@@ -312,6 +312,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Pipes": () => (/* binding */ Pipes),
 /* harmony export */   "Precursor": () => (/* binding */ Precursor),
 /* harmony export */   "Primitive": () => (/* binding */ Primitive),
+/* harmony export */   "ProtectiveDeviceType": () => (/* binding */ ProtectiveDeviceType),
 /* harmony export */   "Race": () => (/* binding */ Race),
 /* harmony export */   "SnackerService": () => (/* binding */ SnackerService),
 /* harmony export */   "Soulless": () => (/* binding */ Soulless),
@@ -564,11 +565,16 @@ var WeaponTrait;
     WeaponTrait["Stun"] = "All targets are automatically Stunned. No damage rolls ake place.";
     WeaponTrait["Terrifying"] = "Any target hit must retreat 1D6\" away from the firer.";
 })(WeaponTrait || (WeaponTrait = {}));
+var ProtectiveDeviceType;
+(function (ProtectiveDeviceType) {
+    ProtectiveDeviceType["Armor"] = "Armor";
+    ProtectiveDeviceType["Screen"] = "Screen";
+})(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
 
 class Race {
-    constructor(species, kind, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
+    constructor(species, type, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
         this._species = species;
-        this._kind = kind;
+        this._type = type;
         this._reaction = reaction;
         this._speed = speed;
         this._combatSkill = combatSkill;
@@ -579,8 +585,8 @@ class Race {
     get species() {
         return this._species;
     }
-    get kind() {
-        return this._kind;
+    get type() {
+        return this._type;
     }
     get reaction() {
         return this._reaction;
@@ -633,8 +639,8 @@ class Race {
 }
 
 class Alien extends Race {
-    constructor(kind, config) {
-        super('Alien', kind, config);
+    constructor(type, config) {
+        super('Alien', type, config);
     }
 }
 class Engineer extends Alien {
@@ -700,13 +706,13 @@ class Manipulator extends Alien {
 }
 
 class Bot extends Race {
-    constructor(kind = 'Base', config = {
+    constructor(type = 'Base', config = {
         reaction: 2,
         combatSkill: 1,
         toughness: 4,
         savvy: 2
     }) {
-        super('Bot', kind, config);
+        super('Bot', type, config);
     }
 }
 class AssaultBot extends Bot {
@@ -716,8 +722,8 @@ class AssaultBot extends Bot {
 }
 
 class Human extends Race {
-    constructor(kind = 'Base', config) {
-        super('Human', kind, config);
+    constructor(type = 'Base', config) {
+        super('Human', type, config);
     }
     set luck(value) {
         this._luck = value;
@@ -775,8 +781,8 @@ class BioUpgrade extends Human {
 }
 
 class Strange extends Race {
-    constructor(kind, config) {
-        super('Strange', kind, config);
+    constructor(type, config) {
+        super('Strange', type, config);
     }
 }
 class DeConverted extends Strange {
