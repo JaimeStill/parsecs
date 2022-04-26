@@ -22,3 +22,8 @@ export enum WeaponTrait {
   Stun = `All targets are automatically Stunned. No damage rolls ake place.`,
   Terrifying = `Any target hit must retreat 1D6" away from the firer.`
 }
+
+export enum ProtectiveDeviceType {
+  Armor = `Armor`,
+  Screen = `Screen`
+}
