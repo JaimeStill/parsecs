@@ -286,6 +286,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CharacterService": () => (/* binding */ CharacterService),
 /* harmony export */   "Components": () => (/* binding */ Components),
 /* harmony export */   "ConfirmDialog": () => (/* binding */ ConfirmDialog),
+/* harmony export */   "Consumable": () => (/* binding */ Consumable),
 /* harmony export */   "CoreModule": () => (/* binding */ CoreModule),
 /* harmony export */   "CoreService": () => (/* binding */ CoreService),
 /* harmony export */   "Crew": () => (/* binding */ Crew),
@@ -296,6 +297,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "EmoSuppressed": () => (/* binding */ EmoSuppressed),
 /* harmony export */   "Empath": () => (/* binding */ Empath),
 /* harmony export */   "Engineer": () => (/* binding */ Engineer),
+/* harmony export */   "Equipment": () => (/* binding */ Equipment),
+/* harmony export */   "EquipmentService": () => (/* binding */ EquipmentService),
 /* harmony export */   "Feeler": () => (/* binding */ Feeler),
 /* harmony export */   "Feral": () => (/* binding */ Feral),
 /* harmony export */   "GeneticUplift": () => (/* binding */ GeneticUplift),
@@ -303,17 +306,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "HopefulRookie": () => (/* binding */ HopefulRookie),
 /* harmony export */   "Hulker": () => (/* binding */ Hulker),
 /* harmony export */   "Human": () => (/* binding */ Human),
+/* harmony export */   "Implant": () => (/* binding */ Implant),
 /* harmony export */   "KErin": () => (/* binding */ KErin),
 /* harmony export */   "Manipulator": () => (/* binding */ Manipulator),
 /* harmony export */   "MaterialModule": () => (/* binding */ MaterialModule),
+/* harmony export */   "Melee": () => (/* binding */ Melee),
 /* harmony export */   "MinorAlien": () => (/* binding */ MinorAlien),
 /* harmony export */   "Mutant": () => (/* binding */ Mutant),
 /* harmony export */   "MysteriousPast": () => (/* binding */ MysteriousPast),
+/* harmony export */   "OnBoardItem": () => (/* binding */ OnBoardItem),
 /* harmony export */   "Pipes": () => (/* binding */ Pipes),
+/* harmony export */   "Pistol": () => (/* binding */ Pistol),
 /* harmony export */   "Precursor": () => (/* binding */ Precursor),
 /* harmony export */   "Primitive": () => (/* binding */ Primitive),
+/* harmony export */   "ProtectiveDevice": () => (/* binding */ ProtectiveDevice),
 /* harmony export */   "ProtectiveDeviceType": () => (/* binding */ ProtectiveDeviceType),
 /* harmony export */   "Race": () => (/* binding */ Race),
+/* harmony export */   "Sidearm": () => (/* binding */ Sidearm),
+/* harmony export */   "SingleUse": () => (/* binding */ SingleUse),
 /* harmony export */   "SnackerService": () => (/* binding */ SnackerService),
 /* harmony export */   "Soulless": () => (/* binding */ Soulless),
 /* harmony export */   "Stalker": () => (/* binding */ Stalker),
@@ -323,6 +333,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Traveler": () => (/* binding */ Traveler),
 /* harmony export */   "TruncatePipe": () => (/* binding */ TruncatePipe),
 /* harmony export */   "UnityAgent": () => (/* binding */ UnityAgent),
+/* harmony export */   "UtilityDevice": () => (/* binding */ UtilityDevice),
+/* harmony export */   "Weapon": () => (/* binding */ Weapon),
+/* harmony export */   "WeaponMod": () => (/* binding */ WeaponMod),
+/* harmony export */   "WeaponSight": () => (/* binding */ WeaponSight),
 /* harmony export */   "WeaponTrait": () => (/* binding */ WeaponTrait),
 /* harmony export */   "d10": () => (/* binding */ d10),
 /* harmony export */   "d100": () => (/* binding */ d100),
@@ -571,10 +585,116 @@ var ProtectiveDeviceType;
     ProtectiveDeviceType["Screen"] = "Screen";
 })(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
 
+class Equipment {
+    constructor(name, description) {
+        this.id = Symbol();
+        this.name = name;
+        this.description = description;
+    }
+}
+class ProtectiveDevice extends Equipment {
+    constructor(name, description, kind) {
+        super(name, description);
+        this.kind = kind;
+    }
+}
+class WeaponMod extends Equipment {
+    constructor(name, description, allowPistol) {
+        super(name, description);
+        this.allowPistol = allowPistol;
+    }
+}
+class WeaponSight extends Equipment {
+    constructor(name, description, pistolOnly, damaged) {
+        super(name, description);
+        this.pistolOnly = pistolOnly;
+        this.damaged = damaged;
+    }
+}
+class Consumable extends Equipment {
+}
+class Implant extends Equipment {
+}
+class UtilityDevice extends Equipment {
+}
+class OnBoardItem extends Equipment {
+}
+
+class Weapon {
+    constructor(kind, model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
+        this.hasTrait = (trait) => this.traits.some((t) => t === trait);
+        this.isType = (t) => this instanceof t;
+        this.canAddMod = (mod) => {
+            if (this.mod)
+                return false;
+            if (this.shots < 2)
+                return false;
+            if (this.isType(Melee))
+                return false;
+            if (!(mod.allowPistol) && this.isType(Pistol))
+                return false;
+            return true;
+        };
+        this.canAddSight = (sight) => {
+            if (this.sight)
+                return false;
+            if (this.shots < 2)
+                return false;
+            if (this.isType(Melee))
+                return false;
+            if (sight.pistolOnly && !this.isType(Pistol))
+                return false;
+            return true;
+        };
+        this.addMod = (mod) => this.mod = this.canAddMod(mod)
+            ? mod
+            : this.mod;
+        this.addSight = (sight) => this.sight = this.canAddSight(sight)
+            ? sight
+            : this.sight;
+        this.removeSight = () => {
+            const sight = this.sight;
+            this.sight = null;
+            return sight;
+        };
+        this.swapSight = (weapon) => {
+            const swap = weapon.sight;
+            weapon.sight = this.sight;
+            this.sight = swap;
+        };
+        this._damaged = damaged;
+        this.kind = kind;
+        this.model = model;
+        this.description = description;
+        this.range = range;
+        this.shots = shots;
+        this.damage = damage;
+        this.traits = traits;
+        this.mod = mod;
+        this.sight = sight;
+        if (this.sight)
+            this.sight.damaged = damaged;
+    }
+    get damaged() { return this._damaged; }
+    set damaged(value) {
+        if (this.sight)
+            this.sight.damaged = value;
+        this._damaged = value;
+    }
+}
+class SingleUse extends Weapon {
+}
+class Sidearm extends Weapon {
+}
+class Pistol extends Sidearm {
+}
+class Melee extends Sidearm {
+}
+
 class Race {
-    constructor(species, type, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
+    constructor(species, kind, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
         this._species = species;
-        this._type = type;
+        this._kind = kind;
         this._reaction = reaction;
         this._speed = speed;
         this._combatSkill = combatSkill;
@@ -585,8 +705,8 @@ class Race {
     get species() {
         return this._species;
     }
-    get type() {
-        return this._type;
+    get kind() {
+        return this._kind;
     }
     get reaction() {
         return this._reaction;
@@ -639,8 +759,8 @@ class Race {
 }
 
 class Alien extends Race {
-    constructor(type, config) {
-        super('Alien', type, config);
+    constructor(kind, config) {
+        super('Alien', kind, config);
     }
 }
 class Engineer extends Alien {
@@ -706,13 +826,13 @@ class Manipulator extends Alien {
 }
 
 class Bot extends Race {
-    constructor(type = 'Base', config = {
+    constructor(kind = 'Base', config = {
         reaction: 2,
         combatSkill: 1,
         toughness: 4,
         savvy: 2
     }) {
-        super('Bot', type, config);
+        super('Bot', kind, config);
     }
 }
 class AssaultBot extends Bot {
@@ -722,8 +842,8 @@ class AssaultBot extends Bot {
 }
 
 class Human extends Race {
-    constructor(type = 'Base', config) {
-        super('Human', type, config);
+    constructor(kind = 'Base', config) {
+        super('Human', kind, config);
     }
     set luck(value) {
         this._luck = value;
@@ -781,8 +901,8 @@ class BioUpgrade extends Human {
 }
 
 class Strange extends Race {
-    constructor(type, config) {
-        super('Strange', type, config);
+    constructor(kind, config) {
+        super('Strange', kind, config);
     }
 }
 class DeConverted extends Strange {
@@ -1060,6 +1180,41 @@ CharacterService.ɵfac = function CharacterService_Factory(t) { return new (t ||
 CharacterService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: CharacterService, factory: CharacterService.ɵfac, providedIn: 'root' });
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CharacterService, [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
+            args: [{
+                    providedIn: 'root'
+                }]
+        }], null, null);
+})();
+
+class EquipmentService {
+    constructor() {
+        this.generateLowTechWeapon = () => {
+            const roll = d100();
+            if (roll >= 1 && roll <= 15)
+                return new Pistol("Pistol", "Handgun", "Low Tech");
+            else if (roll >= 16 && roll <= 35)
+                return new Pistol("Pistol", "Scrap Pistol", "Low Tech");
+            else if (roll >= 36 && roll <= 40)
+                // Machine Pistol
+                return new Pistol("Pistol", "Machine Pistol", "Low Tech");
+            else if (roll >= 41 && roll <= 65)
+                return new Weapon("Weapon", "Colony Rifle", "Low Tech");
+            else if (roll >= 66 && roll <= 75)
+                return new Weapon("Weapon", "Shotgun", "Low Tech");
+            else if (roll >= 76 && roll <= 80)
+                return new Weapon("Weapon", "Hunting Rifle", "Low Tech");
+            else if (roll >= 81 && roll <= 95)
+                return new Melee("Melee", "Blade", "Low Tech");
+            else
+                return new Melee("Melee", "Brutal Melee Weapon", "Low Tech");
+        };
+    }
+}
+EquipmentService.ɵfac = function EquipmentService_Factory(t) { return new (t || EquipmentService)(); };
+EquipmentService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: EquipmentService, factory: EquipmentService.ɵfac, providedIn: 'root' });
+(function () {
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](EquipmentService, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
             args: [{
                     providedIn: 'root'
