@@ -4,10 +4,10 @@ export abstract class Equipment {
   readonly id: Symbol;
   readonly name: string;
   readonly description: string;
-  
+
   constructor(
     name: string,
-    description: string    
+    description: string
   ) {
     this.id = Symbol();
     this.name = name;
@@ -16,18 +16,18 @@ export abstract class Equipment {
 }
 
 export class ProtectiveDevice extends Equipment {
-  readonly type: ProtectiveDeviceType
+  readonly kind: ProtectiveDeviceType
 
   constructor(
     name: string,
     description: string,
-    type: ProtectiveDeviceType
+    kind: ProtectiveDeviceType
   ) {
     super(name, description);
-    this.type = type;
+    this.kind = kind;
   }
 }
-  
+
 export class WeaponMod extends Equipment {
   readonly allowPistol: boolean;
 

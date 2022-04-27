@@ -1,4 +1,5 @@
 export * from './enums';
+export * from './equipment';
 export * from './race';
 
 export * from './campaign';

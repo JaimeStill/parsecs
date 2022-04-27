@@ -5,10 +5,10 @@ import {
 
 export class Human extends Race {
   constructor(
-    type: string = 'Base',
+    kind: string = 'Base',
     config?: Partial<RaceConfig>
   ) {
-    super('Human', type, config);
+    super('Human', kind, config);
   }
 
   override set luck(value: number) {

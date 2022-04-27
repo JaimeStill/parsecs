@@ -5,10 +5,10 @@ import {
 
 export abstract class Strange extends Race {
   constructor(
-    type: string,
+    kind: string,
     config?: Partial<RaceConfig>
   ) {
-    super('Strange', type, config);
+    super('Strange', kind, config);
   }
 }
 

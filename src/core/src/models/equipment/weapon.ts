@@ -1,4 +1,5 @@
 import { WeaponTrait } from '../enums';
+import { Constructor } from '../types';
 
 import {
   WeaponMod,
@@ -11,8 +12,8 @@ export interface WeaponConfig {
   shots: number;
   damage: number;
   traits: WeaponTrait[];
-  mod: WeaponMod;
-  sight: WeaponSight;
+  mod: WeaponMod | null;
+  sight: WeaponSight | null;
 }
 
 export class Weapon {
@@ -26,7 +27,7 @@ export class Weapon {
     this._damaged = value;
   }
 
-  readonly type: string;
+  readonly kind: string;
   readonly model: string;
   readonly description: string;
   readonly range: number;
@@ -38,7 +39,7 @@ export class Weapon {
   sight!: WeaponSight | null;
 
   constructor(
-    type: string,
+    kind: string,
     model: string,
     description: string,
     {
@@ -49,24 +50,28 @@ export class Weapon {
       traits = new Array<WeaponTrait>(),
       mod = null,
       sight = null
-    }: Partial<WeaponConfig>
+    }: Partial<WeaponConfig> = {}
   ) {
-    this.mod = mod;
-    this.sight = sight;
-    this.damaged = damaged;
-    this.type = type;
+    this._damaged = damaged;
+    this.kind = kind;
     this.model = model;
     this.description = description;
     this.range = range;
     this.shots = shots;
     this.damage = damage;
     this.traits = traits;
+    this.mod = mod;
+    this.sight = sight;
+
+    if (this.sight)
+      this.sight.damaged = damaged;
   }
 
-  private hasTrait = (trait: WeaponTrait) =>
+
+  hasTrait = (trait: WeaponTrait) =>
     this.traits.some((t: WeaponTrait) => t === trait);
 
-  private isType = <T extends Weapon>() => this instanceof T;
+  isType = <T extends Weapon>(t: Constructor<T>) => this instanceof t;
 
   canAddMod = (mod: WeaponMod) => {
     if (this.mod)
@@ -75,10 +80,10 @@ export class Weapon {
     if (this.shots < 2)
       return false;
 
-    if (this.hasTrait(WeaponTrait.Melee))
+    if (this.isType(Melee))
       return false;
 
-    if (!(mod.allowPistol) && this.isType<Pistol>())
+    if (!(mod.allowPistol) && this.isType(Pistol))
       return false;
 
     return true;
@@ -91,10 +96,10 @@ export class Weapon {
     if (this.shots < 2)
       return false;
 
-    if (this.hasTrait(WeaponTrait.Melee))
+    if (this.isType(Melee))
       return false;
 
-    if (sight.pistolOnly && !this.isType<Pistol>())
+    if (sight.pistolOnly && !this.isType(Pistol))
       return false;
 
     return true;
@@ -123,6 +128,7 @@ export class Weapon {
   }
 }
 
+export class SingleUse extends Weapon { }
 export class Sidearm extends Weapon { }
 export class Pistol extends Sidearm { }
 export class Melee extends Sidearm { }

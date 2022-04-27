@@ -5,7 +5,7 @@ import {
 
 export class Bot extends Race {
   constructor(
-    type: string = 'Base',
+    kind: string = 'Base',
     config: Partial<RaceConfig> = {
       reaction: 2,
       combatSkill: 1,
@@ -13,7 +13,7 @@ export class Bot extends Race {
       savvy: 2
     }
   ) {
-    super('Bot', type, config);
+    super('Bot', kind, config);
   }
 }
 
