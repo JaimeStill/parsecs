@@ -1,12 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Character } from '../character';
+import { d100 } from '../dice';
 
 import {
-  d100,
   Alien,
   AssaultBot,
   BioUpgrade,
   Bot,
-  Character,
   DeConverted,
   EmoSuppressed,
   Empath,
@@ -31,13 +30,10 @@ import {
   Swift,
   Traveler,
   UnityAgent
-} from '../../models';
+} from '../race';
 
-@Injectable({
-  providedIn: 'root'
-})
-export class CharacterService {
-  private generateAlien = (): Alien => {
+export abstract class CharacterGenerator {
+  private static generateAlien = (): Alien => {
     const alienRoll = d100();
 
     if (alienRoll >= 1 && alienRoll <= 20)
@@ -54,7 +50,7 @@ export class CharacterService {
       return new Swift();
   }
 
-  private generateStrange = (): Race => {
+  private static generateStrange = (): Race => {
     const strangeRoll = d100();
 
     if (strangeRoll >= 1 && strangeRoll <= 2)
@@ -95,7 +91,7 @@ export class CharacterService {
       return new BioUpgrade();
   }
 
-  generate = (): Character<Race> => {
+  static Generate = (): Character<Race> => {
     let character;
     const typeRoll = d100();
 

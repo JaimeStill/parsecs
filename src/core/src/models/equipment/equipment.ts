@@ -16,15 +16,15 @@ export abstract class Equipment {
 }
 
 export class ProtectiveDevice extends Equipment {
-  readonly kind: ProtectiveDeviceType
+  readonly type: ProtectiveDeviceType
 
   constructor(
     name: string,
     description: string,
-    kind: ProtectiveDeviceType
+    type: ProtectiveDeviceType
   ) {
     super(name, description);
-    this.kind = kind;
+    this.type = type;
   }
 }
 
@@ -49,7 +49,7 @@ export class WeaponSight extends Equipment {
     name: string,
     description: string,
     pistolOnly: boolean,
-    damaged: boolean
+    damaged: boolean = false
   ) {
     super(name, description);
     this.pistolOnly = pistolOnly;

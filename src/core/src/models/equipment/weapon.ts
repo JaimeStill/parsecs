@@ -17,7 +17,7 @@ export interface WeaponConfig {
 }
 
 export class Weapon {
-  private _damaged: boolean;
+  private _damaged: boolean = false;
   get damaged(): boolean { return this._damaged; }
 
   set damaged(value: boolean) {
@@ -27,7 +27,6 @@ export class Weapon {
     this._damaged = value;
   }
 
-  readonly kind: string;
   readonly model: string;
   readonly description: string;
   readonly range: number;
@@ -39,7 +38,6 @@ export class Weapon {
   sight!: WeaponSight | null;
 
   constructor(
-    kind: string,
     model: string,
     description: string,
     {
@@ -52,8 +50,6 @@ export class Weapon {
       sight = null
     }: Partial<WeaponConfig> = {}
   ) {
-    this._damaged = damaged;
-    this.kind = kind;
     this.model = model;
     this.description = description;
     this.range = range;
@@ -62,9 +58,7 @@ export class Weapon {
     this.traits = traits;
     this.mod = mod;
     this.sight = sight;
-
-    if (this.sight)
-      this.sight.damaged = damaged;
+    this.damaged = damaged;
   }
 
 
@@ -128,7 +122,6 @@ export class Weapon {
   }
 }
 
-export class SingleUse extends Weapon { }
 export class Sidearm extends Weapon { }
 export class Pistol extends Sidearm { }
 export class Melee extends Sidearm { }

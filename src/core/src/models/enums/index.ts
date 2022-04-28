@@ -6,6 +6,20 @@ export enum Difficulty {
   Insanity = "Insanity"
 }
 
+export enum ProtectiveDeviceType {
+  Armor = `Armor`,
+  Screen = `Screen`
+}
+
+export enum ShipTrait {
+  EmergencyDrives = `If you have to perform an emergency take-off while your ship is damaged, reduce the Hull damage sustained on the roll by 3.`,
+  FuelEfficient = `When traveling to a new world, the fuel cost is reduced by 1 credit.`,
+  FuelHog = `When traveling to a new world, the fuel cost is increased by 1 credit.`,
+  DodgyDrive = `Any time the ship takes Hull damage, roll 2D6. If the roll is equal to or below the amount of damage sustained, the drive is misbehaving, and 2 additional points of damage are sustained.`,
+  StandardIssue = `The cost of all Starship Components is reduced by 1 credit.`,
+  Armored = `Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.`
+}
+
 export enum WeaponTrait {
   Area = `Resolve all shots against the initial target. They cannot be spread. Then resolve one bonus shot against every figure within 2".`,
   Clumsy = `-1 to Brawling rolls, if opponent has higher Speed.`,
@@ -21,9 +35,4 @@ export enum WeaponTrait {
   SnapShot = `+1 to Hit within 6".`,
   Stun = `All targets are automatically Stunned. No damage rolls ake place.`,
   Terrifying = `Any target hit must retreat 1D6" away from the firer.`
-}
-
-export enum ProtectiveDeviceType {
-  Armor = `Armor`,
-  Screen = `Screen`
 }
