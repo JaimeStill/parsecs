@@ -114,18 +114,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "HomeRoute": () => (/* binding */ HomeRoute)
 /* harmony export */ });
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core */ 4666);
-/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ 6362);
-/* harmony import */ var _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/flex-layout/extended */ 3338);
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
+/* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/flex-layout/flex */ 5434);
+/* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ 7317);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/flex-layout/extended */ 3338);
 
 
 
 
 
-function HomeRoute_pre_5_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 3)(1, "code");
+
+function HomeRoute_pre_7_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 7)(1, "code");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "json");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
@@ -135,9 +137,30 @@ function HomeRoute_pre_5_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 2, ctx_r0.character), "\n");
 } }
+function HomeRoute_pre_14_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 7)(1, "code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "json");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+} if (rf & 2) {
+    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r1.weaponColor());
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 2, ctx_r1.weapon), "\n");
+} }
+function HomeRoute_pre_21_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 8);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "json");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 1, ctx_r2.ship), "\n");
+} }
 class HomeRoute {
-    constructor(characterSvc) {
-        this.characterSvc = characterSvc;
+    constructor() {
+        this.cardSize = 'auto';
         this.characterColor = () => {
             var _a, _b;
             switch ((_b = (_a = this.character) === null || _a === void 0 ? void 0 : _a.race) === null || _b === void 0 ? void 0 : _b.species) {
@@ -151,26 +174,80 @@ class HomeRoute {
                     return 'color-amber';
             }
         };
-        this.generate = () => this.character = this.characterSvc.generate();
+        this.generateCharacter = () => this.character = core__WEBPACK_IMPORTED_MODULE_1__.CharacterGenerator.Generate();
+        this.generateWeapon = () => {
+            const roll = (0,core__WEBPACK_IMPORTED_MODULE_1__.d6)();
+            if (roll >= 1 && roll <= 2)
+                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.LowTech();
+            if (roll >= 3 && roll <= 4)
+                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.Military();
+            else
+                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.HighTech();
+        };
+        this.weaponColor = () => {
+            var _a;
+            switch ((_a = this.weapon) === null || _a === void 0 ? void 0 : _a.description) {
+                case 'Low Tech':
+                    return 'color-blue';
+                case 'Military':
+                    return 'color-green';
+                case 'High Tech':
+                    return 'color-amber';
+                default:
+                    return 'color-red';
+            }
+        };
+        this.generateShip = () => this.ship = core__WEBPACK_IMPORTED_MODULE_1__.ShipGenerator.Generate();
     }
     ngOnInit() {
-        this.generate();
+        this.generateCharacter();
+        this.generateShip();
+        this.generateWeapon();
     }
 }
-HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](core__WEBPACK_IMPORTED_MODULE_1__.CharacterService)); };
-HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 6, vars: 1, consts: [[1, "mat-title", "m8"], ["mat-stroked-button", "", 3, "click"], ["class", "p4", 3, "ngClass", 4, "ngIf"], [1, "p4", 3, "ngClass"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "p", 0);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1, "Generate Character Test");
+HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(); };
+HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 22, vars: 9, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p8"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "m4", "p4"], [1, "mat-title", "m4"], [1, "p4"], ["mat-stroked-button", "", 3, "click"], ["class", "m4 pre-wrap", 3, "ngClass", 4, "ngIf"], ["class", "m4 pre-wrap", 4, "ngIf"], [1, "m4", "pre-wrap", 3, "ngClass"], [1, "m4", "pre-wrap"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "p", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Generate Character Test");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div")(3, "button", 1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_3_listener() { return ctx.generate(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4, "Generate Character");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3)(5, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_5_listener() { return ctx.generateCharacter(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Generate Character");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](5, HomeRoute_pre_5_Template, 4, 4, "pre", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, HomeRoute_pre_7_Template, 4, 4, "pre", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "section", 1)(9, "p", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Generate Weapon Test");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 3)(12, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_12_listener() { return ctx.generateWeapon(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Generate Weapon");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HomeRoute_pre_14_Template, 4, 4, "pre", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "section", 1)(16, "p", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Generate Ship Test");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 3)(19, "button", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_19_listener() { return ctx.generateShip(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Generate Ship");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, HomeRoute_pre_21_Template, 3, 3, "pre", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.character);
-    } }, directives: [_angular_material_button__WEBPACK_IMPORTED_MODULE_2__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_3__.NgClass, _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_4__.DefaultClassDirective], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_3__.JsonPipe], encapsulation: 2 });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.weapon);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.ship);
+    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutAlignDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_3__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgClass, _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_5__.DefaultClassDirective], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.JsonPipe], encapsulation: 2 });
 
 
 /***/ }),
@@ -283,7 +360,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "BytesPipe": () => (/* binding */ BytesPipe),
 /* harmony export */   "Campaign": () => (/* binding */ Campaign),
 /* harmony export */   "Character": () => (/* binding */ Character),
-/* harmony export */   "CharacterService": () => (/* binding */ CharacterService),
+/* harmony export */   "CharacterGenerator": () => (/* binding */ CharacterGenerator),
 /* harmony export */   "Components": () => (/* binding */ Components),
 /* harmony export */   "ConfirmDialog": () => (/* binding */ ConfirmDialog),
 /* harmony export */   "Consumable": () => (/* binding */ Consumable),
@@ -298,7 +375,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Empath": () => (/* binding */ Empath),
 /* harmony export */   "Engineer": () => (/* binding */ Engineer),
 /* harmony export */   "Equipment": () => (/* binding */ Equipment),
-/* harmony export */   "EquipmentService": () => (/* binding */ EquipmentService),
 /* harmony export */   "Feeler": () => (/* binding */ Feeler),
 /* harmony export */   "Feral": () => (/* binding */ Feral),
 /* harmony export */   "GeneticUplift": () => (/* binding */ GeneticUplift),
@@ -322,8 +398,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ProtectiveDevice": () => (/* binding */ ProtectiveDevice),
 /* harmony export */   "ProtectiveDeviceType": () => (/* binding */ ProtectiveDeviceType),
 /* harmony export */   "Race": () => (/* binding */ Race),
+/* harmony export */   "Ship": () => (/* binding */ Ship),
+/* harmony export */   "ShipGenerator": () => (/* binding */ ShipGenerator),
+/* harmony export */   "ShipTrait": () => (/* binding */ ShipTrait),
 /* harmony export */   "Sidearm": () => (/* binding */ Sidearm),
-/* harmony export */   "SingleUse": () => (/* binding */ SingleUse),
 /* harmony export */   "SnackerService": () => (/* binding */ SnackerService),
 /* harmony export */   "Soulless": () => (/* binding */ Soulless),
 /* harmony export */   "Stalker": () => (/* binding */ Stalker),
@@ -335,6 +413,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "UnityAgent": () => (/* binding */ UnityAgent),
 /* harmony export */   "UtilityDevice": () => (/* binding */ UtilityDevice),
 /* harmony export */   "Weapon": () => (/* binding */ Weapon),
+/* harmony export */   "WeaponGenerator": () => (/* binding */ WeaponGenerator),
 /* harmony export */   "WeaponMod": () => (/* binding */ WeaponMod),
 /* harmony export */   "WeaponSight": () => (/* binding */ WeaponSight),
 /* harmony export */   "WeaponTrait": () => (/* binding */ WeaponTrait),
@@ -562,6 +641,20 @@ var Difficulty;
     Difficulty["Hardcore"] = "Hardcore";
     Difficulty["Insanity"] = "Insanity";
 })(Difficulty || (Difficulty = {}));
+var ProtectiveDeviceType;
+(function (ProtectiveDeviceType) {
+    ProtectiveDeviceType["Armor"] = "Armor";
+    ProtectiveDeviceType["Screen"] = "Screen";
+})(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
+var ShipTrait;
+(function (ShipTrait) {
+    ShipTrait["EmergencyDrives"] = "If you have to perform an emergency take-off while your ship is damaged, reduce the Hull damage sustained on the roll by 3.";
+    ShipTrait["FuelEfficient"] = "When traveling to a new world, the fuel cost is reduced by 1 credit.";
+    ShipTrait["FuelHog"] = "When traveling to a new world, the fuel cost is increased by 1 credit.";
+    ShipTrait["DodgyDrive"] = "Any time the ship takes Hull damage, roll 2D6. If the roll is equal to or below the amount of damage sustained, the drive is misbehaving, and 2 additional points of damage are sustained.";
+    ShipTrait["StandardIssue"] = "The cost of all Starship Components is reduced by 1 credit.";
+    ShipTrait["Armored"] = "Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.";
+})(ShipTrait || (ShipTrait = {}));
 var WeaponTrait;
 (function (WeaponTrait) {
     WeaponTrait["Area"] = "Resolve all shots against the initial target. They cannot be spread. Then resolve one bonus shot against every figure within 2\".";
@@ -579,11 +672,6 @@ var WeaponTrait;
     WeaponTrait["Stun"] = "All targets are automatically Stunned. No damage rolls ake place.";
     WeaponTrait["Terrifying"] = "Any target hit must retreat 1D6\" away from the firer.";
 })(WeaponTrait || (WeaponTrait = {}));
-var ProtectiveDeviceType;
-(function (ProtectiveDeviceType) {
-    ProtectiveDeviceType["Armor"] = "Armor";
-    ProtectiveDeviceType["Screen"] = "Screen";
-})(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
 
 class Equipment {
     constructor(name, description) {
@@ -593,9 +681,9 @@ class Equipment {
     }
 }
 class ProtectiveDevice extends Equipment {
-    constructor(name, description, kind) {
+    constructor(name, description, type) {
         super(name, description);
-        this.kind = kind;
+        this.type = type;
     }
 }
 class WeaponMod extends Equipment {
@@ -605,7 +693,7 @@ class WeaponMod extends Equipment {
     }
 }
 class WeaponSight extends Equipment {
-    constructor(name, description, pistolOnly, damaged) {
+    constructor(name, description, pistolOnly, damaged = false) {
         super(name, description);
         this.pistolOnly = pistolOnly;
         this.damaged = damaged;
@@ -621,7 +709,8 @@ class OnBoardItem extends Equipment {
 }
 
 class Weapon {
-    constructor(kind, model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
+    constructor(model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
+        this._damaged = false;
         this.hasTrait = (trait) => this.traits.some((t) => t === trait);
         this.isType = (t) => this instanceof t;
         this.canAddMod = (mod) => {
@@ -662,8 +751,6 @@ class Weapon {
             weapon.sight = this.sight;
             this.sight = swap;
         };
-        this._damaged = damaged;
-        this.kind = kind;
         this.model = model;
         this.description = description;
         this.range = range;
@@ -672,8 +759,7 @@ class Weapon {
         this.traits = traits;
         this.mod = mod;
         this.sight = sight;
-        if (this.sight)
-            this.sight.damaged = damaged;
+        this.damaged = damaged;
     }
     get damaged() { return this._damaged; }
     set damaged(value) {
@@ -682,8 +768,6 @@ class Weapon {
         this._damaged = value;
     }
 }
-class SingleUse extends Weapon {
-}
 class Sidearm extends Weapon {
 }
 class Pistol extends Sidearm {
@@ -691,10 +775,63 @@ class Pistol extends Sidearm {
 class Melee extends Sidearm {
 }
 
+class Character {
+    constructor(race) {
+        this.id = Symbol();
+        this.race = race;
+    }
+}
+
+const dice = (sides) => () => Math.floor(Math.random() * sides) + 1;
+const d4 = dice(4);
+const d6 = dice(6);
+const d8 = dice(8);
+const d10 = dice(10);
+const d12 = dice(12);
+const d20 = dice(20);
+const d100 = dice(100);
+const roll = ({ four = 0, six = 0, eight = 0, ten = 0, twelve = 0, twenty = 0, hundred = 0 }) => {
+    const result = {};
+    result.rolls = new Array();
+    if (four > 0) {
+        for (four; four > 0; four--)
+            result.rolls.push({ sides: 4, result: d4() });
+    }
+    if (six > 0) {
+        for (six; six > 0; six--)
+            result.rolls.push({ sides: 6, result: d6() });
+    }
+    if (eight > 0) {
+        for (eight; eight > 0; eight--)
+            result.rolls.push({ sides: 8, result: d8() });
+    }
+    if (ten > 0) {
+        for (ten; ten > 0; ten--)
+            result.rolls.push({ sides: 10, result: d10() });
+    }
+    if (twelve > 0) {
+        for (twelve; twelve > 0; twelve--)
+            result.rolls.push({ sides: 12, result: d12() });
+    }
+    if (twenty > 0) {
+        for (twenty; twenty > 0; twenty--)
+            result.rolls.push({ sides: 20, result: d20() });
+    }
+    if (hundred > 0) {
+        for (hundred; hundred > 0; hundred--)
+            result.rolls.push({ sides: 100, result: d100() });
+    }
+    result.total = result
+        .rolls
+        .map((roll) => roll.result)
+        .reduce((total = 0, current) => total + current);
+    return result;
+};
+
 class Race {
-    constructor(species, kind, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
+    constructor(species, type, { reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0 } = {}) {
         this._species = species;
-        this._kind = kind;
+        this._type = type;
         this._reaction = reaction;
         this._speed = speed;
         this._combatSkill = combatSkill;
@@ -705,8 +842,8 @@ class Race {
     get species() {
         return this._species;
     }
-    get kind() {
-        return this._kind;
+    get type() {
+        return this._type;
     }
     get reaction() {
         return this._reaction;
@@ -759,8 +896,8 @@ class Race {
 }
 
 class Alien extends Race {
-    constructor(kind, config) {
-        super('Alien', kind, config);
+    constructor(type, config) {
+        super('Alien', type, config);
     }
 }
 class Engineer extends Alien {
@@ -826,13 +963,13 @@ class Manipulator extends Alien {
 }
 
 class Bot extends Race {
-    constructor(kind = 'Base', config = {
+    constructor(type = 'Base', config = {
         reaction: 2,
         combatSkill: 1,
         toughness: 4,
         savvy: 2
     }) {
-        super('Bot', kind, config);
+        super('Bot', type, config);
     }
 }
 class AssaultBot extends Bot {
@@ -842,8 +979,8 @@ class AssaultBot extends Bot {
 }
 
 class Human extends Race {
-    constructor(kind = 'Base', config) {
-        super('Human', kind, config);
+    constructor(type = 'Base', config) {
+        super('Human', type, config);
     }
     set luck(value) {
         this._luck = value;
@@ -901,8 +1038,8 @@ class BioUpgrade extends Human {
 }
 
 class Strange extends Race {
-    constructor(kind, config) {
-        super('Strange', kind, config);
+    constructor(type, config) {
+        super('Strange', type, config);
     }
 }
 class DeConverted extends Strange {
@@ -954,50 +1091,305 @@ class Traveler extends Strange {
     }
 }
 
-const dice = (sides) => () => Math.floor(Math.random() * sides) + 1;
-const d4 = dice(4);
-const d6 = dice(6);
-const d8 = dice(8);
-const d10 = dice(10);
-const d12 = dice(12);
-const d20 = dice(20);
-const d100 = dice(100);
-const roll = ({ four = 0, six = 0, eight = 0, ten = 0, twelve = 0, twenty = 0, hundred = 0 }) => {
-    const result = {};
-    result.rolls = new Array();
-    if (four > 0) {
-        for (four; four > 0; four--)
-            result.rolls.push({ sides: 4, result: d4() });
+var _a;
+class CharacterGenerator {
+}
+_a = CharacterGenerator;
+CharacterGenerator.generateAlien = () => {
+    const alienRoll = d100();
+    if (alienRoll >= 1 && alienRoll <= 20)
+        return new Engineer();
+    else if (alienRoll >= 21 && alienRoll <= 40)
+        return new KErin();
+    else if (alienRoll >= 41 && alienRoll <= 55)
+        return new Soulless();
+    else if (alienRoll >= 56 && alienRoll <= 70)
+        return new Precursor();
+    else if (alienRoll >= 71 && alienRoll <= 90)
+        return new Feral();
+    else
+        return new Swift();
+};
+CharacterGenerator.generateStrange = () => {
+    const strangeRoll = d100();
+    if (strangeRoll >= 1 && strangeRoll <= 2)
+        return new DeConverted();
+    else if (strangeRoll >= 3 && strangeRoll <= 8)
+        return new UnityAgent();
+    else if (strangeRoll >= 9 && strangeRoll <= 17)
+        return new MysteriousPast();
+    else if (strangeRoll >= 18 && strangeRoll <= 22)
+        return new Hakshan();
+    else if (strangeRoll >= 23 && strangeRoll <= 27)
+        return new Stalker();
+    else if (strangeRoll >= 28 && strangeRoll <= 34)
+        return new Hulker();
+    else if (strangeRoll >= 35 && strangeRoll <= 41)
+        return new HopefulRookie();
+    else if (strangeRoll >= 42 && strangeRoll <= 47)
+        return new GeneticUplift();
+    else if (strangeRoll >= 48 && strangeRoll <= 53)
+        return new Mutant();
+    else if (strangeRoll >= 54 && strangeRoll <= 58)
+        return new AssaultBot();
+    else if (strangeRoll >= 59 && strangeRoll <= 62)
+        return new Manipulator();
+    else if (strangeRoll >= 63 && strangeRoll <= 67)
+        return new Primitive();
+    else if (strangeRoll >= 68 && strangeRoll <= 73)
+        return new Feeler();
+    else if (strangeRoll >= 74 && strangeRoll <= 79)
+        return new EmoSuppressed();
+    else if (strangeRoll >= 80 && strangeRoll <= 85)
+        return new MinorAlien();
+    else if (strangeRoll >= 86 && strangeRoll <= 87)
+        return new Traveler();
+    else if (strangeRoll >= 88 && strangeRoll <= 93)
+        return new Empath();
+    else
+        return new BioUpgrade();
+};
+CharacterGenerator.Generate = () => {
+    let character;
+    const typeRoll = d100();
+    if (typeRoll >= 1 && typeRoll <= 60)
+        character = new Character(new Human());
+    else if (typeRoll >= 61 && typeRoll <= 80)
+        character = new Character(_a.generateAlien());
+    else if (typeRoll >= 81 && typeRoll <= 90)
+        character = new Character(new Bot());
+    else
+        character = new Character(_a.generateStrange());
+    return character;
+};
+
+class Ship {
+    constructor(model, debt, hull, trait = null) {
+        this._damage = 0;
+        this.model = model;
+        this.debt = debt;
+        this.hull = hull;
+        this.trait = trait;
     }
-    if (six > 0) {
-        for (six; six > 0; six--)
-            result.rolls.push({ sides: 6, result: d6() });
+    get damage() { return this._damage; }
+    set damage(value) {
+        this._damage = value;
     }
-    if (eight > 0) {
-        for (eight; eight > 0; eight--)
-            result.rolls.push({ sides: 8, result: d8() });
-    }
-    if (ten > 0) {
-        for (ten; ten > 0; ten--)
-            result.rolls.push({ sides: 10, result: d10() });
-    }
-    if (twelve > 0) {
-        for (twelve; twelve > 0; twelve--)
-            result.rolls.push({ sides: 12, result: d12() });
-    }
-    if (twenty > 0) {
-        for (twenty; twenty > 0; twenty--)
-            result.rolls.push({ sides: 20, result: d20() });
-    }
-    if (hundred > 0) {
-        for (hundred; hundred > 0; hundred--)
-            result.rolls.push({ sides: 100, result: d100() });
-    }
-    result.total = result
-        .rolls
-        .map((roll) => roll.result)
-        .reduce((total = 0, current) => total + current);
-    return result;
+}
+
+class ShipGenerator {
+}
+ShipGenerator.Generate = () => {
+    const roll = d100();
+    if (roll >= 1 && roll <= 12)
+        return new Ship("Worn freighter", d6() + 20, 30);
+    else if (roll >= 13 && roll <= 18)
+        return new Ship("Retired troop transport", d6() + 30, 35);
+    else if (roll >= 19 && roll <= 23)
+        return new Ship("Strange alien vessel", d6() + 15, 25);
+    else if (roll >= 24 && roll <= 31)
+        return new Ship("Upgraded shuttle", d6() + 10, 20);
+    else if (roll >= 32 && roll <= 38)
+        return new Ship("Retired scout ship", d6() + 20, 25, ShipTrait.FuelEfficient);
+    else if (roll >= 39 && roll <= 45)
+        return new Ship("Repurposed science vessel", d6() + 10, 20);
+    else if (roll >= 46 && roll <= 56)
+        return new Ship("Battered mining ship", d6() + 20, 35, ShipTrait.FuelHog);
+    else if (roll >= 57 && roll <= 65)
+        return new Ship("Unreliable merchant cruiser", d6() + 20, 30);
+    else if (roll >= 66 && roll <= 70)
+        return new Ship("Former diplomatic vessel", d6() + 15, 25);
+    else if (roll >= 71 && roll <= 76)
+        return new Ship("Ancient low-tech craft", d6() + 20, 35, ShipTrait.DodgyDrive);
+    else if (roll >= 77 && roll <= 84)
+        return new Ship("Built from salvaged wrecks", d6() + 20, 30);
+    else if (roll >= 85 && roll <= 95)
+        return new Ship("Worn colony ship", d6() + 20, 25, ShipTrait.StandardIssue);
+    else
+        return new Ship("Retired military patrol ship", d6() + 35, 40, ShipTrait.Armored);
+};
+
+class WeaponGenerator {
+}
+WeaponGenerator.LowTech = () => {
+    const roll = d100();
+    if (roll >= 1 && roll <= 15)
+        return new Pistol("Handgun", "Low Tech", {
+            range: 12,
+            shots: 1,
+            traits: [WeaponTrait.Pistol]
+        });
+    else if (roll >= 16 && roll <= 35)
+        return new Pistol("Scrap Pistol", "Low Tech", {
+            range: 9,
+            shots: 1,
+            traits: [WeaponTrait.Pistol]
+        });
+    else if (roll >= 36 && roll <= 40)
+        return new Pistol("Machine Pistol", "Low Tech", {
+            range: 8,
+            shots: 2,
+            traits: [
+                WeaponTrait.Pistol,
+                WeaponTrait.Focused
+            ]
+        });
+    else if (roll >= 41 && roll <= 65)
+        return new Weapon("Colony Rifle", "Low Tech", {
+            range: 18,
+            shots: 1
+        });
+    else if (roll >= 66 && roll <= 75)
+        return new Weapon("Shotgun", "Low Tech", {
+            range: 12,
+            shots: 2,
+            damage: 1,
+            traits: [WeaponTrait.Focused]
+        });
+    else if (roll >= 76 && roll <= 80)
+        return new Weapon("Hunting Rifle", "Low Tech", {
+            range: 30,
+            shots: 1,
+            damage: 1,
+            traits: [WeaponTrait.Heavy]
+        });
+    else if (roll >= 81 && roll <= 95)
+        return new Melee("Blade", "Low Tech", {
+            traits: [WeaponTrait.Melee]
+        });
+    else
+        return new Melee("Brutal Melee Weapon", "Low Tech", {
+            damage: 1,
+            traits: [
+                WeaponTrait.Melee,
+                WeaponTrait.Clumsy
+            ]
+        });
+};
+WeaponGenerator.Military = () => {
+    const roll = d100();
+    if (roll >= 1 && roll <= 25)
+        return new Weapon("Military Rifle", "Military", {
+            range: 24,
+            shots: 1
+        });
+    else if (roll >= 26 && roll <= 45)
+        return new Weapon("Infantry Laser", "Military", {
+            range: 30,
+            shots: 1,
+            traits: [WeaponTrait.SnapShot]
+        });
+    else if (roll >= 46 && roll <= 50)
+        return new Weapon("Marksman's Rifle", "Military", {
+            range: 36,
+            shots: 1,
+            traits: [WeaponTrait.Heavy]
+        });
+    else if (roll >= 51 && roll <= 60)
+        return new Weapon("Needle Rifle", "Military", {
+            range: 18,
+            shots: 2,
+            traits: [WeaponTrait.Critical]
+        });
+    else if (roll >= 61 && roll <= 75)
+        return new Weapon("Auto Rifle", "Military", {
+            range: 24,
+            shots: 2
+        });
+    else if (roll >= 76 && roll <= 80)
+        return new Weapon("Rattle Gun", "Military", {
+            range: 24,
+            shots: 3,
+            traits: [WeaponTrait.Heavy]
+        });
+    else if (roll >= 81 && roll <= 95)
+        return new Melee("Boarding Saber", "Military", {
+            damage: 1,
+            traits: [
+                WeaponTrait.Melee,
+                WeaponTrait.Elegant
+            ]
+        });
+    else
+        return new Melee("Shatter Axe", "Military", {
+            damage: 2,
+            traits: [WeaponTrait.Melee]
+        });
+};
+WeaponGenerator.HighTech = () => {
+    const roll = d100();
+    if (roll >= 1 && roll <= 5)
+        return new Pistol("Dueling Pistol", "High Tech", {
+            range: 8,
+            shots: 1,
+            traits: [
+                WeaponTrait.Pistol,
+                WeaponTrait.Critical
+            ]
+        });
+    else if (roll >= 6 && roll <= 15)
+        return new Pistol("Hand Cannon", "High Tech", {
+            range: 8,
+            shots: 1,
+            damage: 2,
+            traits: [WeaponTrait.Pistol]
+        });
+    else if (roll >= 16 && roll <= 30)
+        return new Pistol("Hand Laser", "High Tech", {
+            range: 12,
+            shots: 1,
+            traits: [
+                WeaponTrait.Pistol,
+                WeaponTrait.SnapShot
+            ]
+        });
+    else if (roll >= 31 && roll <= 45)
+        return new Pistol("Beam Pistol", "High Tech", {
+            range: 10,
+            shots: 1,
+            damage: 1,
+            traits: [
+                WeaponTrait.Pistol,
+                WeaponTrait.Critical
+            ]
+        });
+    else if (roll >= 46 && roll <= 55)
+        return new Weapon("Infantry Laser", "High Tech", {
+            range: 30,
+            shots: 1,
+            traits: [WeaponTrait.SnapShot]
+        });
+    else if (roll >= 56 && roll <= 70)
+        return new Pistol("Blast Pistol", "High Tech", {
+            range: 8,
+            shots: 1,
+            damage: 1,
+            traits: [WeaponTrait.Pistol]
+        });
+    else if (roll >= 71 && roll <= 80)
+        return new Weapon("Blast Rifle", "High Tech", {
+            range: 16,
+            shots: 1,
+            damage: 1
+        });
+    else if (roll >= 81 && roll <= 85)
+        return new Weapon("Plasma Rifle", "High Tech", {
+            range: 20,
+            shots: 2,
+            damage: 1,
+            traits: [
+                WeaponTrait.Focused,
+                WeaponTrait.Piercing
+            ]
+        });
+    else
+        return new Melee("Glare Sword", "High Tech", {
+            traits: [
+                WeaponTrait.Melee,
+                WeaponTrait.Elegant,
+                WeaponTrait.Piercing
+            ]
+        });
 };
 
 class Campaign {
@@ -1036,13 +1428,6 @@ class Campaign {
         this._storyPoints = this.difficulty === Difficulty.Insanity
             ? 0
             : value;
-    }
-}
-
-class Character {
-    constructor(race) {
-        this.id = Symbol();
-        this.race = race;
     }
 }
 
@@ -1104,123 +1489,6 @@ const Pipes = [
     BytesPipe,
     TruncatePipe
 ];
-
-class CharacterService {
-    constructor() {
-        this.generateAlien = () => {
-            const alienRoll = d100();
-            if (alienRoll >= 1 && alienRoll <= 20)
-                return new Engineer();
-            else if (alienRoll >= 21 && alienRoll <= 40)
-                return new KErin();
-            else if (alienRoll >= 41 && alienRoll <= 55)
-                return new Soulless();
-            else if (alienRoll >= 56 && alienRoll <= 70)
-                return new Precursor();
-            else if (alienRoll >= 71 && alienRoll <= 90)
-                return new Feral();
-            else
-                return new Swift();
-        };
-        this.generateStrange = () => {
-            const strangeRoll = d100();
-            if (strangeRoll >= 1 && strangeRoll <= 2)
-                return new DeConverted();
-            else if (strangeRoll >= 3 && strangeRoll <= 8)
-                return new UnityAgent();
-            else if (strangeRoll >= 9 && strangeRoll <= 17)
-                return new MysteriousPast();
-            else if (strangeRoll >= 18 && strangeRoll <= 22)
-                return new Hakshan();
-            else if (strangeRoll >= 23 && strangeRoll <= 27)
-                return new Stalker();
-            else if (strangeRoll >= 28 && strangeRoll <= 34)
-                return new Hulker();
-            else if (strangeRoll >= 35 && strangeRoll <= 41)
-                return new HopefulRookie();
-            else if (strangeRoll >= 42 && strangeRoll <= 47)
-                return new GeneticUplift();
-            else if (strangeRoll >= 48 && strangeRoll <= 53)
-                return new Mutant();
-            else if (strangeRoll >= 54 && strangeRoll <= 58)
-                return new AssaultBot();
-            else if (strangeRoll >= 59 && strangeRoll <= 62)
-                return new Manipulator();
-            else if (strangeRoll >= 63 && strangeRoll <= 67)
-                return new Primitive();
-            else if (strangeRoll >= 68 && strangeRoll <= 73)
-                return new Feeler();
-            else if (strangeRoll >= 74 && strangeRoll <= 79)
-                return new EmoSuppressed();
-            else if (strangeRoll >= 80 && strangeRoll <= 85)
-                return new MinorAlien();
-            else if (strangeRoll >= 86 && strangeRoll <= 87)
-                return new Traveler();
-            else if (strangeRoll >= 88 && strangeRoll <= 93)
-                return new Empath();
-            else
-                return new BioUpgrade();
-        };
-        this.generate = () => {
-            let character;
-            const typeRoll = d100();
-            if (typeRoll >= 1 && typeRoll <= 60)
-                character = new Character(new Human());
-            else if (typeRoll >= 61 && typeRoll <= 80)
-                character = new Character(this.generateAlien());
-            else if (typeRoll >= 81 && typeRoll <= 90)
-                character = new Character(new Bot());
-            else
-                character = new Character(this.generateStrange());
-            return character;
-        };
-    }
-}
-CharacterService.ɵfac = function CharacterService_Factory(t) { return new (t || CharacterService)(); };
-CharacterService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: CharacterService, factory: CharacterService.ɵfac, providedIn: 'root' });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](CharacterService, [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
-            args: [{
-                    providedIn: 'root'
-                }]
-        }], null, null);
-})();
-
-class EquipmentService {
-    constructor() {
-        this.generateLowTechWeapon = () => {
-            const roll = d100();
-            if (roll >= 1 && roll <= 15)
-                return new Pistol("Pistol", "Handgun", "Low Tech");
-            else if (roll >= 16 && roll <= 35)
-                return new Pistol("Pistol", "Scrap Pistol", "Low Tech");
-            else if (roll >= 36 && roll <= 40)
-                // Machine Pistol
-                return new Pistol("Pistol", "Machine Pistol", "Low Tech");
-            else if (roll >= 41 && roll <= 65)
-                return new Weapon("Weapon", "Colony Rifle", "Low Tech");
-            else if (roll >= 66 && roll <= 75)
-                return new Weapon("Weapon", "Shotgun", "Low Tech");
-            else if (roll >= 76 && roll <= 80)
-                return new Weapon("Weapon", "Hunting Rifle", "Low Tech");
-            else if (roll >= 81 && roll <= 95)
-                return new Melee("Melee", "Blade", "Low Tech");
-            else
-                return new Melee("Melee", "Brutal Melee Weapon", "Low Tech");
-        };
-    }
-}
-EquipmentService.ɵfac = function EquipmentService_Factory(t) { return new (t || EquipmentService)(); };
-EquipmentService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: EquipmentService, factory: EquipmentService.ɵfac, providedIn: 'root' });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](EquipmentService, [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Injectable,
-            args: [{
-                    providedIn: 'root'
-                }]
-        }], null, null);
-})();
 
 class CoreService {
     constructor() {
