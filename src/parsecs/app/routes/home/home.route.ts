@@ -7,7 +7,6 @@ import {
   d6,
   Character,
   CharacterGenerator,
-  Race,
   Ship,
   ShipGenerator,
   Weapon,
@@ -19,7 +18,7 @@ import {
   templateUrl: 'home.route.html'
 })
 export class HomeRoute implements OnInit {
-  character!: Character<Race>;
+  character!: Character;
   ship!: Ship;
   weapon!: Weapon;
 
@@ -32,7 +31,7 @@ export class HomeRoute implements OnInit {
   }
 
   characterColor = () => {
-    switch (this.character?.race?.species) {
+    switch (this.character?.species) {
       case 'Human':
         return 'color-blue';
       case 'Alien':
@@ -44,17 +43,17 @@ export class HomeRoute implements OnInit {
     }
   }
 
-  generateCharacter = () => this.character = CharacterGenerator.Generate();
+  generateCharacter = () => this.character = CharacterGenerator.GenerateCharacter();
 
   generateWeapon = () => {
     const roll = d6();
 
     if (roll >= 1 && roll <= 2)
-      this.weapon = WeaponGenerator.LowTech();
+      this.weapon = WeaponGenerator.GenerateLowTech();
     if (roll >= 3 && roll <= 4)
-      this.weapon = WeaponGenerator.Military();
+      this.weapon = WeaponGenerator.GenerateMilitary();
     else
-      this.weapon = WeaponGenerator.HighTech();
+      this.weapon = WeaponGenerator.GenerateHighTech();
   }
 
   weaponColor = () => {

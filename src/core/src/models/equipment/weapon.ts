@@ -1,5 +1,9 @@
-import { WeaponTrait } from '../enums';
 import { Constructor } from '../types';
+
+import {
+  WeaponStat,
+  WeaponTrait
+} from '../enums';
 
 import {
   WeaponMod,
@@ -14,6 +18,11 @@ export interface WeaponConfig {
   traits: WeaponTrait[];
   mod: WeaponMod | null;
   sight: WeaponSight | null;
+}
+
+export interface WeaponEffect {
+  points: number,
+  stat: WeaponStat
 }
 
 export class Weapon {
@@ -34,6 +43,7 @@ export class Weapon {
   readonly damage: number;
   readonly traits: WeaponTrait[];
 
+  hitBonus: number = 0;
   mod!: WeaponMod | null;
   sight!: WeaponSight | null;
 
@@ -60,7 +70,6 @@ export class Weapon {
     this.sight = sight;
     this.damaged = damaged;
   }
-
 
   hasTrait = (trait: WeaponTrait) =>
     this.traits.some((t: WeaponTrait) => t === trait);

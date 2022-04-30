@@ -1,3 +1,13 @@
+export enum CharacterStat {
+  CombatSkill = "Combat Skill",
+  Luck = "Luck",
+  Reactions = "Reactions",
+  Savvy = "Savvy",
+  Speed = "Speed",
+  Toughness = "Toughness",
+  XP = "XP"
+}
+
 export enum Difficulty {
   Easy = "Easy",
   Normal = "Normal",
@@ -18,6 +28,13 @@ export enum ShipTrait {
   DodgyDrive = `Any time the ship takes Hull damage, roll 2D6. If the roll is equal to or below the amount of damage sustained, the drive is misbehaving, and 2 additional points of damage are sustained.`,
   StandardIssue = `The cost of all Starship Components is reduced by 1 credit.`,
   Armored = `Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.`
+}
+
+export enum WeaponStat {
+  Range = "Range",
+  Shots = "Shots",
+  Damage = "Damage",
+  Hit = "Hit"
 }
 
 export enum WeaponTrait {

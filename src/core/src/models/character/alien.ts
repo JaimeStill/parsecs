@@ -1,12 +1,12 @@
 import {
-  Race,
-  RaceConfig
-} from './race';
+  Character,
+  CharacterConfig
+} from './character';
 
-export abstract class Alien extends Race {
+export abstract class Alien extends Character {
   constructor(
     type: string,
-    config?: Partial<RaceConfig>
+    config?: Partial<CharacterConfig>
   ) {
     super('Alien', type, config);
   }

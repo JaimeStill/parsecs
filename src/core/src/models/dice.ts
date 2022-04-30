@@ -18,18 +18,18 @@ export interface DiceResult {
   rolls: Array<DieRoll>
 }
 
-export const dice = (sides: number) => () =>
+export const die = (sides: number) => () =>
   Math.floor(Math.random() * sides) + 1;
 
-export const d4 = dice(4);
-export const d6 = dice(6);
-export const d8 = dice(8);
-export const d10 = dice(10);
-export const d12 = dice(12);
-export const d20 = dice(20);
-export const d100 = dice(100);
+export const d4 = die(4);
+export const d6 = die(6);
+export const d8 = die(8);
+export const d10 = die(10);
+export const d12 = die(12);
+export const d20 = die(20);
+export const d100 = die(100);
 
-export const roll = ({
+export const dice = ({
   four = 0,
   six = 0,
   eight = 0,

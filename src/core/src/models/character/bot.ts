@@ -1,12 +1,12 @@
 import {
-  Race,
-  RaceConfig
-} from './race';
+  Character,
+  CharacterConfig
+} from './character';
 
-export class Bot extends Race {
+export class Bot extends Character {
   constructor(
     type: string = 'Base',
-    config: Partial<RaceConfig> = {
+    config: Partial<CharacterConfig> = {
       reaction: 2,
       combatSkill: 1,
       toughness: 4,

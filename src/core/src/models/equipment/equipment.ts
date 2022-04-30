@@ -5,6 +5,7 @@ export abstract class Equipment {
   readonly name: string;
   readonly description: string;
 
+
   constructor(
     name: string,
     description: string
