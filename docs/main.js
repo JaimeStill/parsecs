@@ -1173,20 +1173,46 @@ const ImplantList = [
     Implants.PainSuppressor
 ];
 const OnBoardItems = {
+    Analyzer: new OnBoardItem(`Analyzer`, `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`),
+    ColonistRationPacks: new OnBoardItem(`Colonist Ration Packs`, `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`),
+    Duplicator: new OnBoardItem(`Duplicator`, `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`),
     FakeId: new OnBoardItem(`Fake ID`, `Add +1 to all attempts to obtain a licesne or other legal document`),
     Fixer: new OnBoardItem(`Fixer`, `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`),
+    GeneticReconfigurationKit: new OnBoardItem(`Genetic Reconfiguration Kit`, `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`),
     LoadedDice: new OnBoardItem(`Loaded Dice`, `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`),
+    LuckyDice: new OnBoardItem(`Lucky Dice`, `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`),
+    MkIITranslator: new OnBoardItem(`Mk II Translator`, `When rolling to Recruit, you may roll an additional D6.`),
     MedPatch: new OnBoardItem(`Med-patch`, `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`),
+    MeditationOrb: new OnBoardItem(`Meditation Orb`, `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`),
     NanoDoc: new OnBoardItem(`Nano-doc`, `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. YOu must decide before rolling the dice. Single-use.`),
-    Purifier: new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`)
+    NoveltyStuffedAnimal: new OnBoardItem(`Novelty Stuffed Animal`, `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`),
+    Purifier: new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`),
+    RepairBot: new OnBoardItem(`Repair Bot`, `+1 to all Repair attempts`),
+    SectorPermit: new OnBoardItem(`Sector Permit`, `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`),
+    SpareParts: new OnBoardItem(`Spare Parts`, `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`),
+    TeachBot: new OnBoardItem(`Teach-bot`, `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`),
+    Transcender: new OnBoardItem(`Transcender`, `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`)
 };
 const OnBoardItemList = [
+    OnBoardItems.Analyzer,
+    OnBoardItems.ColonistRationPacks,
+    OnBoardItems.Duplicator,
     OnBoardItems.FakeId,
     OnBoardItems.Fixer,
+    OnBoardItems.GeneticReconfigurationKit,
     OnBoardItems.LoadedDice,
+    OnBoardItems.LuckyDice,
+    OnBoardItems.MkIITranslator,
     OnBoardItems.MedPatch,
+    OnBoardItems.MeditationOrb,
     OnBoardItems.NanoDoc,
-    OnBoardItems.Purifier
+    OnBoardItems.NoveltyStuffedAnimal,
+    OnBoardItems.Purifier,
+    OnBoardItems.RepairBot,
+    OnBoardItems.SectorPermit,
+    OnBoardItems.SpareParts,
+    OnBoardItems.TeachBot,
+    OnBoardItems.Transcender
 ];
 const ProtectiveDevices = {
     BattleDress: new ProtectiveDevice(`Battle Dress`, `The character counts as +1 Reactions (maximum 4) and receives a Saving Throw of 5+`, ProtectiveDeviceType.Armor),
@@ -1291,15 +1317,52 @@ const WeaponSightList = [
     WeaponSights.UnityBattleSight
 ];
 
-var _a$2;
 class EquipmentGenerator {
 }
-_a$2 = EquipmentGenerator;
-EquipmentGenerator.GenerateGear = () => Generator(d100, _a$2.GearTable);
-EquipmentGenerator.GenerateGadget = () => {
-    return new Implant(`some`, `implant`);
-};
-EquipmentGenerator.GearTable = new Array(new GeneratorOption([1, 4], Clone(WeaponMods.AssaultBlade)), new GeneratorOption([5, 10], Clone(WeaponMods.BeamLight)), new GeneratorOption([11, 15], Clone(WeaponMods.Bipod)), new GeneratorOption([16, 20], Clone(Consumables.BoosterPills)), new GeneratorOption([21, 24], Clone(ProtectiveDevices.CamoCloak)), new GeneratorOption([25, 28], Clone(ProtectiveDevices.CombatArmor)), new GeneratorOption([29, 33], Clone(UtilityDevices.Communicator)), new GeneratorOption([34, 37], Clone(UtilityDevices.ConcealedBlade)), new GeneratorOption([38, 42], Clone(OnBoardItems.FakeId)), new GeneratorOption([43, 46], Clone(OnBoardItems.Fixer)), new GeneratorOption([47, 52], Clone(ProtectiveDevices.FragVest)), new GeneratorOption([53, 57], Clone(UtilityDevices.GrappleLauncher)), new GeneratorOption([58, 61], Clone(UtilityDevices.HazardSuit)), new GeneratorOption([62, 65], Clone(WeaponSights.LaserSight)), new GeneratorOption([66, 69], Clone(OnBoardItems.LoadedDice)), new GeneratorOption([70, 75], Clone(OnBoardItems.MedPatch)), new GeneratorOption([76, 81], Clone(OnBoardItems.NanoDoc)), new GeneratorOption([82, 85], Clone(OnBoardItems.Purifier)));
+EquipmentGenerator.GenerateGear = () => Generator(d100, [
+    new GeneratorOption([1, 4], Clone(WeaponMods.AssaultBlade)),
+    new GeneratorOption([5, 10], Clone(WeaponMods.BeamLight)),
+    new GeneratorOption([11, 15], Clone(WeaponMods.Bipod)),
+    new GeneratorOption([16, 20], Clone(Consumables.BoosterPills)),
+    new GeneratorOption([21, 24], Clone(ProtectiveDevices.CamoCloak)),
+    new GeneratorOption([25, 28], Clone(ProtectiveDevices.CombatArmor)),
+    new GeneratorOption([29, 33], Clone(UtilityDevices.Communicator)),
+    new GeneratorOption([34, 37], Clone(UtilityDevices.ConcealedBlade)),
+    new GeneratorOption([38, 42], Clone(OnBoardItems.FakeId)),
+    new GeneratorOption([43, 46], Clone(OnBoardItems.Fixer)),
+    new GeneratorOption([47, 52], Clone(ProtectiveDevices.FragVest)),
+    new GeneratorOption([53, 57], Clone(UtilityDevices.GrappleLauncher)),
+    new GeneratorOption([58, 61], Clone(UtilityDevices.HazardSuit)),
+    new GeneratorOption([62, 65], Clone(WeaponSights.LaserSight)),
+    new GeneratorOption([66, 69], Clone(OnBoardItems.LoadedDice)),
+    new GeneratorOption([70, 75], Clone(OnBoardItems.MedPatch)),
+    new GeneratorOption([76, 81], Clone(OnBoardItems.NanoDoc)),
+    new GeneratorOption([82, 85], Clone(OnBoardItems.Purifier))
+]);
+EquipmentGenerator.GenerateGadget = () => Generator(d100, [
+    new GeneratorOption([1, 4], Clone(Implants.AICompanion)),
+    new GeneratorOption([5, 9], Clone(OnBoardItems.Analyzer)),
+    new GeneratorOption([10, 13], Clone(UtilityDevices.BattleVisor)),
+    new GeneratorOption([14, 17], Clone(Implants.BoostedArm)),
+    new GeneratorOption([18, 21], Clone(Implants.BoostedLeg)),
+    new GeneratorOption([22, 24], Clone(Implants.CyberHand)),
+    new GeneratorOption([25, 27], Clone(UtilityDevices.Displacer)),
+    new GeneratorOption([28, 31], Clone(UtilityDevices.DistractionBot)),
+    new GeneratorOption([32, 36], Clone(OnBoardItems.Duplicator)),
+    new GeneratorOption([37, 41], Clone(UtilityDevices.InstaWall)),
+    new GeneratorOption([42, 46], Clone(UtilityDevices.JumpBelt)),
+    new GeneratorOption([47, 50], Clone(Implants.NerveAdjuster)),
+    new GeneratorOption([51, 55], Clone(OnBoardItems.RepairBot)),
+    new GeneratorOption([56, 60], Clone(UtilityDevices.ScannerBot)),
+    new GeneratorOption([61, 65], Clone(ProtectiveDevices.ScreenGenerator)),
+    new GeneratorOption([66, 69], Clone(WeaponSights.SeekerSight)),
+    new GeneratorOption([70, 73], Clone(WeaponMods.ShockAttachment)),
+    new GeneratorOption([74, 79], Clone(UtilityDevices.SnooperBot)),
+    new GeneratorOption([80, 83], Clone(UtilityDevices.SonicEmitter)),
+    new GeneratorOption([84, 89], Clone(WeaponMods.Stabilizer)),
+    new GeneratorOption([90, 93], Clone(ProtectiveDevices.StealthGear)),
+    new GeneratorOption([94, 100], Clone(Consumables.StimPack))
+]);
 
 var _a$1;
 class WeaponGenerator {
