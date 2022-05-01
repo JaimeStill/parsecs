@@ -1,3 +1,39 @@
+export enum CharacterRace {
+  Alien = "Alien",
+  Bot = "Bot",
+  Human = "Human",
+  Strange = "Strange"
+}
+
+export enum CharacterSpecies {
+  AssaultBot = "Assault Bot",
+  BioUpgrade = "Bio-upgrade",
+  Bot = "Bot",
+  DeConverted = "De-converted",
+  EmoSuppressed = "Emo-suppressed",
+  Empath = "Empath",
+  Engineer = "Engineer",
+  Feeler = "Feeler",
+  Feral = "Feral",
+  GeneticUplift = "Genetic Uplift",
+  Hakshan = "Hakshan",
+  HopefulRookie = "Hopeful Rookie",
+  Hulker = "Hulker",
+  Human = "Human",
+  KErin = "K'Erin",
+  Manipulator = "Manipulator",
+  MinorAlien = "Minor Alien",
+  Mutant = "Mutant",
+  MysteriousPast = "Mysterious Past",
+  Precursor = "Precursor",
+  Primitive = "Primitive",
+  Soulless = "Soulless",
+  Stalker = "Stalker",
+  Swift = "Swift",
+  Traveler = "Traveler",
+  UnityAgent = "Unity Agent"
+}
+
 export enum CharacterStat {
   CombatSkill = "Combat Skill",
   Luck = "Luck",

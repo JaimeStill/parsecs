@@ -45,3 +45,18 @@
 {{ship | json}}
 </pre>
   </section>
+  <section fxLayout="column"
+           fxLayoutAlign="start stretch"
+           class="m4 p4"
+           [style.width.px]="cardSize">
+    <p class="mat-title m4">Generate Gadget</p>
+    <div class="p4">
+      <button mat-stroked-button
+              (click)="generateGadget()">Generate Gadget</button>
+    </div>
+    <pre *ngIf="gadget"
+         class="m4 pre-wrap">
+{{gadget | json}}
+</pre>
+  </section>
+</section>

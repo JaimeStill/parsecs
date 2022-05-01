@@ -7,6 +7,9 @@ import {
   d6,
   Character,
   CharacterGenerator,
+  CharacterRace,
+  Equipment,
+  EquipmentGenerator,
   Ship,
   ShipGenerator,
   Weapon,
@@ -19,6 +22,7 @@ import {
 })
 export class HomeRoute implements OnInit {
   character!: Character;
+  gadget!: Equipment;
   ship!: Ship;
   weapon!: Weapon;
 
@@ -26,24 +30,27 @@ export class HomeRoute implements OnInit {
 
   ngOnInit() {
     this.generateCharacter();
+    this.generateGadget();
     this.generateShip();
     this.generateWeapon();
   }
 
   characterColor = () => {
-    switch (this.character?.species) {
-      case 'Human':
+    switch (this.character?.race) {
+      case CharacterRace.Human:
         return 'color-blue';
-      case 'Alien':
+      case CharacterRace.Alien:
         return 'color-green';
-      case 'Strange':
-        return 'color-red';
-      default:
+      case CharacterRace.Bot:
         return 'color-amber';
+      default:
+        return 'color-red';
     }
   }
 
   generateCharacter = () => this.character = CharacterGenerator.GenerateCharacter();
+
+  generateGadget = () => this.gadget = EquipmentGenerator.GenerateGadget();
 
   generateWeapon = () => {
     const roll = d6();

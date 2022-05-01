@@ -1,16 +1,18 @@
 import { d100 } from '../dice';
 import { Equipment } from '../equipment';
-import { Clone } from '../functions';
 
 import {
   Consumables,
   Implants,
   OnBoardItems,
   ProtectiveDevices,
-  UtilityDevices,
+  UtilityDevices
+} from '../data/equipment.data';
+
+import {
   WeaponMods,
   WeaponSights
-} from '../data';
+} from '../data/weapon.data';
 
 import {
   Generator,
@@ -21,128 +23,140 @@ export abstract class EquipmentGenerator {
   static GenerateGear = (): Equipment =>
     Generator(d100, [
       new GeneratorOption(
-        [1, 4], Clone(WeaponMods.AssaultBlade)
+        [1, 4], WeaponMods.AssaultBlade()
       ),
       new GeneratorOption(
-        [5, 10], Clone(WeaponMods.BeamLight)
+        [5, 10], WeaponMods.BeamLight()
       ),
       new GeneratorOption(
-        [11, 15], Clone(WeaponMods.Bipod)
+        [11, 15], WeaponMods.Bipod()
       ),
       new GeneratorOption(
-        [16, 20], Clone(Consumables.BoosterPills)
+        [16, 20], Consumables.BoosterPills()
       ),
       new GeneratorOption(
-        [21, 24], Clone(ProtectiveDevices.CamoCloak)
+        [21, 24], ProtectiveDevices.CamoCloak()
       ),
       new GeneratorOption(
-        [25, 28], Clone(ProtectiveDevices.CombatArmor)
+        [25, 28], ProtectiveDevices.CombatArmor()
       ),
       new GeneratorOption(
-        [29, 33], Clone(UtilityDevices.Communicator)
+        [29, 33], UtilityDevices.Communicator()
       ),
       new GeneratorOption(
-        [34, 37], Clone(UtilityDevices.ConcealedBlade)
+        [34, 37], UtilityDevices.ConcealedBlade()
       ),
       new GeneratorOption(
-        [38, 42], Clone(OnBoardItems.FakeId)
+        [38, 42], OnBoardItems.FakeId()
       ),
       new GeneratorOption(
-        [43, 46], Clone(OnBoardItems.Fixer)
+        [43, 46], OnBoardItems.Fixer()
       ),
       new GeneratorOption(
-        [47, 52], Clone(ProtectiveDevices.FragVest)
+        [47, 52], ProtectiveDevices.FragVest()
       ),
       new GeneratorOption(
-        [53, 57], Clone(UtilityDevices.GrappleLauncher)
+        [53, 57], UtilityDevices.GrappleLauncher()
       ),
       new GeneratorOption(
-        [58, 61], Clone(UtilityDevices.HazardSuit)
+        [58, 61], UtilityDevices.HazardSuit()
       ),
       new GeneratorOption(
-        [62, 65], Clone(WeaponSights.LaserSight)
+        [62, 65], WeaponSights.LaserSight()
       ),
       new GeneratorOption(
-        [66, 69], Clone(OnBoardItems.LoadedDice)
+        [66, 69], OnBoardItems.LoadedDice()
       ),
       new GeneratorOption(
-        [70, 75], Clone(OnBoardItems.MedPatch)
+        [70, 75], OnBoardItems.MedPatch()
       ),
       new GeneratorOption(
-        [76, 81], Clone(OnBoardItems.NanoDoc)
+        [76, 81], OnBoardItems.NanoDoc()
       ),
       new GeneratorOption(
-        [82, 85], Clone(OnBoardItems.Purifier)
+        [82, 85], OnBoardItems.Purifier()
+      ),
+      new GeneratorOption(
+        [86, 89], UtilityDevices.ScannerBot()
+      ),
+      new GeneratorOption(
+        [90, 92], OnBoardItems.SectorPermit()
+      ),
+      new GeneratorOption(
+        [93, 96], UtilityDevices.SteelBoots()
+      ),
+      new GeneratorOption(
+        [97, 100], WeaponSights.TrackerSight()
       )
     ]);
 
   static GenerateGadget = (): Equipment =>
     Generator(d100, [
       new GeneratorOption(
-        [1, 4], Clone(Implants.AICompanion)
+        [1, 4], Implants.AICompanion()
       ),
       new GeneratorOption(
-        [5, 9], Clone(OnBoardItems.Analyzer)
+        [5, 9], OnBoardItems.Analyzer()
       ),
       new GeneratorOption(
-        [10, 13], Clone(UtilityDevices.BattleVisor)
+        [10, 13], UtilityDevices.BattleVisor()
       ),
       new GeneratorOption(
-        [14, 17], Clone(Implants.BoostedArm)
+        [14, 17], Implants.BoostedArm()
       ),
       new GeneratorOption(
-        [18, 21], Clone(Implants.BoostedLeg)
+        [18, 21], Implants.BoostedLeg()
       ),
       new GeneratorOption(
-        [22, 24], Clone(Implants.CyberHand)
+        [22, 24], Implants.CyberHand()
       ),
       new GeneratorOption(
-        [25, 27], Clone(UtilityDevices.Displacer)
+        [25, 27], UtilityDevices.Displacer()
       ),
       new GeneratorOption(
-        [28, 31], Clone(UtilityDevices.DistractionBot)
+        [28, 31], UtilityDevices.DistractionBot()
       ),
       new GeneratorOption(
-        [32, 36], Clone(OnBoardItems.Duplicator)
+        [32, 36], OnBoardItems.Duplicator()
       ),
       new GeneratorOption(
-        [37, 41], Clone(UtilityDevices.InstaWall)
+        [37, 41], UtilityDevices.InstaWall()
       ),
       new GeneratorOption(
-        [42, 46], Clone(UtilityDevices.JumpBelt)
+        [42, 46], UtilityDevices.JumpBelt()
       ),
       new GeneratorOption(
-        [47, 50], Clone(Implants.NerveAdjuster)
+        [47, 50], Implants.NerveAdjuster()
       ),
       new GeneratorOption(
-        [51, 55], Clone(OnBoardItems.RepairBot)
+        [51, 55], OnBoardItems.RepairBot()
       ),
       new GeneratorOption(
-        [56, 60], Clone(UtilityDevices.ScannerBot)
+        [56, 60], UtilityDevices.ScannerBot()
       ),
       new GeneratorOption(
-        [61, 65], Clone(ProtectiveDevices.ScreenGenerator)
+        [61, 65], ProtectiveDevices.ScreenGenerator()
       ),
       new GeneratorOption(
-        [66, 69], Clone(WeaponSights.SeekerSight)
+        [66, 69], WeaponSights.SeekerSight()
       ),
       new GeneratorOption(
-        [70, 73], Clone(WeaponMods.ShockAttachment)
+        [70, 73], WeaponMods.ShockAttachment()
       ),
       new GeneratorOption(
-        [74, 79], Clone(UtilityDevices.SnooperBot)
+        [74, 79], UtilityDevices.SnooperBot()
       ),
       new GeneratorOption(
-        [80, 83], Clone(UtilityDevices.SonicEmitter)
+        [80, 83], UtilityDevices.SonicEmitter()
       ),
       new GeneratorOption(
-        [84, 89], Clone(WeaponMods.Stabilizer)
+        [84, 89], WeaponMods.Stabilizer()
       ),
       new GeneratorOption(
-        [90, 93], Clone(ProtectiveDevices.StealthGear)
+        [90, 93], ProtectiveDevices.StealthGear()
       ),
       new GeneratorOption(
-        [94, 100], Clone(Consumables.StimPack)
+        [94, 100], Consumables.StimPack()
       )
     ])
 }
