@@ -1,4 +1,4 @@
-import { Extent } from '../types';
+import { Extent } from './types';
 
 export class GeneratorOption<T> {
   readonly value: T;

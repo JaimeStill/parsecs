@@ -1,4 +1,4 @@
-import { ShipTrait } from './enums';
+import { ShipTrait } from '../enums';
 
 export class Ship {
   private _damage: number = 0;

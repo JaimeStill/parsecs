@@ -1,9 +1,9 @@
-import { Constructor } from '../types';
+import { Constructor } from '../../core';
 
 import {
   WeaponStat,
   WeaponTrait
-} from '../enums';
+} from '../../enums';
 
 import {
   WeaponMod,

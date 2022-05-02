@@ -1,23 +1,20 @@
-import { d100 } from '../dice';
-import { Equipment } from '../equipment';
+import { Equipment } from '../models';
+
+import {
+  d100,
+  Generator,
+  GeneratorOption
+} from '../core';
 
 import {
   Consumables,
   Implants,
   OnBoardItems,
   ProtectiveDevices,
-  UtilityDevices
-} from '../data/equipment.data';
-
-import {
+  UtilityDevices,
   WeaponMods,
   WeaponSights
-} from '../data/weapon.data';
-
-import {
-  Generator,
-  GeneratorOption
-} from './generator';
+} from '../data';
 
 export abstract class EquipmentGenerator {
   static GenerateGear = (): Equipment =>

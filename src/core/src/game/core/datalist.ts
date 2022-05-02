@@ -1,4 +1,4 @@
-import { titlecase } from '../utils';
+import { titlecase } from './utils';
 
 export const Datalist = <T>(data: T) =>
   Object.entries(data)

@@ -1,6 +1,6 @@
-import { Difficulty } from './enums';
+import { Difficulty } from '../enums';
+import { d6 } from '../core';
 import { Crew } from './crew';
-import { d6 } from './dice';
 
 export interface CampaignConfig {
   crewSize: number;

@@ -6,7 +6,7 @@ import {
 import {
   CharacterRace,
   CharacterSpecies
-} from '../enums';
+} from '../../enums';
 
 import {
   Equipment,

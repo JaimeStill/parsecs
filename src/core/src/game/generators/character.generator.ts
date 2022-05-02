@@ -1,9 +1,8 @@
-import { d100 } from '../dice';
-
 import {
-  Character,
-  CharacterDetail
-} from '../character';
+  d100,
+  Generator,
+  GeneratorOption
+} from '../core';
 
 import {
   Backgrounds,
@@ -13,9 +12,9 @@ import {
 } from '../data';
 
 import {
-  Generator,
-  GeneratorOption
-} from './generator';
+  Character,
+  CharacterDetail
+} from '../models';
 
 export abstract class CharacterGenerator {
 

@@ -1,23 +1,24 @@
-import { Datalist } from './datalist';
-
-import {
-  Character,
-  CharacterDetail,
-  CharacterProfileConfig
-} from '../character';
-
 import {
   d6,
-  dice
-} from '../dice';
+  dice,
+  Datalist
+} from '../core';
 
 import {
   CharacterSpecies,
   CharacterStat
 } from '../enums';
 
-import { EquipmentGenerator } from '../generators/equipment.generator';
-import { WeaponGenerator } from '../generators/weapon.generator';
+import {
+  EquipmentGenerator,
+  WeaponGenerator
+} from '../generators';
+
+import {
+  Character,
+  CharacterDetail,
+  CharacterProfileConfig
+} from '../models';
 
 export const Backgrounds = {
   PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
