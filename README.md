@@ -3,10 +3,6 @@
 
 [![five-parsecs](./assets/five-parsecs.png)](https://www.modiphius.net/en-us/pages/five-parsecs)
 
-## Notes
-
-Left off working on the weapon schema. See [enum select behavior](https://stackblitz.com/edit/enum-select-behavior) for rendering `WeaponTrait` enum values.
-
 ## Tasks
 
 ### Base Game Mechanics
