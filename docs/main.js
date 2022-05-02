@@ -400,16 +400,25 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "CoreModule": () => (/* binding */ CoreModule),
 /* harmony export */   "CoreService": () => (/* binding */ CoreService),
 /* harmony export */   "Crew": () => (/* binding */ Crew),
+/* harmony export */   "Datalist": () => (/* binding */ Datalist),
 /* harmony export */   "Dialogs": () => (/* binding */ Dialogs),
 /* harmony export */   "Difficulty": () => (/* binding */ Difficulty),
 /* harmony export */   "Directives": () => (/* binding */ Directives),
 /* harmony export */   "Equipment": () => (/* binding */ Equipment),
 /* harmony export */   "EquipmentGenerator": () => (/* binding */ EquipmentGenerator),
+/* harmony export */   "Generator": () => (/* binding */ Generator),
+/* harmony export */   "GeneratorOption": () => (/* binding */ GeneratorOption),
+/* harmony export */   "HighTechWeaponList": () => (/* binding */ HighTechWeaponList),
+/* harmony export */   "HighTechWeapons": () => (/* binding */ HighTechWeapons),
 /* harmony export */   "Implant": () => (/* binding */ Implant),
 /* harmony export */   "ImplantList": () => (/* binding */ ImplantList),
 /* harmony export */   "Implants": () => (/* binding */ Implants),
+/* harmony export */   "LowTechWeaponList": () => (/* binding */ LowTechWeaponList),
+/* harmony export */   "LowTechWeapons": () => (/* binding */ LowTechWeapons),
 /* harmony export */   "MaterialModule": () => (/* binding */ MaterialModule),
 /* harmony export */   "Melee": () => (/* binding */ Melee),
+/* harmony export */   "MilitaryWeaponList": () => (/* binding */ MilitaryWeaponList),
+/* harmony export */   "MilitaryWeapons": () => (/* binding */ MilitaryWeapons),
 /* harmony export */   "MotivationList": () => (/* binding */ MotivationList),
 /* harmony export */   "Motivations": () => (/* binding */ Motivations),
 /* harmony export */   "OnBoardItem": () => (/* binding */ OnBoardItem),
@@ -423,7 +432,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "ProtectiveDevices": () => (/* binding */ ProtectiveDevices),
 /* harmony export */   "Ship": () => (/* binding */ Ship),
 /* harmony export */   "ShipGenerator": () => (/* binding */ ShipGenerator),
+/* harmony export */   "ShipList": () => (/* binding */ ShipList),
 /* harmony export */   "ShipTrait": () => (/* binding */ ShipTrait),
+/* harmony export */   "Ships": () => (/* binding */ Ships),
 /* harmony export */   "Sidearm": () => (/* binding */ Sidearm),
 /* harmony export */   "SnackerService": () => (/* binding */ SnackerService),
 /* harmony export */   "ThemeService": () => (/* binding */ ThemeService),
@@ -664,237 +675,6 @@ const Directives = [
     BackdropDirective
 ];
 
-class CharacterProfile {
-    constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
-        this._reaction = 0;
-        this._speed = 0;
-        this._combatSkill = 0;
-        this._toughness = 0;
-        this._savvy = 0;
-        this._luck = 0;
-        this._xp = 0;
-        this.maxCombatSkill = maxCombatSkill;
-        this.maxReaction = maxReaction;
-        this.maxSpeed = maxSpeed;
-        this.maxToughness = maxToughness;
-        this.maxSavvy = maxSavvy;
-        this.maxLuck = maxLuck;
-        this.maxXp = maxXp;
-        this.reaction = reaction;
-        this.speed = speed;
-        this.combatSkill = combatSkill;
-        this.toughness = toughness;
-        this.savvy = savvy;
-        this.luck = luck;
-        this.xp = xp;
-        this.useConsumables = useConsumables;
-        this.useImplants = useImplants;
-        this.eventTarget = eventTarget;
-    }
-    get reaction() { return this._reaction; }
-    set reaction(value) {
-        this._reaction = value > this.maxReaction
-            ? this.maxReaction
-            : value;
-    }
-    get speed() { return this._speed; }
-    set speed(value) {
-        this._speed = value > 8
-            ? 8
-            : value;
-    }
-    get combatSkill() { return this._combatSkill; }
-    set combatSkill(value) {
-        this._combatSkill = value > this.maxCombatSkill
-            ? this.maxCombatSkill
-            : value;
-    }
-    get toughness() { return this._toughness; }
-    set toughness(value) {
-        this._toughness = value > this.maxToughness
-            ? this.maxToughness
-            : value;
-    }
-    get savvy() { return this._savvy; }
-    set savvy(value) {
-        this._savvy = value > this.maxSavvy
-            ? this.maxSavvy
-            : value;
-    }
-    get luck() { return this._luck; }
-    set luck(value) {
-        this._luck = value > this.maxLuck
-            ? this.maxLuck
-            : value;
-    }
-    get xp() { return this._xp; }
-    set xp(value) {
-        this._xp = value > this.maxXp
-            ? this.maxXp
-            : value;
-    }
-}
-
-var CharacterRace;
-(function (CharacterRace) {
-    CharacterRace["Alien"] = "Alien";
-    CharacterRace["Bot"] = "Bot";
-    CharacterRace["Human"] = "Human";
-    CharacterRace["Strange"] = "Strange";
-})(CharacterRace || (CharacterRace = {}));
-var CharacterSpecies;
-(function (CharacterSpecies) {
-    CharacterSpecies["AssaultBot"] = "Assault Bot";
-    CharacterSpecies["BioUpgrade"] = "Bio-upgrade";
-    CharacterSpecies["Bot"] = "Bot";
-    CharacterSpecies["DeConverted"] = "De-converted";
-    CharacterSpecies["EmoSuppressed"] = "Emo-suppressed";
-    CharacterSpecies["Empath"] = "Empath";
-    CharacterSpecies["Engineer"] = "Engineer";
-    CharacterSpecies["Feeler"] = "Feeler";
-    CharacterSpecies["Feral"] = "Feral";
-    CharacterSpecies["GeneticUplift"] = "Genetic Uplift";
-    CharacterSpecies["Hakshan"] = "Hakshan";
-    CharacterSpecies["HopefulRookie"] = "Hopeful Rookie";
-    CharacterSpecies["Hulker"] = "Hulker";
-    CharacterSpecies["Human"] = "Human";
-    CharacterSpecies["KErin"] = "K'Erin";
-    CharacterSpecies["Manipulator"] = "Manipulator";
-    CharacterSpecies["MinorAlien"] = "Minor Alien";
-    CharacterSpecies["Mutant"] = "Mutant";
-    CharacterSpecies["MysteriousPast"] = "Mysterious Past";
-    CharacterSpecies["Precursor"] = "Precursor";
-    CharacterSpecies["Primitive"] = "Primitive";
-    CharacterSpecies["Soulless"] = "Soulless";
-    CharacterSpecies["Stalker"] = "Stalker";
-    CharacterSpecies["Swift"] = "Swift";
-    CharacterSpecies["Traveler"] = "Traveler";
-    CharacterSpecies["UnityAgent"] = "Unity Agent";
-})(CharacterSpecies || (CharacterSpecies = {}));
-var CharacterStat;
-(function (CharacterStat) {
-    CharacterStat["CombatSkill"] = "Combat Skill";
-    CharacterStat["Luck"] = "Luck";
-    CharacterStat["Reactions"] = "Reactions";
-    CharacterStat["Savvy"] = "Savvy";
-    CharacterStat["Speed"] = "Speed";
-    CharacterStat["Toughness"] = "Toughness";
-    CharacterStat["XP"] = "XP";
-})(CharacterStat || (CharacterStat = {}));
-var Difficulty;
-(function (Difficulty) {
-    Difficulty["Easy"] = "Easy";
-    Difficulty["Normal"] = "Normal";
-    Difficulty["Challenging"] = "Challenging";
-    Difficulty["Hardcore"] = "Hardcore";
-    Difficulty["Insanity"] = "Insanity";
-})(Difficulty || (Difficulty = {}));
-var ProtectiveDeviceType;
-(function (ProtectiveDeviceType) {
-    ProtectiveDeviceType["Armor"] = "Armor";
-    ProtectiveDeviceType["Screen"] = "Screen";
-})(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
-var ShipTrait;
-(function (ShipTrait) {
-    ShipTrait["EmergencyDrives"] = "If you have to perform an emergency take-off while your ship is damaged, reduce the Hull damage sustained on the roll by 3.";
-    ShipTrait["FuelEfficient"] = "When traveling to a new world, the fuel cost is reduced by 1 credit.";
-    ShipTrait["FuelHog"] = "When traveling to a new world, the fuel cost is increased by 1 credit.";
-    ShipTrait["DodgyDrive"] = "Any time the ship takes Hull damage, roll 2D6. If the roll is equal to or below the amount of damage sustained, the drive is misbehaving, and 2 additional points of damage are sustained.";
-    ShipTrait["StandardIssue"] = "The cost of all Starship Components is reduced by 1 credit.";
-    ShipTrait["Armored"] = "Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.";
-})(ShipTrait || (ShipTrait = {}));
-var WeaponStat;
-(function (WeaponStat) {
-    WeaponStat["Range"] = "Range";
-    WeaponStat["Shots"] = "Shots";
-    WeaponStat["Damage"] = "Damage";
-    WeaponStat["Hit"] = "Hit";
-})(WeaponStat || (WeaponStat = {}));
-var WeaponTrait;
-(function (WeaponTrait) {
-    WeaponTrait["Area"] = "Resolve all shots against the initial target. They cannot be spread. Then resolve one bonus shot against every figure within 2\".";
-    WeaponTrait["Clumsy"] = "-1 to Brawling rolls, if opponent has higher Speed.";
-    WeaponTrait["Critical"] = "A natural 6 on the to Hit roll will inflict 2 Hits on the target.";
-    WeaponTrait["Elegant"] = "When Brawling, the fighter may reroll the die. Enemies will always reroll if they have a lower total than their opponent, and can improve the result.";
-    WeaponTrait["Focused"] = "All shots must be against a single target.";
-    WeaponTrait["Heavy"] = "-1 penalty to Hit if the firer moved this round.";
-    WeaponTrait["Impact"] = "If target is Stunned, place a second Stun marker.";
-    WeaponTrait["Melee"] = "+2 to Brawling rolls.";
-    WeaponTrait["Piercing"] = "Ignore Armor Saving Throws.";
-    WeaponTrait["Pistol"] = "+1 to Brawling rolls.";
-    WeaponTrait["SingleUse"] = "The item can be used only once and must be deducted from the available supply. The Panic Fire rule cannot be used with Single Use weapons.";
-    WeaponTrait["SnapShot"] = "+1 to Hit within 6\".";
-    WeaponTrait["Stun"] = "All targets are automatically Stunned. No damage rolls ake place.";
-    WeaponTrait["Terrifying"] = "Any target hit must retreat 1D6\" away from the firer.";
-})(WeaponTrait || (WeaponTrait = {}));
-
-class Character {
-    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
-        this._weapons = [];
-        this._devices = [];
-        this.gear = new Array();
-        this.sidearm = null;
-        this.isLeader = false;
-        this.setRace = () => {
-            switch (this.species) {
-                case CharacterSpecies.Engineer:
-                case CharacterSpecies.Feral:
-                case CharacterSpecies.Hakshan:
-                case CharacterSpecies.KErin:
-                case CharacterSpecies.Manipulator:
-                case CharacterSpecies.Precursor:
-                case CharacterSpecies.Soulless:
-                case CharacterSpecies.Swift:
-                    return CharacterRace.Alien;
-                case CharacterSpecies.AssaultBot:
-                case CharacterSpecies.Bot:
-                    return CharacterRace.Bot;
-                case CharacterSpecies.BioUpgrade:
-                case CharacterSpecies.EmoSuppressed:
-                case CharacterSpecies.Empath:
-                case CharacterSpecies.Feeler:
-                case CharacterSpecies.Human:
-                case CharacterSpecies.MinorAlien:
-                case CharacterSpecies.Mutant:
-                case CharacterSpecies.MysteriousPast:
-                case CharacterSpecies.Primitive:
-                    return CharacterRace.Human;
-                default:
-                    return CharacterRace.Strange;
-            }
-        };
-        this.promoteLeader = () => {
-            this.isLeader = true;
-            this.profile.luck += 1;
-        };
-        this.id = Symbol();
-        this.species = species;
-        this.profile = new CharacterProfile({
-            reaction, maxReaction,
-            speed, maxSpeed,
-            combatSkill, maxCombatSkill,
-            toughness, maxToughness,
-            savvy, maxSavvy,
-            luck, maxLuck,
-            xp, maxXp,
-            useConsumables, useImplants,
-            eventTarget
-        });
-        this.race = this.setRace();
-    }
-    get weapons() { return this._weapons; }
-    get devices() { return this._devices; }
-}
-
-class CharacterDetail {
-    constructor(detail, { effects = null, resources = null, equipment = null } = {}) {
-        this.detail = detail;
-        this.effects = effects;
-        this.resources = resources;
-        this.equipment = equipment;
-    }
-}
-
 /**
  * @license
  * Copyright Google LLC All Rights Reserved.
@@ -1093,6 +873,469 @@ const dice = ({ four = 0, six = 0, eight = 0, ten = 0, twelve = 0, twenty = 0, h
     return result;
 };
 
+class GeneratorOption {
+    constructor(extent, value) {
+        this.selected = (roll) => roll >= this.extent[0] && roll <= this.extent[1];
+        this.extent = extent;
+        this.value = value;
+    }
+}
+const validateGenerator = (roll, values) => values.some(v => v.selected(roll));
+const Generator = (die, values) => {
+    var _a;
+    let roll = die();
+    if (!validateGenerator(roll, values))
+        throw new RangeError(`Roll of ${roll} does not fall into the extent of any provided options`);
+    const value = (_a = values.find(v => v.selected(roll))) === null || _a === void 0 ? void 0 : _a.value;
+    if (value)
+        return value;
+    throw new Error(`Value resulting from roll of ${roll} was undefined`);
+};
+
+var CharacterRace;
+(function (CharacterRace) {
+    CharacterRace["Alien"] = "Alien";
+    CharacterRace["Bot"] = "Bot";
+    CharacterRace["Human"] = "Human";
+    CharacterRace["Strange"] = "Strange";
+})(CharacterRace || (CharacterRace = {}));
+var CharacterSpecies;
+(function (CharacterSpecies) {
+    CharacterSpecies["AssaultBot"] = "Assault Bot";
+    CharacterSpecies["BioUpgrade"] = "Bio-upgrade";
+    CharacterSpecies["Bot"] = "Bot";
+    CharacterSpecies["DeConverted"] = "De-converted";
+    CharacterSpecies["EmoSuppressed"] = "Emo-suppressed";
+    CharacterSpecies["Empath"] = "Empath";
+    CharacterSpecies["Engineer"] = "Engineer";
+    CharacterSpecies["Feeler"] = "Feeler";
+    CharacterSpecies["Feral"] = "Feral";
+    CharacterSpecies["GeneticUplift"] = "Genetic Uplift";
+    CharacterSpecies["Hakshan"] = "Hakshan";
+    CharacterSpecies["HopefulRookie"] = "Hopeful Rookie";
+    CharacterSpecies["Hulker"] = "Hulker";
+    CharacterSpecies["Human"] = "Human";
+    CharacterSpecies["KErin"] = "K'Erin";
+    CharacterSpecies["Manipulator"] = "Manipulator";
+    CharacterSpecies["MinorAlien"] = "Minor Alien";
+    CharacterSpecies["Mutant"] = "Mutant";
+    CharacterSpecies["MysteriousPast"] = "Mysterious Past";
+    CharacterSpecies["Precursor"] = "Precursor";
+    CharacterSpecies["Primitive"] = "Primitive";
+    CharacterSpecies["Soulless"] = "Soulless";
+    CharacterSpecies["Stalker"] = "Stalker";
+    CharacterSpecies["Swift"] = "Swift";
+    CharacterSpecies["Traveler"] = "Traveler";
+    CharacterSpecies["UnityAgent"] = "Unity Agent";
+})(CharacterSpecies || (CharacterSpecies = {}));
+var CharacterStat;
+(function (CharacterStat) {
+    CharacterStat["CombatSkill"] = "Combat Skill";
+    CharacterStat["Luck"] = "Luck";
+    CharacterStat["Reactions"] = "Reactions";
+    CharacterStat["Savvy"] = "Savvy";
+    CharacterStat["Speed"] = "Speed";
+    CharacterStat["Toughness"] = "Toughness";
+    CharacterStat["XP"] = "XP";
+})(CharacterStat || (CharacterStat = {}));
+var Difficulty;
+(function (Difficulty) {
+    Difficulty["Easy"] = "Easy";
+    Difficulty["Normal"] = "Normal";
+    Difficulty["Challenging"] = "Challenging";
+    Difficulty["Hardcore"] = "Hardcore";
+    Difficulty["Insanity"] = "Insanity";
+})(Difficulty || (Difficulty = {}));
+var ProtectiveDeviceType;
+(function (ProtectiveDeviceType) {
+    ProtectiveDeviceType["Armor"] = "Armor";
+    ProtectiveDeviceType["Screen"] = "Screen";
+})(ProtectiveDeviceType || (ProtectiveDeviceType = {}));
+var ShipTrait;
+(function (ShipTrait) {
+    ShipTrait["EmergencyDrives"] = "Emergency Drives: If you have to perform an emergency take-off while your ship is damaged, reduce the Hull damage sustained on the roll by 3.";
+    ShipTrait["FuelEfficient"] = "Fuel Efficient: When traveling to a new world, the fuel cost is reduced by 1 credit.";
+    ShipTrait["FuelHog"] = "Fuel Hog: When traveling to a new world, the fuel cost is increased by 1 credit.";
+    ShipTrait["DodgyDrive"] = "Dodgy Drive: Any time the ship takes Hull damage, roll 2D6. If the roll is equal to or below the amount of damage sustained, the drive is misbehaving, and 2 additional points of damage are sustained.";
+    ShipTrait["StandardIssue"] = "Standard Issue: The cost of all Starship Components is reduced by 1 credit.";
+    ShipTrait["Armored"] = "Armored: Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.";
+})(ShipTrait || (ShipTrait = {}));
+var WeaponStat;
+(function (WeaponStat) {
+    WeaponStat["Range"] = "Range";
+    WeaponStat["Shots"] = "Shots";
+    WeaponStat["Damage"] = "Damage";
+    WeaponStat["Hit"] = "Hit";
+})(WeaponStat || (WeaponStat = {}));
+var WeaponTrait;
+(function (WeaponTrait) {
+    WeaponTrait["Area"] = "Area: Resolve all shots against the initial target. They cannot be spread. Then resolve one bonus shot against every figure within 2\".";
+    WeaponTrait["Clumsy"] = "Clumsy: -1 to Brawling rolls, if opponent has higher Speed.";
+    WeaponTrait["Critical"] = "Critical: A natural 6 on the to Hit roll will inflict 2 Hits on the target.";
+    WeaponTrait["Elegant"] = "Elegant: When Brawling, the fighter may reroll the die. Enemies will always reroll if they have a lower total than their opponent, and can improve the result.";
+    WeaponTrait["Focused"] = "Focused: All shots must be against a single target.";
+    WeaponTrait["Heavy"] = "Heavy: -1 penalty to Hit if the firer moved this round.";
+    WeaponTrait["Impact"] = "Impact: If target is Stunned, place a second Stun marker.";
+    WeaponTrait["Melee"] = "Melee: +2 to Brawling rolls.";
+    WeaponTrait["Piercing"] = "Piercing: Ignore Armor Saving Throws.";
+    WeaponTrait["Pistol"] = "Pistol: +1 to Brawling rolls.";
+    WeaponTrait["SingleUse"] = "Single Use: The item can be used only once and must be deducted from the available supply. The Panic Fire rule cannot be used with Single Use weapons.";
+    WeaponTrait["SnapShot"] = "Snapshot: +1 to Hit within 6\".";
+    WeaponTrait["Stun"] = "Stun: All targets are automatically Stunned. No damage rolls ake place.";
+    WeaponTrait["Terrifying"] = "Terrifying: Any target hit must retreat 1D6\" away from the firer.";
+})(WeaponTrait || (WeaponTrait = {}));
+
+var _a;
+class CharacterGenerator {
+}
+_a = CharacterGenerator;
+CharacterGenerator.GenerateCharacter = () => Generator(d100, [
+    new GeneratorOption([1, 60], Characters.Human()),
+    new GeneratorOption([61, 80], _a.GenerateAlien()),
+    new GeneratorOption([81, 90], Characters.Bot()),
+    new GeneratorOption([91, 100], _a.GenerateStrange())
+]);
+CharacterGenerator.GenerateAlien = () => Generator(d100, [
+    new GeneratorOption([1, 20], Characters.Engineer()),
+    new GeneratorOption([21, 40], Characters.KErin()),
+    new GeneratorOption([41, 55], Characters.Soulless()),
+    new GeneratorOption([56, 70], Characters.Precursor()),
+    new GeneratorOption([71, 90], Characters.Feral()),
+    new GeneratorOption([91, 100], Characters.Swift())
+]);
+CharacterGenerator.GenerateStrange = () => Generator(d100, [
+    new GeneratorOption([1, 2], Characters.DeConverted()),
+    new GeneratorOption([3, 8], Characters.UnityAgent()),
+    new GeneratorOption([9, 17], Characters.MysteriousPast()),
+    new GeneratorOption([18, 22], Characters.Hakshan()),
+    new GeneratorOption([23, 27], Characters.Stalker()),
+    new GeneratorOption([28, 34], Characters.Hulker()),
+    new GeneratorOption([35, 41], Characters.HopefulRookie()),
+    new GeneratorOption([42, 47], Characters.GeneticUplift()),
+    new GeneratorOption([48, 53], Characters.Mutant()),
+    new GeneratorOption([54, 58], Characters.AssaultBot()),
+    new GeneratorOption([59, 62], Characters.Manipulator()),
+    new GeneratorOption([63, 67], Characters.Primitive()),
+    new GeneratorOption([68, 73], Characters.Feeler()),
+    new GeneratorOption([74, 79], Characters.EmoSuppressed()),
+    new GeneratorOption([80, 85], Characters.MinorAlien()),
+    new GeneratorOption([86, 87], Characters.Traveler()),
+    new GeneratorOption([88, 93], Characters.Empath()),
+    new GeneratorOption([94, 100], Characters.BioUpgrade())
+]);
+CharacterGenerator.GenerateBackground = () => Generator(d100, [
+    new GeneratorOption([1, 4], Backgrounds.PeacefulHighTechColony()),
+    new GeneratorOption([5, 9], Backgrounds.GiantOvercrowdedDystopianCity()),
+    new GeneratorOption([10, 13], Backgrounds.LowTechColony()),
+    new GeneratorOption([14, 17], Backgrounds.MiningColony()),
+    new GeneratorOption([18, 21], Backgrounds.MilitaryBrat()),
+    new GeneratorOption([22, 25], Backgrounds.SpaceStation()),
+    new GeneratorOption([26, 29], Backgrounds.MilitaryOutpost()),
+    new GeneratorOption([30, 34], Backgrounds.Drifter()),
+    new GeneratorOption([35, 39], Backgrounds.LowerMegacityClass()),
+    new GeneratorOption([40, 42], Backgrounds.WealthyMerchantFamily()),
+    new GeneratorOption([43, 46], Backgrounds.FrontierGang()),
+    new GeneratorOption([47, 49], Backgrounds.ReligiousCult()),
+    new GeneratorOption([50, 52], Backgrounds.WarTornHellHole()),
+    new GeneratorOption([53, 55], Backgrounds.TechGuild()),
+    new GeneratorOption([56, 59], Backgrounds.SubjugatedColonyOnAlienWorld()),
+    new GeneratorOption([60, 64], Backgrounds.LongTermSpaceMission()),
+    new GeneratorOption([65, 68], Backgrounds.ResearchOutpost()),
+    new GeneratorOption([69, 72], Backgrounds.PrimitiveOrRegressedWorld()),
+    new GeneratorOption([73, 76], Backgrounds.OrphanUtilityProgram()),
+    new GeneratorOption([77, 80], Backgrounds.IsolationistEnclave()),
+    new GeneratorOption([81, 84], Backgrounds.ComfortableMegacityClass()),
+    new GeneratorOption([85, 89], Backgrounds.IndustrialWorld()),
+    new GeneratorOption([90, 93], Backgrounds.Bureaucrat()),
+    new GeneratorOption([94, 97], Backgrounds.WastelandNomads()),
+    new GeneratorOption([97, 100], Backgrounds.AlienCulture())
+]);
+CharacterGenerator.GenerateMotivation = () => Generator(d100, [
+    new GeneratorOption([1, 8], Motivations.Wealth()),
+    new GeneratorOption([9, 14], Motivations.Fame()),
+    new GeneratorOption([15, 19], Motivations.Glory()),
+    new GeneratorOption([20, 26], Motivations.Survival()),
+    new GeneratorOption([27, 32], Motivations.Escape()),
+    new GeneratorOption([33, 39], Motivations.Adventure()),
+    new GeneratorOption([40, 44], Motivations.Truth()),
+    new GeneratorOption([45, 49], Motivations.Technology()),
+    new GeneratorOption([50, 56], Motivations.Discovery()),
+    new GeneratorOption([57, 63], Motivations.Loyalty()),
+    new GeneratorOption([64, 69], Motivations.Revenge()),
+    new GeneratorOption([70, 74], Motivations.Romance()),
+    new GeneratorOption([75, 79], Motivations.Faith()),
+    new GeneratorOption([80, 84], Motivations.Political()),
+    new GeneratorOption([85, 90], Motivations.Power()),
+    new GeneratorOption([91, 95], Motivations.Order()),
+    new GeneratorOption([96, 100], Motivations.Freedom())
+]);
+CharacterGenerator.GenerateClass = () => Generator(d100, [
+    new GeneratorOption([1, 5], Classes.WorkingClass()),
+    new GeneratorOption([6, 9], Classes.Technician()),
+    new GeneratorOption([10, 13], Classes.Scientist()),
+    new GeneratorOption([14, 17], Classes.Hacker()),
+    new GeneratorOption([18, 22], Classes.Soldier()),
+    new GeneratorOption([23, 27], Classes.Mercenary()),
+    new GeneratorOption([28, 32], Classes.Agitator()),
+    new GeneratorOption([33, 36], Classes.Primitive()),
+    new GeneratorOption([37, 40], Classes.Artist()),
+    new GeneratorOption([41, 44], Classes.Negotiator()),
+    new GeneratorOption([45, 49], Classes.Trader()),
+    new GeneratorOption([50, 54], Classes.StarshipCrew()),
+    new GeneratorOption([55, 58], Classes.PettyCriminal()),
+    new GeneratorOption([59, 63], Classes.Ganger()),
+    new GeneratorOption([64, 67], Classes.Scoundrel()),
+    new GeneratorOption([68, 71], Classes.Enforcer()),
+    new GeneratorOption([72, 75], Classes.SpecialAgent()),
+    new GeneratorOption([76, 79], Classes.Troubleshooter()),
+    new GeneratorOption([80, 83], Classes.BountyHunter()),
+    new GeneratorOption([84, 88], Classes.Nomad()),
+    new GeneratorOption([89, 92], Classes.Explorer()),
+    new GeneratorOption([93, 96], Classes.Punk()),
+    new GeneratorOption([97, 100], Classes.Scavenger())
+]);
+
+class EquipmentGenerator {
+}
+EquipmentGenerator.GenerateGear = () => Generator(d100, [
+    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
+    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
+    new GeneratorOption([11, 15], WeaponMods.Bipod()),
+    new GeneratorOption([16, 20], Consumables.BoosterPills()),
+    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
+    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
+    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
+    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
+    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
+    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
+    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
+    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
+    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
+    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
+    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
+    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
+    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
+    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
+    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
+    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
+    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
+    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
+]);
+EquipmentGenerator.GenerateGadget = () => Generator(d100, [
+    new GeneratorOption([1, 4], Implants.AICompanion()),
+    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
+    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
+    new GeneratorOption([14, 17], Implants.BoostedArm()),
+    new GeneratorOption([18, 21], Implants.BoostedLeg()),
+    new GeneratorOption([22, 24], Implants.CyberHand()),
+    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
+    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
+    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
+    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
+    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
+    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
+    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
+    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
+    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
+    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
+    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
+    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
+    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
+    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
+    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
+    new GeneratorOption([94, 100], Consumables.StimPack())
+]);
+
+class ShipGenerator {
+}
+ShipGenerator.Generate = () => Generator(d100, [
+    new GeneratorOption([1, 12], Ships.WornFreighter()),
+    new GeneratorOption([13, 18], Ships.RetiredTroopTransport()),
+    new GeneratorOption([19, 23], Ships.StrangeAlienVessel()),
+    new GeneratorOption([24, 31], Ships.UpgradedShuttle()),
+    new GeneratorOption([32, 38], Ships.RetiredScoutShip()),
+    new GeneratorOption([39, 45], Ships.RepurposedScienceVessel()),
+    new GeneratorOption([46, 56], Ships.BatteredMiningShip()),
+    new GeneratorOption([57, 65], Ships.UnreliableMerchantCruiser()),
+    new GeneratorOption([66, 70], Ships.FormerDiplomaticVessel()),
+    new GeneratorOption([71, 76], Ships.AncientLowTechCraft()),
+    new GeneratorOption([77, 84], Ships.BuiltFromSalvagedWrecks()),
+    new GeneratorOption([85, 95], Ships.WornColonyShip()),
+    new GeneratorOption([96, 100], Ships.RetiredMilitaryPatrolShip())
+]);
+
+class WeaponGenerator {
+}
+WeaponGenerator.GenerateHighTech = () => Generator(d100, [
+    new GeneratorOption([1, 5], HighTechWeapons.DuelingPistol()),
+    new GeneratorOption([6, 15], HighTechWeapons.HandCannon()),
+    new GeneratorOption([16, 30], HighTechWeapons.HandLaser()),
+    new GeneratorOption([31, 45], HighTechWeapons.BeamPistol()),
+    new GeneratorOption([46, 55], HighTechWeapons.InfantryLaser()),
+    new GeneratorOption([56, 70], HighTechWeapons.BlastPistol()),
+    new GeneratorOption([71, 80], HighTechWeapons.BlastRifle()),
+    new GeneratorOption([81, 85], HighTechWeapons.PlasmaRifle()),
+    new GeneratorOption([86, 100], HighTechWeapons.GlareSword())
+]);
+WeaponGenerator.GenerateLowTech = () => Generator(d100, [
+    new GeneratorOption([1, 15], LowTechWeapons.Handgun()),
+    new GeneratorOption([16, 35], LowTechWeapons.ScrapPistol()),
+    new GeneratorOption([36, 40], LowTechWeapons.MachinePistol()),
+    new GeneratorOption([41, 65], LowTechWeapons.ColonyRifle()),
+    new GeneratorOption([66, 75], LowTechWeapons.Shotgun()),
+    new GeneratorOption([76, 80], LowTechWeapons.HuntingRifle()),
+    new GeneratorOption([81, 95], LowTechWeapons.Blade()),
+    new GeneratorOption([96, 100], LowTechWeapons.BrutalMeleeWeapon())
+]);
+WeaponGenerator.GenerateMilitary = () => Generator(d100, [
+    new GeneratorOption([1, 25], MilitaryWeapons.MilitaryRifle()),
+    new GeneratorOption([26, 45], MilitaryWeapons.InfantryLaser()),
+    new GeneratorOption([46, 50], MilitaryWeapons.MarksmansRifle()),
+    new GeneratorOption([51, 60], MilitaryWeapons.NeedleRifle()),
+    new GeneratorOption([61, 75], MilitaryWeapons.AutoRifle()),
+    new GeneratorOption([76, 80], MilitaryWeapons.RattleGun()),
+    new GeneratorOption([81, 95], MilitaryWeapons.BoardingSaber()),
+    new GeneratorOption([96, 100], MilitaryWeapons.ShatterAxe())
+]);
+
+class CharacterProfile {
+    constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
+        this._reaction = 0;
+        this._speed = 0;
+        this._combatSkill = 0;
+        this._toughness = 0;
+        this._savvy = 0;
+        this._luck = 0;
+        this._xp = 0;
+        this.maxCombatSkill = maxCombatSkill;
+        this.maxReaction = maxReaction;
+        this.maxSpeed = maxSpeed;
+        this.maxToughness = maxToughness;
+        this.maxSavvy = maxSavvy;
+        this.maxLuck = maxLuck;
+        this.maxXp = maxXp;
+        this.reaction = reaction;
+        this.speed = speed;
+        this.combatSkill = combatSkill;
+        this.toughness = toughness;
+        this.savvy = savvy;
+        this.luck = luck;
+        this.xp = xp;
+        this.useConsumables = useConsumables;
+        this.useImplants = useImplants;
+        this.eventTarget = eventTarget;
+    }
+    get reaction() { return this._reaction; }
+    set reaction(value) {
+        this._reaction = value > this.maxReaction
+            ? this.maxReaction
+            : value;
+    }
+    get speed() { return this._speed; }
+    set speed(value) {
+        this._speed = value > 8
+            ? 8
+            : value;
+    }
+    get combatSkill() { return this._combatSkill; }
+    set combatSkill(value) {
+        this._combatSkill = value > this.maxCombatSkill
+            ? this.maxCombatSkill
+            : value;
+    }
+    get toughness() { return this._toughness; }
+    set toughness(value) {
+        this._toughness = value > this.maxToughness
+            ? this.maxToughness
+            : value;
+    }
+    get savvy() { return this._savvy; }
+    set savvy(value) {
+        this._savvy = value > this.maxSavvy
+            ? this.maxSavvy
+            : value;
+    }
+    get luck() { return this._luck; }
+    set luck(value) {
+        this._luck = value > this.maxLuck
+            ? this.maxLuck
+            : value;
+    }
+    get xp() { return this._xp; }
+    set xp(value) {
+        this._xp = value > this.maxXp
+            ? this.maxXp
+            : value;
+    }
+}
+
+class Character {
+    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
+        this._weapons = [];
+        this._devices = [];
+        this.gear = new Array();
+        this.sidearm = null;
+        this.isLeader = false;
+        this.setRace = () => {
+            switch (this.species) {
+                case CharacterSpecies.Engineer:
+                case CharacterSpecies.Feral:
+                case CharacterSpecies.Hakshan:
+                case CharacterSpecies.KErin:
+                case CharacterSpecies.Manipulator:
+                case CharacterSpecies.Precursor:
+                case CharacterSpecies.Soulless:
+                case CharacterSpecies.Swift:
+                    return CharacterRace.Alien;
+                case CharacterSpecies.AssaultBot:
+                case CharacterSpecies.Bot:
+                    return CharacterRace.Bot;
+                case CharacterSpecies.BioUpgrade:
+                case CharacterSpecies.EmoSuppressed:
+                case CharacterSpecies.Empath:
+                case CharacterSpecies.Feeler:
+                case CharacterSpecies.Human:
+                case CharacterSpecies.MinorAlien:
+                case CharacterSpecies.Mutant:
+                case CharacterSpecies.MysteriousPast:
+                case CharacterSpecies.Primitive:
+                    return CharacterRace.Human;
+                default:
+                    return CharacterRace.Strange;
+            }
+        };
+        this.promoteLeader = () => {
+            this.isLeader = true;
+            this.profile.luck += 1;
+        };
+        this.id = Symbol();
+        this.species = species;
+        this.profile = new CharacterProfile({
+            reaction, maxReaction,
+            speed, maxSpeed,
+            combatSkill, maxCombatSkill,
+            toughness, maxToughness,
+            savvy, maxSavvy,
+            luck, maxLuck,
+            xp, maxXp,
+            useConsumables, useImplants,
+            eventTarget
+        });
+        this.race = this.setRace();
+    }
+    get weapons() { return this._weapons; }
+    get devices() { return this._devices; }
+}
+
+class CharacterDetail {
+    constructor(detail, { effects = null, resources = null, equipment = null } = {}) {
+        this.detail = detail;
+        this.effects = effects;
+        this.resources = resources;
+        this.equipment = equipment;
+    }
+}
+
 class Equipment {
     constructor(name, description) {
         this.id = Symbol();
@@ -1196,308 +1439,77 @@ class Pistol extends Sidearm {
 class Melee extends Sidearm {
 }
 
-const Consumables = {
-    BoosterPills: () => new Consumable(`Booster Pills`, `When taken, the character removes all Stun markers. They may move at double normal Speed this round.`),
-    CombatSerum: () => new Consumable(`Combat Serum`, `The character receives +2" Speed and +2 Reactions for the rest of the battle.`),
-    KiraninCrystals: () => new Consumable(`Kiranin Crystals`, `A bright, dazzling display of hypnotic lights will daze any character within 4" of the user, making them unable to act this round. The crystals have no effect on characters that already acted earlier in the round, and do not affect the user. A character that is attacked in Brawling combat will defend themselves normally.`),
-    RageOut: () => new Consumable(`Rage Out`, `The user gains +2" Speed an +1 to all Brawling rolls for the rest of this and the following round. A K'Erin user gets the benefits for the rest of the battle.`),
-    Still: () => new Consumable(`Still`, `The user gains +1 to Hit, but cannot Move during this and the next round.`),
-    StimPack: () => new Consumable(`Stim-pack`, `If a character would become a casualty, they remain on the table with a single Stun marker. This item can be used reflexively upon becoming a casualty. It does not require an action.`)
-};
-const ConsumableList = Datalist(Consumables);
-const Implants = {
-    AICompanion: () => new Implant(`AI Companion`, `When making Savvy rolls, the character may roll twice and pick the better score.`),
-    BodyWire: () => new Implant(`Body Wire`, `+1 Reactions`),
-    BoostedArm: () => new Implant(`Boosted Arm`, `Increase Grenade range by 2+". If the character ends their Move in contact with an obstacle that is no taller than the miniature, they may pull themselves up on top (bot not cross) as a Free Action.`),
-    BoostedLeg: () => new Implant(`Boosted Leg`, `Increase base move and Dash speed by +1" each.`),
-    CyberHand: () => new Implant(`Cyber Hand`, `The character may take any one Pistol they own and build it into their hand. Range is reduced to half, but the weapon always shoots with +1 to Hit and an additional +1 bonus when Brawling.`),
-    GeneticDefenses: () => new Implant(`Genetic Defenses`, `5+ Saving Throw, if subjected to any poison, virus, gas, or disease.`),
-    HealthBoost: () => new Implant(`Health Boost`, `If a post-battle Injury would result in 2+ campaign turns of recovery time, reduce the time by 1. If the character has Toughness 3 when receving this ipmlant, raise it to 4.`),
-    NerveAdjuster: () => new Implant(`Nerve Adjuster`, `Whenever the character is Stunned for any reason, they receive a 5+ Saving Throw to avoid the Stun.`),
-    NeuralOptimization: () => new Implant(`Neural Optimization`, `The character cannot be Stunned.`),
-    NightSight: () => new Implant(`Night Sight`, `The character does not suffer visibility reductions due to darkness, but is affected by smoke, gas, etc. normally.`),
-    PainSuppressor: () => new Implant(`Pain Suppressor`, `The character can perform crew tasks while in Sick Bay, though they cannot participate in battles.`)
-};
-const ImplantList = Datalist(Implants);
-const OnBoardItems = {
-    Analyzer: () => new OnBoardItem(`Analyzer`, `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`),
-    ColonistRationPacks: () => new OnBoardItem(`Colonist Ration Packs`, `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`),
-    Duplicator: () => new OnBoardItem(`Duplicator`, `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`),
-    FakeId: () => new OnBoardItem(`Fake ID`, `Add +1 to all attempts to obtain a licesne or other legal document`),
-    Fixer: () => new OnBoardItem(`Fixer`, `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`),
-    GeneticReconfigurationKit: () => new OnBoardItem(`Genetic Reconfiguration Kit`, `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`),
-    LoadedDice: () => new OnBoardItem(`Loaded Dice`, `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`),
-    LuckyDice: () => new OnBoardItem(`Lucky Dice`, `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`),
-    MkIITranslator: () => new OnBoardItem(`Mk II Translator`, `When rolling to Recruit, you may roll an additional D6.`),
-    MedPatch: () => new OnBoardItem(`Med-patch`, `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`),
-    MeditationOrb: () => new OnBoardItem(`Meditation Orb`, `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`),
-    NanoDoc: () => new OnBoardItem(`Nano-doc`, `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. YOu must decide before rolling the dice. Single-use.`),
-    NoveltyStuffedAnimal: () => new OnBoardItem(`Novelty Stuffed Animal`, `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`),
-    Purifier: () => new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`),
-    RepairBot: () => new OnBoardItem(`Repair Bot`, `+1 to all Repair attempts`),
-    SectorPermit: () => new OnBoardItem(`Sector Permit`, `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`),
-    SpareParts: () => new OnBoardItem(`Spare Parts`, `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`),
-    TeachBot: () => new OnBoardItem(`Teach-bot`, `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`),
-    Transcender: () => new OnBoardItem(`Transcender`, `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`)
-};
-const OnBoardItemList = Datalist(OnBoardItems);
-const ProtectiveDevices = {
-    BattleDress: () => new ProtectiveDevice(`Battle Dress`, `The character counts as +1 Reactions (maximum 4) and receives a Saving Throw of 5+`, ProtectiveDeviceType.Armor),
-    CamoCloak: () => new ProtectiveDevice(`Camo Cloak`, `If character is within 2" of Cover, they are counted as being in Cover. DOes not apply if the shooter is within 4".`, ProtectiveDeviceType.Screen),
-    CombatArmor: () => new ProtectiveDevice(`Combat Armor`, `Saving Throw 5+`, ProtectiveDeviceType.Armor),
-    DeflectorField: () => new ProtectiveDevice(`Deflector Field`, `Automatically deflects a single ranged weapon's Hit per battle. After a Hit is scored, decide if you wish to use the field before any rolls for Toughness or armor are made.`, ProtectiveDeviceType.Screen),
-    FlakScreen: () => new ProtectiveDevice(`Falk Screen`, `All Area weapons striking the wearer, whether through the initial shots or additional attacks fro the Area trait have their Damage reduced by -1 (to a cap of +0).`, ProtectiveDeviceType.Screen),
-    FlexArmor: () => new ProtectiveDevice(`Flex-armor`, `If the character did not move on their last activation, they count as +1 Toughness (to a maximum of 6).`, ProtectiveDeviceType.Screen),
-    FragVest: () => new ProtectiveDevice(`Frag Vest`, `The wearer receives a 6+ Saving Throw, improved to 5+ against any Area attack.`, ProtectiveDeviceType.Armor),
-    ScreenGenerator: () => new ProtectiveDevice(`Screen Generator`, `Receives a 5+ Saving Throw against gunfire. No effect against Area or Melee attacks.`, ProtectiveDeviceType.Screen),
-    StealthGear: () => new ProtectiveDevice(`Stealth Gear`, `Enemies firing from a range over 9" are -1 to Hit.`, ProtectiveDeviceType.Armor)
-};
-const ProtectiveDeviceList = Datalist(ProtectiveDevices);
-const UtilityDevices = {
-    AutoSensor: () => new UtilityDevice(`Auto Sensor`, `If an enemy begins or ends a move within 4" and Line of Sight of the character, you may immediately fire one shot form any Pistol carried. The shot is resolved `),
-    BattleVisor: () => new UtilityDevice(`Battle Visor`, `When shooting, the character may reroll any 1s on the firing dice.`),
-    Communicator: () => new UtilityDevice(`Communicator`, `When making the Reaction roll each round, you may roll one additional die, then choose a die to discard.`),
-    ConcealedBlade: () => new UtilityDevice(`Concealed Blade`, `If the character begins teh round within 2" of an opponent, they may throw the blade as a Free Action before doing anything else. Roll to Hit normally, resolving the Hit with Damage +0. The blade can be used once per battle, and is replaced afterwards for free.`),
-    Displacer: () => new UtilityDevice(`Displacer`, `Usable once permission instead of Moving. Aim anywhere in sight. The character teleports to a point 1D6" away in a random direction. If the teleport would end up within a solid obstacle, the device fails and must be Repaired before it can be used again. The character emerges on the same height as the aiming point, which may cause them to fall if they emerge in open air. The character may take a Combat Action after teleporting. If used by a Precursor character, you may establish two "landing points", and select to use either.`),
-    DistractionBot: () => new UtilityDevice(`Distraction Bot`, `Usable once per battle as a Combat Action. Select an enemy within 12". Next time they would become active, they are unable to act, though they remove Stun markers as normal. Use a small marker to remember.`),
-    GrappleLauncher: () => new UtilityDevice(`Grapple Launcher`, `As a Combat Action, the character may use the launcher to scale a terrain feature within 1". The character can ascend up to 12" but must reach a surface they can stand on.`),
-    GravDampener: () => new UtilityDevice(`Grav Dampener`, `The character suffers no damage from faling and can descend from any height with no risk. If dropping more than 6", it counts as the character's Move for the round.`),
-    HazardSuit: () => new UtilityDevice(`Hazard Suit`, `If the character takes a Hit from an environmental hazard, they receive a 5+ Saving Throw.`),
-    HoverBoard: () => new UtilityDevice(`Hover Board`, `The character may use the board to move instead of walking. When used, the character can move up to 9" and can ignore any terrain that is man-height or lower. While hover-boarding, the character cannot engage in cobat, but can perform a non-Combat Action as needed.`),
-    InstaWall: () => new UtilityDevice(`Insta-wall`, `May be used once per mission as a Combat Action. Place a marker within 3", then place a 2" long force wall oriented any way you like, as long as it touches the marker. The wall is man-height an impenetrable to attacks (but does not block sight or mental abilities). At the start of each subsequent round, a D6 is rolled. On a 6, the wall dissipates.`),
-    JumpBelt: () => new UtilityDevice(`Jump Belt`, `Instead of Moving normally, the character may jump up to 9" directly forward and 3" upwards. Th character may take a Combat Action normally after landing.`),
-    MotionTracker: () => new UtilityDevice(`Motion Tracker`, `Add +1 to all rolls to Seize the Initiative.`),
-    MultiCutter: () => new UtilityDevice(`Multi-cutter`, `As a Combat Action, the character can cut a man-sized hole through any terrain feature up to 1" thick. The tool has no effect on force fields.`),
-    RoboRabbitsFoot: () => new UtilityDevice(`Robo-rabbit's Foot`, `A character with Luck 0 counts as having Luck 1. If the character would die while carrying this, the foot is destroyed (and cannot be Repaired), the character does not roll on the injury table.`),
-    ScannerBot: () => new UtilityDevice(`Scanner Bot`, `The crew adds +1 to all Seize the Initiative rolls.`),
-    SnooperBot: () => new UtilityDevice(`Snooper Bot`, `May be deployed before a battle, if the Seize the Initiative roll would be penalized or negated. The penalty can be ignored, but the Bot is Damaged on a D6 roll of a 1.`),
-    SonicEmitter: () => new UtilityDevice(`Sonic Emitter`, `Any enemy within 5" suffers -1 to all Hit rolls when shooting.`),
-    SteelBoots: () => new UtilityDevice(`Steel Boots`, `If the character rolls a natural 5 or 6 in a Brawl and wins the Brawl, they may opt to kick instead of striking normally. This hits with Damage +0 and knocks them 1D3" directly backwards. If the opponent is kicked into another character, that character is knocked 1D3" in a random direction.`),
-    TimeDistorter: () => new UtilityDevice(`Time Distorter`, `Activated as a Free Action. Select up to 3 enemy figures on the battlefield. They are frozen in time until the end of the following round. While in this state, they cannot Move, take Actions, or be affected by attacks or effects in any way. They are unaffected by Morale rolls as well. Single-use`)
-};
-const UtilityDeviceList = Datalist(UtilityDevices);
-
-const WeaponMods = {
-    AssaultBlade: () => new WeaponMod(`Assault Blade`, `The weapon gains the Melee trait. Damage +1, and wins combat on a Draw.`, false),
-    BeamLight: () => new WeaponMod(`Beam Light`, `When using the weapon in conditions of reduced visibility, increase visibility by +3".`, true),
-    Bipod: () => new WeaponMod(`Bipod`, `The weapon recieve +1 to Hit at ranges over 8" when Aiming or when firing from Cover.`, false),
-    HotShotPack: () => new WeaponMod(`Hot Shot Pack`, `If fittedto a Blast Pistol, Blast Rifle, Hand Laser, or Infantry Laser, +1 Damage. Any natural 6 on the shooting dice causes an overheat, rendering the weapon inoperable for the rest of the fight.`, true),
-    CyberConfigurableNanoSludge: () => new WeaponMod(`Cyber-configurable Nano-sludge`, `The weapon receives a permanent +1 Hit bonus.`, true),
-    Stabilizer: () => new WeaponMod(`Stabilizer`, `Weapon may ignore Heavy trait.`, true),
-    ShockAttachment: () => new WeaponMod(`Shock Attachment`, `The weapon receives the Impact trait against targets within 8".`, true),
-    UpgradeKit: () => new WeaponMod(`Upgrade Kit`, `+2" Range increase.`, true)
-};
-const WeaponModList = Datalist(WeaponMods);
-const WeaponSights = {
-    LaserSight: () => new WeaponSight(`Laser Sight`, `The weapon receives thet Snap Shot trait.`, true),
-    QualitySight: () => new WeaponSight(`Quality Sight`, `+2" Range increase. Reroll 1s when firing only 1 shot.`, false),
-    SeekerSight: () => new WeaponSight(`Seeker Sight`, `The weapon receives a +1 to Hit if the shooter did not Move this round.`, false),
-    TrackerSight: () => new WeaponSight(`Tracker Sight`, `+1 to Hit if you fired at the same target during your previous round.`, false),
-    UnityBattleSight: () => new WeaponSight(`Unity Battle Sight`, `+1 to all Hit rolls.`, false)
-};
-const WeaponSightList = Datalist(WeaponSights);
-
-class GeneratorOption {
-    constructor(extent, value) {
-        this.selected = (roll) => roll >= this.extent[0] && roll <= this.extent[1];
-        this.extent = extent;
-        this.value = value;
+class Campaign {
+    constructor({ crewSize = 6, useStory = true, useStars = true, difficulty = Difficulty.Normal } = {}) {
+        this._crew = null;
+        this.initStoryPoints = () => {
+            const points = d6();
+            switch (this._difficulty) {
+                case Difficulty.Hardcore:
+                    return points;
+                case Difficulty.Insanity:
+                    return 0;
+                default:
+                    return points + 1;
+            }
+        };
+        this.initCrew = (crew) => this._crew = this.crew === null
+            ? crew
+            : this.crew;
+        this.id = Symbol();
+        this._crewSize = crewSize;
+        this._useStory = useStory;
+        this._difficulty = difficulty;
+        this._useStars = difficulty === Difficulty.Insanity
+            ? false
+            : useStars;
+        this._storyPoints = this.initStoryPoints();
+    }
+    get crewSize() { return this._crewSize; }
+    get useStory() { return this._useStory; }
+    get useStars() { return this._useStars; }
+    get difficulty() { return this._difficulty; }
+    get crew() { return this._crew; }
+    get storyPoints() { return this._storyPoints; }
+    set storyPoints(value) {
+        this._storyPoints = this.difficulty === Difficulty.Insanity
+            ? 0
+            : value;
     }
 }
-const validateGenerator = (roll, values) => values.some(v => v.selected(roll));
-const Generator = (die, values) => {
-    var _a;
-    let roll = die();
-    if (!validateGenerator(roll, values))
-        throw new RangeError(`Roll of ${roll} does not fall into the extent of any provided options`);
-    const value = (_a = values.find(v => v.selected(roll))) === null || _a === void 0 ? void 0 : _a.value;
-    if (value)
-        return value;
-    throw new Error(`Value resulting from roll of ${roll} was undefined`);
-};
 
-class EquipmentGenerator {
+class Crew {
+    constructor() {
+        this._leader = null;
+        this._roster = new Array();
+        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
+            && this.roster.push(character);
+        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
+    }
+    get leader() { return this._leader; }
+    set leader(character) {
+        if (this.leader && character)
+            return;
+        this.leader = character;
+        if (character)
+            character.promoteLeader();
+    }
+    get roster() { return this._roster; }
 }
-EquipmentGenerator.GenerateGear = () => Generator(d100, [
-    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
-    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
-    new GeneratorOption([11, 15], WeaponMods.Bipod()),
-    new GeneratorOption([16, 20], Consumables.BoosterPills()),
-    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
-    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
-    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
-    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
-    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
-    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
-    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
-    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
-    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
-    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
-    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
-    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
-    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
-    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
-    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
-    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
-    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
-    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
-]);
-EquipmentGenerator.GenerateGadget = () => Generator(d100, [
-    new GeneratorOption([1, 4], Implants.AICompanion()),
-    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
-    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
-    new GeneratorOption([14, 17], Implants.BoostedArm()),
-    new GeneratorOption([18, 21], Implants.BoostedLeg()),
-    new GeneratorOption([22, 24], Implants.CyberHand()),
-    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
-    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
-    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
-    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
-    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
-    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
-    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
-    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
-    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
-    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
-    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
-    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
-    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
-    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
-    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
-    new GeneratorOption([94, 100], Consumables.StimPack())
-]);
 
-var _a$1;
-class WeaponGenerator {
+class Ship {
+    constructor(model, debt, hull, trait = null) {
+        this._damage = 0;
+        this.model = model;
+        this.debt = debt;
+        this.hull = hull;
+        this.trait = trait;
+    }
+    get damage() { return this._damage; }
+    set damage(value) {
+        this._damage = value;
+    }
 }
-_a$1 = WeaponGenerator;
-WeaponGenerator.GenerateLowTech = () => Generator(d100, _a$1.LowTechTable);
-WeaponGenerator.GenerateMilitary = () => Generator(d100, _a$1.MilitaryTable);
-WeaponGenerator.GenerateHighTech = () => Generator(d100, _a$1.HighTechTable);
-WeaponGenerator.LowTechTable = new Array(new GeneratorOption([1, 15], new Pistol(`Handgun`, `Low Tech`, {
-    range: 12,
-    shots: 1,
-    traits: [WeaponTrait.Pistol]
-})), new GeneratorOption([16, 35], new Pistol("Scrap Pistol", "Low Tech", {
-    range: 9,
-    shots: 1,
-    traits: [WeaponTrait.Pistol]
-})), new GeneratorOption([36, 40], new Pistol("Machine Pistol", "Low Tech", {
-    range: 8,
-    shots: 2,
-    traits: [
-        WeaponTrait.Pistol,
-        WeaponTrait.Focused
-    ]
-})), new GeneratorOption([41, 65], new Weapon("Colony Rifle", "Low Tech", {
-    range: 18,
-    shots: 1
-})), new GeneratorOption([66, 75], new Weapon("Shotgun", "Low Tech", {
-    range: 12,
-    shots: 2,
-    damage: 1,
-    traits: [WeaponTrait.Focused]
-})), new GeneratorOption([76, 80], new Weapon("Hunting Rifle", "Low Tech", {
-    range: 30,
-    shots: 1,
-    damage: 1,
-    traits: [WeaponTrait.Heavy]
-})), new GeneratorOption([81, 95], new Melee("Blade", "Low Tech", {
-    traits: [WeaponTrait.Melee]
-})), new GeneratorOption([96, 100], new Melee("Brutal Melee Weapon", "Low Tech", {
-    damage: 1,
-    traits: [
-        WeaponTrait.Melee,
-        WeaponTrait.Clumsy
-    ]
-})));
-WeaponGenerator.MilitaryTable = new Array(new GeneratorOption([1, 25], new Weapon("Military Rifle", "Military", {
-    range: 24,
-    shots: 1
-})), new GeneratorOption([26, 45], new Weapon("Infantry Laser", "Military", {
-    range: 30,
-    shots: 1,
-    traits: [WeaponTrait.SnapShot]
-})), new GeneratorOption([46, 50], new Weapon("Marksman's Rifle", "Military", {
-    range: 36,
-    shots: 1,
-    traits: [WeaponTrait.Heavy]
-})), new GeneratorOption([51, 60], new Weapon("Needle Rifle", "Military", {
-    range: 18,
-    shots: 2,
-    traits: [WeaponTrait.Critical]
-})), new GeneratorOption([61, 75], new Weapon("Auto Rifle", "Military", {
-    range: 24,
-    shots: 2
-})), new GeneratorOption([76, 80], new Weapon("Rattle Gun", "Military", {
-    range: 24,
-    shots: 3,
-    traits: [WeaponTrait.Heavy]
-})), new GeneratorOption([81, 95], new Melee("Boarding Saber", "Military", {
-    damage: 1,
-    traits: [
-        WeaponTrait.Melee,
-        WeaponTrait.Elegant
-    ]
-})), new GeneratorOption([96, 100], new Melee("Shatter Axe", "Military", {
-    damage: 2,
-    traits: [WeaponTrait.Melee]
-})));
-WeaponGenerator.HighTechTable = new Array(new GeneratorOption([1, 5], new Pistol("Dueling Pistol", "High Tech", {
-    range: 8,
-    shots: 1,
-    traits: [
-        WeaponTrait.Pistol,
-        WeaponTrait.Critical
-    ]
-})), new GeneratorOption([6, 15], new Pistol("Hand Cannon", "High Tech", {
-    range: 8,
-    shots: 1,
-    damage: 2,
-    traits: [WeaponTrait.Pistol]
-})), new GeneratorOption([16, 30], new Pistol("Hand Laser", "High Tech", {
-    range: 12,
-    shots: 1,
-    traits: [
-        WeaponTrait.Pistol,
-        WeaponTrait.SnapShot
-    ]
-})), new GeneratorOption([31, 45], new Pistol("Beam Pistol", "High Tech", {
-    range: 10,
-    shots: 1,
-    damage: 1,
-    traits: [
-        WeaponTrait.Pistol,
-        WeaponTrait.Critical
-    ]
-})), new GeneratorOption([46, 55], new Weapon("Infantry Laser", "High Tech", {
-    range: 30,
-    shots: 1,
-    traits: [WeaponTrait.SnapShot]
-})), new GeneratorOption([56, 70], new Pistol("Blast Pistol", "High Tech", {
-    range: 8,
-    shots: 1,
-    damage: 1,
-    traits: [WeaponTrait.Pistol]
-})), new GeneratorOption([71, 80], new Weapon("Blast Rifle", "High Tech", {
-    range: 16,
-    shots: 1,
-    damage: 1
-})), new GeneratorOption([81, 85], new Weapon("Plasma Rifle", "High Tech", {
-    range: 20,
-    shots: 2,
-    damage: 1,
-    traits: [
-        WeaponTrait.Focused,
-        WeaponTrait.Piercing
-    ]
-})), new GeneratorOption([86, 100], new Melee("Glare Sword", "High Tech", {
-    traits: [
-        WeaponTrait.Melee,
-        WeaponTrait.Elegant,
-        WeaponTrait.Piercing
-    ]
-})));
 
 const Backgrounds = {
     PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
@@ -1823,219 +1835,278 @@ const Motivations = {
 };
 const MotivationList = Datalist(Motivations);
 
-var _a;
-class CharacterGenerator {
-}
-_a = CharacterGenerator;
-CharacterGenerator.GenerateCharacter = () => Generator(d100, [
-    new GeneratorOption([1, 60], Characters.Human()),
-    new GeneratorOption([61, 80], _a.GenerateAlien()),
-    new GeneratorOption([81, 90], Characters.Bot()),
-    new GeneratorOption([91, 100], _a.GenerateStrange())
-]);
-CharacterGenerator.GenerateAlien = () => Generator(d100, [
-    new GeneratorOption([1, 20], Characters.Engineer()),
-    new GeneratorOption([21, 40], Characters.KErin()),
-    new GeneratorOption([41, 55], Characters.Soulless()),
-    new GeneratorOption([56, 70], Characters.Precursor()),
-    new GeneratorOption([71, 90], Characters.Feral()),
-    new GeneratorOption([91, 100], Characters.Swift())
-]);
-CharacterGenerator.GenerateStrange = () => Generator(d100, [
-    new GeneratorOption([1, 2], Characters.DeConverted()),
-    new GeneratorOption([3, 8], Characters.UnityAgent()),
-    new GeneratorOption([9, 17], Characters.MysteriousPast()),
-    new GeneratorOption([18, 22], Characters.Hakshan()),
-    new GeneratorOption([23, 27], Characters.Stalker()),
-    new GeneratorOption([28, 34], Characters.Hulker()),
-    new GeneratorOption([35, 41], Characters.HopefulRookie()),
-    new GeneratorOption([42, 47], Characters.GeneticUplift()),
-    new GeneratorOption([48, 53], Characters.Mutant()),
-    new GeneratorOption([54, 58], Characters.AssaultBot()),
-    new GeneratorOption([59, 62], Characters.Manipulator()),
-    new GeneratorOption([63, 67], Characters.Primitive()),
-    new GeneratorOption([68, 73], Characters.Feeler()),
-    new GeneratorOption([74, 79], Characters.EmoSuppressed()),
-    new GeneratorOption([80, 85], Characters.MinorAlien()),
-    new GeneratorOption([86, 87], Characters.Traveler()),
-    new GeneratorOption([88, 93], Characters.Empath()),
-    new GeneratorOption([94, 100], Characters.BioUpgrade())
-]);
-CharacterGenerator.GenerateBackground = () => Generator(d100, [
-    new GeneratorOption([1, 4], Backgrounds.PeacefulHighTechColony()),
-    new GeneratorOption([5, 9], Backgrounds.GiantOvercrowdedDystopianCity()),
-    new GeneratorOption([10, 13], Backgrounds.LowTechColony()),
-    new GeneratorOption([14, 17], Backgrounds.MiningColony()),
-    new GeneratorOption([18, 21], Backgrounds.MilitaryBrat()),
-    new GeneratorOption([22, 25], Backgrounds.SpaceStation()),
-    new GeneratorOption([26, 29], Backgrounds.MilitaryOutpost()),
-    new GeneratorOption([30, 34], Backgrounds.Drifter()),
-    new GeneratorOption([35, 39], Backgrounds.LowerMegacityClass()),
-    new GeneratorOption([40, 42], Backgrounds.WealthyMerchantFamily()),
-    new GeneratorOption([43, 46], Backgrounds.FrontierGang()),
-    new GeneratorOption([47, 49], Backgrounds.ReligiousCult()),
-    new GeneratorOption([50, 52], Backgrounds.WarTornHellHole()),
-    new GeneratorOption([53, 55], Backgrounds.TechGuild()),
-    new GeneratorOption([56, 59], Backgrounds.SubjugatedColonyOnAlienWorld()),
-    new GeneratorOption([60, 64], Backgrounds.LongTermSpaceMission()),
-    new GeneratorOption([65, 68], Backgrounds.ResearchOutpost()),
-    new GeneratorOption([69, 72], Backgrounds.PrimitiveOrRegressedWorld()),
-    new GeneratorOption([73, 76], Backgrounds.OrphanUtilityProgram()),
-    new GeneratorOption([77, 80], Backgrounds.IsolationistEnclave()),
-    new GeneratorOption([81, 84], Backgrounds.ComfortableMegacityClass()),
-    new GeneratorOption([85, 89], Backgrounds.IndustrialWorld()),
-    new GeneratorOption([90, 93], Backgrounds.Bureaucrat()),
-    new GeneratorOption([94, 97], Backgrounds.WastelandNomads()),
-    new GeneratorOption([97, 100], Backgrounds.AlienCulture())
-]);
-CharacterGenerator.GenerateMotivation = () => Generator(d100, [
-    new GeneratorOption([1, 8], Motivations.Wealth()),
-    new GeneratorOption([9, 14], Motivations.Fame()),
-    new GeneratorOption([15, 19], Motivations.Glory()),
-    new GeneratorOption([20, 26], Motivations.Survival()),
-    new GeneratorOption([27, 32], Motivations.Escape()),
-    new GeneratorOption([33, 39], Motivations.Adventure()),
-    new GeneratorOption([40, 44], Motivations.Truth()),
-    new GeneratorOption([45, 49], Motivations.Technology()),
-    new GeneratorOption([50, 56], Motivations.Discovery()),
-    new GeneratorOption([57, 63], Motivations.Loyalty()),
-    new GeneratorOption([64, 69], Motivations.Revenge()),
-    new GeneratorOption([70, 74], Motivations.Romance()),
-    new GeneratorOption([75, 79], Motivations.Faith()),
-    new GeneratorOption([80, 84], Motivations.Political()),
-    new GeneratorOption([85, 90], Motivations.Power()),
-    new GeneratorOption([91, 95], Motivations.Order()),
-    new GeneratorOption([96, 100], Motivations.Freedom())
-]);
-CharacterGenerator.GenerateClass = () => Generator(d100, [
-    new GeneratorOption([1, 5], Classes.WorkingClass()),
-    new GeneratorOption([6, 9], Classes.Technician()),
-    new GeneratorOption([10, 13], Classes.Scientist()),
-    new GeneratorOption([14, 17], Classes.Hacker()),
-    new GeneratorOption([18, 22], Classes.Soldier()),
-    new GeneratorOption([23, 27], Classes.Mercenary()),
-    new GeneratorOption([28, 32], Classes.Agitator()),
-    new GeneratorOption([33, 36], Classes.Primitive()),
-    new GeneratorOption([37, 40], Classes.Artist()),
-    new GeneratorOption([41, 44], Classes.Negotiator()),
-    new GeneratorOption([45, 49], Classes.Trader()),
-    new GeneratorOption([50, 54], Classes.StarshipCrew()),
-    new GeneratorOption([55, 58], Classes.PettyCriminal()),
-    new GeneratorOption([59, 63], Classes.Ganger()),
-    new GeneratorOption([64, 67], Classes.Scoundrel()),
-    new GeneratorOption([68, 71], Classes.Enforcer()),
-    new GeneratorOption([72, 75], Classes.SpecialAgent()),
-    new GeneratorOption([76, 79], Classes.Troubleshooter()),
-    new GeneratorOption([80, 83], Classes.BountyHunter()),
-    new GeneratorOption([84, 88], Classes.Nomad()),
-    new GeneratorOption([89, 92], Classes.Explorer()),
-    new GeneratorOption([93, 96], Classes.Punk()),
-    new GeneratorOption([97, 100], Classes.Scavenger())
-]);
-
-class Ship {
-    constructor(model, debt, hull, trait = null) {
-        this._damage = 0;
-        this.model = model;
-        this.debt = debt;
-        this.hull = hull;
-        this.trait = trait;
-    }
-    get damage() { return this._damage; }
-    set damage(value) {
-        this._damage = value;
-    }
-}
-
-class ShipGenerator {
-}
-ShipGenerator.Generate = () => {
-    const roll = d100();
-    if (roll >= 1 && roll <= 12)
-        return new Ship("Worn freighter", d6() + 20, 30);
-    else if (roll >= 13 && roll <= 18)
-        return new Ship("Retired troop transport", d6() + 30, 35);
-    else if (roll >= 19 && roll <= 23)
-        return new Ship("Strange alien vessel", d6() + 15, 25);
-    else if (roll >= 24 && roll <= 31)
-        return new Ship("Upgraded shuttle", d6() + 10, 20);
-    else if (roll >= 32 && roll <= 38)
-        return new Ship("Retired scout ship", d6() + 20, 25, ShipTrait.FuelEfficient);
-    else if (roll >= 39 && roll <= 45)
-        return new Ship("Repurposed science vessel", d6() + 10, 20);
-    else if (roll >= 46 && roll <= 56)
-        return new Ship("Battered mining ship", d6() + 20, 35, ShipTrait.FuelHog);
-    else if (roll >= 57 && roll <= 65)
-        return new Ship("Unreliable merchant cruiser", d6() + 20, 30);
-    else if (roll >= 66 && roll <= 70)
-        return new Ship("Former diplomatic vessel", d6() + 15, 25);
-    else if (roll >= 71 && roll <= 76)
-        return new Ship("Ancient low-tech craft", d6() + 20, 35, ShipTrait.DodgyDrive);
-    else if (roll >= 77 && roll <= 84)
-        return new Ship("Built from salvaged wrecks", d6() + 20, 30);
-    else if (roll >= 85 && roll <= 95)
-        return new Ship("Worn colony ship", d6() + 20, 25, ShipTrait.StandardIssue);
-    else
-        return new Ship("Retired military patrol ship", d6() + 35, 40, ShipTrait.Armored);
+const Consumables = {
+    BoosterPills: () => new Consumable(`Booster Pills`, `When taken, the character removes all Stun markers. They may move at double normal Speed this round.`),
+    CombatSerum: () => new Consumable(`Combat Serum`, `The character receives +2" Speed and +2 Reactions for the rest of the battle.`),
+    KiraninCrystals: () => new Consumable(`Kiranin Crystals`, `A bright, dazzling display of hypnotic lights will daze any character within 4" of the user, making them unable to act this round. The crystals have no effect on characters that already acted earlier in the round, and do not affect the user. A character that is attacked in Brawling combat will defend themselves normally.`),
+    RageOut: () => new Consumable(`Rage Out`, `The user gains +2" Speed an +1 to all Brawling rolls for the rest of this and the following round. A K'Erin user gets the benefits for the rest of the battle.`),
+    Still: () => new Consumable(`Still`, `The user gains +1 to Hit, but cannot Move during this and the next round.`),
+    StimPack: () => new Consumable(`Stim-pack`, `If a character would become a casualty, they remain on the table with a single Stun marker. This item can be used reflexively upon becoming a casualty. It does not require an action.`)
 };
+const ConsumableList = Datalist(Consumables);
+const Implants = {
+    AICompanion: () => new Implant(`AI Companion`, `When making Savvy rolls, the character may roll twice and pick the better score.`),
+    BodyWire: () => new Implant(`Body Wire`, `+1 Reactions`),
+    BoostedArm: () => new Implant(`Boosted Arm`, `Increase Grenade range by 2+". If the character ends their Move in contact with an obstacle that is no taller than the miniature, they may pull themselves up on top (bot not cross) as a Free Action.`),
+    BoostedLeg: () => new Implant(`Boosted Leg`, `Increase base move and Dash speed by +1" each.`),
+    CyberHand: () => new Implant(`Cyber Hand`, `The character may take any one Pistol they own and build it into their hand. Range is reduced to half, but the weapon always shoots with +1 to Hit and an additional +1 bonus when Brawling.`),
+    GeneticDefenses: () => new Implant(`Genetic Defenses`, `5+ Saving Throw, if subjected to any poison, virus, gas, or disease.`),
+    HealthBoost: () => new Implant(`Health Boost`, `If a post-battle Injury would result in 2+ campaign turns of recovery time, reduce the time by 1. If the character has Toughness 3 when receving this ipmlant, raise it to 4.`),
+    NerveAdjuster: () => new Implant(`Nerve Adjuster`, `Whenever the character is Stunned for any reason, they receive a 5+ Saving Throw to avoid the Stun.`),
+    NeuralOptimization: () => new Implant(`Neural Optimization`, `The character cannot be Stunned.`),
+    NightSight: () => new Implant(`Night Sight`, `The character does not suffer visibility reductions due to darkness, but is affected by smoke, gas, etc. normally.`),
+    PainSuppressor: () => new Implant(`Pain Suppressor`, `The character can perform crew tasks while in Sick Bay, though they cannot participate in battles.`)
+};
+const ImplantList = Datalist(Implants);
+const OnBoardItems = {
+    Analyzer: () => new OnBoardItem(`Analyzer`, `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`),
+    ColonistRationPacks: () => new OnBoardItem(`Colonist Ration Packs`, `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`),
+    Duplicator: () => new OnBoardItem(`Duplicator`, `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`),
+    FakeId: () => new OnBoardItem(`Fake ID`, `Add +1 to all attempts to obtain a licesne or other legal document`),
+    Fixer: () => new OnBoardItem(`Fixer`, `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`),
+    GeneticReconfigurationKit: () => new OnBoardItem(`Genetic Reconfiguration Kit`, `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`),
+    LoadedDice: () => new OnBoardItem(`Loaded Dice`, `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`),
+    LuckyDice: () => new OnBoardItem(`Lucky Dice`, `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`),
+    MkIITranslator: () => new OnBoardItem(`Mk II Translator`, `When rolling to Recruit, you may roll an additional D6.`),
+    MedPatch: () => new OnBoardItem(`Med-patch`, `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`),
+    MeditationOrb: () => new OnBoardItem(`Meditation Orb`, `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`),
+    NanoDoc: () => new OnBoardItem(`Nano-doc`, `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. YOu must decide before rolling the dice. Single-use.`),
+    NoveltyStuffedAnimal: () => new OnBoardItem(`Novelty Stuffed Animal`, `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`),
+    Purifier: () => new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`),
+    RepairBot: () => new OnBoardItem(`Repair Bot`, `+1 to all Repair attempts`),
+    SectorPermit: () => new OnBoardItem(`Sector Permit`, `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`),
+    SpareParts: () => new OnBoardItem(`Spare Parts`, `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`),
+    TeachBot: () => new OnBoardItem(`Teach-bot`, `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`),
+    Transcender: () => new OnBoardItem(`Transcender`, `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`)
+};
+const OnBoardItemList = Datalist(OnBoardItems);
+const ProtectiveDevices = {
+    BattleDress: () => new ProtectiveDevice(`Battle Dress`, `The character counts as +1 Reactions (maximum 4) and receives a Saving Throw of 5+`, ProtectiveDeviceType.Armor),
+    CamoCloak: () => new ProtectiveDevice(`Camo Cloak`, `If character is within 2" of Cover, they are counted as being in Cover. DOes not apply if the shooter is within 4".`, ProtectiveDeviceType.Screen),
+    CombatArmor: () => new ProtectiveDevice(`Combat Armor`, `Saving Throw 5+`, ProtectiveDeviceType.Armor),
+    DeflectorField: () => new ProtectiveDevice(`Deflector Field`, `Automatically deflects a single ranged weapon's Hit per battle. After a Hit is scored, decide if you wish to use the field before any rolls for Toughness or armor are made.`, ProtectiveDeviceType.Screen),
+    FlakScreen: () => new ProtectiveDevice(`Falk Screen`, `All Area weapons striking the wearer, whether through the initial shots or additional attacks fro the Area trait have their Damage reduced by -1 (to a cap of +0).`, ProtectiveDeviceType.Screen),
+    FlexArmor: () => new ProtectiveDevice(`Flex-armor`, `If the character did not move on their last activation, they count as +1 Toughness (to a maximum of 6).`, ProtectiveDeviceType.Screen),
+    FragVest: () => new ProtectiveDevice(`Frag Vest`, `The wearer receives a 6+ Saving Throw, improved to 5+ against any Area attack.`, ProtectiveDeviceType.Armor),
+    ScreenGenerator: () => new ProtectiveDevice(`Screen Generator`, `Receives a 5+ Saving Throw against gunfire. No effect against Area or Melee attacks.`, ProtectiveDeviceType.Screen),
+    StealthGear: () => new ProtectiveDevice(`Stealth Gear`, `Enemies firing from a range over 9" are -1 to Hit.`, ProtectiveDeviceType.Armor)
+};
+const ProtectiveDeviceList = Datalist(ProtectiveDevices);
+const UtilityDevices = {
+    AutoSensor: () => new UtilityDevice(`Auto Sensor`, `If an enemy begins or ends a move within 4" and Line of Sight of the character, you may immediately fire one shot form any Pistol carried. The shot is resolved `),
+    BattleVisor: () => new UtilityDevice(`Battle Visor`, `When shooting, the character may reroll any 1s on the firing dice.`),
+    Communicator: () => new UtilityDevice(`Communicator`, `When making the Reaction roll each round, you may roll one additional die, then choose a die to discard.`),
+    ConcealedBlade: () => new UtilityDevice(`Concealed Blade`, `If the character begins teh round within 2" of an opponent, they may throw the blade as a Free Action before doing anything else. Roll to Hit normally, resolving the Hit with Damage +0. The blade can be used once per battle, and is replaced afterwards for free.`),
+    Displacer: () => new UtilityDevice(`Displacer`, `Usable once permission instead of Moving. Aim anywhere in sight. The character teleports to a point 1D6" away in a random direction. If the teleport would end up within a solid obstacle, the device fails and must be Repaired before it can be used again. The character emerges on the same height as the aiming point, which may cause them to fall if they emerge in open air. The character may take a Combat Action after teleporting. If used by a Precursor character, you may establish two "landing points", and select to use either.`),
+    DistractionBot: () => new UtilityDevice(`Distraction Bot`, `Usable once per battle as a Combat Action. Select an enemy within 12". Next time they would become active, they are unable to act, though they remove Stun markers as normal. Use a small marker to remember.`),
+    GrappleLauncher: () => new UtilityDevice(`Grapple Launcher`, `As a Combat Action, the character may use the launcher to scale a terrain feature within 1". The character can ascend up to 12" but must reach a surface they can stand on.`),
+    GravDampener: () => new UtilityDevice(`Grav Dampener`, `The character suffers no damage from faling and can descend from any height with no risk. If dropping more than 6", it counts as the character's Move for the round.`),
+    HazardSuit: () => new UtilityDevice(`Hazard Suit`, `If the character takes a Hit from an environmental hazard, they receive a 5+ Saving Throw.`),
+    HoverBoard: () => new UtilityDevice(`Hover Board`, `The character may use the board to move instead of walking. When used, the character can move up to 9" and can ignore any terrain that is man-height or lower. While hover-boarding, the character cannot engage in cobat, but can perform a non-Combat Action as needed.`),
+    InstaWall: () => new UtilityDevice(`Insta-wall`, `May be used once per mission as a Combat Action. Place a marker within 3", then place a 2" long force wall oriented any way you like, as long as it touches the marker. The wall is man-height an impenetrable to attacks (but does not block sight or mental abilities). At the start of each subsequent round, a D6 is rolled. On a 6, the wall dissipates.`),
+    JumpBelt: () => new UtilityDevice(`Jump Belt`, `Instead of Moving normally, the character may jump up to 9" directly forward and 3" upwards. Th character may take a Combat Action normally after landing.`),
+    MotionTracker: () => new UtilityDevice(`Motion Tracker`, `Add +1 to all rolls to Seize the Initiative.`),
+    MultiCutter: () => new UtilityDevice(`Multi-cutter`, `As a Combat Action, the character can cut a man-sized hole through any terrain feature up to 1" thick. The tool has no effect on force fields.`),
+    RoboRabbitsFoot: () => new UtilityDevice(`Robo-rabbit's Foot`, `A character with Luck 0 counts as having Luck 1. If the character would die while carrying this, the foot is destroyed (and cannot be Repaired), the character does not roll on the injury table.`),
+    ScannerBot: () => new UtilityDevice(`Scanner Bot`, `The crew adds +1 to all Seize the Initiative rolls.`),
+    SnooperBot: () => new UtilityDevice(`Snooper Bot`, `May be deployed before a battle, if the Seize the Initiative roll would be penalized or negated. The penalty can be ignored, but the Bot is Damaged on a D6 roll of a 1.`),
+    SonicEmitter: () => new UtilityDevice(`Sonic Emitter`, `Any enemy within 5" suffers -1 to all Hit rolls when shooting.`),
+    SteelBoots: () => new UtilityDevice(`Steel Boots`, `If the character rolls a natural 5 or 6 in a Brawl and wins the Brawl, they may opt to kick instead of striking normally. This hits with Damage +0 and knocks them 1D3" directly backwards. If the opponent is kicked into another character, that character is knocked 1D3" in a random direction.`),
+    TimeDistorter: () => new UtilityDevice(`Time Distorter`, `Activated as a Free Action. Select up to 3 enemy figures on the battlefield. They are frozen in time until the end of the following round. While in this state, they cannot Move, take Actions, or be affected by attacks or effects in any way. They are unaffected by Morale rolls as well. Single-use`)
+};
+const UtilityDeviceList = Datalist(UtilityDevices);
+const WeaponMods = {
+    AssaultBlade: () => new WeaponMod(`Assault Blade`, `The weapon gains the Melee trait. Damage +1, and wins combat on a Draw.`, false),
+    BeamLight: () => new WeaponMod(`Beam Light`, `When using the weapon in conditions of reduced visibility, increase visibility by +3".`, true),
+    Bipod: () => new WeaponMod(`Bipod`, `The weapon recieve +1 to Hit at ranges over 8" when Aiming or when firing from Cover.`, false),
+    HotShotPack: () => new WeaponMod(`Hot Shot Pack`, `If fittedto a Blast Pistol, Blast Rifle, Hand Laser, or Infantry Laser, +1 Damage. Any natural 6 on the shooting dice causes an overheat, rendering the weapon inoperable for the rest of the fight.`, true),
+    CyberConfigurableNanoSludge: () => new WeaponMod(`Cyber-configurable Nano-sludge`, `The weapon receives a permanent +1 Hit bonus.`, true),
+    Stabilizer: () => new WeaponMod(`Stabilizer`, `Weapon may ignore Heavy trait.`, true),
+    ShockAttachment: () => new WeaponMod(`Shock Attachment`, `The weapon receives the Impact trait against targets within 8".`, true),
+    UpgradeKit: () => new WeaponMod(`Upgrade Kit`, `+2" Range increase.`, true)
+};
+const WeaponModList = Datalist(WeaponMods);
+const WeaponSights = {
+    LaserSight: () => new WeaponSight(`Laser Sight`, `The weapon receives thet Snap Shot trait.`, true),
+    QualitySight: () => new WeaponSight(`Quality Sight`, `+2" Range increase. Reroll 1s when firing only 1 shot.`, false),
+    SeekerSight: () => new WeaponSight(`Seeker Sight`, `The weapon receives a +1 to Hit if the shooter did not Move this round.`, false),
+    TrackerSight: () => new WeaponSight(`Tracker Sight`, `+1 to Hit if you fired at the same target during your previous round.`, false),
+    UnityBattleSight: () => new WeaponSight(`Unity Battle Sight`, `+1 to all Hit rolls.`, false)
+};
+const WeaponSightList = Datalist(WeaponSights);
 
-class Campaign {
-    constructor({ crewSize = 6, useStory = true, useStars = true, difficulty = Difficulty.Normal } = {}) {
-        this._crew = null;
-        this.initStoryPoints = () => {
-            const points = d6();
-            switch (this._difficulty) {
-                case Difficulty.Hardcore:
-                    return points;
-                case Difficulty.Insanity:
-                    return 0;
-                default:
-                    return points + 1;
-            }
-        };
-        this.initCrew = (crew) => this._crew = this.crew === null
-            ? crew
-            : this.crew;
-        this.id = Symbol();
-        this._crewSize = crewSize;
-        this._useStory = useStory;
-        this._difficulty = difficulty;
-        this._useStars = difficulty === Difficulty.Insanity
-            ? false
-            : useStars;
-        this._storyPoints = this.initStoryPoints();
-    }
-    get crewSize() { return this._crewSize; }
-    get useStory() { return this._useStory; }
-    get useStars() { return this._useStars; }
-    get difficulty() { return this._difficulty; }
-    get crew() { return this._crew; }
-    get storyPoints() { return this._storyPoints; }
-    set storyPoints(value) {
-        this._storyPoints = this.difficulty === Difficulty.Insanity
-            ? 0
-            : value;
-    }
-}
+const HighTechWeapons = {
+    DuelingPistol: () => new Pistol("Dueling Pistol", "High Tech", {
+        range: 8,
+        shots: 1,
+        traits: [
+            WeaponTrait.Pistol,
+            WeaponTrait.Critical
+        ]
+    }),
+    HandCannon: () => new Pistol("Hand Cannon", "High Tech", {
+        range: 8,
+        shots: 1,
+        damage: 2,
+        traits: [WeaponTrait.Pistol]
+    }),
+    HandLaser: () => new Pistol("Hand Laser", "High Tech", {
+        range: 12,
+        shots: 1,
+        traits: [
+            WeaponTrait.Pistol,
+            WeaponTrait.SnapShot
+        ]
+    }),
+    BeamPistol: () => new Pistol("Beam Pistol", "High Tech", {
+        range: 10,
+        shots: 1,
+        damage: 1,
+        traits: [
+            WeaponTrait.Pistol,
+            WeaponTrait.Critical
+        ]
+    }),
+    InfantryLaser: () => new Weapon("Infantry Laser", "High Tech", {
+        range: 30,
+        shots: 1,
+        traits: [WeaponTrait.SnapShot]
+    }),
+    BlastPistol: () => new Pistol("Blast Pistol", "High Tech", {
+        range: 8,
+        shots: 1,
+        damage: 1,
+        traits: [WeaponTrait.Pistol]
+    }),
+    BlastRifle: () => new Weapon("Blast Rifle", "High Tech", {
+        range: 16,
+        shots: 1,
+        damage: 1
+    }),
+    PlasmaRifle: () => new Weapon("Plasma Rifle", "High Tech", {
+        range: 20,
+        shots: 2,
+        damage: 1,
+        traits: [
+            WeaponTrait.Focused,
+            WeaponTrait.Piercing
+        ]
+    }),
+    GlareSword: () => new Melee("Glare Sword", "High Tech", {
+        traits: [
+            WeaponTrait.Melee,
+            WeaponTrait.Elegant,
+            WeaponTrait.Piercing
+        ]
+    })
+};
+const HighTechWeaponList = Datalist(HighTechWeapons);
+const LowTechWeapons = {
+    Handgun: () => new Pistol(`Handgun`, `Low Tech`, {
+        range: 12,
+        shots: 1,
+        traits: [WeaponTrait.Pistol]
+    }),
+    ScrapPistol: () => new Pistol("Scrap Pistol", "Low Tech", {
+        range: 9,
+        shots: 1,
+        traits: [WeaponTrait.Pistol]
+    }),
+    MachinePistol: () => new Pistol("Machine Pistol", "Low Tech", {
+        range: 8,
+        shots: 2,
+        traits: [
+            WeaponTrait.Pistol,
+            WeaponTrait.Focused
+        ]
+    }),
+    ColonyRifle: () => new Weapon("Colony Rifle", "Low Tech", {
+        range: 18,
+        shots: 1
+    }),
+    Shotgun: () => new Weapon("Shotgun", "Low Tech", {
+        range: 12,
+        shots: 2,
+        damage: 1,
+        traits: [WeaponTrait.Focused]
+    }),
+    HuntingRifle: () => new Weapon("Hunting Rifle", "Low Tech", {
+        range: 30,
+        shots: 1,
+        damage: 1,
+        traits: [WeaponTrait.Heavy]
+    }),
+    Blade: () => new Melee("Blade", "Low Tech", {
+        traits: [WeaponTrait.Melee]
+    }),
+    BrutalMeleeWeapon: () => new Melee("Brutal Melee Weapon", "Low Tech", {
+        damage: 1,
+        traits: [
+            WeaponTrait.Melee,
+            WeaponTrait.Clumsy
+        ]
+    })
+};
+const LowTechWeaponList = Datalist(LowTechWeapons);
+const MilitaryWeapons = {
+    MilitaryRifle: () => new Weapon("Military Rifle", "Military", {
+        range: 24,
+        shots: 1
+    }),
+    InfantryLaser: () => new Weapon("Infantry Laser", "Military", {
+        range: 30,
+        shots: 1,
+        traits: [WeaponTrait.SnapShot]
+    }),
+    MarksmansRifle: () => new Weapon("Marksman's Rifle", "Military", {
+        range: 36,
+        shots: 1,
+        traits: [WeaponTrait.Heavy]
+    }),
+    NeedleRifle: () => new Weapon("Needle Rifle", "Military", {
+        range: 18,
+        shots: 2,
+        traits: [WeaponTrait.Critical]
+    }),
+    AutoRifle: () => new Weapon("Auto Rifle", "Military", {
+        range: 24,
+        shots: 2
+    }),
+    RattleGun: () => new Weapon("Rattle Gun", "Military", {
+        range: 24,
+        shots: 3,
+        traits: [WeaponTrait.Heavy]
+    }),
+    BoardingSaber: () => new Melee("Boarding Saber", "Military", {
+        damage: 1,
+        traits: [
+            WeaponTrait.Melee,
+            WeaponTrait.Elegant
+        ]
+    }),
+    ShatterAxe: () => new Melee("Shatter Axe", "Military", {
+        damage: 2,
+        traits: [WeaponTrait.Melee]
+    })
+};
+const MilitaryWeaponList = Datalist(MilitaryWeapons);
 
-class Crew {
-    constructor() {
-        this._leader = null;
-        this._roster = new Array();
-        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
-            && this.roster.push(character);
-        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
-    }
-    get leader() { return this._leader; }
-    set leader(character) {
-        if (this.leader && character)
-            return;
-        this.leader = character;
-        if (character)
-            character.promoteLeader();
-    }
-    get roster() { return this._roster; }
-}
+const Ships = {
+    WornFreighter: () => new Ship("Worn freighter", d6() + 20, 30),
+    RetiredTroopTransport: () => new Ship("Retired troop transport", d6() + 30, 35),
+    StrangeAlienVessel: () => new Ship("Strange alien vessel", d6() + 15, 25),
+    UpgradedShuttle: () => new Ship("Upgraded shuttle", d6() + 10, 20),
+    RetiredScoutShip: () => new Ship("Retired scout ship", d6() + 20, 25, ShipTrait.FuelEfficient),
+    RepurposedScienceVessel: () => new Ship("Repurposed science vessel", d6() + 10, 20),
+    BatteredMiningShip: () => new Ship("Battered mining ship", d6() + 20, 35, ShipTrait.FuelHog),
+    UnreliableMerchantCruiser: () => new Ship("Unreliable merchant cruiser", d6() + 20, 30),
+    FormerDiplomaticVessel: () => new Ship("Former diplomatic vessel", d6() + 15, 25),
+    AncientLowTechCraft: () => new Ship("Ancient low-tech craft", d6() + 20, 35, ShipTrait.DodgyDrive),
+    BuiltFromSalvagedWrecks: () => new Ship("Built from salvaged wrecks", d6() + 20, 30),
+    WornColonyShip: () => new Ship("Worn colony ship", d6() + 20, 25, ShipTrait.StandardIssue),
+    RetiredMilitaryPatrolShip: () => new Ship("Retired military patrol ship", d6() + 35, 40, ShipTrait.Armored)
+};
+const ShipList = Datalist(Ships);
 
 class BytesPipe {
     transform(value, precision = 2) {
