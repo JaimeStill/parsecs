@@ -377,6 +377,7 @@ _angular_platform_browser__WEBPACK_IMPORTED_MODULE_3__.platformBrowser().bootstr
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "AvailableVictoryConditions": () => (/* binding */ AvailableVictoryConditions),
 /* harmony export */   "BackdropDirective": () => (/* binding */ BackdropDirective),
 /* harmony export */   "BackgroundList": () => (/* binding */ BackgroundList),
 /* harmony export */   "Backgrounds": () => (/* binding */ Backgrounds),
@@ -403,6 +404,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Datalist": () => (/* binding */ Datalist),
 /* harmony export */   "Dialogs": () => (/* binding */ Dialogs),
 /* harmony export */   "Difficulty": () => (/* binding */ Difficulty),
+/* harmony export */   "DifficultyDescription": () => (/* binding */ DifficultyDescription),
 /* harmony export */   "Directives": () => (/* binding */ Directives),
 /* harmony export */   "Equipment": () => (/* binding */ Equipment),
 /* harmony export */   "EquipmentGenerator": () => (/* binding */ EquipmentGenerator),
@@ -413,6 +415,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Implant": () => (/* binding */ Implant),
 /* harmony export */   "ImplantList": () => (/* binding */ ImplantList),
 /* harmony export */   "Implants": () => (/* binding */ Implants),
+/* harmony export */   "KeyValue": () => (/* binding */ KeyValue),
 /* harmony export */   "LowTechWeaponList": () => (/* binding */ LowTechWeaponList),
 /* harmony export */   "LowTechWeapons": () => (/* binding */ LowTechWeapons),
 /* harmony export */   "MaterialModule": () => (/* binding */ MaterialModule),
@@ -442,6 +445,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "UtilityDevice": () => (/* binding */ UtilityDevice),
 /* harmony export */   "UtilityDeviceList": () => (/* binding */ UtilityDeviceList),
 /* harmony export */   "UtilityDevices": () => (/* binding */ UtilityDevices),
+/* harmony export */   "VictoryCondition": () => (/* binding */ VictoryCondition),
+/* harmony export */   "VictoryConditions": () => (/* binding */ VictoryConditions),
+/* harmony export */   "VictoryType": () => (/* binding */ VictoryType),
 /* harmony export */   "Weapon": () => (/* binding */ Weapon),
 /* harmony export */   "WeaponGenerator": () => (/* binding */ WeaponGenerator),
 /* harmony export */   "WeaponMod": () => (/* binding */ WeaponMod),
@@ -892,6 +898,84 @@ const Generator = (die, values) => {
     throw new Error(`Value resulting from roll of ${roll} was undefined`);
 };
 
+class KeyValue {
+    constructor(key, value) {
+        this.key = key;
+        this.value = value;
+    }
+}
+
+class CharacterProfile {
+    constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
+        this._reaction = 0;
+        this._speed = 0;
+        this._combatSkill = 0;
+        this._toughness = 0;
+        this._savvy = 0;
+        this._luck = 0;
+        this._xp = 0;
+        this.maxCombatSkill = maxCombatSkill;
+        this.maxReaction = maxReaction;
+        this.maxSpeed = maxSpeed;
+        this.maxToughness = maxToughness;
+        this.maxSavvy = maxSavvy;
+        this.maxLuck = maxLuck;
+        this.maxXp = maxXp;
+        this.reaction = reaction;
+        this.speed = speed;
+        this.combatSkill = combatSkill;
+        this.toughness = toughness;
+        this.savvy = savvy;
+        this.luck = luck;
+        this.xp = xp;
+        this.useConsumables = useConsumables;
+        this.useImplants = useImplants;
+        this.eventTarget = eventTarget;
+    }
+    get reaction() { return this._reaction; }
+    set reaction(value) {
+        this._reaction = value > this.maxReaction
+            ? this.maxReaction
+            : value;
+    }
+    get speed() { return this._speed; }
+    set speed(value) {
+        this._speed = value > 8
+            ? 8
+            : value;
+    }
+    get combatSkill() { return this._combatSkill; }
+    set combatSkill(value) {
+        this._combatSkill = value > this.maxCombatSkill
+            ? this.maxCombatSkill
+            : value;
+    }
+    get toughness() { return this._toughness; }
+    set toughness(value) {
+        this._toughness = value > this.maxToughness
+            ? this.maxToughness
+            : value;
+    }
+    get savvy() { return this._savvy; }
+    set savvy(value) {
+        this._savvy = value > this.maxSavvy
+            ? this.maxSavvy
+            : value;
+    }
+    get luck() { return this._luck; }
+    set luck(value) {
+        this._luck = value > this.maxLuck
+            ? this.maxLuck
+            : value;
+    }
+    get xp() { return this._xp; }
+    set xp(value) {
+        this._xp = value > this.maxXp
+            ? this.maxXp
+            : value;
+    }
+}
+
 var CharacterRace;
 (function (CharacterRace) {
     CharacterRace["Alien"] = "Alien";
@@ -960,6 +1044,17 @@ var ShipTrait;
     ShipTrait["StandardIssue"] = "Standard Issue: The cost of all Starship Components is reduced by 1 credit.";
     ShipTrait["Armored"] = "Armored: Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.";
 })(ShipTrait || (ShipTrait = {}));
+var VictoryType;
+(function (VictoryType) {
+    VictoryType["CampaignTurns"] = "Campaign Turns";
+    VictoryType["Quests"] = "Quests";
+    VictoryType["TabletopBattles"] = "Tabletop Battles";
+    VictoryType["UniqueIndividuals"] = "Unique Individuals";
+    VictoryType["UpgradeCharacters"] = "Upgrade Characters";
+    VictoryType["ChallengingCampaignTurns"] = "Campaign Turns: Challenging";
+    VictoryType["HardcoreCampaignTurns"] = "Campaign Turns: Hardcore";
+    VictoryType["InsanityCampaignTurns"] = "Campaign Turns: Insanity";
+})(VictoryType || (VictoryType = {}));
 var WeaponStat;
 (function (WeaponStat) {
     WeaponStat["Range"] = "Range";
@@ -984,6 +1079,315 @@ var WeaponTrait;
     WeaponTrait["Stun"] = "Stun: All targets are automatically Stunned. No damage rolls ake place.";
     WeaponTrait["Terrifying"] = "Terrifying: Any target hit must retreat 1D6\" away from the firer.";
 })(WeaponTrait || (WeaponTrait = {}));
+
+class Character {
+    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
+        this._weapons = [];
+        this._devices = [];
+        this.gear = new Array();
+        this.sidearm = null;
+        this.isLeader = false;
+        this.setRace = () => {
+            switch (this.species) {
+                case CharacterSpecies.Engineer:
+                case CharacterSpecies.Feral:
+                case CharacterSpecies.Hakshan:
+                case CharacterSpecies.KErin:
+                case CharacterSpecies.Manipulator:
+                case CharacterSpecies.Precursor:
+                case CharacterSpecies.Soulless:
+                case CharacterSpecies.Swift:
+                    return CharacterRace.Alien;
+                case CharacterSpecies.AssaultBot:
+                case CharacterSpecies.Bot:
+                    return CharacterRace.Bot;
+                case CharacterSpecies.BioUpgrade:
+                case CharacterSpecies.EmoSuppressed:
+                case CharacterSpecies.Empath:
+                case CharacterSpecies.Feeler:
+                case CharacterSpecies.Human:
+                case CharacterSpecies.MinorAlien:
+                case CharacterSpecies.Mutant:
+                case CharacterSpecies.MysteriousPast:
+                case CharacterSpecies.Primitive:
+                    return CharacterRace.Human;
+                default:
+                    return CharacterRace.Strange;
+            }
+        };
+        this.promoteLeader = () => {
+            this.isLeader = true;
+            this.profile.luck += 1;
+        };
+        this.id = Symbol();
+        this.species = species;
+        this.profile = new CharacterProfile({
+            reaction, maxReaction,
+            speed, maxSpeed,
+            combatSkill, maxCombatSkill,
+            toughness, maxToughness,
+            savvy, maxSavvy,
+            luck, maxLuck,
+            xp, maxXp,
+            useConsumables, useImplants,
+            eventTarget
+        });
+        this.race = this.setRace();
+    }
+    get weapons() { return this._weapons; }
+    get devices() { return this._devices; }
+}
+
+class CharacterDetail {
+    constructor(detail, { effects = null, resources = null, equipment = null } = {}) {
+        this.detail = detail;
+        this.effects = effects;
+        this.resources = resources;
+        this.equipment = equipment;
+    }
+}
+
+class Equipment {
+    constructor(name, description) {
+        this.id = Symbol();
+        this.name = name;
+        this.description = description;
+    }
+}
+class ProtectiveDevice extends Equipment {
+    constructor(name, description, type) {
+        super(name, description);
+        this.type = type;
+    }
+}
+class WeaponMod extends Equipment {
+    constructor(name, description, allowPistol) {
+        super(name, description);
+        this.allowPistol = allowPistol;
+    }
+}
+class WeaponSight extends Equipment {
+    constructor(name, description, pistolOnly, damaged = false) {
+        super(name, description);
+        this.pistolOnly = pistolOnly;
+        this.damaged = damaged;
+    }
+}
+class Consumable extends Equipment {
+}
+class Implant extends Equipment {
+}
+class UtilityDevice extends Equipment {
+}
+class OnBoardItem extends Equipment {
+}
+
+class Weapon {
+    constructor(model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
+        this._damaged = false;
+        this.hitBonus = 0;
+        this.hasTrait = (trait) => this.traits.some((t) => t === trait);
+        this.isType = (t) => this instanceof t;
+        this.canAddMod = (mod) => {
+            if (this.mod)
+                return false;
+            if (this.shots < 2)
+                return false;
+            if (this.isType(Melee))
+                return false;
+            if (!(mod.allowPistol) && this.isType(Pistol))
+                return false;
+            return true;
+        };
+        this.canAddSight = (sight) => {
+            if (this.sight)
+                return false;
+            if (this.shots < 2)
+                return false;
+            if (this.isType(Melee))
+                return false;
+            if (sight.pistolOnly && !this.isType(Pistol))
+                return false;
+            return true;
+        };
+        this.addMod = (mod) => this.mod = this.canAddMod(mod)
+            ? mod
+            : this.mod;
+        this.addSight = (sight) => this.sight = this.canAddSight(sight)
+            ? sight
+            : this.sight;
+        this.removeSight = () => {
+            const sight = this.sight;
+            this.sight = null;
+            return sight;
+        };
+        this.swapSight = (weapon) => {
+            const swap = weapon.sight;
+            weapon.sight = this.sight;
+            this.sight = swap;
+        };
+        this.model = model;
+        this.description = description;
+        this.range = range;
+        this.shots = shots;
+        this.damage = damage;
+        this.traits = traits;
+        this.mod = mod;
+        this.sight = sight;
+        this.damaged = damaged;
+    }
+    get damaged() { return this._damaged; }
+    set damaged(value) {
+        if (this.sight)
+            this.sight.damaged = value;
+        this._damaged = value;
+    }
+}
+class Sidearm extends Weapon {
+}
+class Pistol extends Sidearm {
+}
+class Melee extends Sidearm {
+}
+
+class Campaign {
+    constructor(name, crew, { crewSize = 6, storyPoints = 0, useStory = true, useStars = true, difficulty = Difficulty.Normal, victory = null } = {}) {
+        this._storyPoints = 0;
+        this.id = Symbol();
+        this.name = name;
+        this.crewSize = crewSize;
+        this.difficulty = difficulty;
+        this.crew = crew;
+        this.victory = victory;
+        this.useStory = difficulty === Difficulty.Insanity
+            ? false
+            : useStory;
+        this.useStars = difficulty === Difficulty.Insanity
+            ? false
+            : useStars;
+        this.storyPoints = this.useStory
+            ? storyPoints
+            : 0;
+    }
+    get storyPoints() { return this._storyPoints; }
+    set storyPoints(value) {
+        this._storyPoints = this.difficulty === Difficulty.Insanity
+            ? 0
+            : value;
+    }
+}
+
+class VictoryCondition {
+    constructor(iterations, type, difficulties = null) {
+        this.difficulties = new Array(Difficulty.Normal, Difficulty.Challenging, Difficulty.Hardcore, Difficulty.Insanity);
+        this.iterations = iterations;
+        this.type = type;
+        this.difficulties = difficulties !== null && difficulties !== void 0 ? difficulties : this.difficulties;
+    }
+}
+
+class Crew {
+    constructor() {
+        this._leader = null;
+        this._roster = new Array();
+        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
+            && this.roster.push(character);
+        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
+    }
+    get leader() { return this._leader; }
+    set leader(character) {
+        if (this.leader && character)
+            return;
+        this.leader = character;
+        if (character)
+            character.promoteLeader();
+    }
+    get roster() { return this._roster; }
+}
+
+class Ship {
+    constructor(model, debt, hull, trait = null) {
+        this._damage = 0;
+        this.model = model;
+        this.debt = debt;
+        this.hull = hull;
+        this.trait = trait;
+    }
+    get damage() { return this._damage; }
+    set damage(value) {
+        this._damage = value;
+    }
+}
+
+const EASY = [
+    `After every battle, select a crew member to receive +1 XP.`,
+    `Increase post-battle rewards by +1 credit.`,
+    `When setting up a tabletop battle, if you would face 5+ opponents, remove one Basic enemy.`,
+    `Only the Play 20 campaign turns and Win 20 tabletop battles Victory Conditions can be completed in the Easy difficulty mode.`
+];
+const CHALLENGING = [
+    `When rolling to determine enemy numbers faced in battle, count any die rolling a 1 or 2 as a 3.`
+];
+const HARDCORE = [
+    ...CHALLENGING,
+    `Add an additional Basic enemy to every battle.`,
+    `Add +2 to all Invasion rolls.`,
+    `Add a -2 penalty to all Seize the Initiative rolls.`,
+    `Add +1 when rolling for Unique Individuals.`,
+    `Begin the campaign wiht one less story point`
+];
+const INSANITY = [
+    ...HARDCORE,
+    `Add an additional Specialist enemy to every battle.`,
+    `Add +3 to all Invasion rolls.`,
+    `Apply a -3 penalty to all Seize the Initiative rolls.`,
+    `The opposing side always includes a Unique Individual, even for Roving Threats.`,
+    `Roll 2d6. On all 11-12, they include two Unique Individuals.`,
+    `Receive no 'Stars of the Story' options.`,
+    `Receive no story points. If any item or event would grant them, it has no effect and the item or event is not re-rolled.`
+];
+const DifficultyDescription = (difficulty) => {
+    switch (difficulty) {
+        case Difficulty.Easy:
+            return EASY;
+        case Difficulty.Challenging:
+            return CHALLENGING;
+        case Difficulty.Hardcore:
+            return HARDCORE;
+        case Difficulty.Insanity:
+            return INSANITY;
+        default:
+            return [`No changes to game mechanics. All rules apply as written.`];
+    }
+};
+const ALL_DIFFICULTIES = [
+    Difficulty.Easy,
+    Difficulty.Normal,
+    Difficulty.Challenging,
+    Difficulty.Hardcore,
+    Difficulty.Insanity
+];
+const VictoryConditions = [
+    new KeyValue('Play 20 Campaign Turns', new VictoryCondition(20, VictoryType.CampaignTurns, ALL_DIFFICULTIES)),
+    new KeyValue(`Play 50 Campaign Turns`, new VictoryCondition(50, VictoryType.CampaignTurns)),
+    new KeyValue(`Play 100 Campaign Turns`, new VictoryCondition(100, VictoryType.CampaignTurns)),
+    new KeyValue(`Complete 3 Quests`, new VictoryCondition(3, VictoryType.Quests)),
+    new KeyValue(`Complete 5 Quests`, new VictoryCondition(5, VictoryType.Quests)),
+    new KeyValue(`Complete 10 Quests`, new VictoryCondition(10, VictoryType.Quests)),
+    new KeyValue(`Win 20 Tabletop Battles`, new VictoryCondition(20, VictoryType.TabletopBattles, ALL_DIFFICULTIES)),
+    new KeyValue(`Win 50 Tabletop Battles`, new VictoryCondition(50, VictoryType.TabletopBattles)),
+    new KeyValue(`Win 100 Tabletop Battles`, new VictoryCondition(100, VictoryType.TabletopBattles)),
+    new KeyValue(`Kill 10 Unique Individuals`, new VictoryCondition(10, VictoryType.UniqueIndividuals)),
+    new KeyValue(`Kill 25 Unique Individuals`, new VictoryCondition(25, VictoryType.UniqueIndividuals)),
+    new KeyValue(`Upgrade a Single Character 10 Times`, new VictoryCondition(1, VictoryType.UpgradeCharacters)),
+    new KeyValue(`Upgrade 3 Characters 10 Times`, new VictoryCondition(3, VictoryType.UpgradeCharacters)),
+    new KeyValue(`Upgrade 5 Characters 10 Times`, new VictoryCondition(5, VictoryType.UpgradeCharacters)),
+    new KeyValue(`Play 50 Campaign Turns in Challenging Mode`, new VictoryCondition(50, VictoryType.ChallengingCampaignTurns, [Difficulty.Challenging])),
+    new KeyValue(`Play 50 Campaign Turns in Hardcore Mode`, new VictoryCondition(50, VictoryType.HardcoreCampaignTurns, [Difficulty.Hardcore])),
+    new KeyValue(`Play 50 Campaign Turns in Insanity Mode`, new VictoryCondition(50, VictoryType.InsanityCampaignTurns, [Difficulty.Insanity]))
+];
+const AvailableVictoryConditions = (difficulty) => VictoryConditions
+    .filter((vc) => vc.value.difficulties.includes(difficulty));
 
 var _a;
 class CharacterGenerator {
@@ -1197,319 +1601,6 @@ WeaponGenerator.GenerateMilitary = () => Generator(d100, [
     new GeneratorOption([81, 95], MilitaryWeapons.BoardingSaber()),
     new GeneratorOption([96, 100], MilitaryWeapons.ShatterAxe())
 ]);
-
-class CharacterProfile {
-    constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
-        this._reaction = 0;
-        this._speed = 0;
-        this._combatSkill = 0;
-        this._toughness = 0;
-        this._savvy = 0;
-        this._luck = 0;
-        this._xp = 0;
-        this.maxCombatSkill = maxCombatSkill;
-        this.maxReaction = maxReaction;
-        this.maxSpeed = maxSpeed;
-        this.maxToughness = maxToughness;
-        this.maxSavvy = maxSavvy;
-        this.maxLuck = maxLuck;
-        this.maxXp = maxXp;
-        this.reaction = reaction;
-        this.speed = speed;
-        this.combatSkill = combatSkill;
-        this.toughness = toughness;
-        this.savvy = savvy;
-        this.luck = luck;
-        this.xp = xp;
-        this.useConsumables = useConsumables;
-        this.useImplants = useImplants;
-        this.eventTarget = eventTarget;
-    }
-    get reaction() { return this._reaction; }
-    set reaction(value) {
-        this._reaction = value > this.maxReaction
-            ? this.maxReaction
-            : value;
-    }
-    get speed() { return this._speed; }
-    set speed(value) {
-        this._speed = value > 8
-            ? 8
-            : value;
-    }
-    get combatSkill() { return this._combatSkill; }
-    set combatSkill(value) {
-        this._combatSkill = value > this.maxCombatSkill
-            ? this.maxCombatSkill
-            : value;
-    }
-    get toughness() { return this._toughness; }
-    set toughness(value) {
-        this._toughness = value > this.maxToughness
-            ? this.maxToughness
-            : value;
-    }
-    get savvy() { return this._savvy; }
-    set savvy(value) {
-        this._savvy = value > this.maxSavvy
-            ? this.maxSavvy
-            : value;
-    }
-    get luck() { return this._luck; }
-    set luck(value) {
-        this._luck = value > this.maxLuck
-            ? this.maxLuck
-            : value;
-    }
-    get xp() { return this._xp; }
-    set xp(value) {
-        this._xp = value > this.maxXp
-            ? this.maxXp
-            : value;
-    }
-}
-
-class Character {
-    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
-        this._weapons = [];
-        this._devices = [];
-        this.gear = new Array();
-        this.sidearm = null;
-        this.isLeader = false;
-        this.setRace = () => {
-            switch (this.species) {
-                case CharacterSpecies.Engineer:
-                case CharacterSpecies.Feral:
-                case CharacterSpecies.Hakshan:
-                case CharacterSpecies.KErin:
-                case CharacterSpecies.Manipulator:
-                case CharacterSpecies.Precursor:
-                case CharacterSpecies.Soulless:
-                case CharacterSpecies.Swift:
-                    return CharacterRace.Alien;
-                case CharacterSpecies.AssaultBot:
-                case CharacterSpecies.Bot:
-                    return CharacterRace.Bot;
-                case CharacterSpecies.BioUpgrade:
-                case CharacterSpecies.EmoSuppressed:
-                case CharacterSpecies.Empath:
-                case CharacterSpecies.Feeler:
-                case CharacterSpecies.Human:
-                case CharacterSpecies.MinorAlien:
-                case CharacterSpecies.Mutant:
-                case CharacterSpecies.MysteriousPast:
-                case CharacterSpecies.Primitive:
-                    return CharacterRace.Human;
-                default:
-                    return CharacterRace.Strange;
-            }
-        };
-        this.promoteLeader = () => {
-            this.isLeader = true;
-            this.profile.luck += 1;
-        };
-        this.id = Symbol();
-        this.species = species;
-        this.profile = new CharacterProfile({
-            reaction, maxReaction,
-            speed, maxSpeed,
-            combatSkill, maxCombatSkill,
-            toughness, maxToughness,
-            savvy, maxSavvy,
-            luck, maxLuck,
-            xp, maxXp,
-            useConsumables, useImplants,
-            eventTarget
-        });
-        this.race = this.setRace();
-    }
-    get weapons() { return this._weapons; }
-    get devices() { return this._devices; }
-}
-
-class CharacterDetail {
-    constructor(detail, { effects = null, resources = null, equipment = null } = {}) {
-        this.detail = detail;
-        this.effects = effects;
-        this.resources = resources;
-        this.equipment = equipment;
-    }
-}
-
-class Equipment {
-    constructor(name, description) {
-        this.id = Symbol();
-        this.name = name;
-        this.description = description;
-    }
-}
-class ProtectiveDevice extends Equipment {
-    constructor(name, description, type) {
-        super(name, description);
-        this.type = type;
-    }
-}
-class WeaponMod extends Equipment {
-    constructor(name, description, allowPistol) {
-        super(name, description);
-        this.allowPistol = allowPistol;
-    }
-}
-class WeaponSight extends Equipment {
-    constructor(name, description, pistolOnly, damaged = false) {
-        super(name, description);
-        this.pistolOnly = pistolOnly;
-        this.damaged = damaged;
-    }
-}
-class Consumable extends Equipment {
-}
-class Implant extends Equipment {
-}
-class UtilityDevice extends Equipment {
-}
-class OnBoardItem extends Equipment {
-}
-
-class Weapon {
-    constructor(model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
-        this._damaged = false;
-        this.hitBonus = 0;
-        this.hasTrait = (trait) => this.traits.some((t) => t === trait);
-        this.isType = (t) => this instanceof t;
-        this.canAddMod = (mod) => {
-            if (this.mod)
-                return false;
-            if (this.shots < 2)
-                return false;
-            if (this.isType(Melee))
-                return false;
-            if (!(mod.allowPistol) && this.isType(Pistol))
-                return false;
-            return true;
-        };
-        this.canAddSight = (sight) => {
-            if (this.sight)
-                return false;
-            if (this.shots < 2)
-                return false;
-            if (this.isType(Melee))
-                return false;
-            if (sight.pistolOnly && !this.isType(Pistol))
-                return false;
-            return true;
-        };
-        this.addMod = (mod) => this.mod = this.canAddMod(mod)
-            ? mod
-            : this.mod;
-        this.addSight = (sight) => this.sight = this.canAddSight(sight)
-            ? sight
-            : this.sight;
-        this.removeSight = () => {
-            const sight = this.sight;
-            this.sight = null;
-            return sight;
-        };
-        this.swapSight = (weapon) => {
-            const swap = weapon.sight;
-            weapon.sight = this.sight;
-            this.sight = swap;
-        };
-        this.model = model;
-        this.description = description;
-        this.range = range;
-        this.shots = shots;
-        this.damage = damage;
-        this.traits = traits;
-        this.mod = mod;
-        this.sight = sight;
-        this.damaged = damaged;
-    }
-    get damaged() { return this._damaged; }
-    set damaged(value) {
-        if (this.sight)
-            this.sight.damaged = value;
-        this._damaged = value;
-    }
-}
-class Sidearm extends Weapon {
-}
-class Pistol extends Sidearm {
-}
-class Melee extends Sidearm {
-}
-
-class Campaign {
-    constructor({ crewSize = 6, useStory = true, useStars = true, difficulty = Difficulty.Normal } = {}) {
-        this._crew = null;
-        this.initStoryPoints = () => {
-            const points = d6();
-            switch (this._difficulty) {
-                case Difficulty.Hardcore:
-                    return points;
-                case Difficulty.Insanity:
-                    return 0;
-                default:
-                    return points + 1;
-            }
-        };
-        this.initCrew = (crew) => this._crew = this.crew === null
-            ? crew
-            : this.crew;
-        this.id = Symbol();
-        this._crewSize = crewSize;
-        this._useStory = useStory;
-        this._difficulty = difficulty;
-        this._useStars = difficulty === Difficulty.Insanity
-            ? false
-            : useStars;
-        this._storyPoints = this.initStoryPoints();
-    }
-    get crewSize() { return this._crewSize; }
-    get useStory() { return this._useStory; }
-    get useStars() { return this._useStars; }
-    get difficulty() { return this._difficulty; }
-    get crew() { return this._crew; }
-    get storyPoints() { return this._storyPoints; }
-    set storyPoints(value) {
-        this._storyPoints = this.difficulty === Difficulty.Insanity
-            ? 0
-            : value;
-    }
-}
-
-class Crew {
-    constructor() {
-        this._leader = null;
-        this._roster = new Array();
-        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
-            && this.roster.push(character);
-        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
-    }
-    get leader() { return this._leader; }
-    set leader(character) {
-        if (this.leader && character)
-            return;
-        this.leader = character;
-        if (character)
-            character.promoteLeader();
-    }
-    get roster() { return this._roster; }
-}
-
-class Ship {
-    constructor(model, debt, hull, trait = null) {
-        this._damage = 0;
-        this.model = model;
-        this.debt = debt;
-        this.hull = hull;
-        this.trait = trait;
-    }
-    get damage() { return this._damage; }
-    set damage(value) {
-        this._damage = value;
-    }
-}
 
 const Backgrounds = {
     PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
