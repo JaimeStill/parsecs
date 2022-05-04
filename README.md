@@ -6,33 +6,29 @@
 ## Tasks
 
 ### Base Game Mechanics
-- [ ] Equipment Class Structure
-- [ ] Ship Class Structure
-- [ ] Crew Class Structure
 - [ ] Inventory Management System
-  - [ ] Character
-  - [ ] Crew
+    - [ ] Character
+    - [ ] Crew
 - [ ] Campaign Engine
-  - [ ] Campaign Class Structure
-    - [ ] Implement Victory conditions
-    - [ ] Implements Stars of the Story
-  - [ ] Campaign Preparation
+    - [ ] Campaign Class Structure
+        - [ ] Implement Victory conditions
+        - [ ] Implements Stars of the Story
+    - [ ] Campaign Preparation
     - [ ] Campaign Settings
-    - [ ] Character Creation
-      
-      * Randomization should be optional per character
-      - [ ] Background
-      - [ ] Motiviation
-      - [ ] Class
-  - [ ] Campaign Turn Processor
-    - [ ] Travel
-    - [ ] World
-    - [ ] Battle Management
-      * Turn racking
-      * Character / Enemy Status Tracking
-      * Engagement calculations
-      * Shooting Hit / Damage Calculations
-      * Brawling Calculations
+    - [ ] Character Creation      
+        * Randomization should be optional per character
+        - [ ] Background
+        - [ ] Motiviation
+        - [ ] Class
+    - [ ] Campaign Turn Processor
+        - [ ] Travel
+        - [ ] World
+        - [ ] Battle Management
+        * Turn racking
+        * Character / Enemy Status Tracking
+        * Engagement calculations
+        * Shooting Hit / Damage Calculations
+        * Brawling Calculations
     - [ ] Post-Battle
 
 ### Firebase Integration - Initial Scope
@@ -62,9 +58,9 @@ Toolbar Features:
 
 Routes:
 * `{app-url}`
-  * If authenticated, Shows all campaigns available to the player split into two categories:
-    * Owned
-    * Participating
-  * If not authenticated, provides an overview of the app.
+    * If authenticated, Shows all campaigns available to the player split into two categories:
+        * Owned
+        * Participating
+        * If not authenticated, provides an overview of the app.
 * `{app-url}/{campaign}`
-  * The root route to the campaign management interface. From this point, the campaign engine will drive the avaialble interactive features.
+    * The root route to the campaign management interface. From this point, the campaign engine will drive the avaialble interactive features.

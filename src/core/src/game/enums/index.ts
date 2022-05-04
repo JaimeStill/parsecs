@@ -66,6 +66,17 @@ export enum ShipTrait {
   Armored = `Armored: Any time the ship takes damage, you lose 1 Hull Point less than indicated by the rules.`
 }
 
+export enum VictoryType {
+  CampaignTurns = "Campaign Turns",
+  Quests = "Quests",
+  TabletopBattles = "Tabletop Battles",
+  UniqueIndividuals = "Unique Individuals",
+  UpgradeCharacters = "Upgrade Characters",
+  ChallengingCampaignTurns = "Campaign Turns: Challenging",
+  HardcoreCampaignTurns = "Campaign Turns: Hardcore",
+  InsanityCampaignTurns = "Campaign Turns: Insanity"
+}
+
 export enum WeaponStat {
   Range = "Range",
   Shots = "Shots",
