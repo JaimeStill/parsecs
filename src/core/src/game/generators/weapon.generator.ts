@@ -1,4 +1,4 @@
-import { Weapon } from '../models';
+import { Weapon } from '../models/equipment/weapon';
 
 import {
   d100,
@@ -10,7 +10,7 @@ import {
   HighTechWeapons,
   LowTechWeapons,
   MilitaryWeapons
-} from '../data';
+} from '../data/weapon.data';
 
 export abstract class WeaponGenerator {
   static GenerateHighTech = (): Weapon =>

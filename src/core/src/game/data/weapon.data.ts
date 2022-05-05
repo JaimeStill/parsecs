@@ -5,7 +5,7 @@ import {
   Melee,
   Pistol,
   Weapon
-} from '../models';
+} from '../models/equipment/weapon';
 
 export const HighTechWeapons = {
   DuelingPistol: () => new Pistol("Dueling Pistol", "High Tech", {

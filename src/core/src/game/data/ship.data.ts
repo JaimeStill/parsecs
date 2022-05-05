@@ -1,5 +1,5 @@
 import { ShipTrait } from '../enums';
-import { Ship } from '../models';
+import { Ship } from '../models/ship';
 
 import {
   d6,

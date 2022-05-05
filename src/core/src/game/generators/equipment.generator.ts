@@ -1,3 +1,5 @@
+import { WeaponGenerator } from './weapon.generator';
+
 import {
   d100,
   Generator,
@@ -12,14 +14,12 @@ import {
   UtilityDevices,
   WeaponMods,
   WeaponSights
-} from '../data';
+} from '../data/equipment.data';
 
 import {
   Equipment,
   Weapon
-} from '../models';
-
-import { WeaponGenerator } from './weapon.generator';
+} from '../models/equipment';
 
 export abstract class EquipmentGenerator {
   static GenerateStash = (): (Weapon | Equipment)[] => {

@@ -1,3 +1,9 @@
+import { EquipmentGenerator } from '../generators/equipment.generator';
+import { WeaponGenerator } from '../generators/weapon.generator';
+import { Character } from '../models/character/character';
+import { CharacterDetail } from '../models/character/character-detail';
+import { CharacterProfileConfig } from '../models/character/character-profile';
+
 import {
   d6,
   dice,
@@ -8,17 +14,6 @@ import {
   CharacterSpecies,
   CharacterStat
 } from '../enums';
-
-import {
-  EquipmentGenerator,
-  WeaponGenerator
-} from '../generators';
-
-import {
-  Character,
-  CharacterDetail,
-  CharacterProfileConfig
-} from '../models';
 
 export const Backgrounds = {
   PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {

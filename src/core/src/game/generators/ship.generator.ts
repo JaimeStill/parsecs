@@ -1,5 +1,5 @@
-import { Ships } from '../data';
-import { Ship } from '../models';
+import { Ships } from '../data/ship.data';
+import { Ship } from '../models/ship';
 
 import {
   d100,

@@ -9,7 +9,7 @@ import {
   Characters,
   Classes,
   Motivations
-} from '../data';
+} from '../data/character.data';
 
 import {
   CharacterSpecies,
@@ -17,11 +17,14 @@ import {
 } from '../enums';
 
 import {
-  Character,
-  CharacterDetail,
   ConsolidateResources,
   CrewResource
-} from '../models';
+} from '../models/crew';
+
+import {
+  Character,
+  CharacterDetail
+} from '../models/character';
 
 export abstract class CharacterGenerator {
   static GenerateRoster = (size: number): Character[] => {
@@ -91,7 +94,7 @@ export abstract class CharacterGenerator {
         if (b.resources?.credits)
           b.resources.credits >= 2
             ? b.resources.credits -= 2
-            : b.resources.credits = 0;          
+            : b.resources.credits = 0;
         break;
       default:
         b = this.GenerateBackground();

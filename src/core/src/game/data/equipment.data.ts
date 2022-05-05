@@ -9,7 +9,7 @@ import {
   UtilityDevice,
   WeaponMod,
   WeaponSight
-} from '../models';
+} from '../models/equipment/equipment';
 
 export const Consumables = {
   BoosterPills: () => new Consumable(
