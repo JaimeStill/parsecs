@@ -1561,30 +1561,14 @@ class CharacterDetail {
                 this.effects = cd.effects;
         };
         this.mergeResources = (cd) => {
-            if (this.resources && cd.resources) {
-                if (this.resources.credits && cd.resources.credits)
-                    this.resources.credits += cd.resources.credits;
-                else if (cd.resources.credits)
-                    this.resources.credits = cd.resources.credits;
-                if (this.resources.patrons && cd.resources.patrons)
-                    this.resources.patrons += cd.resources.patrons;
-                else if (cd.resources.patrons)
-                    this.resources.patrons = cd.resources.patrons;
-                if (this.resources.rivals && cd.resources.rivals)
-                    this.resources.rivals += cd.resources.rivals;
-                else if (cd.resources.rivals)
-                    this.resources.rivals = cd.resources.rivals;
-                if (this.resources.rumors && cd.resources.rumors)
-                    this.resources.rumors += cd.resources.rumors;
-                else if (cd.resources.rumors)
-                    this.resources.rumors = cd.resources.rumors;
-                if (this.resources.storyPoints && cd.resources.storyPoints)
-                    this.resources.storyPoints += cd.resources.storyPoints;
-                else if (cd.resources.storyPoints)
-                    this.resources.storyPoints = cd.resources.storyPoints;
-            }
-            else if (cd.resources)
-                this.resources = cd.resources;
+            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
+            this.resources = Object.assign({}, (_a = this.resources) !== null && _a !== void 0 ? _a : {});
+            cd.resources = Object.assign({}, (_b = cd.resources) !== null && _b !== void 0 ? _b : {});
+            this.resources.credits = ((_c = this.resources.credits) !== null && _c !== void 0 ? _c : 0) + ((_d = cd.resources.credits) !== null && _d !== void 0 ? _d : 0);
+            this.resources.patrons = ((_e = this.resources.patrons) !== null && _e !== void 0 ? _e : 0) + ((_f = cd.resources.patrons) !== null && _f !== void 0 ? _f : 0);
+            this.resources.rivals = ((_g = this.resources.rivals) !== null && _g !== void 0 ? _g : 0) + ((_h = cd.resources.rivals) !== null && _h !== void 0 ? _h : 0);
+            this.resources.rumors = ((_j = this.resources.rumors) !== null && _j !== void 0 ? _j : 0) + ((_k = cd.resources.rumors) !== null && _k !== void 0 ? _k : 0);
+            this.resources.storyPoints = ((_l = this.resources.storyPoints) !== null && _l !== void 0 ? _l : 0) + ((_m = cd.resources.storyPoints) !== null && _m !== void 0 ? _m : 0);
         };
         this.mergeEquipment = (cd) => {
             if (this.equipment && cd.equipment)
