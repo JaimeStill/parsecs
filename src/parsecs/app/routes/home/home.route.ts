@@ -35,7 +35,7 @@ export class HomeRoute implements OnInit {
     for (var i = 0; i < c.crew.roster.length; i++)
       c.crew.roster[i].name = `Character ${i}`;
       
-    c.victory = c.victoryConditions[0];
+    c.victory = c.victoryConditions[0].value;
 
     this.campaign = c.finalize();
   }
