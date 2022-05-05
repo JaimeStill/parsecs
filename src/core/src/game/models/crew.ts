@@ -18,9 +18,7 @@ export const ConsolidateResources = (resources: CrewResource[]): CrewResource =>
       patrons: (total.patrons ?? 0) + (current.patrons ?? 0),
       rivals: (total.rivals ?? 0) + (current.rivals ?? 0),
       rumors: (total.rumors ?? 0) + (current.rumors ?? 0),
-      storyPoints: this.difficulty === Difficulty.Insanity
-        ? 0
-        : (total.storyPoints ?? 0) + (current.storyPoints ?? 0)
+      storyPoints: (total.storyPoints ?? 0) + (current.storyPoints ?? 0)
     } as CrewResource
   });
 

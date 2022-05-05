@@ -1,5 +1,3 @@
-import { Equipment } from '../models';
-
 import {
   d100,
   Generator,
@@ -16,13 +14,18 @@ import {
   WeaponSights
 } from '../data';
 
+import {
+  Equipment,
+  Weapon
+} from '../models';
+
 import { WeaponGenerator } from './weapon.generator';
 
 export abstract class EquipmentGenerator {
   static GenerateStash = (): (Weapon | Equipment)[] => {
     const stash = new Array<Weapon | Equipment>();
 
-    for (i = 0; i < 3; i++) {
+    for (let i = 0; i < 3; i++) {
       stash.push(WeaponGenerator.GenerateMilitary());
       stash.push(WeaponGenerator.GenerateLowTech());
     }

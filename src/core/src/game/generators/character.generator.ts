@@ -41,13 +41,13 @@ export abstract class CharacterGenerator {
 
       return { } as CrewResource;
     } else {
-      const resources = ConsolidateResources(
+      const resources = ConsolidateResources([
         this.DevelopBackground(character),
         this.DevelopMotivation(character),
         this.DevelopClass(character)
-      );
+      ]);
 
-      switch (character.Species) {
+      switch (character.species) {
         case CharacterSpecies.MinorAlien:
           if (resources.credits)
             resources.credits -= 1;
@@ -86,7 +86,7 @@ export abstract class CharacterGenerator {
       case CharacterSpecies.Primitive:
         b = Backgrounds.PrimitiveOrRegressedWorld();
         break;
-      case CharacterSpecies.BioUpgrade():
+      case CharacterSpecies.BioUpgrade:
         b = this.GenerateBackground();
         if (b.resources?.credits)
           b.resources.credits >= 2
@@ -123,7 +123,7 @@ export abstract class CharacterGenerator {
         m = this.GenerateMotivation();
         m.merge(this.GenerateMotivation());
         break;
-      case CharacterSpecies.Survival:
+      case CharacterSpecies.EmoSuppressed:
         m = Motivations.Survival();
         break;
       case CharacterSpecies.Traveler:

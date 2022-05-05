@@ -115,14 +115,14 @@ export class CampaignConfig {
     let resources: CrewResource;
 
     for (let character of this.crew.roster)
-      ConsolidateResources(resources, CharacterGenerator.DevelopCharacter(character));
+      resources = ConsolidateResources([resources, CharacterGenerator.DevelopCharacter(character)]);
 
-    resources?.storyPoints = this.difficulty === Difficulty.Insanity || !this.useStory
+    resources?.storyPoints = (this.difficulty === Difficulty.Insanity || !this.useStory)
       ? 0
       : resources?.storyPoints;
 
     resources.storyPoints = (resources.storyPoints ?? 0) + this.initStoryPoints();
-    resources.credit = (resources.credit ?? 0) + this.crewSize;
+    resources.credits = (resources.credits ?? 0) + this.crewSize;
 
     this.crew.stash.push(EquipmentGenerator.GenerateStash());
 
