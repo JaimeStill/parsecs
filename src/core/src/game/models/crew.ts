@@ -6,7 +6,13 @@ import {
 } from './equipment';
 
 export const ConsolidateResources = (resources: CrewResource[]): CrewResource =>
-  resources.reduce((total: CrewResource = {}, current: CrewResource) => {
+  resources.reduce((total: CrewResource = {
+    credits: 0,
+    patrons: 0,
+    rivals: 0,
+    rumors: 0,
+    storyPoints: 0
+  }, current: CrewResource) => {
     return {
       credits: (total.credits ?? 0) + (current.credits ?? 0),
       patrons: (total.patrons ?? 0) + (current.patrons ?? 0),
