@@ -112,19 +112,25 @@ export class CampaignConfig {
   finalize = (): Campaign => {
     this.ship = ShipGenerator.Generate();
 
-    let resources: CrewResource;
+    let resources: CrewResource = {
+      credits: 0,
+      patrons: 0,
+      rivals: 0,
+      rumors: 0,
+      storyPoints: 0
+    } as CrewResource;
 
     for (let character of this.crew.roster)
       resources = ConsolidateResources([resources, CharacterGenerator.DevelopCharacter(character)]);
 
-    resources?.storyPoints = (this.difficulty === Difficulty.Insanity || !this.useStory)
+    resources.storyPoints = (this.difficulty === Difficulty.Insanity || !this.useStory)
       ? 0
-      : resources?.storyPoints;
+      : resources.storyPoints;
 
     resources.storyPoints = (resources.storyPoints ?? 0) + this.initStoryPoints();
     resources.credits = (resources.credits ?? 0) + this.crewSize;
 
-    this.crew.stash.push(EquipmentGenerator.GenerateStash());
+    this.crew.stash.push(...EquipmentGenerator.GenerateStash());
 
     return new Campaign(this, resources);
   }
