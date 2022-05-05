@@ -40,6 +40,9 @@ export class CharacterDetail {
   }
 
   private mergeResources = (cd: CharacterDetail) => {
+    this.resources = Object.assign({} as CrewResource, this.resources);
+    cd.resources = Object.assign({} as CrewResource, remote.resources);
+
     this.resources.credits = (this.resources.credits ?? 0) + (cd.resources.credits ?? 0);
     this.resources.patrons = (this.resources.patrons ?? 0) + (cd.resources.patrons ?? 0);
     this.resources.rivals = (this.resources.rivals ?? 0) + (cd.resources.rivals ?? 0);
