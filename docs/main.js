@@ -119,160 +119,53 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/flex-layout/flex */ 5434);
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/material/button */ 7317);
 /* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common */ 6362);
-/* harmony import */ var _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/flex-layout/extended */ 3338);
-
 
 
 
 
 
 function HomeRoute_pre_7_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 7)(1, "code");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 6)(1, "code");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "json");
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
 } if (rf & 2) {
     const ctx_r0 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r0.characterColor());
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 2, ctx_r0.character), "\n");
-} }
-function HomeRoute_pre_14_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 7)(1, "code");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](3, "json");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-} if (rf & 2) {
-    const ctx_r1 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngClass", ctx_r1.weaponColor());
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](2);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 2, ctx_r1.weapon), "\n");
-} }
-function HomeRoute_pre_21_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "json");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 1, ctx_r2.ship), "\n");
-} }
-function HomeRoute_pre_28_Template(rf, ctx) { if (rf & 1) {
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "pre", 8);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipe"](2, "json");
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-} if (rf & 2) {
-    const ctx_r3 = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵnextContext"]();
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](2, 1, ctx_r3.gadget), "\n");
+    _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"]("\n", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpipeBind1"](3, 1, ctx_r0.campaign), "");
 } }
 class HomeRoute {
     constructor() {
         this.cardSize = 'auto';
-        this.characterColor = () => {
-            var _a;
-            switch ((_a = this.character) === null || _a === void 0 ? void 0 : _a.race) {
-                case core__WEBPACK_IMPORTED_MODULE_1__.CharacterRace.Human:
-                    return 'color-blue';
-                case core__WEBPACK_IMPORTED_MODULE_1__.CharacterRace.Alien:
-                    return 'color-green';
-                case core__WEBPACK_IMPORTED_MODULE_1__.CharacterRace.Bot:
-                    return 'color-amber';
-                default:
-                    return 'color-red';
-            }
+        this.initCampaign = () => {
+            const c = new core__WEBPACK_IMPORTED_MODULE_1__.CampaignConfig('test-campaign');
+            for (var i = 0; i < c.crew.roster.length; i++)
+                c.crew.roster[i].name = `Character ${i}`;
+            c.victory = c.victoryConditions[0].value;
+            this.campaign = c.finalize();
         };
-        this.generateCharacter = () => this.character = core__WEBPACK_IMPORTED_MODULE_1__.CharacterGenerator.GenerateCharacter();
-        this.generateGadget = () => this.gadget = core__WEBPACK_IMPORTED_MODULE_1__.EquipmentGenerator.GenerateGadget();
-        this.generateWeapon = () => {
-            const roll = (0,core__WEBPACK_IMPORTED_MODULE_1__.d6)();
-            if (roll >= 1 && roll <= 2)
-                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.GenerateLowTech();
-            if (roll >= 3 && roll <= 4)
-                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.GenerateMilitary();
-            else
-                this.weapon = core__WEBPACK_IMPORTED_MODULE_1__.WeaponGenerator.GenerateHighTech();
-        };
-        this.weaponColor = () => {
-            var _a;
-            switch ((_a = this.weapon) === null || _a === void 0 ? void 0 : _a.description) {
-                case 'Low Tech':
-                    return 'color-blue';
-                case 'Military':
-                    return 'color-green';
-                case 'High Tech':
-                    return 'color-amber';
-                default:
-                    return 'color-red';
-            }
-        };
-        this.generateShip = () => this.ship = core__WEBPACK_IMPORTED_MODULE_1__.ShipGenerator.Generate();
     }
     ngOnInit() {
-        this.generateCharacter();
-        this.generateGadget();
-        this.generateShip();
-        this.generateWeapon();
+        this.initCampaign();
     }
 }
 HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(); };
-HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 29, vars: 12, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p8"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "m4", "p4"], [1, "mat-title", "m4"], [1, "p4"], ["mat-stroked-button", "", 3, "click"], ["class", "m4 pre-wrap", 3, "ngClass", 4, "ngIf"], ["class", "m4 pre-wrap", 4, "ngIf"], [1, "m4", "pre-wrap", 3, "ngClass"], [1, "m4", "pre-wrap"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
+HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 8, vars: 3, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p8"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "m4", "p4"], [1, "mat-title", "m4"], [1, "p4"], ["mat-stroked-button", "", 3, "click"], ["class", "m4 pre-wrap", 4, "ngIf"], [1, "m4", "pre-wrap"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "p", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Generate Character Test");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Generate Campaign");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 3)(5, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_5_listener() { return ctx.generateCharacter(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Generate Character");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_5_listener() { return ctx.initCampaign(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](6, "Generate Campaign");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, HomeRoute_pre_7_Template, 4, 4, "pre", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "section", 1)(9, "p", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Generate Weapon Test");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 3)(12, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_12_listener() { return ctx.generateWeapon(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, "Generate Weapon");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](14, HomeRoute_pre_14_Template, 4, 4, "pre", 5);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](15, "section", 1)(16, "p", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](17, "Generate Ship Test");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](18, "div", 3)(19, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_19_listener() { return ctx.generateShip(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](20, "Generate Ship");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](21, HomeRoute_pre_21_Template, 3, 3, "pre", 6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](22, "section", 1)(23, "p", 2);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](24, "Generate Gadget");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](25, "div", 3)(26, "button", 4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_26_listener() { return ctx.generateGadget(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](27, "Generate Gadget");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](28, HomeRoute_pre_28_Template, 3, 3, "pre", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](7, HomeRoute_pre_7_Template, 4, 3, "pre", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.character);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.weapon);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.ship);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵstyleProp"]("width", ctx.cardSize, "px");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.gadget);
-    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutAlignDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_3__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgClass, _angular_flex_layout_extended__WEBPACK_IMPORTED_MODULE_5__.DefaultClassDirective], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.JsonPipe], encapsulation: 2 });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.campaign);
+    } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutAlignDirective, _angular_material_button__WEBPACK_IMPORTED_MODULE_3__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_4__.NgIf], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_4__.JsonPipe], encapsulation: 2 });
 
 
 /***/ }),
@@ -397,6 +290,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Classes": () => (/* binding */ Classes),
 /* harmony export */   "Components": () => (/* binding */ Components),
 /* harmony export */   "ConfirmDialog": () => (/* binding */ ConfirmDialog),
+/* harmony export */   "ConsolidateResources": () => (/* binding */ ConsolidateResources),
 /* harmony export */   "Consumable": () => (/* binding */ Consumable),
 /* harmony export */   "ConsumableList": () => (/* binding */ ConsumableList),
 /* harmony export */   "Consumables": () => (/* binding */ Consumables),
@@ -1090,306 +984,6 @@ const VictoryConditions = [
 const AvailableVictoryConditions = (difficulty) => VictoryConditions
     .filter((vc) => vc.value.difficulties.includes(difficulty));
 
-var _a;
-class CharacterGenerator {
-}
-_a = CharacterGenerator;
-CharacterGenerator.GenerateRoster = (size) => {
-    const roster = new Array();
-    for (var i = 0; i < size; i++)
-        roster.push(_a.GenerateCharacter());
-    return roster;
-};
-CharacterGenerator.DevelopCharacter = (character) => {
-    if (character.race === CharacterRace.Bot) {
-        character.background = 'NULL_REFERENCE_EXCEPTION';
-        character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
-        character.class = 'ASSIGNED_FUNCTIONALITY';
-        return [];
-    }
-    else {
-        return [
-            _a.DevelopBackground(character),
-            _a.DevelopMotivation(character),
-            _a.DevelopClass(character)
-        ];
-    }
-};
-CharacterGenerator.DevelopBackground = (character) => {
-    var _b;
-    let b;
-    switch (character.species) {
-        case CharacterSpecies.MysteriousPast:
-            b = _a.GenerateBackground();
-            b.merge(_a.GenerateBackground());
-            if ((_b = b.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
-                b.resources.storyPoints = 0;
-            break;
-        default:
-            b = _a.GenerateBackground();
-            break;
-    }
-    character.background = b.detail;
-    character.applyDetail(b);
-    return b.finalResources();
-};
-CharacterGenerator.DevelopMotivation = (character) => {
-    var _b;
-    let m;
-    switch (character.species) {
-        case CharacterSpecies.DeConverted:
-            m = Motivations.Revenge();
-            break;
-        case CharacterSpecies.UnityAgent:
-            m = Motivations.Order();
-            break;
-        case CharacterSpecies.MysteriousPast:
-            m = _a.GenerateMotivation();
-            if ((_b = m.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
-                m.resources.storyPoints = 0;
-            break;
-        default:
-            m = _a.GenerateMotivation();
-    }
-    character.motivation = m.detail;
-    character.applyDetail(m);
-    return m.finalResources();
-};
-CharacterGenerator.DevelopClass = (character) => {
-    var _b;
-    let c;
-    switch (character.species) {
-        case CharacterSpecies.MysteriousPast:
-            c = _a.GenerateClass();
-            if ((_b = c.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
-                c.resources.storyPoints = 0;
-            break;
-        case CharacterSpecies.Hulker:
-            c = _a.GenerateClass();
-            switch (c.detail) {
-                case "Technician":
-                case "Scientist":
-                case "Hacker":
-                    c = Classes.Primitive();
-            }
-            break;
-        default:
-            c = _a.GenerateClass();
-            break;
-    }
-    character.class = c.detail;
-    character.applyDetail(c);
-    return c.finalResources();
-};
-CharacterGenerator.GenerateCharacter = () => Generator(d100, [
-    new GeneratorOption([1, 60], Characters.Human()),
-    new GeneratorOption([61, 80], _a.GenerateAlien()),
-    new GeneratorOption([81, 90], Characters.Bot()),
-    new GeneratorOption([91, 100], _a.GenerateStrange())
-]);
-CharacterGenerator.GenerateAlien = () => Generator(d100, [
-    new GeneratorOption([1, 20], Characters.Engineer()),
-    new GeneratorOption([21, 40], Characters.KErin()),
-    new GeneratorOption([41, 55], Characters.Soulless()),
-    new GeneratorOption([56, 70], Characters.Precursor()),
-    new GeneratorOption([71, 90], Characters.Feral()),
-    new GeneratorOption([91, 100], Characters.Swift())
-]);
-CharacterGenerator.GenerateStrange = () => Generator(d100, [
-    new GeneratorOption([1, 2], Characters.DeConverted()),
-    new GeneratorOption([3, 8], Characters.UnityAgent()),
-    new GeneratorOption([9, 17], Characters.MysteriousPast()),
-    new GeneratorOption([18, 22], Characters.Hakshan()),
-    new GeneratorOption([23, 27], Characters.Stalker()),
-    new GeneratorOption([28, 34], Characters.Hulker()),
-    new GeneratorOption([35, 41], Characters.HopefulRookie()),
-    new GeneratorOption([42, 47], Characters.GeneticUplift()),
-    new GeneratorOption([48, 53], Characters.Mutant()),
-    new GeneratorOption([54, 58], Characters.AssaultBot()),
-    new GeneratorOption([59, 62], Characters.Manipulator()),
-    new GeneratorOption([63, 67], Characters.Primitive()),
-    new GeneratorOption([68, 73], Characters.Feeler()),
-    new GeneratorOption([74, 79], Characters.EmoSuppressed()),
-    new GeneratorOption([80, 85], Characters.MinorAlien()),
-    new GeneratorOption([86, 87], Characters.Traveler()),
-    new GeneratorOption([88, 93], Characters.Empath()),
-    new GeneratorOption([94, 100], Characters.BioUpgrade())
-]);
-CharacterGenerator.GenerateBackground = () => Generator(d100, [
-    new GeneratorOption([1, 4], Backgrounds.PeacefulHighTechColony()),
-    new GeneratorOption([5, 9], Backgrounds.GiantOvercrowdedDystopianCity()),
-    new GeneratorOption([10, 13], Backgrounds.LowTechColony()),
-    new GeneratorOption([14, 17], Backgrounds.MiningColony()),
-    new GeneratorOption([18, 21], Backgrounds.MilitaryBrat()),
-    new GeneratorOption([22, 25], Backgrounds.SpaceStation()),
-    new GeneratorOption([26, 29], Backgrounds.MilitaryOutpost()),
-    new GeneratorOption([30, 34], Backgrounds.Drifter()),
-    new GeneratorOption([35, 39], Backgrounds.LowerMegacityClass()),
-    new GeneratorOption([40, 42], Backgrounds.WealthyMerchantFamily()),
-    new GeneratorOption([43, 46], Backgrounds.FrontierGang()),
-    new GeneratorOption([47, 49], Backgrounds.ReligiousCult()),
-    new GeneratorOption([50, 52], Backgrounds.WarTornHellHole()),
-    new GeneratorOption([53, 55], Backgrounds.TechGuild()),
-    new GeneratorOption([56, 59], Backgrounds.SubjugatedColonyOnAlienWorld()),
-    new GeneratorOption([60, 64], Backgrounds.LongTermSpaceMission()),
-    new GeneratorOption([65, 68], Backgrounds.ResearchOutpost()),
-    new GeneratorOption([69, 72], Backgrounds.PrimitiveOrRegressedWorld()),
-    new GeneratorOption([73, 76], Backgrounds.OrphanUtilityProgram()),
-    new GeneratorOption([77, 80], Backgrounds.IsolationistEnclave()),
-    new GeneratorOption([81, 84], Backgrounds.ComfortableMegacityClass()),
-    new GeneratorOption([85, 89], Backgrounds.IndustrialWorld()),
-    new GeneratorOption([90, 93], Backgrounds.Bureaucrat()),
-    new GeneratorOption([94, 97], Backgrounds.WastelandNomads()),
-    new GeneratorOption([97, 100], Backgrounds.AlienCulture())
-]);
-CharacterGenerator.GenerateMotivation = () => Generator(d100, [
-    new GeneratorOption([1, 8], Motivations.Wealth()),
-    new GeneratorOption([9, 14], Motivations.Fame()),
-    new GeneratorOption([15, 19], Motivations.Glory()),
-    new GeneratorOption([20, 26], Motivations.Survival()),
-    new GeneratorOption([27, 32], Motivations.Escape()),
-    new GeneratorOption([33, 39], Motivations.Adventure()),
-    new GeneratorOption([40, 44], Motivations.Truth()),
-    new GeneratorOption([45, 49], Motivations.Technology()),
-    new GeneratorOption([50, 56], Motivations.Discovery()),
-    new GeneratorOption([57, 63], Motivations.Loyalty()),
-    new GeneratorOption([64, 69], Motivations.Revenge()),
-    new GeneratorOption([70, 74], Motivations.Romance()),
-    new GeneratorOption([75, 79], Motivations.Faith()),
-    new GeneratorOption([80, 84], Motivations.Political()),
-    new GeneratorOption([85, 90], Motivations.Power()),
-    new GeneratorOption([91, 95], Motivations.Order()),
-    new GeneratorOption([96, 100], Motivations.Freedom())
-]);
-CharacterGenerator.GenerateClass = () => Generator(d100, [
-    new GeneratorOption([1, 5], Classes.WorkingClass()),
-    new GeneratorOption([6, 9], Classes.Technician()),
-    new GeneratorOption([10, 13], Classes.Scientist()),
-    new GeneratorOption([14, 17], Classes.Hacker()),
-    new GeneratorOption([18, 22], Classes.Soldier()),
-    new GeneratorOption([23, 27], Classes.Mercenary()),
-    new GeneratorOption([28, 32], Classes.Agitator()),
-    new GeneratorOption([33, 36], Classes.Primitive()),
-    new GeneratorOption([37, 40], Classes.Artist()),
-    new GeneratorOption([41, 44], Classes.Negotiator()),
-    new GeneratorOption([45, 49], Classes.Trader()),
-    new GeneratorOption([50, 54], Classes.StarshipCrew()),
-    new GeneratorOption([55, 58], Classes.PettyCriminal()),
-    new GeneratorOption([59, 63], Classes.Ganger()),
-    new GeneratorOption([64, 67], Classes.Scoundrel()),
-    new GeneratorOption([68, 71], Classes.Enforcer()),
-    new GeneratorOption([72, 75], Classes.SpecialAgent()),
-    new GeneratorOption([76, 79], Classes.Troubleshooter()),
-    new GeneratorOption([80, 83], Classes.BountyHunter()),
-    new GeneratorOption([84, 88], Classes.Nomad()),
-    new GeneratorOption([89, 92], Classes.Explorer()),
-    new GeneratorOption([93, 96], Classes.Punk()),
-    new GeneratorOption([97, 100], Classes.Scavenger())
-]);
-
-class EquipmentGenerator {
-}
-EquipmentGenerator.GenerateGear = () => Generator(d100, [
-    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
-    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
-    new GeneratorOption([11, 15], WeaponMods.Bipod()),
-    new GeneratorOption([16, 20], Consumables.BoosterPills()),
-    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
-    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
-    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
-    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
-    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
-    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
-    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
-    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
-    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
-    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
-    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
-    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
-    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
-    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
-    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
-    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
-    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
-    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
-]);
-EquipmentGenerator.GenerateGadget = () => Generator(d100, [
-    new GeneratorOption([1, 4], Implants.AICompanion()),
-    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
-    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
-    new GeneratorOption([14, 17], Implants.BoostedArm()),
-    new GeneratorOption([18, 21], Implants.BoostedLeg()),
-    new GeneratorOption([22, 24], Implants.CyberHand()),
-    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
-    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
-    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
-    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
-    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
-    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
-    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
-    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
-    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
-    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
-    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
-    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
-    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
-    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
-    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
-    new GeneratorOption([94, 100], Consumables.StimPack())
-]);
-
-class ShipGenerator {
-}
-ShipGenerator.Generate = () => Generator(d100, [
-    new GeneratorOption([1, 12], Ships.WornFreighter()),
-    new GeneratorOption([13, 18], Ships.RetiredTroopTransport()),
-    new GeneratorOption([19, 23], Ships.StrangeAlienVessel()),
-    new GeneratorOption([24, 31], Ships.UpgradedShuttle()),
-    new GeneratorOption([32, 38], Ships.RetiredScoutShip()),
-    new GeneratorOption([39, 45], Ships.RepurposedScienceVessel()),
-    new GeneratorOption([46, 56], Ships.BatteredMiningShip()),
-    new GeneratorOption([57, 65], Ships.UnreliableMerchantCruiser()),
-    new GeneratorOption([66, 70], Ships.FormerDiplomaticVessel()),
-    new GeneratorOption([71, 76], Ships.AncientLowTechCraft()),
-    new GeneratorOption([77, 84], Ships.BuiltFromSalvagedWrecks()),
-    new GeneratorOption([85, 95], Ships.WornColonyShip()),
-    new GeneratorOption([96, 100], Ships.RetiredMilitaryPatrolShip())
-]);
-
-class WeaponGenerator {
-}
-WeaponGenerator.GenerateHighTech = () => Generator(d100, [
-    new GeneratorOption([1, 5], HighTechWeapons.DuelingPistol()),
-    new GeneratorOption([6, 15], HighTechWeapons.HandCannon()),
-    new GeneratorOption([16, 30], HighTechWeapons.HandLaser()),
-    new GeneratorOption([31, 45], HighTechWeapons.BeamPistol()),
-    new GeneratorOption([46, 55], HighTechWeapons.InfantryLaser()),
-    new GeneratorOption([56, 70], HighTechWeapons.BlastPistol()),
-    new GeneratorOption([71, 80], HighTechWeapons.BlastRifle()),
-    new GeneratorOption([81, 85], HighTechWeapons.PlasmaRifle()),
-    new GeneratorOption([86, 100], HighTechWeapons.GlareSword())
-]);
-WeaponGenerator.GenerateLowTech = () => Generator(d100, [
-    new GeneratorOption([1, 15], LowTechWeapons.Handgun()),
-    new GeneratorOption([16, 35], LowTechWeapons.ScrapPistol()),
-    new GeneratorOption([36, 40], LowTechWeapons.MachinePistol()),
-    new GeneratorOption([41, 65], LowTechWeapons.ColonyRifle()),
-    new GeneratorOption([66, 75], LowTechWeapons.Shotgun()),
-    new GeneratorOption([76, 80], LowTechWeapons.HuntingRifle()),
-    new GeneratorOption([81, 95], LowTechWeapons.Blade()),
-    new GeneratorOption([96, 100], LowTechWeapons.BrutalMeleeWeapon())
-]);
-WeaponGenerator.GenerateMilitary = () => Generator(d100, [
-    new GeneratorOption([1, 25], MilitaryWeapons.MilitaryRifle()),
-    new GeneratorOption([26, 45], MilitaryWeapons.InfantryLaser()),
-    new GeneratorOption([46, 50], MilitaryWeapons.MarksmansRifle()),
-    new GeneratorOption([51, 60], MilitaryWeapons.NeedleRifle()),
-    new GeneratorOption([61, 75], MilitaryWeapons.AutoRifle()),
-    new GeneratorOption([76, 80], MilitaryWeapons.RattleGun()),
-    new GeneratorOption([81, 95], MilitaryWeapons.BoardingSaber()),
-    new GeneratorOption([96, 100], MilitaryWeapons.ShatterAxe())
-]);
-
 class CharacterProfile {
     constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
         this._reaction = 0;
@@ -1699,8 +1293,140 @@ class Pistol extends Sidearm {
 class Melee extends Sidearm {
 }
 
+class WeaponGenerator {
+}
+WeaponGenerator.GenerateHighTech = () => Generator(d100, [
+    new GeneratorOption([1, 5], HighTechWeapons.DuelingPistol()),
+    new GeneratorOption([6, 15], HighTechWeapons.HandCannon()),
+    new GeneratorOption([16, 30], HighTechWeapons.HandLaser()),
+    new GeneratorOption([31, 45], HighTechWeapons.BeamPistol()),
+    new GeneratorOption([46, 55], HighTechWeapons.InfantryLaser()),
+    new GeneratorOption([56, 70], HighTechWeapons.BlastPistol()),
+    new GeneratorOption([71, 80], HighTechWeapons.BlastRifle()),
+    new GeneratorOption([81, 85], HighTechWeapons.PlasmaRifle()),
+    new GeneratorOption([86, 100], HighTechWeapons.GlareSword())
+]);
+WeaponGenerator.GenerateLowTech = () => Generator(d100, [
+    new GeneratorOption([1, 15], LowTechWeapons.Handgun()),
+    new GeneratorOption([16, 35], LowTechWeapons.ScrapPistol()),
+    new GeneratorOption([36, 40], LowTechWeapons.MachinePistol()),
+    new GeneratorOption([41, 65], LowTechWeapons.ColonyRifle()),
+    new GeneratorOption([66, 75], LowTechWeapons.Shotgun()),
+    new GeneratorOption([76, 80], LowTechWeapons.HuntingRifle()),
+    new GeneratorOption([81, 95], LowTechWeapons.Blade()),
+    new GeneratorOption([96, 100], LowTechWeapons.BrutalMeleeWeapon())
+]);
+WeaponGenerator.GenerateMilitary = () => Generator(d100, [
+    new GeneratorOption([1, 25], MilitaryWeapons.MilitaryRifle()),
+    new GeneratorOption([26, 45], MilitaryWeapons.InfantryLaser()),
+    new GeneratorOption([46, 50], MilitaryWeapons.MarksmansRifle()),
+    new GeneratorOption([51, 60], MilitaryWeapons.NeedleRifle()),
+    new GeneratorOption([61, 75], MilitaryWeapons.AutoRifle()),
+    new GeneratorOption([76, 80], MilitaryWeapons.RattleGun()),
+    new GeneratorOption([81, 95], MilitaryWeapons.BoardingSaber()),
+    new GeneratorOption([96, 100], MilitaryWeapons.ShatterAxe())
+]);
+
+var _a$1;
+class EquipmentGenerator {
+}
+_a$1 = EquipmentGenerator;
+EquipmentGenerator.GenerateStash = () => {
+    const stash = new Array();
+    for (let i = 0; i < 3; i++) {
+        stash.push(WeaponGenerator.GenerateMilitary());
+        stash.push(WeaponGenerator.GenerateLowTech());
+    }
+    stash.push(_a$1.GenerateGear());
+    stash.push(_a$1.GenerateGadget());
+    return stash;
+};
+EquipmentGenerator.GenerateGear = () => Generator(d100, [
+    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
+    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
+    new GeneratorOption([11, 15], WeaponMods.Bipod()),
+    new GeneratorOption([16, 20], Consumables.BoosterPills()),
+    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
+    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
+    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
+    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
+    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
+    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
+    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
+    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
+    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
+    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
+    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
+    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
+    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
+    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
+    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
+    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
+    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
+    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
+]);
+EquipmentGenerator.GenerateGadget = () => Generator(d100, [
+    new GeneratorOption([1, 4], Implants.AICompanion()),
+    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
+    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
+    new GeneratorOption([14, 17], Implants.BoostedArm()),
+    new GeneratorOption([18, 21], Implants.BoostedLeg()),
+    new GeneratorOption([22, 24], Implants.CyberHand()),
+    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
+    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
+    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
+    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
+    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
+    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
+    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
+    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
+    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
+    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
+    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
+    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
+    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
+    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
+    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
+    new GeneratorOption([94, 100], Consumables.StimPack())
+]);
+
+class ShipGenerator {
+}
+ShipGenerator.Generate = () => Generator(d100, [
+    new GeneratorOption([1, 12], Ships.WornFreighter()),
+    new GeneratorOption([13, 18], Ships.RetiredTroopTransport()),
+    new GeneratorOption([19, 23], Ships.StrangeAlienVessel()),
+    new GeneratorOption([24, 31], Ships.UpgradedShuttle()),
+    new GeneratorOption([32, 38], Ships.RetiredScoutShip()),
+    new GeneratorOption([39, 45], Ships.RepurposedScienceVessel()),
+    new GeneratorOption([46, 56], Ships.BatteredMiningShip()),
+    new GeneratorOption([57, 65], Ships.UnreliableMerchantCruiser()),
+    new GeneratorOption([66, 70], Ships.FormerDiplomaticVessel()),
+    new GeneratorOption([71, 76], Ships.AncientLowTechCraft()),
+    new GeneratorOption([77, 84], Ships.BuiltFromSalvagedWrecks()),
+    new GeneratorOption([85, 95], Ships.WornColonyShip()),
+    new GeneratorOption([96, 100], Ships.RetiredMilitaryPatrolShip())
+]);
+
+const ConsolidateResources = (resources) => resources.reduce((total = {
+    credits: 0,
+    patrons: 0,
+    rivals: 0,
+    rumors: 0,
+    storyPoints: 0
+}, current) => {
+    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
+    return {
+        credits: ((_a = total.credits) !== null && _a !== void 0 ? _a : 0) + ((_b = current.credits) !== null && _b !== void 0 ? _b : 0),
+        patrons: ((_c = total.patrons) !== null && _c !== void 0 ? _c : 0) + ((_d = current.patrons) !== null && _d !== void 0 ? _d : 0),
+        rivals: ((_e = total.rivals) !== null && _e !== void 0 ? _e : 0) + ((_f = current.rivals) !== null && _f !== void 0 ? _f : 0),
+        rumors: ((_g = total.rumors) !== null && _g !== void 0 ? _g : 0) + ((_h = current.rumors) !== null && _h !== void 0 ? _h : 0),
+        storyPoints: ((_j = total.storyPoints) !== null && _j !== void 0 ? _j : 0) + ((_k = current.storyPoints) !== null && _k !== void 0 ? _k : 0)
+    };
+});
 class Crew {
     constructor() {
+        this.stash = [];
         this._leader = null;
         this._roster = new Array();
         this.clearRoster = () => this._roster = this.roster.length > 0
@@ -1755,28 +1481,33 @@ class CampaignConfig {
                     return roll + 1;
             }
         };
+        this.initRoster = () => {
+            if (this.crew.roster.length > 0)
+                this.crew.clearRoster();
+            this.crew.addCharacters(CharacterGenerator.GenerateRoster(this.crewSize));
+        };
         this.finalize = () => {
-            var _a;
+            var _a, _b;
             this.ship = ShipGenerator.Generate();
-            const resources = new Array();
+            let resources = {
+                credits: 0,
+                patrons: 0,
+                rivals: 0,
+                rumors: 0,
+                storyPoints: 0
+            };
             for (let character of this.crew.roster)
-                resources.push(...CharacterGenerator.DevelopCharacter(character));
-            const crewResources = resources.reduce((total, current) => {
-                var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-                return {
-                    credits: ((_a = total.credits) !== null && _a !== void 0 ? _a : 0) + ((_b = current.credits) !== null && _b !== void 0 ? _b : 0),
-                    patrons: ((_c = total.patrons) !== null && _c !== void 0 ? _c : 0) + ((_d = current.patrons) !== null && _d !== void 0 ? _d : 0),
-                    rivals: ((_e = total.rivals) !== null && _e !== void 0 ? _e : 0) + ((_f = current.rivals) !== null && _f !== void 0 ? _f : 0),
-                    rumors: ((_g = total.rumors) !== null && _g !== void 0 ? _g : 0) + ((_h = current.rumors) !== null && _h !== void 0 ? _h : 0),
-                    storyPoints: this.difficulty === Difficulty.Insanity
-                        ? 0
-                        : ((_j = total.storyPoints) !== null && _j !== void 0 ? _j : 0) + ((_k = current.storyPoints) !== null && _k !== void 0 ? _k : 0)
-                };
-            });
-            crewResources.storyPoints = ((_a = crewResources.storyPoints) !== null && _a !== void 0 ? _a : 0) + this.initStoryPoints();
-            return new Campaign(this, crewResources);
+                resources = ConsolidateResources([resources, CharacterGenerator.DevelopCharacter(character)]);
+            resources.storyPoints = (this.difficulty === Difficulty.Insanity || !this.useStory)
+                ? 0
+                : resources.storyPoints;
+            resources.storyPoints = ((_a = resources.storyPoints) !== null && _a !== void 0 ? _a : 0) + this.initStoryPoints();
+            resources.credits = ((_b = resources.credits) !== null && _b !== void 0 ? _b : 0) + this.crewSize;
+            this.crew.stash.push(...EquipmentGenerator.GenerateStash());
+            return new Campaign(this, resources);
         };
         this.name = name;
+        this.initRoster();
     }
     get name() { return this._name; }
     get crewSize() { return this._crewSize; }
@@ -1790,9 +1521,7 @@ class CampaignConfig {
             : value < this.minCrew
                 ? this.minCrew
                 : value;
-        if (this.crew.roster.length > 0)
-            this.crew.clearRoster();
-        this.crew.addCharacters(CharacterGenerator.GenerateRoster(value));
+        this.initRoster();
     }
     set useStars(value) {
         this._useStars = this.difficulty === Difficulty.Insanity
@@ -1836,7 +1565,7 @@ class Campaign {
     set name(value) { this._name = value; }
     get storyPoints() { return this._storyPoints; }
     set storyPoints(value) {
-        this._storyPoints = this.difficulty === Difficulty.Insanity
+        this._storyPoints = this.difficulty === Difficulty.Insanity || !this.useStory
             ? 0
             : value;
     }
@@ -1855,6 +1584,244 @@ class Ship {
         this._damage = value;
     }
 }
+
+var _a;
+class CharacterGenerator {
+}
+_a = CharacterGenerator;
+CharacterGenerator.GenerateRoster = (size) => {
+    const roster = new Array();
+    for (var i = 0; i < size; i++)
+        roster.push(_a.GenerateCharacter());
+    return roster;
+};
+CharacterGenerator.DevelopCharacter = (character) => {
+    var _b, _c;
+    if (character.race === CharacterRace.Bot) {
+        character.background = 'NULL_REFERENCE_EXCEPTION';
+        character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
+        character.class = 'ASSIGNED_FUNCTIONALITY';
+        return {};
+    }
+    else {
+        const resources = ConsolidateResources([
+            _a.DevelopBackground(character),
+            _a.DevelopMotivation(character),
+            _a.DevelopClass(character)
+        ]);
+        switch (character.species) {
+            case CharacterSpecies.MinorAlien:
+                if (resources.credits)
+                    resources.credits -= 1;
+                if (resources.storyPoints)
+                    resources.storyPoints -= 1;
+                break;
+            case CharacterSpecies.Traveler:
+                resources.storyPoints = ((_b = resources.storyPoints) !== null && _b !== void 0 ? _b : 0) + 2;
+                resources.rumors = ((_c = resources.rumors) !== null && _c !== void 0 ? _c : 0) + 2;
+                break;
+        }
+        return resources;
+    }
+};
+CharacterGenerator.DevelopBackground = (character) => {
+    var _b, _c;
+    let b;
+    let roll;
+    switch (character.species) {
+        case CharacterSpecies.MysteriousPast:
+            b = _a.GenerateBackground();
+            b.merge(_a.GenerateBackground());
+            if ((_b = b.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
+                b.resources.storyPoints = 0;
+            break;
+        case CharacterSpecies.Mutant:
+            b = Backgrounds.LowerMegacityClass();
+            break;
+        case CharacterSpecies.Manipulator:
+            b = Backgrounds.Bureaucrat();
+            break;
+        case CharacterSpecies.Primitive:
+            b = Backgrounds.PrimitiveOrRegressedWorld();
+            break;
+        case CharacterSpecies.BioUpgrade:
+            b = _a.GenerateBackground();
+            if ((_c = b.resources) === null || _c === void 0 ? void 0 : _c.credits)
+                b.resources.credits >= 2
+                    ? b.resources.credits -= 2
+                    : b.resources.credits = 0;
+            break;
+        default:
+            b = _a.GenerateBackground();
+            break;
+    }
+    character.background = b.detail;
+    character.applyDetail(b);
+    return b.finalResources();
+};
+CharacterGenerator.DevelopMotivation = (character) => {
+    var _b;
+    let m;
+    switch (character.species) {
+        case CharacterSpecies.DeConverted:
+            m = Motivations.Revenge();
+            break;
+        case CharacterSpecies.UnityAgent:
+            m = Motivations.Order();
+            break;
+        case CharacterSpecies.MysteriousPast:
+            m = _a.GenerateMotivation();
+            if ((_b = m.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
+                m.resources.storyPoints = 0;
+            break;
+        case CharacterSpecies.Feeler:
+            m = _a.GenerateMotivation();
+            m.merge(_a.GenerateMotivation());
+            break;
+        case CharacterSpecies.EmoSuppressed:
+            m = Motivations.Survival();
+            break;
+        case CharacterSpecies.Traveler:
+            m = Motivations.Truth();
+            break;
+        default:
+            m = _a.GenerateMotivation();
+    }
+    character.motivation = m.detail;
+    character.applyDetail(m);
+    return m.finalResources();
+};
+CharacterGenerator.DevelopClass = (character) => {
+    var _b;
+    let c;
+    switch (character.species) {
+        case CharacterSpecies.MysteriousPast:
+            c = _a.GenerateClass();
+            if ((_b = c.resources) === null || _b === void 0 ? void 0 : _b.storyPoints)
+                c.resources.storyPoints = 0;
+            break;
+        case CharacterSpecies.Hulker:
+            c = _a.GenerateClass();
+            switch (c.detail) {
+                case "Technician":
+                case "Scientist":
+                case "Hacker":
+                    c = Classes.Primitive();
+            }
+            break;
+        default:
+            c = _a.GenerateClass();
+            break;
+    }
+    character.class = c.detail;
+    character.applyDetail(c);
+    return c.finalResources();
+};
+CharacterGenerator.GenerateCharacter = () => Generator(d100, [
+    new GeneratorOption([1, 60], Characters.Human()),
+    new GeneratorOption([61, 80], _a.GenerateAlien()),
+    new GeneratorOption([81, 90], Characters.Bot()),
+    new GeneratorOption([91, 100], _a.GenerateStrange())
+]);
+CharacterGenerator.GenerateAlien = () => Generator(d100, [
+    new GeneratorOption([1, 20], Characters.Engineer()),
+    new GeneratorOption([21, 40], Characters.KErin()),
+    new GeneratorOption([41, 55], Characters.Soulless()),
+    new GeneratorOption([56, 70], Characters.Precursor()),
+    new GeneratorOption([71, 90], Characters.Feral()),
+    new GeneratorOption([91, 100], Characters.Swift())
+]);
+CharacterGenerator.GenerateStrange = () => Generator(d100, [
+    new GeneratorOption([1, 2], Characters.DeConverted()),
+    new GeneratorOption([3, 8], Characters.UnityAgent()),
+    new GeneratorOption([9, 17], Characters.MysteriousPast()),
+    new GeneratorOption([18, 22], Characters.Hakshan()),
+    new GeneratorOption([23, 27], Characters.Stalker()),
+    new GeneratorOption([28, 34], Characters.Hulker()),
+    new GeneratorOption([35, 41], Characters.HopefulRookie()),
+    new GeneratorOption([42, 47], Characters.GeneticUplift()),
+    new GeneratorOption([48, 53], Characters.Mutant()),
+    new GeneratorOption([54, 58], Characters.AssaultBot()),
+    new GeneratorOption([59, 62], Characters.Manipulator()),
+    new GeneratorOption([63, 67], Characters.Primitive()),
+    new GeneratorOption([68, 73], Characters.Feeler()),
+    new GeneratorOption([74, 79], Characters.EmoSuppressed()),
+    new GeneratorOption([80, 85], Characters.MinorAlien()),
+    new GeneratorOption([86, 87], Characters.Traveler()),
+    new GeneratorOption([88, 93], Characters.Empath()),
+    new GeneratorOption([94, 100], Characters.BioUpgrade())
+]);
+CharacterGenerator.GenerateBackground = () => Generator(d100, [
+    new GeneratorOption([1, 4], Backgrounds.PeacefulHighTechColony()),
+    new GeneratorOption([5, 9], Backgrounds.GiantOvercrowdedDystopianCity()),
+    new GeneratorOption([10, 13], Backgrounds.LowTechColony()),
+    new GeneratorOption([14, 17], Backgrounds.MiningColony()),
+    new GeneratorOption([18, 21], Backgrounds.MilitaryBrat()),
+    new GeneratorOption([22, 25], Backgrounds.SpaceStation()),
+    new GeneratorOption([26, 29], Backgrounds.MilitaryOutpost()),
+    new GeneratorOption([30, 34], Backgrounds.Drifter()),
+    new GeneratorOption([35, 39], Backgrounds.LowerMegacityClass()),
+    new GeneratorOption([40, 42], Backgrounds.WealthyMerchantFamily()),
+    new GeneratorOption([43, 46], Backgrounds.FrontierGang()),
+    new GeneratorOption([47, 49], Backgrounds.ReligiousCult()),
+    new GeneratorOption([50, 52], Backgrounds.WarTornHellHole()),
+    new GeneratorOption([53, 55], Backgrounds.TechGuild()),
+    new GeneratorOption([56, 59], Backgrounds.SubjugatedColonyOnAlienWorld()),
+    new GeneratorOption([60, 64], Backgrounds.LongTermSpaceMission()),
+    new GeneratorOption([65, 68], Backgrounds.ResearchOutpost()),
+    new GeneratorOption([69, 72], Backgrounds.PrimitiveOrRegressedWorld()),
+    new GeneratorOption([73, 76], Backgrounds.OrphanUtilityProgram()),
+    new GeneratorOption([77, 80], Backgrounds.IsolationistEnclave()),
+    new GeneratorOption([81, 84], Backgrounds.ComfortableMegacityClass()),
+    new GeneratorOption([85, 89], Backgrounds.IndustrialWorld()),
+    new GeneratorOption([90, 93], Backgrounds.Bureaucrat()),
+    new GeneratorOption([94, 97], Backgrounds.WastelandNomads()),
+    new GeneratorOption([97, 100], Backgrounds.AlienCulture())
+]);
+CharacterGenerator.GenerateMotivation = () => Generator(d100, [
+    new GeneratorOption([1, 8], Motivations.Wealth()),
+    new GeneratorOption([9, 14], Motivations.Fame()),
+    new GeneratorOption([15, 19], Motivations.Glory()),
+    new GeneratorOption([20, 26], Motivations.Survival()),
+    new GeneratorOption([27, 32], Motivations.Escape()),
+    new GeneratorOption([33, 39], Motivations.Adventure()),
+    new GeneratorOption([40, 44], Motivations.Truth()),
+    new GeneratorOption([45, 49], Motivations.Technology()),
+    new GeneratorOption([50, 56], Motivations.Discovery()),
+    new GeneratorOption([57, 63], Motivations.Loyalty()),
+    new GeneratorOption([64, 69], Motivations.Revenge()),
+    new GeneratorOption([70, 74], Motivations.Romance()),
+    new GeneratorOption([75, 79], Motivations.Faith()),
+    new GeneratorOption([80, 84], Motivations.Political()),
+    new GeneratorOption([85, 90], Motivations.Power()),
+    new GeneratorOption([91, 95], Motivations.Order()),
+    new GeneratorOption([96, 100], Motivations.Freedom())
+]);
+CharacterGenerator.GenerateClass = () => Generator(d100, [
+    new GeneratorOption([1, 5], Classes.WorkingClass()),
+    new GeneratorOption([6, 9], Classes.Technician()),
+    new GeneratorOption([10, 13], Classes.Scientist()),
+    new GeneratorOption([14, 17], Classes.Hacker()),
+    new GeneratorOption([18, 22], Classes.Soldier()),
+    new GeneratorOption([23, 27], Classes.Mercenary()),
+    new GeneratorOption([28, 32], Classes.Agitator()),
+    new GeneratorOption([33, 36], Classes.Primitive()),
+    new GeneratorOption([37, 40], Classes.Artist()),
+    new GeneratorOption([41, 44], Classes.Negotiator()),
+    new GeneratorOption([45, 49], Classes.Trader()),
+    new GeneratorOption([50, 54], Classes.StarshipCrew()),
+    new GeneratorOption([55, 58], Classes.PettyCriminal()),
+    new GeneratorOption([59, 63], Classes.Ganger()),
+    new GeneratorOption([64, 67], Classes.Scoundrel()),
+    new GeneratorOption([68, 71], Classes.Enforcer()),
+    new GeneratorOption([72, 75], Classes.SpecialAgent()),
+    new GeneratorOption([76, 79], Classes.Troubleshooter()),
+    new GeneratorOption([80, 83], Classes.BountyHunter()),
+    new GeneratorOption([84, 88], Classes.Nomad()),
+    new GeneratorOption([89, 92], Classes.Explorer()),
+    new GeneratorOption([93, 96], Classes.Punk()),
+    new GeneratorOption([97, 100], Classes.Scavenger())
+]);
 
 const Backgrounds = {
     PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
