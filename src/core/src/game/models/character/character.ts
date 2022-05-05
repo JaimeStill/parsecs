@@ -1,3 +1,5 @@
+import { CharacterDetail } from './character-detail';
+
 import {
   CharacterProfileConfig,
   CharacterProfile
@@ -28,7 +30,7 @@ export class Character {
   motivation!: string;
   class!: string;
 
-  gear: Equipment[] = new Array<Equipment>();
+  gear: (Equipment | Weapon)[] = new Array<Equipment | Weapon>();
   sidearm: Sidearm | null = null;
   isLeader: boolean = false;
 
@@ -107,6 +109,14 @@ export class Character {
   promoteLeader = () => {
     this.isLeader = true;
     this.profile.luck += 1;
+  }
+
+  applyDetail = (cd: CharacterDetail) => {
+    if (cd.effects && cd.effects.length > 0)
+      this.profile.applyEffects(cd.effects);
+
+    if (cd.equipment && cd.equipment.length > 0)
+      this.gear.push(...cd.equipment);
   }
 }
 

@@ -1,5 +1,5 @@
 import { KeyValue } from '../core';
-import { VictoryCondition } from '../models';
+import { VictoryCondition } from '../models/campaign/victory-condition';
 
 import {
   Difficulty,

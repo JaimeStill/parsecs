@@ -1,3 +1,6 @@
+import { CharacterEffect } from './character-effect';
+import { CharacterStat } from '../../enums';
+
 export interface CharacterProfileConfig {
   maxReaction: number;
   maxSpeed: number;
@@ -144,5 +147,34 @@ export class CharacterProfile {
     this._xp = value > this.maxXp
       ? this.maxXp
       : value;
+  }
+
+  applyEffects = (effects: CharacterEffect[]) =>
+    effects.forEach(effect => this.applyEffect(effect));
+
+  applyEffect = (effect: CharacterEffect) => {
+    switch (effect.stat) {
+      case CharacterStat.CombatSkill:
+        this.combatSkill += effect.points;
+        break;
+      case CharacterStat.Luck:
+        this.luck += effect.points;
+        break;
+      case CharacterStat.Reactions:
+        this.reaction += effect.points;
+        break;
+      case CharacterStat.Savvy:
+        this.savvy += effect.points;
+        break;
+      case CharacterStat.Speed:
+        this.speed += effect.points;
+        break;
+      case CharacterStat.Toughness:
+        this.toughness += effect.points;
+        break;
+      case CharacterStat.XP:
+        this.xp += effect.points;
+        break;
+    }
   }
 }

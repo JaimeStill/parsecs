@@ -12,11 +12,122 @@ import {
 } from '../data';
 
 import {
+  CharacterSpecies,
+  CharacterRace
+} from '../enums';
+
+import {
   Character,
-  CharacterDetail
+  CharacterDetail,
+  CrewResource
 } from '../models';
 
 export abstract class CharacterGenerator {
+  static GenerateRoster = (size: number): Character[] => {
+    const roster = new Array<Character>();
+
+    for (var i = 0; i < size; i++)
+      roster.push(this.GenerateCharacter())
+
+    return roster;
+  }
+
+  static DevelopCharacter = (character: Character): CrewResource[] => {
+    if (character.race === CharacterRace.Bot) {
+      character.background = 'NULL_REFERENCE_EXCEPTION';
+      character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
+      character.class = 'ASSIGNED_FUNCTIONALITY';
+
+      return [];
+    } else {
+      return [
+        this.DevelopBackground(character),
+        this.DevelopMotivation(character),
+        this.DevelopClass(character)
+      ]
+    }
+  }
+
+  static DevelopBackground = (character: Character): CrewResource => {
+    let b: CharacterDetail;
+
+    switch (character.species) {
+      case CharacterSpecies.MysteriousPast:
+        b = this.GenerateBackground();
+        b.merge(this.GenerateBackground());
+
+        if (b.resources?.storyPoints)
+          b.resources.storyPoints = 0;
+
+        break;
+      default:
+        b = this.GenerateBackground();
+        break;
+    }
+
+    character.background = b.detail;
+    character.applyDetail(b);
+
+    return b.finalResources();
+  }
+
+  static DevelopMotivation = (character: Character): CrewResource => {
+    let m: CharacterDetail;
+
+    switch (character.species) {
+      case CharacterSpecies.DeConverted:
+        m = Motivations.Revenge();
+        break;
+      case CharacterSpecies.UnityAgent:
+        m = Motivations.Order();
+        break;
+      case CharacterSpecies.MysteriousPast:
+        m = this.GenerateMotivation();
+        if (m.resources?.storyPoints)
+          m.resources.storyPoints = 0;
+
+        break;
+      default:
+        m = this.GenerateMotivation();
+    }
+
+    character.motivation = m.detail;
+    character.applyDetail(m);
+
+    return m.finalResources();
+  }
+
+  static DevelopClass = (character: Character): CrewResource => {
+    let c: CharacterDetail;
+
+    switch (character.species) {
+      case CharacterSpecies.MysteriousPast:
+        c = this.GenerateClass();
+        if (c.resources?.storyPoints)
+          c.resources.storyPoints = 0;
+
+        break;
+      case CharacterSpecies.Hulker:
+        c = this.GenerateClass();
+
+        switch (c.detail) {
+          case "Technician":
+          case "Scientist":
+          case "Hacker":
+            c = Classes.Primitive();
+        }
+
+        break;
+      default:
+        c = this.GenerateClass();
+        break;
+    }
+
+    character.class = c.detail;
+    character.applyDetail(c);
+
+    return c.finalResources();
+  }
 
   static GenerateCharacter = (): Character =>
     Generator(d100, [
