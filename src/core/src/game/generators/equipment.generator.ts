@@ -16,7 +16,23 @@ import {
   WeaponSights
 } from '../data';
 
+import { WeaponGenerator } from './weapon.generator';
+
 export abstract class EquipmentGenerator {
+  static GenerateStash = (): (Weapon | Equipment)[] => {
+    const stash = new Array<Weapon | Equipment>();
+
+    for (i = 0; i < 3; i++) {
+      stash.push(WeaponGenerator.GenerateMilitary());
+      stash.push(WeaponGenerator.GenerateLowTech());
+    }
+
+    stash.push(this.GenerateGear());
+    stash.push(this.GenerateGadget());
+
+    return stash;
+  }
+
   static GenerateGear = (): Equipment =>
     Generator(d100, [
       new GeneratorOption(

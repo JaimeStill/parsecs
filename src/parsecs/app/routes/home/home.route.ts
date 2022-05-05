@@ -5,6 +5,8 @@ import {
 
 import {
   d6,
+  Campaign,
+  CampaignConfig,
   Character,
   CharacterGenerator,
   CharacterRace,
@@ -21,60 +23,20 @@ import {
   templateUrl: 'home.route.html'
 })
 export class HomeRoute implements OnInit {
-  character!: Character;
-  gadget!: Equipment;
-  ship!: Ship;
-  weapon!: Weapon;
-
+  campaign!: Campaign;
   cardSize: number | string = 'auto';
 
   ngOnInit() {
-    this.generateCharacter();
-    this.generateGadget();
-    this.generateShip();
-    this.generateWeapon();
+    this.initCampaign();
   }
 
-  characterColor = () => {
-    switch (this.character?.race) {
-      case CharacterRace.Human:
-        return 'color-blue';
-      case CharacterRace.Alien:
-        return 'color-green';
-      case CharacterRace.Bot:
-        return 'color-amber';
-      default:
-        return 'color-red';
-    }
+  initCampaign = () => {
+    const c = new CampaignConfig('test-campaign');
+    for (var i = 0; i < c.crew.roster.length; i++)
+      c.crew.roster[i].name = `Character ${i}`;
+      
+    c.victory = c.victoryConditions[0];
+
+    this.campaign = c.finalize();
   }
-
-  generateCharacter = () => this.character = CharacterGenerator.GenerateCharacter();
-
-  generateGadget = () => this.gadget = EquipmentGenerator.GenerateGadget();
-
-  generateWeapon = () => {
-    const roll = d6();
-
-    if (roll >= 1 && roll <= 2)
-      this.weapon = WeaponGenerator.GenerateLowTech();
-    if (roll >= 3 && roll <= 4)
-      this.weapon = WeaponGenerator.GenerateMilitary();
-    else
-      this.weapon = WeaponGenerator.GenerateHighTech();
-  }
-
-  weaponColor = () => {
-    switch (this.weapon?.description) {
-      case 'Low Tech':
-        return 'color-blue';
-      case 'Military':
-        return 'color-green';
-      case 'High Tech':
-        return 'color-amber';
-      default:
-        return 'color-red';
-    }
-  }
-
-  generateShip = () => this.ship = ShipGenerator.Generate();
 }

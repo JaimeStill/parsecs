@@ -5,58 +5,13 @@
            fxLayoutAlign="start stretch"
            class="m4 p4"
            [style.width.px]="cardSize">
-    <p class="mat-title m4">Generate Character Test</p>
+    <p class="mat-title m4">Generate Campaign</p>
     <div class="p4">
       <button mat-stroked-button
-              (click)="generateCharacter()">Generate Character</button>
+              (click)="initCampaign()">Generate Campaign</button>
     </div>
-    <pre *ngIf="character"
-         class="m4 pre-wrap"
-         [ngClass]="characterColor()"><code>
-{{character | json}}
-</code></pre>
-  </section>
-  <section fxLayout="column"
-           fxLayoutAlign="start stretch"
-           class="m4 p4"
-           [style.width.px]="cardSize">
-    <p class="mat-title m4">Generate Weapon Test</p>
-    <div class="p4">
-      <button mat-stroked-button
-              (click)="generateWeapon()">Generate Weapon</button>
-    </div>
-    <pre *ngIf="weapon"
-         class="m4 pre-wrap"
-         [ngClass]="weaponColor()"><code>
-{{weapon | json}}
-</code></pre>
-  </section>
-  <section fxLayout="column"
-           fxLayoutAlign="start stretch"
-           class="m4 p4"
-           [style.width.px]="cardSize">
-    <p class="mat-title m4">Generate Ship Test</p>
-    <div class="p4">
-      <button mat-stroked-button
-              (click)="generateShip()">Generate Ship</button>
-    </div>
-    <pre *ngIf="ship"
-         class="m4 pre-wrap">
-{{ship | json}}
-</pre>
-  </section>
-  <section fxLayout="column"
-           fxLayoutAlign="start stretch"
-           class="m4 p4"
-           [style.width.px]="cardSize">
-    <p class="mat-title m4">Generate Gadget</p>
-    <div class="p4">
-      <button mat-stroked-button
-              (click)="generateGadget()">Generate Gadget</button>
-    </div>
-    <pre *ngIf="gadget"
-         class="m4 pre-wrap">
-{{gadget | json}}
-</pre>
+    <pre *ngIf="campaign"
+         class="m4 pre-wrap"><code>
+{{campaign | json}}</code></pre>
   </section>
 </section>

@@ -19,6 +19,7 @@ import {
 import {
   Character,
   CharacterDetail,
+  ConsolidateResources,
   CrewResource
 } from '../models';
 
@@ -32,24 +33,40 @@ export abstract class CharacterGenerator {
     return roster;
   }
 
-  static DevelopCharacter = (character: Character): CrewResource[] => {
+  static DevelopCharacter = (character: Character): CrewResource => {
     if (character.race === CharacterRace.Bot) {
       character.background = 'NULL_REFERENCE_EXCEPTION';
       character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
       character.class = 'ASSIGNED_FUNCTIONALITY';
 
-      return [];
+      return { } as CrewResource;
     } else {
-      return [
+      const resources = ConsolidateResources(
         this.DevelopBackground(character),
         this.DevelopMotivation(character),
         this.DevelopClass(character)
-      ]
+      );
+
+      switch (character.Species) {
+        case CharacterSpecies.MinorAlien:
+          if (resources.credits)
+            resources.credits -= 1;
+          if (resources.storyPoints)
+            resources.storyPoints -= 1;
+          break;
+        case CharacterSpecies.Traveler:
+          resources.storyPoints = (resources.storyPoints ?? 0) + 2;
+          resources.rumors = (resources.rumors ?? 0) + 2;
+          break;
+      }
+
+      return resources;
     }
   }
 
   static DevelopBackground = (character: Character): CrewResource => {
     let b: CharacterDetail;
+    let roll: number;
 
     switch (character.species) {
       case CharacterSpecies.MysteriousPast:
@@ -59,6 +76,22 @@ export abstract class CharacterGenerator {
         if (b.resources?.storyPoints)
           b.resources.storyPoints = 0;
 
+        break;
+      case CharacterSpecies.Mutant:
+        b = Backgrounds.LowerMegacityClass();
+        break;
+      case CharacterSpecies.Manipulator:
+        b = Backgrounds.Bureaucrat();
+        break;
+      case CharacterSpecies.Primitive:
+        b = Backgrounds.PrimitiveOrRegressedWorld();
+        break;
+      case CharacterSpecies.BioUpgrade():
+        b = this.GenerateBackground();
+        if (b.resources?.credits)
+          b.resources.credits >= 2
+            ? b.resources.credits -= 2
+            : b.resources.credits = 0;          
         break;
       default:
         b = this.GenerateBackground();
@@ -85,7 +118,16 @@ export abstract class CharacterGenerator {
         m = this.GenerateMotivation();
         if (m.resources?.storyPoints)
           m.resources.storyPoints = 0;
-
+        break;
+      case CharacterSpecies.Feeler:
+        m = this.GenerateMotivation();
+        m.merge(this.GenerateMotivation());
+        break;
+      case CharacterSpecies.Survival:
+        m = Motivations.Survival();
+        break;
+      case CharacterSpecies.Traveler:
+        m = Motivations.Truth();
         break;
       default:
         m = this.GenerateMotivation();

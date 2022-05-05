@@ -9,8 +9,9 @@ import { Ship } from '../ship';
 import { VictoryCondition } from './victory-condition';
 
 import {
+  ConsolidateResources,
   Crew,
-  CrewResource
+  CrewResource,
 } from '../crew';
 
 export class CampaignConfig {
@@ -39,6 +40,7 @@ export class CampaignConfig {
 
   constructor(name: string) {
     this.name = name;
+    this.initRoster();
   }
 
   private containsVictory = (victory: VictoryCondition) =>
@@ -66,6 +68,13 @@ export class CampaignConfig {
     }
   }
 
+  private initRoster = () => {
+    if (this.crew.roster.length > 0)
+      this.crew.clearRoster();
+
+    this.crew.addCharacters(CharacterGenerator.GenerateRoster(this.crewSize));
+  }
+
   set name(value: string) { this._name = value; }
 
   set crewSize(value: number) {
@@ -75,10 +84,7 @@ export class CampaignConfig {
         ? this.minCrew
         : value;
 
-    if (this.crew.roster.length > 0)
-      this.crew.clearRoster();
-
-    this.crew.addCharacters(CharacterGenerator.GenerateRoster(value));
+    this.initRoster();
   }
 
   set useStars(value: boolean) {
@@ -106,26 +112,21 @@ export class CampaignConfig {
   finalize = (): Campaign => {
     this.ship = ShipGenerator.Generate();
 
-    const resources = new Array<CrewResource>();
+    let resources: CrewResource;
 
     for (let character of this.crew.roster)
-      resources.push(...CharacterGenerator.DevelopCharacter(character));
+      ConsolidateResources(resources, CharacterGenerator.DevelopCharacter(character));
 
-    const crewResources = resources.reduce((total, current) => {
-      return {
-        credits: (total.credits ?? 0) + (current.credits ?? 0),
-        patrons: (total.patrons ?? 0) + (current.patrons ?? 0),
-        rivals: (total.rivals ?? 0) + (current.rivals ?? 0),
-        rumors: (total.rumors ?? 0) + (current.rumors ?? 0),
-        storyPoints: this.difficulty === Difficulty.Insanity
-          ? 0
-          : (total.storyPoints ?? 0) + (current.storyPoints ?? 0)
-      } as CrewResource
-    })
+    resources?.storyPoints = this.difficulty === Difficulty.Insanity || !this.useStory
+      ? 0
+      : resources?.storyPoints;
 
-    crewResources.storyPoints = (crewResources.storyPoints ?? 0) + this.initStoryPoints();
+    resources.storyPoints = (resources.storyPoints ?? 0) + this.initStoryPoints();
+    resources.credit = (resources.credit ?? 0) + this.crewSize;
 
-    return new Campaign(this, crewResources);
+    this.crew.stash.push(EquipmentGenerator.GenerateStash());
+
+    return new Campaign(this, resources);
   }
 }
 
@@ -170,7 +171,7 @@ export class Campaign {
 
   get storyPoints(): number { return this._storyPoints; }
   set storyPoints(value: number) {
-    this._storyPoints = this.difficulty === Difficulty.Insanity
+    this._storyPoints = this.difficulty === Difficulty.Insanity || !this.useStory
       ? 0
       : value;
   }

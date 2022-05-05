@@ -1,5 +1,23 @@
 import { Character } from './character';
 
+import {
+  Equipment,
+  Weapon
+} from './equipment';
+
+export const ConsolidateResources = (resources: CrewResource[]): CrewResource =>
+  resources.reduce((total: CrewResource = {}, current: CrewResource) => {
+    return {
+      credits: (total.credits ?? 0) + (current.credits ?? 0),
+      patrons: (total.patrons ?? 0) + (current.patrons ?? 0),
+      rivals: (total.rivals ?? 0) + (current.rivals ?? 0),
+      rumors: (total.rumors ?? 0) + (current.rumors ?? 0),
+      storyPoints: this.difficulty === Difficulty.Insanity
+        ? 0
+        : (total.storyPoints ?? 0) + (current.storyPoints ?? 0)
+    } as CrewResource
+  });
+
 export interface CrewResource {
   credits: number | null;
   storyPoints: number | null;
@@ -9,6 +27,8 @@ export interface CrewResource {
 }
 
 export class Crew {
+  stash: (Equipment | Weapon)[] = [];
+
   private _leader: Character | null  = null;
   get leader(): Character | null { return this._leader; }
 

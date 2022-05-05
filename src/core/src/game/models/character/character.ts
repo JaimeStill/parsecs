@@ -26,6 +26,7 @@ export class Character {
   private _weapons: [Weapon?, Weapon?] = [];
   private _devices: [UtilityDevice?, UtilityDevice?, UtilityDevice?] = [];
 
+  name!: string;
   background!: string;
   motivation!: string;
   class!: string;
