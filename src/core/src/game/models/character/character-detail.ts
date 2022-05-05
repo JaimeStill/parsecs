@@ -40,33 +40,11 @@ export class CharacterDetail {
   }
 
   private mergeResources = (cd: CharacterDetail) => {
-    if (this.resources && cd.resources) {
-      if (this.resources.credits && cd.resources.credits)
-        this.resources.credits += cd.resources.credits;
-      else if (cd.resources.credits)
-        this.resources.credits = cd.resources.credits;
-
-      if (this.resources.patrons && cd.resources.patrons)
-        this.resources.patrons += cd.resources.patrons;
-      else if (cd.resources.patrons)
-        this.resources.patrons = cd.resources.patrons;
-
-      if (this.resources.rivals && cd.resources.rivals)
-        this.resources.rivals += cd.resources.rivals;
-      else if (cd.resources.rivals)
-        this.resources.rivals = cd.resources.rivals;
-
-      if (this.resources.rumors && cd.resources.rumors)
-        this.resources.rumors += cd.resources.rumors;
-      else if (cd.resources.rumors)
-        this.resources.rumors = cd.resources.rumors;
-
-      if (this.resources.storyPoints && cd.resources.storyPoints)
-        this.resources.storyPoints += cd.resources.storyPoints;
-      else if (cd.resources.storyPoints)
-        this.resources.storyPoints = cd.resources.storyPoints;
-    } else if (cd.resources)
-      this.resources = cd.resources;
+    this.resources.credits = (this.resources.credits ?? 0) + (cd.resources.credits ?? 0);
+    this.resources.patrons = (this.resources.patrons ?? 0) + (cd.resources.patrons ?? 0);
+    this.resources.rivals = (this.resources.rivals ?? 0) + (cd.resources.rivals ?? 0);
+    this.resources.rumors = (this.resources.rumors ?? 0) + (cd.resources.rumors ?? 0);
+    this.resources.storyPoints = (this.resources.storyPoints ?? 0) + (cd.resources.storyPoints ?? 0);
   }
 
   private mergeEquipment = (cd: CharacterDetail) => {
