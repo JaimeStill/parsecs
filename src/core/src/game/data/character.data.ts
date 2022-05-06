@@ -1,5 +1,6 @@
 import { EquipmentGenerator } from '../generators/equipment.generator';
 import { WeaponGenerator } from '../generators/weapon.generator';
+import { CampaignResource } from '../models/campaign/campaign-resource';
 import { Character } from '../models/character/character';
 import { CharacterDetail } from '../models/character/character-detail';
 import { CharacterProfileConfig } from '../models/character/character-profile';
@@ -18,7 +19,7 @@ import {
 export const Backgrounds = {
   PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }],
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   GiantOvercrowdedDystopianCity: () => new CharacterDetail(`Giant, Overcrowded, Dystopian City`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }]
@@ -45,16 +46,16 @@ export const Backgrounds = {
     equipment: [WeaponGenerator.GenerateLowTech()]
   }),
   WealthyMerchantFamily: () => new CharacterDetail(`Wealthy Merchant Family`, {
-    resources: { credits: dice({ six: 2 }).total }
+    resources: new CampaignResource({ credits: dice({ six: 2 }).total })
   }),
   FrontierGang: () => new CharacterDetail(`Frontier Gang`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }]
   }),
   ReligiousCult: () => new CharacterDetail(`Religious Cult`, {
-    resources: {
+    resources: new CampaignResource({
       patrons: 1,
       storyPoints: 1
-    }
+    })
   }),
   WarTornHellHole: () => new CharacterDetail(`War-Torn Hell-Hole`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
@@ -62,7 +63,7 @@ export const Backgrounds = {
   }),
   TechGuild: () => new CharacterDetail(`Tech Guild`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }],
-    resources: { credits: d6() },
+    resources: new CampaignResource({ credits: d6() }),
     equipment: [WeaponGenerator.GenerateHighTech()]
   }),
   SubjugatedColonyOnAlienWorld: () => new CharacterDetail(`Subjugated Colony on Alien World`, {
@@ -80,22 +81,22 @@ export const Backgrounds = {
     equipment: [WeaponGenerator.GenerateLowTech()]
   }),
   OrphanUtilityProgram: () => new CharacterDetail(`Orphan Utility Program`, {
-    resources: {
+    resources: new CampaignResource({
       patrons: 1,
       storyPoints: 1
-    }
+    })
   }),
   IsolationistEnclave: () => new CharacterDetail(`Isolationist Enclave`, {
-    resources: { rumors: 2 }
+    resources: new CampaignResource({ rumors: 2 })
   }),
   ComfortableMegacityClass: () => new CharacterDetail(`Comfortable Megacity Class`, {
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   IndustrialWorld: () => new CharacterDetail(`Industrial World`, {
     equipment: [EquipmentGenerator.GenerateGear()]
   }),
   Bureaucrat: () => new CharacterDetail(`Bureaucrat`, {
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   WastelandNomads: () => new CharacterDetail(`Wasteland Nomads`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
@@ -208,31 +209,31 @@ export const Classes = {
   }),
   Hacker: () => new CharacterDetail(`Hacker`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }],
-    resources: { rivals: 1 }
+    resources: new CampaignResource({ rivals: 1 })
   }),
   Soldier: () => new CharacterDetail(`Soldier`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   Mercenary: () => new CharacterDetail(`Mercenary`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
     equipment: [WeaponGenerator.GenerateMilitary()]
   }),
   Agitator: () => new CharacterDetail(`Agitator`, {
-    resources: { rivals: 1 }
+    resources: new CampaignResource({ rivals: 1 })
   }),
   Primitive: () => new CharacterDetail(`Primitive`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }],
     equipment: [WeaponGenerator.GenerateLowTech()]
   }),
   Artist: () => new CharacterDetail(`Artist`, {
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   Negotiator: () => new CharacterDetail(`Negotiator`, {
-    resources: { patrons: 1, storyPoints: 1 }
+    resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
   }),
   Trader: () => new CharacterDetail(`Trader`, {
-    resources: { credits: dice({ six: 2 }).total }
+    resources: new CampaignResource({ credits: dice({ six: 2 }).total })
   }),
   StarshipCrew: () => new CharacterDetail(`Starship Crew`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }]
@@ -249,11 +250,11 @@ export const Classes = {
   }),
   Enforcer: () => new CharacterDetail(`Enforcer`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-    resources: { patrons: 1 }
+    resources: new CampaignResource({ patrons: 1 })
   }),
   SpecialAgent: () => new CharacterDetail(`Special Agent`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
-    resources: { patrons: 1 },
+    resources: new CampaignResource({ patrons: 1 }),
     equipment: [EquipmentGenerator.GenerateGadget()]
   }),
   Troubleshooter: () => new CharacterDetail(`Troubleshooter`, {
@@ -262,7 +263,7 @@ export const Classes = {
   }),
   BountyHunter: () => new CharacterDetail(`Bounty Hunter`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }],
-    resources: { rumors: 1 },
+    resources: new CampaignResource({ rumors: 1 }),
     equipment: [WeaponGenerator.GenerateLowTech()]
   }),
   Nomad: () => new CharacterDetail(`Nomad`, {
@@ -274,10 +275,10 @@ export const Classes = {
   }),
   Punk: () => new CharacterDetail(`Punk`, {
     effects: [{ points: 2, stat: CharacterStat.XP }],
-    resources: { rivals: 1 }
+    resources: new CampaignResource({ rivals: 1 })
   }),
   Scavenger: () => new CharacterDetail(`Scavenger`, {
-    resources: { rumors: 1 },
+    resources: new CampaignResource({ rumors: 1 }),
     equipment: [WeaponGenerator.GenerateHighTech()]
   })
 }
@@ -286,10 +287,10 @@ export const ClassList = Datalist(Classes);
 
 export const Motivations = {
   Wealth: () => new CharacterDetail(`Wealth`, {
-    resources: { credits: d6() }
+    resources: new CampaignResource({ credits: d6() })
   }),
   Fame: () => new CharacterDetail(`Fame`, {
-    resources: { storyPoints: 1 }
+    resources: new CampaignResource({ storyPoints: 1 })
   }),
   Glory: () => new CharacterDetail(`Glory`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
@@ -302,14 +303,14 @@ export const Motivations = {
     effects: [{ points: 1, stat: CharacterStat.Speed }]
   }),
   Adventure: () => new CharacterDetail(`Adventure`, {
-    resources: { credits: d6() },
+    resources: new CampaignResource({ credits: d6() }),
     equipment: [WeaponGenerator.GenerateLowTech()]
   }),
   Truth: () => new CharacterDetail(`Truth`, {
-    resources: {
+    resources: new CampaignResource({
       rumors: 1,
       storyPoints: 1
-    }
+    })
   }),
   Technology: () => new CharacterDetail(`Technology`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }],
@@ -320,27 +321,27 @@ export const Motivations = {
     equipment: [EquipmentGenerator.GenerateGear()]
   }),
   Loyalty: () => new CharacterDetail(`Loyalty`, {
-    resources: { patrons: 1, storyPoints: 1 }
+    resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
   }),
   Revenge: () => new CharacterDetail(`Revenge`, {
     effects: [{ points: 2, stat: CharacterStat.XP }],
-    resources: { rivals: 1 }
+    resources: new CampaignResource({ rivals: 1 })
   }),
   Romance: () => new CharacterDetail(`Romance`, {
-    resources: { rumors: 1, storyPoints: 1 }
+    resources: new CampaignResource({ rumors: 1, storyPoints: 1 })
   }),
   Faith: () => new CharacterDetail(`Faith`, {
-    resources: { rumors: 1, storyPoints: 1 }
+    resources: new CampaignResource({ rumors: 1, storyPoints: 1 })
   }),
   Political: () => new CharacterDetail(`Political`, {
-    resources: { patrons: 1, storyPoints: 1 }
+    resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
   }),
   Power: () => new CharacterDetail(`Power`, {
     effects: [{ points: 2, stat: CharacterStat.XP }],
-    resources: { rivals: 1 }
+    resources: new CampaignResource({ rivals: 1 })
   }),
   Order: () => new CharacterDetail(`Order`, {
-    resources: { patrons: 1, storyPoints: 1 }
+    resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
   }),
   Freedom: () => new CharacterDetail(`Freedom`, {
     effects: [{ points: 2, stat: CharacterStat.XP }]

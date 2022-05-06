@@ -34,7 +34,8 @@ export class HomeRoute implements OnInit {
     const c = new CampaignConfig('test-campaign');
     for (var i = 0; i < c.crew.roster.length; i++)
       c.crew.roster[i].name = `Character ${i}`;
-      
+
+    c.leader = c.crew.roster[0];
     c.victory = c.victoryConditions[0].value;
 
     this.campaign = c.finalize();

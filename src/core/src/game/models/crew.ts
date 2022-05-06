@@ -5,42 +5,17 @@ import {
   Weapon
 } from './equipment';
 
-export const ConsolidateResources = (resources: CrewResource[]): CrewResource =>
-  resources.reduce((total: CrewResource = {
-    credits: 0,
-    patrons: 0,
-    rivals: 0,
-    rumors: 0,
-    storyPoints: 0
-  }, current: CrewResource) => {
-    return {
-      credits: (total.credits ?? 0) + (current.credits ?? 0),
-      patrons: (total.patrons ?? 0) + (current.patrons ?? 0),
-      rivals: (total.rivals ?? 0) + (current.rivals ?? 0),
-      rumors: (total.rumors ?? 0) + (current.rumors ?? 0),
-      storyPoints: (total.storyPoints ?? 0) + (current.storyPoints ?? 0)
-    } as CrewResource
-  });
-
-export interface CrewResource {
-  credits: number | null;
-  storyPoints: number | null;
-  rumors: number | null;
-  patrons: number  | null;
-  rivals: number | null;
-}
-
 export class Crew {
   stash: (Equipment | Weapon)[] = [];
 
-  private _leader: Character | null  = null;
+  private _leader: Character | null = null;
   get leader(): Character | null { return this._leader; }
 
   set leader(character: Character | null) {
-    if (this.leader && character)
+    if (this._leader && character)
       return;
 
-    this.leader = character;
+    this._leader = character;
 
     if (character)
       character.promoteLeader();
@@ -56,7 +31,7 @@ export class Crew {
 
   addCharacter = (character: Character) =>
     !(this.roster.some(c => c.id === character.id))
-      && this.roster.push(character);
+    && this.roster.push(character);
 
   addCharacters = (characters: Character[]) =>
     characters.forEach(c => this.addCharacter(c));

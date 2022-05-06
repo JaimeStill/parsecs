@@ -12,14 +12,12 @@ import {
 } from '../data/character.data';
 
 import {
+  CharacterRace,
   CharacterSpecies,
-  CharacterRace
+  CharacterStat
 } from '../enums';
 
-import {
-  ConsolidateResources,
-  CrewResource
-} from '../models/crew';
+import { CampaignResource } from '../models/campaign/campaign-resource';
 
 import {
   Character,
@@ -27,6 +25,13 @@ import {
 } from '../models/character';
 
 export abstract class CharacterGenerator {
+  private static savvyUpgraded = (details: CharacterDetail[]) =>
+    details
+      .some(d =>
+        d.effects
+        && d.effects.some(e => e.points > 0 && e.stat === CharacterStat.Savvy)
+      );
+
   static GenerateRoster = (size: number): Character[] => {
     const roster = new Array<Character>();
 
@@ -36,38 +41,56 @@ export abstract class CharacterGenerator {
     return roster;
   }
 
-  static DevelopCharacter = (character: Character): CrewResource => {
+  static DevelopCharacter = (character: Character): { resources: CampaignResource, savvyUpgraded: boolean } => {
     if (character.race === CharacterRace.Bot) {
       character.background = 'NULL_REFERENCE_EXCEPTION';
       character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
       character.class = 'ASSIGNED_FUNCTIONALITY';
 
-      return { } as CrewResource;
+      return { resources: new CampaignResource(), savvyUpgraded: false };
     } else {
-      const resources = ConsolidateResources([
+      const details = [
         this.DevelopBackground(character),
         this.DevelopMotivation(character),
         this.DevelopClass(character)
-      ]);
+      ]
+
+      const resources = new CampaignResource();
+      resources.consolidate(details.map(d => d.resources));
+
+      let savvyUpgraded: boolean;
 
       switch (character.species) {
+        case CharacterSpecies.DeConverted:
+          savvyUpgraded = false;
+          break;
         case CharacterSpecies.MinorAlien:
           if (resources.credits)
             resources.credits -= 1;
           if (resources.storyPoints)
             resources.storyPoints -= 1;
+
+          savvyUpgraded = this.savvyUpgraded(details);
           break;
         case CharacterSpecies.Traveler:
           resources.storyPoints = (resources.storyPoints ?? 0) + 2;
           resources.rumors = (resources.rumors ?? 0) + 2;
+
+          savvyUpgraded = this.savvyUpgraded(details);
+          break;
+        default:
+          savvyUpgraded = this.savvyUpgraded(details);
           break;
       }
 
-      return resources;
+      return {
+        resources,
+        savvyUpgraded
+      };
     }
   }
 
-  static DevelopBackground = (character: Character): CrewResource => {
+  static DevelopBackground = (character: Character): CharacterDetail => {
     let b: CharacterDetail;
     let roll: number;
 
@@ -104,10 +127,10 @@ export abstract class CharacterGenerator {
     character.background = b.detail;
     character.applyDetail(b);
 
-    return b.finalResources();
+    return b;
   }
 
-  static DevelopMotivation = (character: Character): CrewResource => {
+  static DevelopMotivation = (character: Character): CharacterDetail => {
     let m: CharacterDetail;
 
     switch (character.species) {
@@ -139,10 +162,10 @@ export abstract class CharacterGenerator {
     character.motivation = m.detail;
     character.applyDetail(m);
 
-    return m.finalResources();
+    return m;
   }
 
-  static DevelopClass = (character: Character): CrewResource => {
+  static DevelopClass = (character: Character): CharacterDetail => {
     let c: CharacterDetail;
 
     switch (character.species) {
@@ -171,7 +194,7 @@ export abstract class CharacterGenerator {
     character.class = c.detail;
     character.applyDetail(c);
 
-    return c.finalResources();
+    return c;
   }
 
   static GenerateCharacter = (): Character =>

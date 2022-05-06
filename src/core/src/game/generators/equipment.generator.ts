@@ -22,11 +22,16 @@ import {
 } from '../models/equipment';
 
 export abstract class EquipmentGenerator {
-  static GenerateStash = (): (Weapon | Equipment)[] => {
+  static GenerateStash = (savvyUpgrades: number = 0): (Weapon | Equipment)[] => {
     const stash = new Array<Weapon | Equipment>();
 
     for (let i = 0; i < 3; i++) {
-      stash.push(WeaponGenerator.GenerateMilitary());
+      stash.push(
+        savvyUpgrades > i
+          ? WeaponGenerator.GenerateHighTech()
+          : WeaponGenerator.GenerateMilitary()
+      );
+
       stash.push(WeaponGenerator.GenerateLowTech());
     }
 
