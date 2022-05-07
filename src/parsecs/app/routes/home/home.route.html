@@ -3,15 +3,36 @@
          class="p8">
   <section fxLayout="column"
            fxLayoutAlign="start stretch"
-           class="m4 p4"
-           [style.width.px]="cardSize">
+           class="m4 p4">
     <p class="mat-title m4">Generate Campaign</p>
-    <div class="p4">
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
+         class="p4">
+      <mat-form-field class="m4">
+        <mat-label>Campaign Name</mat-label>
+        <input matInput
+               [(ngModel)]="name" />
+      </mat-form-field>
       <button mat-stroked-button
+              class="m4"
+              (click)="saveCampaign()">Save Campaign</button>
+      <button mat-stroked-button
+              class="m4"
               (click)="initCampaign()">Generate Campaign</button>
     </div>
     <pre *ngIf="campaign"
-         class="m4 pre-wrap"><code>
+         class="m4 pre-wrap overflow"
+         [style.max-height.vh]="40"><code>
 {{campaign | json}}</code></pre>
+  </section>
+  <section fxLayout="column"
+           fxLayoutAlign="start stretch"
+           class="m4 p4">
+    <p class="mat-title m4">Saved Campaigns</p>
+    <ng-container *ngIf="data.length > 0">
+      <p *ngFor="let c of data">{{c.name}}</p>
+    </ng-container>
+    <p *ngIf="!(data.length > 0)"
+       class="mat-subheading-1 m4">No Campaigns Available</p>
   </section>
 </section>

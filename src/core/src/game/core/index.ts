@@ -5,3 +5,4 @@ export * from './datalist';
 export * from './dice';
 export * from './generator';
 export * from './key-value';
+export * from './store-manager';
