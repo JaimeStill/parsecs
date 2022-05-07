@@ -141,6 +141,7 @@ class HomeRoute {
             const c = new core__WEBPACK_IMPORTED_MODULE_1__.CampaignConfig('test-campaign');
             for (var i = 0; i < c.crew.roster.length; i++)
                 c.crew.roster[i].name = `Character ${i}`;
+            c.leader = c.crew.roster[0];
             c.victory = c.victoryConditions[0].value;
             this.campaign = c.finalize();
         };
@@ -277,6 +278,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "BytesPipe": () => (/* binding */ BytesPipe),
 /* harmony export */   "Campaign": () => (/* binding */ Campaign),
 /* harmony export */   "CampaignConfig": () => (/* binding */ CampaignConfig),
+/* harmony export */   "CampaignResource": () => (/* binding */ CampaignResource),
 /* harmony export */   "Character": () => (/* binding */ Character),
 /* harmony export */   "CharacterDetail": () => (/* binding */ CharacterDetail),
 /* harmony export */   "CharacterGenerator": () => (/* binding */ CharacterGenerator),
@@ -290,7 +292,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Classes": () => (/* binding */ Classes),
 /* harmony export */   "Components": () => (/* binding */ Components),
 /* harmony export */   "ConfirmDialog": () => (/* binding */ ConfirmDialog),
-/* harmony export */   "ConsolidateResources": () => (/* binding */ ConsolidateResources),
 /* harmony export */   "Consumable": () => (/* binding */ Consumable),
 /* harmony export */   "ConsumableList": () => (/* binding */ ConsumableList),
 /* harmony export */   "Consumables": () => (/* binding */ Consumables),
@@ -1381,10 +1382,12 @@ var _a$1;
 class EquipmentGenerator {
 }
 _a$1 = EquipmentGenerator;
-EquipmentGenerator.GenerateStash = () => {
+EquipmentGenerator.GenerateStash = (savvyUpgrades = 0) => {
     const stash = new Array();
     for (let i = 0; i < 3; i++) {
-        stash.push(WeaponGenerator.GenerateMilitary());
+        stash.push(savvyUpgrades > i
+            ? WeaponGenerator.GenerateHighTech()
+            : WeaponGenerator.GenerateMilitary());
         stash.push(WeaponGenerator.GenerateLowTech());
     }
     stash.push(_a$1.GenerateGear());
@@ -1439,6 +1442,23 @@ EquipmentGenerator.GenerateGadget = () => Generator(d100, [
     new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
     new GeneratorOption([94, 100], Consumables.StimPack())
 ]);
+
+class CampaignResource {
+    constructor({ credits = 0, storyPoints = 0, rumors = 0, patrons = 0, rivals = 0 } = {}) {
+        this.consolidate = (resources) => resources.forEach(r => {
+            this.credits += r.credits;
+            this.patrons += r.patrons;
+            this.rivals += r.rivals;
+            this.rumors += r.rumors;
+            this.storyPoints += r.storyPoints;
+        });
+        this.credits = credits;
+        this.storyPoints = storyPoints;
+        this.rumors = rumors;
+        this.patrons = patrons;
+        this.rivals = rivals;
+    }
+}
 
 class CharacterProfile {
     constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
@@ -1602,23 +1622,14 @@ class Character {
 }
 
 class CharacterDetail {
-    constructor(detail, { effects = null, resources = null, equipment = null } = {}) {
+    constructor(detail, { effects = null, resources = new CampaignResource(), equipment = null } = {}) {
+        this.resources = new CampaignResource();
         this.equipment = null;
         this.mergeEffects = (cd) => {
             if (this.effects && cd.effects)
                 this.effects.push(...cd.effects);
             else if (cd.effects)
                 this.effects = cd.effects;
-        };
-        this.mergeResources = (cd) => {
-            var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k, _l, _m;
-            this.resources = Object.assign({}, (_a = this.resources) !== null && _a !== void 0 ? _a : {});
-            cd.resources = Object.assign({}, (_b = cd.resources) !== null && _b !== void 0 ? _b : {});
-            this.resources.credits = ((_c = this.resources.credits) !== null && _c !== void 0 ? _c : 0) + ((_d = cd.resources.credits) !== null && _d !== void 0 ? _d : 0);
-            this.resources.patrons = ((_e = this.resources.patrons) !== null && _e !== void 0 ? _e : 0) + ((_f = cd.resources.patrons) !== null && _f !== void 0 ? _f : 0);
-            this.resources.rivals = ((_g = this.resources.rivals) !== null && _g !== void 0 ? _g : 0) + ((_h = cd.resources.rivals) !== null && _h !== void 0 ? _h : 0);
-            this.resources.rumors = ((_j = this.resources.rumors) !== null && _j !== void 0 ? _j : 0) + ((_k = cd.resources.rumors) !== null && _k !== void 0 ? _k : 0);
-            this.resources.storyPoints = ((_l = this.resources.storyPoints) !== null && _l !== void 0 ? _l : 0) + ((_m = cd.resources.storyPoints) !== null && _m !== void 0 ? _m : 0);
         };
         this.mergeEquipment = (cd) => {
             if (this.equipment && cd.equipment)
@@ -1629,16 +1640,9 @@ class CharacterDetail {
         this.merge = (cd) => {
             this.detail = `${this.detail} : ${cd.detail}`;
             this.mergeEffects(cd);
-            this.mergeResources(cd);
+            this.resources.consolidate([cd.resources]);
             this.mergeEquipment(cd);
         };
-        this.finalResources = () => Object.assign({
-            credits: 0,
-            patrons: 0,
-            rivals: 0,
-            rumors: 0,
-            storyPoints: 0
-        }, this.resources);
         this.detail = detail;
         this.effects = effects;
         this.resources = resources;
@@ -1649,7 +1653,7 @@ class CharacterDetail {
 const Backgrounds = {
     PeacefulHighTechColony: () => new CharacterDetail(`Peaceful, High-Tech Colony`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }],
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     GiantOvercrowdedDystopianCity: () => new CharacterDetail(`Giant, Overcrowded, Dystopian City`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }]
@@ -1676,16 +1680,16 @@ const Backgrounds = {
         equipment: [WeaponGenerator.GenerateLowTech()]
     }),
     WealthyMerchantFamily: () => new CharacterDetail(`Wealthy Merchant Family`, {
-        resources: { credits: dice({ six: 2 }).total }
+        resources: new CampaignResource({ credits: dice({ six: 2 }).total })
     }),
     FrontierGang: () => new CharacterDetail(`Frontier Gang`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }]
     }),
     ReligiousCult: () => new CharacterDetail(`Religious Cult`, {
-        resources: {
+        resources: new CampaignResource({
             patrons: 1,
             storyPoints: 1
-        }
+        })
     }),
     WarTornHellHole: () => new CharacterDetail(`War-Torn Hell-Hole`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
@@ -1693,7 +1697,7 @@ const Backgrounds = {
     }),
     TechGuild: () => new CharacterDetail(`Tech Guild`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }],
-        resources: { credits: d6() },
+        resources: new CampaignResource({ credits: d6() }),
         equipment: [WeaponGenerator.GenerateHighTech()]
     }),
     SubjugatedColonyOnAlienWorld: () => new CharacterDetail(`Subjugated Colony on Alien World`, {
@@ -1711,22 +1715,22 @@ const Backgrounds = {
         equipment: [WeaponGenerator.GenerateLowTech()]
     }),
     OrphanUtilityProgram: () => new CharacterDetail(`Orphan Utility Program`, {
-        resources: {
+        resources: new CampaignResource({
             patrons: 1,
             storyPoints: 1
-        }
+        })
     }),
     IsolationistEnclave: () => new CharacterDetail(`Isolationist Enclave`, {
-        resources: { rumors: 2 }
+        resources: new CampaignResource({ rumors: 2 })
     }),
     ComfortableMegacityClass: () => new CharacterDetail(`Comfortable Megacity Class`, {
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     IndustrialWorld: () => new CharacterDetail(`Industrial World`, {
         equipment: [EquipmentGenerator.GenerateGear()]
     }),
     Bureaucrat: () => new CharacterDetail(`Bureaucrat`, {
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     WastelandNomads: () => new CharacterDetail(`Wasteland Nomads`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
@@ -1833,31 +1837,31 @@ const Classes = {
     }),
     Hacker: () => new CharacterDetail(`Hacker`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }],
-        resources: { rivals: 1 }
+        resources: new CampaignResource({ rivals: 1 })
     }),
     Soldier: () => new CharacterDetail(`Soldier`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     Mercenary: () => new CharacterDetail(`Mercenary`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
         equipment: [WeaponGenerator.GenerateMilitary()]
     }),
     Agitator: () => new CharacterDetail(`Agitator`, {
-        resources: { rivals: 1 }
+        resources: new CampaignResource({ rivals: 1 })
     }),
     Primitive: () => new CharacterDetail(`Primitive`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }],
         equipment: [WeaponGenerator.GenerateLowTech()]
     }),
     Artist: () => new CharacterDetail(`Artist`, {
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     Negotiator: () => new CharacterDetail(`Negotiator`, {
-        resources: { patrons: 1, storyPoints: 1 }
+        resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
     }),
     Trader: () => new CharacterDetail(`Trader`, {
-        resources: { credits: dice({ six: 2 }).total }
+        resources: new CampaignResource({ credits: dice({ six: 2 }).total })
     }),
     StarshipCrew: () => new CharacterDetail(`Starship Crew`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }]
@@ -1874,11 +1878,11 @@ const Classes = {
     }),
     Enforcer: () => new CharacterDetail(`Enforcer`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-        resources: { patrons: 1 }
+        resources: new CampaignResource({ patrons: 1 })
     }),
     SpecialAgent: () => new CharacterDetail(`Special Agent`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
-        resources: { patrons: 1 },
+        resources: new CampaignResource({ patrons: 1 }),
         equipment: [EquipmentGenerator.GenerateGadget()]
     }),
     Troubleshooter: () => new CharacterDetail(`Troubleshooter`, {
@@ -1887,7 +1891,7 @@ const Classes = {
     }),
     BountyHunter: () => new CharacterDetail(`Bounty Hunter`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }],
-        resources: { rumors: 1 },
+        resources: new CampaignResource({ rumors: 1 }),
         equipment: [WeaponGenerator.GenerateLowTech()]
     }),
     Nomad: () => new CharacterDetail(`Nomad`, {
@@ -1899,20 +1903,20 @@ const Classes = {
     }),
     Punk: () => new CharacterDetail(`Punk`, {
         effects: [{ points: 2, stat: CharacterStat.XP }],
-        resources: { rivals: 1 }
+        resources: new CampaignResource({ rivals: 1 })
     }),
     Scavenger: () => new CharacterDetail(`Scavenger`, {
-        resources: { rumors: 1 },
+        resources: new CampaignResource({ rumors: 1 }),
         equipment: [WeaponGenerator.GenerateHighTech()]
     })
 };
 const ClassList = Datalist(Classes);
 const Motivations = {
     Wealth: () => new CharacterDetail(`Wealth`, {
-        resources: { credits: d6() }
+        resources: new CampaignResource({ credits: d6() })
     }),
     Fame: () => new CharacterDetail(`Fame`, {
-        resources: { storyPoints: 1 }
+        resources: new CampaignResource({ storyPoints: 1 })
     }),
     Glory: () => new CharacterDetail(`Glory`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
@@ -1925,14 +1929,14 @@ const Motivations = {
         effects: [{ points: 1, stat: CharacterStat.Speed }]
     }),
     Adventure: () => new CharacterDetail(`Adventure`, {
-        resources: { credits: d6() },
+        resources: new CampaignResource({ credits: d6() }),
         equipment: [WeaponGenerator.GenerateLowTech()]
     }),
     Truth: () => new CharacterDetail(`Truth`, {
-        resources: {
+        resources: new CampaignResource({
             rumors: 1,
             storyPoints: 1
-        }
+        })
     }),
     Technology: () => new CharacterDetail(`Technology`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }],
@@ -1943,27 +1947,27 @@ const Motivations = {
         equipment: [EquipmentGenerator.GenerateGear()]
     }),
     Loyalty: () => new CharacterDetail(`Loyalty`, {
-        resources: { patrons: 1, storyPoints: 1 }
+        resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
     }),
     Revenge: () => new CharacterDetail(`Revenge`, {
         effects: [{ points: 2, stat: CharacterStat.XP }],
-        resources: { rivals: 1 }
+        resources: new CampaignResource({ rivals: 1 })
     }),
     Romance: () => new CharacterDetail(`Romance`, {
-        resources: { rumors: 1, storyPoints: 1 }
+        resources: new CampaignResource({ rumors: 1, storyPoints: 1 })
     }),
     Faith: () => new CharacterDetail(`Faith`, {
-        resources: { rumors: 1, storyPoints: 1 }
+        resources: new CampaignResource({ rumors: 1, storyPoints: 1 })
     }),
     Political: () => new CharacterDetail(`Political`, {
-        resources: { patrons: 1, storyPoints: 1 }
+        resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
     }),
     Power: () => new CharacterDetail(`Power`, {
         effects: [{ points: 2, stat: CharacterStat.XP }],
-        resources: { rivals: 1 }
+        resources: new CampaignResource({ rivals: 1 })
     }),
     Order: () => new CharacterDetail(`Order`, {
-        resources: { patrons: 1, storyPoints: 1 }
+        resources: new CampaignResource({ patrons: 1, storyPoints: 1 })
     }),
     Freedom: () => new CharacterDetail(`Freedom`, {
         effects: [{ points: 2, stat: CharacterStat.XP }]
@@ -2002,51 +2006,13 @@ const Ships = {
 };
 const ShipList = Datalist(Ships);
 
-const ConsolidateResources = (resources) => resources.reduce((total = {
-    credits: 0,
-    patrons: 0,
-    rivals: 0,
-    rumors: 0,
-    storyPoints: 0
-}, current) => {
-    var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
-    return {
-        credits: ((_a = total.credits) !== null && _a !== void 0 ? _a : 0) + ((_b = current.credits) !== null && _b !== void 0 ? _b : 0),
-        patrons: ((_c = total.patrons) !== null && _c !== void 0 ? _c : 0) + ((_d = current.patrons) !== null && _d !== void 0 ? _d : 0),
-        rivals: ((_e = total.rivals) !== null && _e !== void 0 ? _e : 0) + ((_f = current.rivals) !== null && _f !== void 0 ? _f : 0),
-        rumors: ((_g = total.rumors) !== null && _g !== void 0 ? _g : 0) + ((_h = current.rumors) !== null && _h !== void 0 ? _h : 0),
-        storyPoints: ((_j = total.storyPoints) !== null && _j !== void 0 ? _j : 0) + ((_k = current.storyPoints) !== null && _k !== void 0 ? _k : 0)
-    };
-});
-class Crew {
-    constructor() {
-        this.stash = [];
-        this._leader = null;
-        this._roster = new Array();
-        this.clearRoster = () => this._roster = this.roster.length > 0
-            ? this._roster = new Array()
-            : this.roster;
-        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
-            && this.roster.push(character);
-        this.addCharacters = (characters) => characters.forEach(c => this.addCharacter(c));
-        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
-        this.removeCharacters = (characters) => this._roster = this.roster.filter(c => !characters.includes(c));
-    }
-    get leader() { return this._leader; }
-    set leader(character) {
-        if (this.leader && character)
-            return;
-        this.leader = character;
-        if (character)
-            character.promoteLeader();
-    }
-    get roster() { return this._roster; }
-}
-
 var _a;
 class CharacterGenerator {
 }
 _a = CharacterGenerator;
+CharacterGenerator.savvyUpgraded = (details) => details
+    .some(d => d.effects
+    && d.effects.some(e => e.points > 0 && e.stat === CharacterStat.Savvy));
 CharacterGenerator.GenerateRoster = (size) => {
     const roster = new Array();
     for (var i = 0; i < size; i++)
@@ -2059,27 +2025,41 @@ CharacterGenerator.DevelopCharacter = (character) => {
         character.background = 'NULL_REFERENCE_EXCEPTION';
         character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
         character.class = 'ASSIGNED_FUNCTIONALITY';
-        return {};
+        return { resources: new CampaignResource(), savvyUpgraded: false };
     }
     else {
-        const resources = ConsolidateResources([
+        const details = [
             _a.DevelopBackground(character),
             _a.DevelopMotivation(character),
             _a.DevelopClass(character)
-        ]);
+        ];
+        const resources = new CampaignResource();
+        resources.consolidate(details.map(d => d.resources));
+        let savvyUpgraded;
         switch (character.species) {
+            case CharacterSpecies.DeConverted:
+                savvyUpgraded = false;
+                break;
             case CharacterSpecies.MinorAlien:
                 if (resources.credits)
                     resources.credits -= 1;
                 if (resources.storyPoints)
                     resources.storyPoints -= 1;
+                savvyUpgraded = _a.savvyUpgraded(details);
                 break;
             case CharacterSpecies.Traveler:
                 resources.storyPoints = ((_b = resources.storyPoints) !== null && _b !== void 0 ? _b : 0) + 2;
                 resources.rumors = ((_c = resources.rumors) !== null && _c !== void 0 ? _c : 0) + 2;
+                savvyUpgraded = _a.savvyUpgraded(details);
+                break;
+            default:
+                savvyUpgraded = _a.savvyUpgraded(details);
                 break;
         }
-        return resources;
+        return {
+            resources,
+            savvyUpgraded
+        };
     }
 };
 CharacterGenerator.DevelopBackground = (character) => {
@@ -2115,7 +2095,7 @@ CharacterGenerator.DevelopBackground = (character) => {
     }
     character.background = b.detail;
     character.applyDetail(b);
-    return b.finalResources();
+    return b;
 };
 CharacterGenerator.DevelopMotivation = (character) => {
     var _b;
@@ -2147,7 +2127,7 @@ CharacterGenerator.DevelopMotivation = (character) => {
     }
     character.motivation = m.detail;
     character.applyDetail(m);
-    return m.finalResources();
+    return m;
 };
 CharacterGenerator.DevelopClass = (character) => {
     var _b;
@@ -2173,7 +2153,7 @@ CharacterGenerator.DevelopClass = (character) => {
     }
     character.class = c.detail;
     character.applyDetail(c);
-    return c.finalResources();
+    return c;
 };
 CharacterGenerator.GenerateCharacter = () => Generator(d100, [
     new GeneratorOption([1, 60], Characters.Human()),
@@ -2299,6 +2279,48 @@ ShipGenerator.Generate = () => Generator(d100, [
     new GeneratorOption([96, 100], Ships.RetiredMilitaryPatrolShip())
 ]);
 
+class Campaign {
+    constructor(config, resources) {
+        this.id = Symbol();
+        this._name = config.name;
+        this.crewSize = config.crewSize;
+        this.useStory = config.useStory;
+        this.useStars = config.useStars;
+        this.difficulty = config.difficulty;
+        this.crew = config.crew;
+        this.ship = config.ship;
+        this.victory = config.victory;
+        this.resources = resources;
+    }
+    get name() { return this._name; }
+    set name(value) { this._name = value; }
+}
+
+class Crew {
+    constructor() {
+        this.stash = [];
+        this._leader = null;
+        this._roster = new Array();
+        this.clearRoster = () => this._roster = this.roster.length > 0
+            ? this._roster = new Array()
+            : this.roster;
+        this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
+            && this.roster.push(character);
+        this.addCharacters = (characters) => characters.forEach(c => this.addCharacter(c));
+        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
+        this.removeCharacters = (characters) => this._roster = this.roster.filter(c => !characters.includes(c));
+    }
+    get leader() { return this._leader; }
+    set leader(character) {
+        if (this._leader && character)
+            return;
+        this._leader = character;
+        if (character)
+            character.promoteLeader();
+    }
+    get roster() { return this._roster; }
+}
+
 class CampaignConfig {
     constructor(name) {
         this.minCrew = 4;
@@ -2310,7 +2332,10 @@ class CampaignConfig {
         this._difficulty = Difficulty.Normal;
         this.crew = new Crew();
         this.crewSizeOptions = [4, 5, 6];
+        this.savvyUpgradeOptions = [0, 1, 2, 3];
         this.victory = null;
+        this.leader = null;
+        this.savvyUpgrades = 3;
         this.victoryConditions = AvailableVictoryConditions(this.difficulty);
         this.containsVictory = (victory) => this.victoryConditions
             .map(v => v.value)
@@ -2338,22 +2363,31 @@ class CampaignConfig {
         };
         this.finalize = () => {
             var _a, _b;
+            console.log('Finalizing campaign...');
             this.ship = ShipGenerator.Generate();
-            let resources = {
-                credits: 0,
-                patrons: 0,
-                rivals: 0,
-                rumors: 0,
-                storyPoints: 0
-            };
-            for (let character of this.crew.roster)
-                resources = ConsolidateResources([resources, CharacterGenerator.DevelopCharacter(character)]);
+            console.log('Ship', this.ship);
+            const resources = new CampaignResource();
+            let savvyUpgrades = 0;
+            for (let character of this.crew.roster) {
+                const res = CharacterGenerator.DevelopCharacter(character);
+                resources.consolidate([res.resources]);
+                if (res.savvyUpgraded)
+                    savvyUpgrades += 1;
+            }
+            this.savvyUpgrades = savvyUpgrades >= this.savvyUpgrades
+                ? this.savvyUpgrades
+                : savvyUpgrades;
             resources.storyPoints = (this.difficulty === Difficulty.Insanity || !this.useStory)
                 ? 0
                 : resources.storyPoints;
             resources.storyPoints = ((_a = resources.storyPoints) !== null && _a !== void 0 ? _a : 0) + this.initStoryPoints();
             resources.credits = ((_b = resources.credits) !== null && _b !== void 0 ? _b : 0) + this.crewSize;
-            this.crew.stash.push(...EquipmentGenerator.GenerateStash());
+            this.crew.stash.push(...EquipmentGenerator.GenerateStash(this.savvyUpgrades));
+            this.crew.leader = this.leader;
+            console.log('Campaign Resources', resources);
+            console.log('Savvy Upgrades', savvyUpgrades);
+            console.log('Leader', this.leader);
+            console.log('Crew', this.crew);
             return new Campaign(this, resources);
         };
         this.name = name;
@@ -2390,34 +2424,6 @@ class CampaignConfig {
             this.useStars = false;
             this.useStory = false;
         }
-    }
-}
-class Campaign {
-    constructor(config, resources) {
-        var _a, _b, _c, _d, _e;
-        this._storyPoints = 0;
-        this.id = Symbol();
-        this._name = config.name;
-        this.crewSize = config.crewSize;
-        this.useStory = config.useStory;
-        this.useStars = config.useStars;
-        this.difficulty = config.difficulty;
-        this.crew = config.crew;
-        this.ship = config.ship;
-        this.victory = config.victory;
-        this.credits = (_a = resources.credits) !== null && _a !== void 0 ? _a : 0;
-        this.patrons = (_b = resources.patrons) !== null && _b !== void 0 ? _b : 0;
-        this.rivals = (_c = resources.rivals) !== null && _c !== void 0 ? _c : 0;
-        this.rumors = (_d = resources.rumors) !== null && _d !== void 0 ? _d : 0;
-        this.storyPoints = (_e = resources.storyPoints) !== null && _e !== void 0 ? _e : 0;
-    }
-    get name() { return this._name; }
-    set name(value) { this._name = value; }
-    get storyPoints() { return this._storyPoints; }
-    set storyPoints(value) {
-        this._storyPoints = this.difficulty === Difficulty.Insanity || !this.useStory
-            ? 0
-            : value;
     }
 }
 
