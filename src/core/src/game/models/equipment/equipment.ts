@@ -1,10 +1,15 @@
-import { ProtectiveDeviceType } from '../../enums';
+import { Constructor } from '../../core';
+
+import {
+  EquipmentType,
+  ProtectiveDeviceType
+} from '../../enums';
 
 export abstract class Equipment {
   readonly id: Symbol;
   readonly name: string;
   readonly description: string;
-
+  readonly type: EquipmentType;
 
   constructor(
     name: string,
@@ -13,6 +18,30 @@ export abstract class Equipment {
     this.id = Symbol();
     this.name = name;
     this.description = description;
+    this.type = this.getType();
+  }
+
+  isType = <T extends Equipment>(t: Constructor<T>) => this instanceof t;
+
+  getType = (): EquipmentType => {
+    switch (true) {
+      case (this.isType(ProtectiveDevice)):
+        return EquipmentType.ProtectiveDevice;
+      case (this.isType(WeaponMod)):
+        return EquipmentType.WeaponMod;
+      case (this.isType(WeaponSight)):
+        return EquipmentType.WeaponSight;
+      case (this.isType(Consumable)):
+        return EquipmentType.Consumable;
+      case (this.isType(Implant)):
+        return EquipmentType.Implant;
+      case (this.isType(UtilityDevice)):
+        return EquipmentType.UtilityDevice;
+      case (this.isType(OnBoardItem)):
+        return EquipmentType.OnBoardItem;      
+      default:
+        return EquipmentType.Equipment;
+    }
   }
 }
 

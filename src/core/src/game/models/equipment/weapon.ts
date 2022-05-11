@@ -2,7 +2,8 @@ import { Constructor } from '../../core';
 
 import {
   WeaponStat,
-  WeaponTrait
+  WeaponTrait,
+  WeaponType
 } from '../../enums';
 
 import {
@@ -42,6 +43,7 @@ export class Weapon {
   readonly shots: number;
   readonly damage: number;
   readonly traits: WeaponTrait[];
+  readonly type: WeaponType;
 
   hitBonus: number = 0;
   mod!: WeaponMod | null;
@@ -69,12 +71,26 @@ export class Weapon {
     this.mod = mod;
     this.sight = sight;
     this.damaged = damaged;
+    this.type = this.getType();
   }
 
   hasTrait = (trait: WeaponTrait) =>
     this.traits.some((t: WeaponTrait) => t === trait);
 
   isType = <T extends Weapon>(t: Constructor<T>) => this instanceof t;
+
+  getType = (): WeaponType => {
+    switch (true) {
+      case (this.isType(Melee)):
+        return WeaponType.Melee;
+      case (this.isType(Pistol)):
+        return WeaponType.Pistol;
+      case (this.isType(Sidearm)):
+        return WeaponType.Sidearm;
+      default:
+        return WeapoonType.Weapon;
+    }
+  }
 
   canAddMod = (mod: WeaponMod) => {
     if (this.mod)
