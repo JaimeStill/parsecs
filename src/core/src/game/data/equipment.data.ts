@@ -1,5 +1,9 @@
 import { Datalist } from '../core';
-import { ProtectiveDeviceType } from '../enums';
+
+import {
+  EquipmentType,
+  ProtectiveDeviceType
+} from '../enums';
 
 import {
   Consumable,
