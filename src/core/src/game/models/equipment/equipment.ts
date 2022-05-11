@@ -13,16 +13,14 @@ export abstract class Equipment {
 
   constructor(
     name: string,
-    description: string
+    description: string,
+    type: EquipmentType
   ) {
     this.id = Symbol();
     this.name = name;
     this.description = description;
-    this.type = this.getType();
+    this.type = type;
   }
-
-  getType = (): EquipmentType =>
-    EquipmentType.Equipment;
 }
 
 export class ProtectiveDevice extends Equipment {
@@ -31,14 +29,12 @@ export class ProtectiveDevice extends Equipment {
   constructor(
     name: string,
     description: string,
+    type: EquipmentType,
     deviceType: ProtectiveDeviceType
   ) {
-    super(name, description);
+    super(name, description, type);
     this.deviceType = deviceType;
   }
-
-  override getType = (): EquipmentType =>
-    EquipmentType.ProtectiveDevice;
 }
 
 export class WeaponMod extends Equipment {
@@ -47,14 +43,12 @@ export class WeaponMod extends Equipment {
   constructor(
     name: string,
     description: string,
+    type: EquipmentType,
     allowPistol: boolean
   ) {
-    super(name, description);
+    super(name, description, type);
     this.allowPistol = allowPistol;
   }
-
-  override getType = (): EquipmentType =>
-    EquipmentType.WeaponMod;
 }
 
 export class WeaponSight extends Equipment {
@@ -64,34 +58,17 @@ export class WeaponSight extends Equipment {
   constructor(
     name: string,
     description: string,
+    type: EquipmentType,
     pistolOnly: boolean,
     damaged: boolean = false
   ) {
-    super(name, description);
+    super(name, description, type);
     this.pistolOnly = pistolOnly;
     this.damaged = damaged;
   }
-
-  override getType = (): EquipmentType =>
-    EquipmentType.WeaponSight;
 }
 
-export class Consumable extends Equipment {
-  override getType = (): EquipmentType =>
-    EquipmentType.Consumable;
-}
-
-export class Implant extends Equipment {
-  override getType = (): EquipmentType =>
-    EquipmentType.Implant;
-}
-
-export class UtilityDevice extends Equipment {
-  override getType = (): EquipmentType =>
-    EquipmentType.UtilityDevice;
-}
-
-export class OnBoardItem extends Equipment {
-  override getType = (): EquipmentType =>
-    EquipmentType.OnBoardItem;
-}
+export class Consumable extends Equipment {}
+export class Implant extends Equipment {}
+export class UtilityDevice extends Equipment {}
+export class OnBoardItem extends Equipment {}
