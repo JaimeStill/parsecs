@@ -114,97 +114,97 @@ export const OnBoardItems = {
   Analyzer: () => new OnBoardItem(
     `Analyzer`,
     `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   ColonistRationPacks: () => new OnBoardItem(
     `Colonist Ration Packs`,
     `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   Duplicator: () => new OnBoardItem(
     `Duplicator`,
     `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   FakeId: () => new OnBoardItem(
     `Fake ID`,
     `Add +1 to all attempts to obtain a licesne or other legal document`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   Fixer: () => new OnBoardItem(
     `Fixer`,
     `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   GeneticReconfigurationKit: () => new OnBoardItem(
     `Genetic Reconfiguration Kit`,
     `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   LoadedDice: () => new OnBoardItem(
     `Loaded Dice`,
     `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   LuckyDice: () => new OnBoardItem(
     `Lucky Dice`,
     `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   MkIITranslator: () => new OnBoardItem(
     `Mk II Translator`,
     `When rolling to Recruit, you may roll an additional D6.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   MedPatch: () => new OnBoardItem(
     `Med-patch`,
     `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   MeditationOrb: () => new OnBoardItem(
     `Meditation Orb`,
     `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   NanoDoc: () => new OnBoardItem(
     `Nano-doc`,
     `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. You must decide before rolling the dice. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   NoveltyStuffedAnimal: () => new OnBoardItem(
     `Novelty Stuffed Animal`,
     `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   Purifier: () => new OnBoardItem(
     `Purifier`,
     `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   RepairBot: () => new OnBoardItem(
     `Repair Bot`,
     `+1 to all Repair attempts`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   SectorPermit: () => new OnBoardItem(
     `Sector Permit`,
     `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   SpareParts: () => new OnBoardItem(
     `Spare Parts`,
     `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   TeachBot: () => new OnBoardItem(
     `Teach-bot`,
     `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   ),
   Transcender: () => new OnBoardItem(
     `Transcender`,
     `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`,
-    EquipmentType.OnBoardItems
+    EquipmentType.OnBoardItem
   )
 }
 
