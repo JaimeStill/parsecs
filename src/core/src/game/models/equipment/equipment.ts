@@ -22,7 +22,7 @@ export abstract class Equipment {
   }
 
   getType = (): EquipmentType =>
-    EquipmentType.Equipemnt;
+    EquipmentType.Equipment;
 }
 
 export class ProtectiveDevice extends Equipment {
