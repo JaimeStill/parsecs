@@ -21,23 +21,21 @@ export abstract class Equipment {
     this.type = this.getType();
   }
 
-  isType = <T extends Equipment>(t: Constructor<T>) => this instanceof t;
-
   getType = (): EquipmentType => {
     switch (true) {
-      case (this.isType(ProtectiveDevice)):
+      case (this instanceof ProtectiveDevice):
         return EquipmentType.ProtectiveDevice;
-      case (this.isType(WeaponMod)):
+      case (this instanceof WeaponMod):
         return EquipmentType.WeaponMod;
-      case (this.isType(WeaponSight)):
+      case (this instanceof WeaponSight):
         return EquipmentType.WeaponSight;
-      case (this.isType(Consumable)):
+      case (this instanceof Consumable):
         return EquipmentType.Consumable;
-      case (this.isType(Implant)):
+      case (this instanceof Implant):
         return EquipmentType.Implant;
-      case (this.isType(UtilityDevice)):
+      case (this instanceof UtilityDevice):
         return EquipmentType.UtilityDevice;
-      case (this.isType(OnBoardItem)):
+      case (this instanceof OnBoardItem):
         return EquipmentType.OnBoardItem;      
       default:
         return EquipmentType.Equipment;

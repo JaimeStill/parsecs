@@ -114,7 +114,7 @@ export enum WeaponTrait {
 
 export enum WeaponType {
   Weapon = "Weapon",
-  Sidarm = "Sidearm",
+  Sidearm = "Sidearm",
   Pistol = "Pistol",
   Melee = "Melee"
 }
