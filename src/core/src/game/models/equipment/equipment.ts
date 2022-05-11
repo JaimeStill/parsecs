@@ -26,15 +26,15 @@ export abstract class Equipment {
 }
 
 export class ProtectiveDevice extends Equipment {
-  readonly type: ProtectiveDeviceType
+  readonly deviceType: ProtectiveDeviceType
 
   constructor(
     name: string,
     description: string,
-    type: ProtectiveDeviceType
+    deviceType: ProtectiveDeviceType
   ) {
     super(name, description);
-    this.type = type;
+    this.deviceType = deviceType;
   }
 
   override getType = (): EquipmentType =>

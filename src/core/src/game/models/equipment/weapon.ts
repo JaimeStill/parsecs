@@ -88,7 +88,7 @@ export class Weapon {
       case (this.isType(Sidearm)):
         return WeaponType.Sidearm;
       default:
-        return WeapoonType.Weapon;
+        return WeaponType.Weapon;
     }
   }
 
