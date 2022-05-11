@@ -365,6 +365,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "Directives": () => (/* binding */ Directives),
 /* harmony export */   "Equipment": () => (/* binding */ Equipment),
 /* harmony export */   "EquipmentGenerator": () => (/* binding */ EquipmentGenerator),
+/* harmony export */   "EquipmentType": () => (/* binding */ EquipmentType),
 /* harmony export */   "Generator": () => (/* binding */ Generator),
 /* harmony export */   "GeneratorOption": () => (/* binding */ GeneratorOption),
 /* harmony export */   "HighTechWeaponList": () => (/* binding */ HighTechWeaponList),
@@ -416,6 +417,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "WeaponSights": () => (/* binding */ WeaponSights),
 /* harmony export */   "WeaponStat": () => (/* binding */ WeaponStat),
 /* harmony export */   "WeaponTrait": () => (/* binding */ WeaponTrait),
+/* harmony export */   "WeaponType": () => (/* binding */ WeaponType),
 /* harmony export */   "camelize": () => (/* binding */ camelize),
 /* harmony export */   "capitalize": () => (/* binding */ capitalize),
 /* harmony export */   "classify": () => (/* binding */ classify),
@@ -945,6 +947,17 @@ var Difficulty;
     Difficulty["Hardcore"] = "Hardcore";
     Difficulty["Insanity"] = "Insanity";
 })(Difficulty || (Difficulty = {}));
+var EquipmentType;
+(function (EquipmentType) {
+    EquipmentType["Equipment"] = "Equipment";
+    EquipmentType["ProtectiveDevice"] = "Protective Device";
+    EquipmentType["WeaponMod"] = "Weapon Mod";
+    EquipmentType["WeaponSight"] = "Weapon Sight";
+    EquipmentType["Consumable"] = "Consumable";
+    EquipmentType["Implant"] = "Implant";
+    EquipmentType["UtilityDevice"] = "Utility Device";
+    EquipmentType["OnBoardItem"] = "On-Board Item";
+})(EquipmentType || (EquipmentType = {}));
 var ProtectiveDeviceType;
 (function (ProtectiveDeviceType) {
     ProtectiveDeviceType["Armor"] = "Armor";
@@ -994,6 +1007,13 @@ var WeaponTrait;
     WeaponTrait["Stun"] = "Stun: All targets are automatically Stunned. No damage rolls ake place.";
     WeaponTrait["Terrifying"] = "Terrifying: Any target hit must retreat 1D6\" away from the firer.";
 })(WeaponTrait || (WeaponTrait = {}));
+var WeaponType;
+(function (WeaponType) {
+    WeaponType["Weapon"] = "Weapon";
+    WeaponType["Sidearm"] = "Sidearm";
+    WeaponType["Pistol"] = "Pistol";
+    WeaponType["Melee"] = "Melee";
+})(WeaponType || (WeaponType = {}));
 
 class VictoryCondition {
     constructor(iterations, type, difficulties = null) {
@@ -1080,6 +1100,18 @@ class Weapon {
         this.hitBonus = 0;
         this.hasTrait = (trait) => this.traits.some((t) => t === trait);
         this.isType = (t) => this instanceof t;
+        this.getType = () => {
+            switch (true) {
+                case (this.isType(Melee)):
+                    return WeaponType.Melee;
+                case (this.isType(Pistol)):
+                    return WeaponType.Pistol;
+                case (this.isType(Sidearm)):
+                    return WeaponType.Sidearm;
+                default:
+                    return WeaponType.Weapon;
+            }
+        };
         this.canAddMod = (mod) => {
             if (this.mod)
                 return false;
@@ -1127,6 +1159,7 @@ class Weapon {
         this.mod = mod;
         this.sight = sight;
         this.damaged = damaged;
+        this.type = this.getType();
     }
     get damaged() { return this._damaged; }
     set damaged(value) {
@@ -1334,37 +1367,58 @@ WeaponGenerator.GenerateMilitary = () => Generator(d100, [
 
 class Equipment {
     constructor(name, description) {
+        this.getType = () => EquipmentType.Equipment;
         this.id = Symbol();
         this.name = name;
         this.description = description;
+        this.type = this.getType();
     }
 }
 class ProtectiveDevice extends Equipment {
-    constructor(name, description, type) {
+    constructor(name, description, deviceType) {
         super(name, description);
-        this.type = type;
+        this.getType = () => EquipmentType.ProtectiveDevice;
+        this.deviceType = deviceType;
     }
 }
 class WeaponMod extends Equipment {
     constructor(name, description, allowPistol) {
         super(name, description);
+        this.getType = () => EquipmentType.WeaponMod;
         this.allowPistol = allowPistol;
     }
 }
 class WeaponSight extends Equipment {
     constructor(name, description, pistolOnly, damaged = false) {
         super(name, description);
+        this.getType = () => EquipmentType.WeaponSight;
         this.pistolOnly = pistolOnly;
         this.damaged = damaged;
     }
 }
 class Consumable extends Equipment {
+    constructor() {
+        super(...arguments);
+        this.getType = () => EquipmentType.Consumable;
+    }
 }
 class Implant extends Equipment {
+    constructor() {
+        super(...arguments);
+        this.getType = () => EquipmentType.Implant;
+    }
 }
 class UtilityDevice extends Equipment {
+    constructor() {
+        super(...arguments);
+        this.getType = () => EquipmentType.UtilityDevice;
+    }
 }
 class OnBoardItem extends Equipment {
+    constructor() {
+        super(...arguments);
+        this.getType = () => EquipmentType.OnBoardItem;
+    }
 }
 
 const Consumables = {
