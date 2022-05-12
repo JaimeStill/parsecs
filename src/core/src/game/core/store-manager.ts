@@ -1,10 +1,10 @@
 export class StoreManager<T> {
   readonly prefix: string;
-  readonly restore: (...data: any) => T;
+  readonly restore: (data: any) => T;
 
   constructor(
     prefix: string,
-    restore: (...data: any) => T
+    restore: (data: any) => T
   ) {
     this.prefix = prefix;
     this.restore = restore;

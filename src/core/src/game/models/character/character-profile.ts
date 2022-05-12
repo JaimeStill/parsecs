@@ -94,7 +94,7 @@ export class CharacterProfile {
   }
 
   static Restore = (val: any) =>
-    new CharacterProfile(...val);
+    new CharacterProfile(val);
 
   toJSON() {
     return {

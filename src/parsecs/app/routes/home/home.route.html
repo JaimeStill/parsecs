@@ -29,7 +29,7 @@
            fxLayoutAlign="start stretch"
            class="m4 p4">
     <p class="mat-title m4">Saved Campaigns</p>
-    <ng-container *ngIf="data.length > 0">
+    <ng-container *ngIf="data && data.length > 0">
       <p *ngFor="let c of data">{{c.name}}</p>
     </ng-container>
     <p *ngIf="!(data.length > 0)"

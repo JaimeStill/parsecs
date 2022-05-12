@@ -17,6 +17,8 @@ export interface WeaponConfig {
   range: number;
   shots: number;
   damage: number;
+  hitBonus: number;
+  type: WeaponType | null;
   traits: WeaponTrait[];
   mod: WeaponMod | null;
   sight: WeaponSight | null;
@@ -44,10 +46,10 @@ export class Weapon {
   readonly range: number;
   readonly shots: number;
   readonly damage: number;
-  readonly traits: WeaponTrait[];
   readonly type: WeaponType;
+  readonly traits: WeaponTrait[];
 
-  hitBonus: number = 0;
+  hitBonus: number;
   mod!: WeaponMod | null;
   sight!: WeaponSight | null;
 
@@ -59,9 +61,12 @@ export class Weapon {
       range = 0,
       shots = 0,
       damage = 0,
+      hitBonus = 0,
+      type = null,
       traits = new Array<WeaponTrait>(),
       mod = null,
-      sight = null
+      sight = null,
+
     }: Partial<WeaponConfig> = {},
     id: string | null = null
   ) {
@@ -71,11 +76,102 @@ export class Weapon {
     this.range = range;
     this.shots = shots;
     this.damage = damage;
+    this.hitBonus = hitBonus;
     this.traits = traits;
     this.mod = mod;
     this.sight = sight;
     this.damaged = damaged;
-    this.type = this.getType();
+    this.type = type ?? this.getType();
+  }
+
+  static Restore = (val: any): Weapon => {
+    switch (val.type) {
+      case WeaponType.Melee:
+        return new Melee(
+          val.model,
+          val.description,
+          {
+            damaged: val.damanged,
+            range: val.range,
+            shots: val.shots,
+            damage: val.damage,
+            hitBonus: val.hitBonus,
+            type: val.type,
+            traits: val.traits,
+            mod: val.mod,
+            sight: val.sight
+          },
+          val.id
+        );
+      case WeaponType.Pistol:
+        return new Pistol(
+          val.model,
+          val.description,
+          {
+            damaged: val.damanged,
+            range: val.range,
+            shots: val.shots,
+            damage: val.damage,
+            hitBonus: val.hitBonus,
+            type: val.type,
+            traits: val.traits,
+            mod: val.mod,
+            sight: val.sight
+          },
+          val.id
+        );
+      case WeaponType.Sidearm:
+        return new Sidearm(
+          val.model,
+          val.description,
+          {
+            damaged: val.damanged,
+            range: val.range,
+            shots: val.shots,
+            damage: val.damage,
+            hitBonus: val.hitBonus,
+            type: val.type,
+            traits: val.traits,
+            mod: val.mod,
+            sight: val.sight
+          },
+          val.id
+        );
+      default:
+        return new Weapon(
+          val.model,
+          val.description,
+          {
+            damaged: val.damanged,
+            range: val.range,
+            shots: val.shots,
+            damage: val.damage,
+            hitBonus: val.hitBonus,
+            type: val.type,
+            traits: val.traits,
+            mod: val.mod,
+            sight: val.sight
+          },
+          val.id
+        );
+    }
+  }
+
+  toJSON() {
+    return {
+      id: this.id,
+      model: this.model,
+      description: this.description,
+      range: this.range,
+      shots: this.shots,
+      damage: this.damage,
+      hitBonus: this.hitBonus,
+      type: this.type,
+      traits: this.traits,
+      mod: this.mod,
+      sight: this.sight,
+      damaged: this.damaged
+    }
   }
 
   hasTrait = (trait: WeaponTrait) =>
