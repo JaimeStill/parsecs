@@ -25,7 +25,7 @@ export const Backgrounds = {
     effects: [{ points: 1, stat: CharacterStat.Speed }]
   }),
   LowTechColony: () => new CharacterDetail(`Low-Tech Colony`, {
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   MiningColony: () => new CharacterDetail(`Mining Colony`, {
     effects: [{ points: 1, stat: CharacterStat.Toughness }]
@@ -43,7 +43,7 @@ export const Backgrounds = {
     equipment: [EquipmentGenerator.GenerateGear()]
   }),
   LowerMegacityClass: () => new CharacterDetail(`Lower Megacity Class`, {
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   WealthyMerchantFamily: () => new CharacterDetail(`Wealthy Merchant Family`, {
     resources: new CampaignResource({ credits: dice({ six: 2 }).total })
@@ -59,12 +59,12 @@ export const Backgrounds = {
   }),
   WarTornHellHole: () => new CharacterDetail(`War-Torn Hell-Hole`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
-    equipment: [WeaponGenerator.GenerateMilitary()]
+    weapons: [WeaponGenerator.GenerateMilitary()]
   }),
   TechGuild: () => new CharacterDetail(`Tech Guild`, {
     effects: [{ points: 1, stat: CharacterStat.Savvy }],
     resources: new CampaignResource({ credits: d6() }),
-    equipment: [WeaponGenerator.GenerateHighTech()]
+    weapons: [WeaponGenerator.GenerateHighTech()]
   }),
   SubjugatedColonyOnAlienWorld: () => new CharacterDetail(`Subjugated Colony on Alien World`, {
     equipment: [EquipmentGenerator.GenerateGadget()]
@@ -78,7 +78,7 @@ export const Backgrounds = {
   }),
   PrimitiveOrRegressedWorld: () => new CharacterDetail(`Primitive or Regressed World`, {
     effects: [{ points: 1, stat: CharacterStat.Toughness }],
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   OrphanUtilityProgram: () => new CharacterDetail(`Orphan Utility Program`, {
     resources: new CampaignResource({
@@ -100,10 +100,10 @@ export const Backgrounds = {
   }),
   WastelandNomads: () => new CharacterDetail(`Wasteland Nomads`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   AlienCulture: () => new CharacterDetail(`Alien Culture`, {
-    equipment: [WeaponGenerator.GenerateHighTech()]
+    weapons: [WeaponGenerator.GenerateHighTech()]
   })
 }
 
@@ -217,14 +217,14 @@ export const Classes = {
   }),
   Mercenary: () => new CharacterDetail(`Mercenary`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-    equipment: [WeaponGenerator.GenerateMilitary()]
+    weapons: [WeaponGenerator.GenerateMilitary()]
   }),
   Agitator: () => new CharacterDetail(`Agitator`, {
     resources: new CampaignResource({ rivals: 1 })
   }),
   Primitive: () => new CharacterDetail(`Primitive`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }],
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   Artist: () => new CharacterDetail(`Artist`, {
     resources: new CampaignResource({ credits: d6() })
@@ -243,7 +243,7 @@ export const Classes = {
   }),
   Ganger: () => new CharacterDetail(`Ganger`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   Scoundrel: () => new CharacterDetail(`Scoundrel`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }]
@@ -259,12 +259,12 @@ export const Classes = {
   }),
   Troubleshooter: () => new CharacterDetail(`Troubleshooter`, {
     effects: [{ points: 1, stat: CharacterStat.Reactions }],
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   BountyHunter: () => new CharacterDetail(`Bounty Hunter`, {
     effects: [{ points: 1, stat: CharacterStat.Speed }],
     resources: new CampaignResource({ rumors: 1 }),
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   Nomad: () => new CharacterDetail(`Nomad`, {
     equipment: [EquipmentGenerator.GenerateGear()]
@@ -279,7 +279,7 @@ export const Classes = {
   }),
   Scavenger: () => new CharacterDetail(`Scavenger`, {
     resources: new CampaignResource({ rumors: 1 }),
-    equipment: [WeaponGenerator.GenerateHighTech()]
+    weapons: [WeaponGenerator.GenerateHighTech()]
   })
 }
 
@@ -294,7 +294,7 @@ export const Motivations = {
   }),
   Glory: () => new CharacterDetail(`Glory`, {
     effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-    equipment: [WeaponGenerator.GenerateMilitary()]
+    weapons: [WeaponGenerator.GenerateMilitary()]
   }),
   Survival: () => new CharacterDetail(`Survival`, {
     effects: [{ points: 1, stat: CharacterStat.Toughness }]
@@ -304,7 +304,7 @@ export const Motivations = {
   }),
   Adventure: () => new CharacterDetail(`Adventure`, {
     resources: new CampaignResource({ credits: d6() }),
-    equipment: [WeaponGenerator.GenerateLowTech()]
+    weapons: [WeaponGenerator.GenerateLowTech()]
   }),
   Truth: () => new CharacterDetail(`Truth`, {
     resources: new CampaignResource({

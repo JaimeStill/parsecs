@@ -45,7 +45,7 @@ export abstract class CharacterGenerator {
     if (character.race === CharacterRace.Bot) {
       character.background = 'NULL_REFERENCE_EXCEPTION';
       character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
-      character.class = 'ASSIGNED_FUNCTIONALITY';
+      character.charClass = 'ASSIGNED_FUNCTIONALITY';
 
       return { resources: new CampaignResource(), savvyUpgraded: false };
     } else {
@@ -191,7 +191,7 @@ export abstract class CharacterGenerator {
         break;
     }
 
-    character.class = c.detail;
+    character.charClass = c.detail;
     character.applyDetail(c);
 
     return c;

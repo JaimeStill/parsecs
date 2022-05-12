@@ -1,9 +1,13 @@
 export class StoreManager<T> {
   readonly prefix: string;
+  readonly restore: (...data: any) => T;
+
   constructor(
-    prefix: string
+    prefix: string,
+    restore: (...data: any) => T
   ) {
     this.prefix = prefix;
+    this.restore = restore;
   }
 
   private urlEncode = (value: string): string => {
@@ -18,14 +22,31 @@ export class StoreManager<T> {
       ? this.urlEncode(value)
       : this.urlEncode(`${this.prefix}-${value}`);
 
+  private revive = (value: string): T =>
+    this.restore(JSON.parse(value));
+
+  private entries = () =>
+    Object.entries(localStorage)
+      .filter(([key]) => key.startsWith(this.prefix));
+
+  private encode = () =>
+    encodeURIComponent(JSON.stringify(this.entries()));
+
+  private verify = (data: ([key: string, value: string])[]) =>
+    data.every((d: [key: string, value: string]) => this.revive(d[1]));
+
+  private store = (data: ([key: string, value: string])[]) =>
+    data.forEach((d: [key: string, value: string]) =>
+      localStorage.setItem(d[0], d[1])
+    );
+
   exists = (key: string): boolean =>
     Object.keys(localStorage)
       .some(x => x === this.processKey(key));
 
   getAll = (): T[] =>
-    Object.entries(localStorage)
-      .filter(([key, value]) => key.startsWith(this.prefix))
-      .map(([key, value]) => JSON.parse(value) as T);
+    this.entries()
+      .map(([key, value]) => this.revive(value));
 
   get = (key: string): T | null => {
     const item = localStorage.getItem(
@@ -33,7 +54,7 @@ export class StoreManager<T> {
     );
 
     return item
-      ? JSON.parse(item) as T
+      ? this.revive(item)
       : null
   }
 
@@ -47,4 +68,24 @@ export class StoreManager<T> {
     localStorage.removeItem(
       this.processKey(key)
     );
+
+  download = () => {
+    const link = document.createElement('a');
+    link.href = `data:text/plain;charset=utf-8,${this.encode()}`;
+    link.download = `data.${this.prefix}`;
+    link.target = '_blank';
+    link.click();
+  }
+
+  upload = (json: string) => {
+    const data = JSON.parse(json);
+
+    try {
+      if (this.verify(data)) {
+        this.store(data)
+      }
+    } catch (ex: any) {
+      throw ex;
+    }
+  }
 }

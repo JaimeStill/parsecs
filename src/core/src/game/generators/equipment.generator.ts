@@ -1,4 +1,4 @@
-import { WeaponGenerator } from './weapon.generator';
+import { Equipment } from '../models/equipment';
 
 import {
   d100,
@@ -16,30 +16,9 @@ import {
   WeaponSights
 } from '../data/equipment.data';
 
-import {
-  Equipment,
-  Weapon
-} from '../models/equipment';
-
 export abstract class EquipmentGenerator {
-  static GenerateStash = (savvyUpgrades: number = 0): (Weapon | Equipment)[] => {
-    const stash = new Array<Weapon | Equipment>();
-
-    for (let i = 0; i < 3; i++) {
-      stash.push(
-        savvyUpgrades > i
-          ? WeaponGenerator.GenerateHighTech()
-          : WeaponGenerator.GenerateMilitary()
-      );
-
-      stash.push(WeaponGenerator.GenerateLowTech());
-    }
-
-    stash.push(this.GenerateGear());
-    stash.push(this.GenerateGadget());
-
-    return stash;
-  }
+  static GenerateStash = (): Equipment[] =>
+    [this.GenerateGear(), this.GenerateGadget()];
 
   static GenerateGear = (): Equipment =>
     Generator(d100, [

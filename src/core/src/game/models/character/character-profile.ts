@@ -93,6 +93,31 @@ export class CharacterProfile {
     this.eventTarget = eventTarget;
   }
 
+  static Restore = (val: any) =>
+    new CharacterProfile(...val);
+
+  toJSON() {
+    return {
+      maxCombatSkill: this.maxCombatSkill,
+      maxReaction: this.maxReaction,
+      maxSpeed: this.maxSpeed,
+      maxToughness: this.maxToughness,
+      maxSavvy: this.maxSavvy,
+      maxLuck: this.maxLuck,
+      maxXp: this.maxXp,
+      reaction: this.reaction,
+      speed: this.speed,
+      combatSkill: this.combatSkill,
+      toughness: this.toughness,
+      savvy: this.savvy,
+      luck: this.luck,
+      xp: this.xp,
+      useConsumables: this.useConsumables,
+      useImplants: this.useImplants,
+      eventTarget: this.eventTarget
+    }
+  }
+
   get reaction(): number { return this._reaction; }
 
   set reaction(value: number) {

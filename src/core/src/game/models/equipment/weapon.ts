@@ -1,4 +1,5 @@
 import { Constructor } from '../../core';
+import { v4 as uuid } from 'uuid';
 
 import {
   WeaponStat,
@@ -36,6 +37,7 @@ export class Weapon {
     this._damaged = value;
   }
 
+  readonly id: string;
   readonly model: string;
   readonly description: string;
   readonly range: number;
@@ -58,8 +60,10 @@ export class Weapon {
       traits = new Array<WeaponTrait>(),
       mod = null,
       sight = null
-    }: Partial<WeaponConfig> = {}
+    }: Partial<WeaponConfig> = {},
+    id: string | null = null
   ) {
+    this.id = id ?? uuid();
     this.model = model;
     this.description = description;
     this.range = range;

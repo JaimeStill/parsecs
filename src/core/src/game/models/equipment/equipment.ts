@@ -1,16 +1,17 @@
 import { ProtectiveDeviceType } from '../../enums';
+import { v4 as uuid } from 'uuid';
 
 export abstract class Equipment {
-  readonly id: Symbol;
+  readonly id: string;
   readonly name: string;
   readonly description: string;
 
-
   constructor(
     name: string,
-    description: string
+    description: string,
+    id: string | null = null
   ) {
-    this.id = Symbol();
+    this.id = id ?? uuid();
     this.name = name;
     this.description = description;
   }

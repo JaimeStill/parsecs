@@ -1,4 +1,5 @@
 import { CharacterDetail } from './character-detail';
+import { v4 as uuid } from 'uuid';
 
 import {
   CharacterProfileConfig,
@@ -17,21 +18,33 @@ import {
   UtilityDevice
 } from '../equipment';
 
+export interface CharacterConfig {
+  id: string | null;
+  name: string;
+  background: string;
+  motivation: string;
+  charClass: string;
+  equipment: Equipment[];
+  weapons: Weapon[];
+  devices: [UtilityDevice?, UtilityDevice?, UtilityDevice?];
+  sidearm: Sidearm | null;
+  isLeader: boolean;
+}
+
 export class Character {
-  readonly id: Symbol;
+  readonly id: string;
   readonly race: CharacterRace;
   readonly species: CharacterSpecies;
   readonly profile: CharacterProfile;
 
-  private _weapons: [Weapon?, Weapon?] = [];
-  private _devices: [UtilityDevice?, UtilityDevice?, UtilityDevice?] = [];
+  name: string;
+  background: string;
+  motivation: string;
+  charClass: string;
 
-  name!: string;
-  background!: string;
-  motivation!: string;
-  class!: string;
-
-  gear: (Equipment | Weapon)[] = new Array<Equipment | Weapon>();
+  equipment: Equipment[] = new Array<Equipment>();
+  weapons: Weapon[] = new Array<Weapon>();
+  devices: [UtilityDevice?, UtilityDevice?, UtilityDevice?];
   sidearm: Sidearm | null = null;
   isLeader: boolean = false;
 
@@ -55,9 +68,21 @@ export class Character {
       useConsumables = true,
       useImplants = true,
       eventTarget = true
-    }: Partial<CharacterProfileConfig> = {}
+    }: Partial<CharacterProfileConfig> = {},
+    {
+      id = null,
+      name = '',
+      background = '',
+      charClass = '',
+      motivation = '',
+      devices = [],
+      equipment = new Array<Equipment>(),
+      weapons = new Array<Weapon>(),
+      isLeader = false,
+      sidearm = null
+    }: Partial<CharacterConfig> = {}
   ) {
-    this.id = Symbol();
+    this.id = id ?? uuid();
     this.species = species;
     this.profile = new CharacterProfile({
       reaction, maxReaction,
@@ -71,8 +96,36 @@ export class Character {
       eventTarget
     });
 
+    this.name = name;
+    this.background = background;
+    this.charClass = charClass;
+    this.motivation = motivation;
+    this.devices = devices;
+    this.equipment = equipment;
+    this.weapons = weapons;
+    this.isLeader = isLeader;
+    this.sidearm = sidearm;
+
     this.race = this.setRace();
   }
+
+  static Restore = (val: any): Character =>
+    new Character(
+      val.species,
+      CharacterProfile.Restore(val.profile),
+      {
+        id: val.id,
+        name: val.name,
+        background: val.background,
+        charClass: val.charClass,
+        motivation: val.motivation,
+        devices: val.devices.map((d: any) => UtilityDevice.Restore(d)),
+        equipment: val.equipment.map((e: any) => Equipment.Restore(e)),
+        weapons: val.weapons.map((w: any) => Weapon.Restore(w)),
+        isLeader: val.isLeader,
+        sidearm: val.sidearm ? Sidearm.Restore(val.sidearm) : null
+      }
+    );
 
   private setRace = (): CharacterRace => {
     switch (this.species) {
@@ -103,10 +156,6 @@ export class Character {
     }
   }
 
-  get weapons(): [Weapon?, Weapon?] { return this._weapons; }
-
-  get devices(): [UtilityDevice?, UtilityDevice?, UtilityDevice?] { return this._devices; }
-
   promoteLeader = () => {
     this.isLeader = true;
     this.profile.luck += 1;
@@ -117,7 +166,10 @@ export class Character {
       this.profile.applyEffects(cd.effects);
 
     if (cd.equipment && cd.equipment.length > 0)
-      this.gear.push(...cd.equipment);
+      this.equipment.push(...cd.equipment);
+
+    if (cd.weapons && cd.weapons.length > 0)
+      this.weapons.push(...cd.weapons);
   }
 }
 

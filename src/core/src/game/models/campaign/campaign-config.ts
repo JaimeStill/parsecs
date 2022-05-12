@@ -7,8 +7,8 @@ import { AvailableVictoryConditions } from '../../data/campaign.data';
 import { Difficulty } from '../../enums';
 import { CharacterGenerator } from '../../generators/character.generator';
 import { EquipmentGenerator } from '../../generators/equipment.generator';
-import { ShipGenerator } from '../../generators/ship.generator';
 import { WeaponGenerator } from '../../generators/weapon.generator';
+import { ShipGenerator } from '../../generators/ship.generator';
 import { Ship } from '../ship';
 import { VictoryCondition } from './victory-condition';
 
@@ -137,7 +137,8 @@ export class CampaignConfig {
     resources.storyPoints = (resources.storyPoints ?? 0) + this.initStoryPoints();
     resources.credits = (resources.credits ?? 0) + this.crewSize;
 
-    this.crew.stash.push(...EquipmentGenerator.GenerateStash(this.savvyUpgrades));
+    this.crew.stash.push(...EquipmentGenerator.GenerateStash());
+    this.crew.armory.push(...WeaponGenerator.GenerateArmory());
     this.crew.leader = this.leader;
 
     console.log('Campaign Resources', resources);

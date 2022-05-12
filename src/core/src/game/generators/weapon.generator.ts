@@ -13,6 +13,21 @@ import {
 } from '../data/weapon.data';
 
 export abstract class WeaponGenerator {
+  static GenerateArmory = (savvyUpgrades: number = 0): Weapon[] => {
+    const weapons = new Array<Weapon>();
+
+    for (let i = 0; i < 3; i++) {
+      weapons.push(
+        savvyUpgrades > i
+          ? this.GenerateHighTech()
+          : this.GenerateMilitary()
+      );
+
+      weapons.push(WeaponGenerator.GenerateLowTech());
+    }
+
+    return weapons;
+  }
   static GenerateHighTech = (): Weapon =>
     Generator(d100, [
       new GeneratorOption(

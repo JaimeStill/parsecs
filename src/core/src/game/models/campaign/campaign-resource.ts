@@ -27,4 +27,13 @@ export class CampaignResource {
       this.rumors += r.rumors;
       this.storyPoints += r.storyPoints;
     });
+
+  static Restore = (val: any) =>
+    new CampaignResource({
+      credits: val.credits,
+      storyPoints: val.storyPoints,
+      rumors: val.rumors,
+      patrons: val.patrons,
+      rivals: val.rivals
+    });
 }

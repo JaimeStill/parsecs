@@ -9,27 +9,31 @@ import {
 interface CharacterDetailConfig {
   effects: CharacterEffect[] | null,
   resources: CampaignResource,
-  equipment: (Weapon | Equipment)[] | null
+  equipment: Equipment[] | null,
+  weapons: Weapon[] | null
 }
 
 export class CharacterDetail {
   detail: string;
   effects: CharacterEffect[] | null;
   resources: CampaignResource = new CampaignResource();
-  equipment: (Weapon | Equipment)[] | null = null;
+  equipment: Equipment[] | null = null;
+  weapons: Weapon[] | null = null;
 
   constructor(
     detail: string,
     {
       effects = null,
       resources = new CampaignResource(),
-      equipment = null
+      equipment = null,
+      weapons = null,
     }: Partial<CharacterDetailConfig> = {}
   ) {
     this.detail = detail;
     this.effects = effects;
     this.resources = resources;
     this.equipment = equipment;
+    this.weapons = weapons;
   }
 
   private mergeEffects = (cd: CharacterDetail) => {
@@ -46,10 +50,18 @@ export class CharacterDetail {
       this.equipment = cd.equipment;
   }
 
+  private mergeWeapons = (cd: CharacterDetail) => {
+    if (this.weapons && cd.weapons)
+      this.weapons.push(...cd.weapons);
+    else if (cd.weapons)
+      this.weapons = cd.weapons;
+  }
+
   merge = (cd: CharacterDetail) => {
     this.detail = `${this.detail} : ${cd.detail}`;
     this.mergeEffects(cd);
     this.resources.consolidate([cd.resources]);
     this.mergeEquipment(cd);
+    this.mergeWeapons(cd);
   }
 }

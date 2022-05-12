@@ -4,19 +4,9 @@ import {
 } from '@angular/core';
 
 import {
-  d6,
   Campaign,
   CampaignConfig,
-  Character,
-  CharacterGenerator,
-  CharacterRace,
-  Equipment,
-  EquipmentGenerator,
-  Ship,
-  ShipGenerator,
-  StoreManager,
-  Weapon,
-  WeaponGenerator
+  StoreManager
 } from 'core';
 
 @Component({
@@ -27,7 +17,7 @@ export class HomeRoute implements OnInit {
   name: string = 'Onyx Dawn';
   campaign!: Campaign;
   cardSize: number | string = 'auto';
-  store: StoreManager<Campaign> = new StoreManager('parsecs');
+  store: StoreManager<Campaign> = new StoreManager('parsecs', Campaign.Restore);
   data!: Campaign[];
 
   ngOnInit() {

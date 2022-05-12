@@ -6,9 +6,11 @@ import {
 } from './equipment';
 
 export class Crew {
-  stash: (Equipment | Weapon)[] = [];
+  roster: Character[];
+  stash: Equipment[];
+  armory: Weapon[];
 
-  private _leader: Character | null = null;
+  private _leader: Character | null;
   get leader(): Character | null { return this._leader; }
 
   set leader(character: Character | null) {
@@ -21,12 +23,20 @@ export class Crew {
       character.promoteLeader();
   }
 
-  private _roster: Character[] = new Array<Character>();
+  constructor({
+    stash = new Array<Equipment>(),
+    armory = new Array<Weapon>(),
+    roster = new Array<Character>(),
+    leader = null
+  }: Partial<Crew> = {}) {
+    this.stash = stash;
+    this.armory = armory;
+    this.roster = roster;
+    this._leader = leader;
+  }
 
-  get roster() { return this._roster; }
-
-  clearRoster = () => this._roster = this.roster.length > 0
-    ? this._roster = new Array<Character>()
+  clearRoster = () => this.roster = this.roster.length > 0
+    ? this.roster = new Array<Character>()
     : this.roster;
 
   addCharacter = (character: Character) =>
@@ -37,10 +47,27 @@ export class Crew {
     characters.forEach(c => this.addCharacter(c));
 
   removeCharacter = (character: Character) =>
-    this._roster = this.roster.filter(c => !(c.id === character.id));
+    this.roster = this.roster.filter(c => !(c.id === character.id));
 
   removeCharacters = (characters: Character[]) =>
-    this._roster = this.roster.filter(c =>
+    this.roster = this.roster.filter(c =>
       !characters.includes(c)
     );
+
+  static Restore = (val: any) =>
+    new Crew({
+      roster: val.roster.map((c: any) => Character.Restore(c)),
+      stash: val.stash.map((e: any) => Equipment.Restore(e)),
+      armory: val.armory.map((w: any) => Weapon.Restore(w)),
+      leader: Character.Restore(val.leader)
+    });
+
+  toJSON() {
+    return {
+      roster: this.roster,
+      stash: this.stash,
+      armory: this.armory,
+      leader: this.leader
+    }
+  }
 }
