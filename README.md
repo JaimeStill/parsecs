@@ -5,26 +5,23 @@
 
 ## Tasks
 
-### Base Game Mechanics
+- [ ] Home Layout (base route)
+    - [ ] Campaign Save Management
+    - [ ] New Campaign
+    - [ ] Campaign Cards
+    - [ ] Search (campaign name, character search function for roster.some(c => c.search(val)))
+- [ ] New Campaign Workflow (`/new-campaign`)
+    - [ ] Initial Settings and Characters
+    - [ ] Finalize and Route to Campaign
+- [ ] Campaign Route (`/campaign/:id`)
 - [ ] Inventory Management System
     - [ ] Character
     - [ ] Crew
-- [ ] Campaign Engine
-    - [ ] Campaign Class Structure
-        - [ ] Implement Victory conditions
-        - [ ] Implements Stars of the Story
-    - [ ] Campaign Preparation
-    - [ ] Campaign Settings
-    - [ ] Character Creation      
-        * Randomization should be optional per character
-        - [ ] Background
-        - [ ] Motiviation
-        - [ ] Class
-    - [ ] Campaign Turn Processor
-        - [ ] Travel
-        - [ ] World
-        - [ ] Battle Management
-        * Turn racking
+- [ ] Campaign Turn Processor
+    - [ ] Travel
+    - [ ] World
+    - [ ] Battle Management
+        * Turn Tracking
         * Character / Enemy Status Tracking
         * Engagement calculations
         * Shooting Hit / Damage Calculations

@@ -43,4 +43,17 @@ export class HomeRoute implements OnInit {
     this.store.save(this.campaign.name, this.campaign);
     this.data = this.store.getAll();
   }
+
+  uploadSaves = (files: FileList) => {
+    if (files.length > 0) {
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.store.upload(e.target.result);
+        this.data = this.store.getAll();
+      }
+
+      reader.readAsText(files[0]);
+    }
+  }
 }

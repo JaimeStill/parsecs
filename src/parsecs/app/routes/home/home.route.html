@@ -15,24 +15,42 @@
       </mat-form-field>
       <button mat-stroked-button
               class="m4"
+              (click)="initCampaign()">Generate Campaign</button>
+      <button mat-stroked-button
+              class="m4"
               (click)="saveCampaign()">Save Campaign</button>
       <button mat-stroked-button
               class="m4"
-              (click)="initCampaign()">Generate Campaign</button>
+              (click)="store.download()">
+        Download Saves
+      </button>
     </div>
-    <pre *ngIf="campaign"
-         class="m4 pre-wrap overflow"
-         [style.max-height.vh]="40"><code>
+    <div class="p4">
+      <file-upload class="m4"
+                   [accept]="store.prefix"
+                   (loaded)="uploadSaves($event)"></file-upload>
+    </div>
+    <section fxLayout="column"
+             fxLayoutAlign="start stretch"
+             class="m4 p4">
+      <p class="mat-title m4">Saved Campaigns</p>
+      <ng-container *ngIf="data && data.length > 0">
+        <p *ngFor="let c of data"
+           class="mx8 my4">{{c.name}}</p>
+      </ng-container>
+      <p *ngIf="!(data.length > 0)"
+         class="mat-subheading-1 m4">No Campaigns Available</p>
+    </section>
+    <ng-container *ngIf="campaign">
+      <mat-divider class="my12"></mat-divider>
+      <section fxLayout="column"
+               fxLayoutAlign="start stretch"
+               class="p4">
+        <p class="mat-subheading-2 m4">Current Campaign - {{campaign.name}}</p>
+        <pre class="m4 pre-wrap overflow"
+             [style.max-height.vh]="32"><code>
 {{campaign | json}}</code></pre>
-  </section>
-  <section fxLayout="column"
-           fxLayoutAlign="start stretch"
-           class="m4 p4">
-    <p class="mat-title m4">Saved Campaigns</p>
-    <ng-container *ngIf="data && data.length > 0">
-      <p *ngFor="let c of data">{{c.name}}</p>
+      </section>
     </ng-container>
-    <p *ngIf="!(data.length > 0)"
-       class="mat-subheading-1 m4">No Campaigns Available</p>
   </section>
 </section>
