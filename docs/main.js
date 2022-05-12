@@ -168,7 +168,7 @@ class HomeRoute {
     constructor() {
         this.name = 'Onyx Dawn';
         this.cardSize = 'auto';
-        this.store = new core__WEBPACK_IMPORTED_MODULE_1__.StoreManager('parsecs');
+        this.store = new core__WEBPACK_IMPORTED_MODULE_1__.StoreManager('parsecs', core__WEBPACK_IMPORTED_MODULE_1__.Campaign.Restore);
         this.initCampaign = () => {
             const c = new core__WEBPACK_IMPORTED_MODULE_1__.CampaignConfig(this.name);
             for (var i = 0; i < c.crew.roster.length; i++)
@@ -223,7 +223,7 @@ HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.campaign);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.data.length > 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", ctx.data && ctx.data.length > 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngIf", !(ctx.data.length > 0));
     } }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_2__.DefaultLayoutAlignDirective, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_3__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_4__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_5__.NgModel, _angular_material_button__WEBPACK_IMPORTED_MODULE_6__.MatButton, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgIf, _angular_common__WEBPACK_IMPORTED_MODULE_7__.NgForOf], pipes: [_angular_common__WEBPACK_IMPORTED_MODULE_7__.JsonPipe], encapsulation: 2 });
@@ -438,49 +438,51 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ 3184);
 /* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/dialog */ 5758);
 /* harmony import */ var _angular_material_button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/material/button */ 7317);
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common/http */ 8784);
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ 3280);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs/operators */ 1989);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 635);
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 8977);
-/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/material/snack-bar */ 2528);
-/* harmony import */ var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/cdk/overlay */ 4244);
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/common */ 6362);
-/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/core */ 8133);
-/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/flex-layout */ 7114);
-/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/flex-layout */ 8616);
-/* harmony import */ var _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/cdk/drag-drop */ 4941);
-/* harmony import */ var _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/material/autocomplete */ 3188);
-/* harmony import */ var _angular_material_badge__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/badge */ 178);
-/* harmony import */ var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/bottom-sheet */ 3672);
-/* harmony import */ var _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/button-toggle */ 1959);
-/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/card */ 1961);
-/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/checkbox */ 1534);
-/* harmony import */ var _angular_material_chips__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/chips */ 1196);
-/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/datepicker */ 5818);
-/* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/divider */ 9975);
-/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/expansion */ 2928);
-/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
-/* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/grid-list */ 3346);
-/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/icon */ 5590);
-/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/input */ 3365);
-/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/list */ 6131);
-/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/material/menu */ 2796);
-/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/paginator */ 6439);
-/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/progress-bar */ 9782);
-/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/progress-spinner */ 4742);
-/* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @angular/material/radio */ 8390);
-/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/select */ 1434);
-/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/material/sidenav */ 7216);
-/* harmony import */ var _angular_material_slider__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/slider */ 1859);
-/* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/material/slide-toggle */ 6623);
-/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/material/sort */ 4316);
-/* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @angular/material/stepper */ 7650);
-/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @angular/material/table */ 7217);
-/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @angular/material/tabs */ 2379);
-/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/material/toolbar */ 9946);
-/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/material/tooltip */ 89);
-/* harmony import */ var _angular_material_tree__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/material/tree */ 4972);
+/* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! uuid */ 2535);
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/common/http */ 8784);
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! rxjs */ 3280);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! rxjs/operators */ 1989);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! rxjs/operators */ 635);
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! rxjs/operators */ 8977);
+/* harmony import */ var _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/snack-bar */ 2528);
+/* harmony import */ var _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @angular/cdk/overlay */ 4244);
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_46__ = __webpack_require__(/*! @angular/common */ 6362);
+/* harmony import */ var _angular_material_core__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! @angular/material/core */ 8133);
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @angular/flex-layout */ 7114);
+/* harmony import */ var _angular_flex_layout__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @angular/flex-layout */ 8616);
+/* harmony import */ var _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/cdk/drag-drop */ 4941);
+/* harmony import */ var _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! @angular/material/autocomplete */ 3188);
+/* harmony import */ var _angular_material_badge__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @angular/material/badge */ 178);
+/* harmony import */ var _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/material/bottom-sheet */ 3672);
+/* harmony import */ var _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! @angular/material/button-toggle */ 1959);
+/* harmony import */ var _angular_material_card__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @angular/material/card */ 1961);
+/* harmony import */ var _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! @angular/material/checkbox */ 1534);
+/* harmony import */ var _angular_material_chips__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! @angular/material/chips */ 1196);
+/* harmony import */ var _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @angular/material/datepicker */ 5818);
+/* harmony import */ var _angular_material_divider__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/material/divider */ 9975);
+/* harmony import */ var _angular_material_expansion__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @angular/material/expansion */ 2928);
+/* harmony import */ var _angular_material_form_field__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @angular/material/form-field */ 9076);
+/* harmony import */ var _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(/*! @angular/material/grid-list */ 3346);
+/* harmony import */ var _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(/*! @angular/material/icon */ 5590);
+/* harmony import */ var _angular_material_input__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(/*! @angular/material/input */ 3365);
+/* harmony import */ var _angular_material_list__WEBPACK_IMPORTED_MODULE_29__ = __webpack_require__(/*! @angular/material/list */ 6131);
+/* harmony import */ var _angular_material_menu__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! @angular/material/menu */ 2796);
+/* harmony import */ var _angular_material_paginator__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! @angular/material/paginator */ 6439);
+/* harmony import */ var _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! @angular/material/progress-bar */ 9782);
+/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! @angular/material/progress-spinner */ 4742);
+/* harmony import */ var _angular_material_radio__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/material/radio */ 8390);
+/* harmony import */ var _angular_material_select__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/material/select */ 1434);
+/* harmony import */ var _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! @angular/material/sidenav */ 7216);
+/* harmony import */ var _angular_material_slider__WEBPACK_IMPORTED_MODULE_37__ = __webpack_require__(/*! @angular/material/slider */ 1859);
+/* harmony import */ var _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_38__ = __webpack_require__(/*! @angular/material/slide-toggle */ 6623);
+/* harmony import */ var _angular_material_sort__WEBPACK_IMPORTED_MODULE_39__ = __webpack_require__(/*! @angular/material/sort */ 4316);
+/* harmony import */ var _angular_material_stepper__WEBPACK_IMPORTED_MODULE_40__ = __webpack_require__(/*! @angular/material/stepper */ 7650);
+/* harmony import */ var _angular_material_table__WEBPACK_IMPORTED_MODULE_41__ = __webpack_require__(/*! @angular/material/table */ 7217);
+/* harmony import */ var _angular_material_tabs__WEBPACK_IMPORTED_MODULE_42__ = __webpack_require__(/*! @angular/material/tabs */ 2379);
+/* harmony import */ var _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_43__ = __webpack_require__(/*! @angular/material/toolbar */ 9946);
+/* harmony import */ var _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_44__ = __webpack_require__(/*! @angular/material/tooltip */ 89);
+/* harmony import */ var _angular_material_tree__WEBPACK_IMPORTED_MODULE_45__ = __webpack_require__(/*! @angular/material/tree */ 4972);
+
 
 
 
@@ -866,7 +868,7 @@ class KeyValue {
 }
 
 class StoreManager {
-    constructor(prefix) {
+    constructor(prefix, restore) {
         this.urlEncode = (value) => {
             const regex = /[^a-zA-Z0-9-.]/gi;
             let newValue = value.replace(/\s/g, '-').toLowerCase();
@@ -876,20 +878,44 @@ class StoreManager {
         this.processKey = (value) => value = value.startsWith(this.prefix)
             ? this.urlEncode(value)
             : this.urlEncode(`${this.prefix}-${value}`);
+        this.revive = (value) => this.restore(JSON.parse(value));
+        this.entries = () => Object.entries(localStorage)
+            .filter(([key]) => key.startsWith(this.prefix));
+        this.encode = () => encodeURIComponent(JSON.stringify(this.entries()));
+        this.verify = (data) => data.every((d) => this.revive(d[1]));
+        this.store = (data) => data.forEach((d) => localStorage.setItem(d[0], d[1]));
         this.exists = (key) => Object.keys(localStorage)
             .some(x => x === this.processKey(key));
-        this.getAll = () => Object.entries(localStorage)
-            .filter(([key, value]) => key.startsWith(this.prefix))
-            .map(([key, value]) => JSON.parse(value));
+        this.getAll = () => this.entries()
+            .map(([key, value]) => this.revive(value));
         this.get = (key) => {
             const item = localStorage.getItem(this.processKey(key));
             return item
-                ? JSON.parse(item)
+                ? this.revive(item)
                 : null;
         };
         this.save = (key, data) => localStorage.setItem(this.processKey(key), JSON.stringify(data));
         this.delete = (key) => localStorage.removeItem(this.processKey(key));
+        this.download = () => {
+            const link = document.createElement('a');
+            link.href = `data:text/plain;charset=utf-8,${this.encode()}`;
+            link.download = `data.${this.prefix}`;
+            link.target = '_blank';
+            link.click();
+        };
+        this.upload = (json) => {
+            const data = JSON.parse(json);
+            try {
+                if (this.verify(data)) {
+                    this.store(data);
+                }
+            }
+            catch (ex) {
+                throw ex;
+            }
+        };
         this.prefix = prefix;
+        this.restore = restore;
     }
 }
 
@@ -1094,10 +1120,236 @@ const VictoryConditions = [
 const AvailableVictoryConditions = (difficulty) => VictoryConditions
     .filter((vc) => vc.value.difficulties.includes(difficulty));
 
+class Equipment {
+    constructor(name, description, type, id = null) {
+        this.id = id !== null && id !== void 0 ? id : (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
+        this.name = name;
+        this.description = description;
+        this.type = type;
+    }
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            description: this.description,
+            type: this.type
+        };
+    }
+}
+Equipment.Restore = (val) => {
+    switch (val.type) {
+        case EquipmentType.Consumable:
+            return new Consumable(val.name, val.description, val.type, val.id);
+        case EquipmentType.Implant:
+            return new Implant(val.name, val.description, val.type, val.id);
+        case EquipmentType.OnBoardItem:
+            return new OnBoardItem(val.name, val.description, val.type, val.id);
+        case EquipmentType.ProtectiveDevice:
+            return new ProtectiveDevice(val.name, val.description, val.type, val.deviceType, val.id);
+        case EquipmentType.UtilityDevice:
+            return new UtilityDevice(val.name, val.description, val.type, val.id);
+        case EquipmentType.WeaponMod:
+            return new WeaponMod(val.name, val.description, val.type, val.allowPistol, val.id);
+        case EquipmentType.WeaponSight:
+            return new WeaponSight(val.name, val.description, val.type, val.pistolOnly, val.damanged, val.id);
+        default:
+            return new Equipment(val.name, val.description, val.type, val.id);
+    }
+};
+class ProtectiveDevice extends Equipment {
+    constructor(name, description, type, deviceType, id = null) {
+        super(name, description, type, id);
+        this.deviceType = deviceType;
+    }
+    toJSON() {
+        return Object.assign(Object.assign({}, super.toJSON()), { deviceType: this.deviceType });
+    }
+}
+class WeaponMod extends Equipment {
+    constructor(name, description, type, allowPistol, id = null) {
+        super(name, description, type, id);
+        this.allowPistol = allowPistol;
+    }
+    toJSON() {
+        return Object.assign(Object.assign({}, super.toJSON()), { allowPisto: this.allowPistol });
+    }
+}
+class WeaponSight extends Equipment {
+    constructor(name, description, type, pistolOnly, damaged = false, id = null) {
+        super(name, description, type, id);
+        this.pistolOnly = pistolOnly;
+        this.damaged = damaged;
+    }
+    toJSON() {
+        return Object.assign(Object.assign({}, super.toJSON()), { pistolOnly: this.pistolOnly, damaged: this.damaged });
+    }
+}
+class Consumable extends Equipment {
+}
+class Implant extends Equipment {
+}
+class UtilityDevice extends Equipment {
+}
+class OnBoardItem extends Equipment {
+}
+
+const Consumables = {
+    BoosterPills: () => new Consumable(`Booster Pills`, `When taken, the character removes all Stun markers. They may move at double normal Speed this round.`, EquipmentType.Consumable),
+    CombatSerum: () => new Consumable(`Combat Serum`, `The character receives +2" Speed and +2 Reactions for the rest of the battle.`, EquipmentType.Consumable),
+    KiraninCrystals: () => new Consumable(`Kiranin Crystals`, `A bright, dazzling display of hypnotic lights will daze any character within 4" of the user, making them unable to act this round. The crystals have no effect on characters that already acted earlier in the round, and do not affect the user. A character that is attacked in Brawling combat will defend themselves normally.`, EquipmentType.Consumable),
+    RageOut: () => new Consumable(`Rage Out`, `The user gains +2" Speed an +1 to all Brawling rolls for the rest of this and the following round. A K'Erin user gets the benefits for the rest of the battle.`, EquipmentType.Consumable),
+    Still: () => new Consumable(`Still`, `The user gains +1 to Hit, but cannot Move during this and the next round.`, EquipmentType.Consumable),
+    StimPack: () => new Consumable(`Stim-pack`, `If a character would become a casualty, they remain on the table with a single Stun marker. This item can be used reflexively upon becoming a casualty. It does not require an action.`, EquipmentType.Consumable)
+};
+const ConsumableList = Datalist(Consumables);
+const Implants = {
+    AICompanion: () => new Implant(`AI Companion`, `When making Savvy rolls, the character may roll twice and pick the better score.`, EquipmentType.Implant),
+    BodyWire: () => new Implant(`Body Wire`, `+1 Reactions`, EquipmentType.Implant),
+    BoostedArm: () => new Implant(`Boosted Arm`, `Increase Grenade range by 2+". If the character ends their Move in contact with an obstacle that is no taller than the miniature, they may pull themselves up on top (bot not cross) as a Free Action.`, EquipmentType.Implant),
+    BoostedLeg: () => new Implant(`Boosted Leg`, `Increase base move and Dash speed by +1" each.`, EquipmentType.Implant),
+    CyberHand: () => new Implant(`Cyber Hand`, `The character may take any one Pistol they own and build it into their hand. Range is reduced to half, but the weapon always shoots with +1 to Hit and an additional +1 bonus when Brawling.`, EquipmentType.Implant),
+    GeneticDefenses: () => new Implant(`Genetic Defenses`, `5+ Saving Throw, if subjected to any poison, virus, gas, or disease.`, EquipmentType.Implant),
+    HealthBoost: () => new Implant(`Health Boost`, `If a post-battle Injury would result in 2+ campaign turns of recovery time, reduce the time by 1. If the character has Toughness 3 when receving this ipmlant, raise it to 4.`, EquipmentType.Implant),
+    NerveAdjuster: () => new Implant(`Nerve Adjuster`, `Whenever the character is Stunned for any reason, they receive a 5+ Saving Throw to avoid the Stun.`, EquipmentType.Implant),
+    NeuralOptimization: () => new Implant(`Neural Optimization`, `The character cannot be Stunned.`, EquipmentType.Implant),
+    NightSight: () => new Implant(`Night Sight`, `The character does not suffer visibility reductions due to darkness, but is affected by smoke, gas, etc. normally.`, EquipmentType.Implant),
+    PainSuppressor: () => new Implant(`Pain Suppressor`, `The character can perform crew tasks while in Sick Bay, though they cannot participate in battles.`, EquipmentType.Implant)
+};
+const ImplantList = Datalist(Implants);
+const OnBoardItems = {
+    Analyzer: () => new OnBoardItem(`Analyzer`, `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`, EquipmentType.OnBoardItem),
+    ColonistRationPacks: () => new OnBoardItem(`Colonist Ration Packs`, `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`, EquipmentType.OnBoardItem),
+    Duplicator: () => new OnBoardItem(`Duplicator`, `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`, EquipmentType.OnBoardItem),
+    FakeId: () => new OnBoardItem(`Fake ID`, `Add +1 to all attempts to obtain a licesne or other legal document`, EquipmentType.OnBoardItem),
+    Fixer: () => new OnBoardItem(`Fixer`, `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`, EquipmentType.OnBoardItem),
+    GeneticReconfigurationKit: () => new OnBoardItem(`Genetic Reconfiguration Kit`, `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`, EquipmentType.OnBoardItem),
+    LoadedDice: () => new OnBoardItem(`Loaded Dice`, `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`, EquipmentType.OnBoardItem),
+    LuckyDice: () => new OnBoardItem(`Lucky Dice`, `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`, EquipmentType.OnBoardItem),
+    MkIITranslator: () => new OnBoardItem(`Mk II Translator`, `When rolling to Recruit, you may roll an additional D6.`, EquipmentType.OnBoardItem),
+    MedPatch: () => new OnBoardItem(`Med-patch`, `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`, EquipmentType.OnBoardItem),
+    MeditationOrb: () => new OnBoardItem(`Meditation Orb`, `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`, EquipmentType.OnBoardItem),
+    NanoDoc: () => new OnBoardItem(`Nano-doc`, `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. You must decide before rolling the dice. Single-use.`, EquipmentType.OnBoardItem),
+    NoveltyStuffedAnimal: () => new OnBoardItem(`Novelty Stuffed Animal`, `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`, EquipmentType.OnBoardItem),
+    Purifier: () => new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`, EquipmentType.OnBoardItem),
+    RepairBot: () => new OnBoardItem(`Repair Bot`, `+1 to all Repair attempts`, EquipmentType.OnBoardItem),
+    SectorPermit: () => new OnBoardItem(`Sector Permit`, `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`, EquipmentType.OnBoardItem),
+    SpareParts: () => new OnBoardItem(`Spare Parts`, `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`, EquipmentType.OnBoardItem),
+    TeachBot: () => new OnBoardItem(`Teach-bot`, `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`, EquipmentType.OnBoardItem),
+    Transcender: () => new OnBoardItem(`Transcender`, `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`, EquipmentType.OnBoardItem)
+};
+const OnBoardItemList = Datalist(OnBoardItems);
+const ProtectiveDevices = {
+    BattleDress: () => new ProtectiveDevice(`Battle Dress`, `The character counts as +1 Reactions (maximum 4) and receives a Saving Throw of 5+`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
+    CamoCloak: () => new ProtectiveDevice(`Camo Cloak`, `If character is within 2" of Cover, they are counted as being in Cover. Does not apply if the shooter is within 4".`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
+    CombatArmor: () => new ProtectiveDevice(`Combat Armor`, `Saving Throw 5+`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
+    DeflectorField: () => new ProtectiveDevice(`Deflector Field`, `Automatically deflects a single ranged weapon's Hit per battle. After a Hit is scored, decide if you wish to use the field before any rolls for Toughness or armor are made.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
+    FlakScreen: () => new ProtectiveDevice(`Falk Screen`, `All Area weapons striking the wearer, whether through the initial shots or additional attacks fro the Area trait have their Damage reduced by -1 (to a cap of +0).`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
+    FlexArmor: () => new ProtectiveDevice(`Flex-armor`, `If the character did not move on their last activation, they count as +1 Toughness (to a maximum of 6).`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
+    FragVest: () => new ProtectiveDevice(`Frag Vest`, `The wearer receives a 6+ Saving Throw, improved to 5+ against any Area attack.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
+    ScreenGenerator: () => new ProtectiveDevice(`Screen Generator`, `Receives a 5+ Saving Throw against gunfire. No effect against Area or Melee attacks.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
+    StealthGear: () => new ProtectiveDevice(`Stealth Gear`, `Enemies firing from a range over 9" are -1 to Hit.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor)
+};
+const ProtectiveDeviceList = Datalist(ProtectiveDevices);
+const UtilityDevices = {
+    AutoSensor: () => new UtilityDevice(`Auto Sensor`, `If an enemy begins or ends a move within 4" and Line of Sight of the character, you may immediately fire one shot form any Pistol carried. The shot is resolved `, EquipmentType.UtilityDevice),
+    BattleVisor: () => new UtilityDevice(`Battle Visor`, `When shooting, the character may reroll any 1s on the firing dice.`, EquipmentType.UtilityDevice),
+    Communicator: () => new UtilityDevice(`Communicator`, `When making the Reaction roll each round, you may roll one additional die, then choose a die to discard.`, EquipmentType.UtilityDevice),
+    ConcealedBlade: () => new UtilityDevice(`Concealed Blade`, `If the character begins the round within 2" of an opponent, they may throw the blade as a Free Action before doing anything else. Roll to Hit normally, resolving the Hit with Damage +0. The blade can be used once per battle, and is replaced afterwards for free.`, EquipmentType.UtilityDevice),
+    Displacer: () => new UtilityDevice(`Displacer`, `Usable once permission instead of Moving. Aim anywhere in sight. The character teleports to a point 1D6" away in a random direction. If the teleport would end up within a solid obstacle, the device fails and must be Repaired before it can be used again. The character emerges on the same height as the aiming point, which may cause them to fall if they emerge in open air. The character may take a Combat Action after teleporting. If used by a Precursor character, you may establish two "landing points", and select to use either.`, EquipmentType.UtilityDevice),
+    DistractionBot: () => new UtilityDevice(`Distraction Bot`, `Usable once per battle as a Combat Action. Select an enemy within 12". Next time they would become active, they are unable to act, though they remove Stun markers as normal. Use a small marker to remember.`, EquipmentType.UtilityDevice),
+    GrappleLauncher: () => new UtilityDevice(`Grapple Launcher`, `As a Combat Action, the character may use the launcher to scale a terrain feature within 1". The character can ascend up to 12" but must reach a surface they can stand on.`, EquipmentType.UtilityDevice),
+    GravDampener: () => new UtilityDevice(`Grav Dampener`, `The character suffers no damage from faling and can descend from any height with no risk. If dropping more than 6", it counts as the character's Move for the round.`, EquipmentType.UtilityDevice),
+    HazardSuit: () => new UtilityDevice(`Hazard Suit`, `If the character takes a Hit from an environmental hazard, they receive a 5+ Saving Throw.`, EquipmentType.UtilityDevice),
+    HoverBoard: () => new UtilityDevice(`Hover Board`, `The character may use the board to move instead of walking. When used, the character can move up to 9" and can ignore any terrain that is man-height or lower. While hover-boarding, the character cannot engage in cobat, but can perform a non-Combat Action as needed.`, EquipmentType.UtilityDevice),
+    InstaWall: () => new UtilityDevice(`Insta-wall`, `May be used once per mission as a Combat Action. Place a marker within 3", then place a 2" long force wall oriented any way you like, as long as it touches the marker. The wall is man-height an impenetrable to attacks (but does not block sight or mental abilities). At the start of each subsequent round, a D6 is rolled. On a 6, the wall dissipates.`, EquipmentType.UtilityDevice),
+    JumpBelt: () => new UtilityDevice(`Jump Belt`, `Instead of Moving normally, the character may jump up to 9" directly forward and 3" upwards. Th character may take a Combat Action normally after landing.`, EquipmentType.UtilityDevice),
+    MotionTracker: () => new UtilityDevice(`Motion Tracker`, `Add +1 to all rolls to Seize the Initiative.`, EquipmentType.UtilityDevice),
+    MultiCutter: () => new UtilityDevice(`Multi-cutter`, `As a Combat Action, the character can cut a man-sized hole through any terrain feature up to 1" thick. The tool has no effect on force fields.`, EquipmentType.UtilityDevice),
+    RoboRabbitsFoot: () => new UtilityDevice(`Robo-rabbit's Foot`, `A character with Luck 0 counts as having Luck 1. If the character would die while carrying this, the foot is destroyed (and cannot be Repaired), the character does not roll on the injury table.`, EquipmentType.UtilityDevice),
+    ScannerBot: () => new UtilityDevice(`Scanner Bot`, `The crew adds +1 to all Seize the Initiative rolls.`, EquipmentType.UtilityDevice),
+    SnooperBot: () => new UtilityDevice(`Snooper Bot`, `May be deployed before a battle, if the Seize the Initiative roll would be penalized or negated. The penalty can be ignored, but the Bot is Damaged on a D6 roll of a 1.`, EquipmentType.UtilityDevice),
+    SonicEmitter: () => new UtilityDevice(`Sonic Emitter`, `Any enemy within 5" suffers -1 to all Hit rolls when shooting.`, EquipmentType.UtilityDevice),
+    SteelBoots: () => new UtilityDevice(`Steel Boots`, `If the character rolls a natural 5 or 6 in a Brawl and wins the Brawl, they may opt to kick instead of striking normally. This hits with Damage +0 and knocks them 1D3" directly backwards. If the opponent is kicked into another character, that character is knocked 1D3" in a random direction.`, EquipmentType.UtilityDevice),
+    TimeDistorter: () => new UtilityDevice(`Time Distorter`, `Activated as a Free Action. Select up to 3 enemy figures on the battlefield. They are frozen in time until the end of the following round. While in this state, they cannot Move, take Actions, or be affected by attacks or effects in any way. They are unaffected by Morale rolls as well. Single-use`, EquipmentType.UtilityDevice)
+};
+const UtilityDeviceList = Datalist(UtilityDevices);
+const WeaponMods = {
+    AssaultBlade: () => new WeaponMod(`Assault Blade`, `The weapon gains the Melee trait. Damage +1, and wins combat on a Draw.`, EquipmentType.WeaponMod, false),
+    BeamLight: () => new WeaponMod(`Beam Light`, `When using the weapon in conditions of reduced visibility, increase visibility by +3".`, EquipmentType.WeaponMod, true),
+    Bipod: () => new WeaponMod(`Bipod`, `The weapon recieve +1 to Hit at ranges over 8" when Aiming or when firing from Cover.`, EquipmentType.WeaponMod, false),
+    HotShotPack: () => new WeaponMod(`Hot Shot Pack`, `If fittedto a Blast Pistol, Blast Rifle, Hand Laser, or Infantry Laser, +1 Damage. Any natural 6 on the shooting dice causes an overheat, rendering the weapon inoperable for the rest of the fight.`, EquipmentType.WeaponMod, true),
+    CyberConfigurableNanoSludge: () => new WeaponMod(`Cyber-configurable Nano-sludge`, `The weapon receives a permanent +1 Hit bonus.`, EquipmentType.WeaponMod, true),
+    Stabilizer: () => new WeaponMod(`Stabilizer`, `Weapon may ignore Heavy trait.`, EquipmentType.WeaponMod, true),
+    ShockAttachment: () => new WeaponMod(`Shock Attachment`, `The weapon receives the Impact trait against targets within 8".`, EquipmentType.WeaponMod, true),
+    UpgradeKit: () => new WeaponMod(`Upgrade Kit`, `+2" Range increase.`, EquipmentType.WeaponMod, true)
+};
+const WeaponModList = Datalist(WeaponMods);
+const WeaponSights = {
+    LaserSight: () => new WeaponSight(`Laser Sight`, `The weapon receives thet Snap Shot trait.`, EquipmentType.WeaponSight, true),
+    QualitySight: () => new WeaponSight(`Quality Sight`, `+2" Range increase. Reroll 1s when firing only 1 shot.`, EquipmentType.WeaponSight, false),
+    SeekerSight: () => new WeaponSight(`Seeker Sight`, `The weapon receives a +1 to Hit if the shooter did not Move this round.`, EquipmentType.WeaponSight, false),
+    TrackerSight: () => new WeaponSight(`Tracker Sight`, `+1 to Hit if you fired at the same target during your previous round.`, EquipmentType.WeaponSight, false),
+    UnityBattleSight: () => new WeaponSight(`Unity Battle Sight`, `+1 to all Hit rolls.`, EquipmentType.WeaponSight, false)
+};
+const WeaponSightList = Datalist(WeaponSights);
+
+var _a$2;
+class EquipmentGenerator {
+}
+_a$2 = EquipmentGenerator;
+EquipmentGenerator.GenerateStash = () => [_a$2.GenerateGear(), _a$2.GenerateGadget()];
+EquipmentGenerator.GenerateGear = () => Generator(d100, [
+    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
+    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
+    new GeneratorOption([11, 15], WeaponMods.Bipod()),
+    new GeneratorOption([16, 20], Consumables.BoosterPills()),
+    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
+    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
+    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
+    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
+    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
+    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
+    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
+    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
+    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
+    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
+    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
+    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
+    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
+    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
+    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
+    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
+    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
+    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
+]);
+EquipmentGenerator.GenerateGadget = () => Generator(d100, [
+    new GeneratorOption([1, 4], Implants.AICompanion()),
+    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
+    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
+    new GeneratorOption([14, 17], Implants.BoostedArm()),
+    new GeneratorOption([18, 21], Implants.BoostedLeg()),
+    new GeneratorOption([22, 24], Implants.CyberHand()),
+    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
+    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
+    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
+    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
+    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
+    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
+    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
+    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
+    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
+    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
+    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
+    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
+    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
+    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
+    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
+    new GeneratorOption([94, 100], Consumables.StimPack())
+]);
+
 class Weapon {
-    constructor(model, description, { damaged = false, range = 0, shots = 0, damage = 0, traits = new Array(), mod = null, sight = null } = {}) {
+    constructor(model, description, { damaged = false, range = 0, shots = 0, damage = 0, hitBonus = 0, type = null, traits = new Array(), mod = null, sight = null, } = {}, id = null) {
         this._damaged = false;
-        this.hitBonus = 0;
         this.hasTrait = (trait) => this.traits.some((t) => t === trait);
         this.isType = (t) => this instanceof t;
         this.getType = () => {
@@ -1150,16 +1402,18 @@ class Weapon {
             weapon.sight = this.sight;
             this.sight = swap;
         };
+        this.id = id !== null && id !== void 0 ? id : (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
         this.model = model;
         this.description = description;
         this.range = range;
         this.shots = shots;
         this.damage = damage;
+        this.hitBonus = hitBonus;
         this.traits = traits;
         this.mod = mod;
         this.sight = sight;
         this.damaged = damaged;
-        this.type = this.getType();
+        this.type = type !== null && type !== void 0 ? type : this.getType();
     }
     get damaged() { return this._damaged; }
     set damaged(value) {
@@ -1167,7 +1421,75 @@ class Weapon {
             this.sight.damaged = value;
         this._damaged = value;
     }
+    toJSON() {
+        return {
+            id: this.id,
+            model: this.model,
+            description: this.description,
+            range: this.range,
+            shots: this.shots,
+            damage: this.damage,
+            hitBonus: this.hitBonus,
+            type: this.type,
+            traits: this.traits,
+            mod: this.mod,
+            sight: this.sight,
+            damaged: this.damaged
+        };
+    }
 }
+Weapon.Restore = (val) => {
+    switch (val.type) {
+        case WeaponType.Melee:
+            return new Melee(val.model, val.description, {
+                damaged: val.damanged,
+                range: val.range,
+                shots: val.shots,
+                damage: val.damage,
+                hitBonus: val.hitBonus,
+                type: val.type,
+                traits: val.traits,
+                mod: val.mod,
+                sight: val.sight
+            }, val.id);
+        case WeaponType.Pistol:
+            return new Pistol(val.model, val.description, {
+                damaged: val.damanged,
+                range: val.range,
+                shots: val.shots,
+                damage: val.damage,
+                hitBonus: val.hitBonus,
+                type: val.type,
+                traits: val.traits,
+                mod: val.mod,
+                sight: val.sight
+            }, val.id);
+        case WeaponType.Sidearm:
+            return new Sidearm(val.model, val.description, {
+                damaged: val.damanged,
+                range: val.range,
+                shots: val.shots,
+                damage: val.damage,
+                hitBonus: val.hitBonus,
+                type: val.type,
+                traits: val.traits,
+                mod: val.mod,
+                sight: val.sight
+            }, val.id);
+        default:
+            return new Weapon(val.model, val.description, {
+                damaged: val.damanged,
+                range: val.range,
+                shots: val.shots,
+                damage: val.damage,
+                hitBonus: val.hitBonus,
+                type: val.type,
+                traits: val.traits,
+                mod: val.mod,
+                sight: val.sight
+            }, val.id);
+    }
+};
 class Sidearm extends Weapon {
 }
 class Pistol extends Sidearm {
@@ -1331,8 +1653,20 @@ const MilitaryWeapons = {
 };
 const MilitaryWeaponList = Datalist(MilitaryWeapons);
 
+var _a$1;
 class WeaponGenerator {
 }
+_a$1 = WeaponGenerator;
+WeaponGenerator.GenerateArmory = (savvyUpgrades = 0) => {
+    const weapons = new Array();
+    for (let i = 0; i < 3; i++) {
+        weapons.push(savvyUpgrades > i
+            ? _a$1.GenerateHighTech()
+            : _a$1.GenerateMilitary());
+        weapons.push(WeaponGenerator.GenerateLowTech());
+    }
+    return weapons;
+};
 WeaponGenerator.GenerateHighTech = () => Generator(d100, [
     new GeneratorOption([1, 5], HighTechWeapons.DuelingPistol()),
     new GeneratorOption([6, 15], HighTechWeapons.HandCannon()),
@@ -1365,207 +1699,6 @@ WeaponGenerator.GenerateMilitary = () => Generator(d100, [
     new GeneratorOption([96, 100], MilitaryWeapons.ShatterAxe())
 ]);
 
-class Equipment {
-    constructor(name, description, type) {
-        this.id = Symbol();
-        this.name = name;
-        this.description = description;
-        this.type = type;
-    }
-}
-class ProtectiveDevice extends Equipment {
-    constructor(name, description, type, deviceType) {
-        super(name, description, type);
-        this.deviceType = deviceType;
-    }
-}
-class WeaponMod extends Equipment {
-    constructor(name, description, type, allowPistol) {
-        super(name, description, type);
-        this.allowPistol = allowPistol;
-    }
-}
-class WeaponSight extends Equipment {
-    constructor(name, description, type, pistolOnly, damaged = false) {
-        super(name, description, type);
-        this.pistolOnly = pistolOnly;
-        this.damaged = damaged;
-    }
-}
-class Consumable extends Equipment {
-}
-class Implant extends Equipment {
-}
-class UtilityDevice extends Equipment {
-}
-class OnBoardItem extends Equipment {
-}
-
-const Consumables = {
-    BoosterPills: () => new Consumable(`Booster Pills`, `When taken, the character removes all Stun markers. They may move at double normal Speed this round.`, EquipmentType.Consumable),
-    CombatSerum: () => new Consumable(`Combat Serum`, `The character receives +2" Speed and +2 Reactions for the rest of the battle.`, EquipmentType.Consumable),
-    KiraninCrystals: () => new Consumable(`Kiranin Crystals`, `A bright, dazzling display of hypnotic lights will daze any character within 4" of the user, making them unable to act this round. The crystals have no effect on characters that already acted earlier in the round, and do not affect the user. A character that is attacked in Brawling combat will defend themselves normally.`, EquipmentType.Consumable),
-    RageOut: () => new Consumable(`Rage Out`, `The user gains +2" Speed an +1 to all Brawling rolls for the rest of this and the following round. A K'Erin user gets the benefits for the rest of the battle.`, EquipmentType.Consumable),
-    Still: () => new Consumable(`Still`, `The user gains +1 to Hit, but cannot Move during this and the next round.`, EquipmentType.Consumable),
-    StimPack: () => new Consumable(`Stim-pack`, `If a character would become a casualty, they remain on the table with a single Stun marker. This item can be used reflexively upon becoming a casualty. It does not require an action.`, EquipmentType.Consumable)
-};
-const ConsumableList = Datalist(Consumables);
-const Implants = {
-    AICompanion: () => new Implant(`AI Companion`, `When making Savvy rolls, the character may roll twice and pick the better score.`, EquipmentType.Implant),
-    BodyWire: () => new Implant(`Body Wire`, `+1 Reactions`, EquipmentType.Implant),
-    BoostedArm: () => new Implant(`Boosted Arm`, `Increase Grenade range by 2+". If the character ends their Move in contact with an obstacle that is no taller than the miniature, they may pull themselves up on top (bot not cross) as a Free Action.`, EquipmentType.Implant),
-    BoostedLeg: () => new Implant(`Boosted Leg`, `Increase base move and Dash speed by +1" each.`, EquipmentType.Implant),
-    CyberHand: () => new Implant(`Cyber Hand`, `The character may take any one Pistol they own and build it into their hand. Range is reduced to half, but the weapon always shoots with +1 to Hit and an additional +1 bonus when Brawling.`, EquipmentType.Implant),
-    GeneticDefenses: () => new Implant(`Genetic Defenses`, `5+ Saving Throw, if subjected to any poison, virus, gas, or disease.`, EquipmentType.Implant),
-    HealthBoost: () => new Implant(`Health Boost`, `If a post-battle Injury would result in 2+ campaign turns of recovery time, reduce the time by 1. If the character has Toughness 3 when receving this ipmlant, raise it to 4.`, EquipmentType.Implant),
-    NerveAdjuster: () => new Implant(`Nerve Adjuster`, `Whenever the character is Stunned for any reason, they receive a 5+ Saving Throw to avoid the Stun.`, EquipmentType.Implant),
-    NeuralOptimization: () => new Implant(`Neural Optimization`, `The character cannot be Stunned.`, EquipmentType.Implant),
-    NightSight: () => new Implant(`Night Sight`, `The character does not suffer visibility reductions due to darkness, but is affected by smoke, gas, etc. normally.`, EquipmentType.Implant),
-    PainSuppressor: () => new Implant(`Pain Suppressor`, `The character can perform crew tasks while in Sick Bay, though they cannot participate in battles.`, EquipmentType.Implant)
-};
-const ImplantList = Datalist(Implants);
-const OnBoardItems = {
-    Analyzer: () => new OnBoardItem(`Analyzer`, `Add +1 when rolling to see if Rumors result in a Quest and when rolling for Quest resolution`, EquipmentType.OnBoardItem),
-    ColonistRationPacks: () => new OnBoardItem(`Colonist Ration Packs`, `Ignore Upkeep costs for one campaign turn. +1 story point. Single-use.`, EquipmentType.OnBoardItem),
-    Duplicator: () => new OnBoardItem(`Duplicator`, `Create a perfect copy of one item in your inventory. A Duplicator cannot copy a Duplicator, due to the same proprietary nano-bot lock-out codes that makes your printer say it's out of ink after printing 17 pages. Single-use`, EquipmentType.OnBoardItem),
-    FakeId: () => new OnBoardItem(`Fake ID`, `Add +1 to all attempts to obtain a licesne or other legal document`, EquipmentType.OnBoardItem),
-    Fixer: () => new OnBoardItem(`Fixer`, `One piece of damaged or destroyed personal equipment can be repaired automatically, and at no cost. Single-use.`, EquipmentType.OnBoardItem),
-    GeneticReconfigurationKit: () => new OnBoardItem(`Genetic Reconfiguration Kit`, `Reduce the cost of an ability score upgrade by 2 XP. Has no effect on Bots or Soulless. K'Erin may only use this to increase Toughness. Single-use.`, EquipmentType.OnBoardItem),
-    LoadedDice: () => new OnBoardItem(`Loaded Dice`, `Each campaign turn, one crew member may gamble on the side. Roll 1D6. On a 1-4, earh that may credits. On a 5, earn nothing. On a 6, the locals don't take kindly to losing: The dice are lost and the crew member must roll on the post-battle Injury Table.`, EquipmentType.OnBoardItem),
-    LuckyDice: () => new OnBoardItem(`Lucky Dice`, `Each campaign turn, one crew member may gamble on the sdie, earning +1 credit. If you have both Lucky and Loaded Dice, you can use both, but rolling a 6 for the Loaded dice means you lose both sets of dice.`, EquipmentType.OnBoardItem),
-    MkIITranslator: () => new OnBoardItem(`Mk II Translator`, `When rolling to Recruit, you may roll an additional D6.`, EquipmentType.OnBoardItem),
-    MedPatch: () => new OnBoardItem(`Med-patch`, `A character recovering from an Injury may subtract one campaign turn from the recovery duration required. If this reduces the time to zero turns, they may act normally this campaign turn. Single-use.`, EquipmentType.OnBoardItem),
-    MeditationOrb: () => new OnBoardItem(`Meditation Orb`, `The crew all feel reassured of their karmic balance. Add +2 story points. All Swift or Precursor in the crew may also add +1 XP. Single-use.`, EquipmentType.OnBoardItem),
-    NanoDoc: () => new OnBoardItem(`Nano-doc`, `Prevent one roll on the post-battle Injury Table, no matter the source of the injury. You must decide before rolling the dice. Single-use.`, EquipmentType.OnBoardItem),
-    NoveltyStuffedAnimal: () => new OnBoardItem(`Novelty Stuffed Animal`, `Give to any character that isn't Soulless, K'Erin, or a Bot. The character receives +1 XP, and may roll 1D6. On a 6, you may add +1 story point as well. Single-use.`, EquipmentType.OnBoardItem),
-    Purifier: () => new OnBoardItem(`Purifier`, `Each campaign turn, the Purifier can be used to generate clean water which can be sold off for 1 credit. This does not require a crew member to operate, but only one Purifier may be used at a time.`, EquipmentType.OnBoardItem),
-    RepairBot: () => new OnBoardItem(`Repair Bot`, `+1 to all Repair attempts`, EquipmentType.OnBoardItem),
-    SectorPermit: () => new OnBoardItem(`Sector Permit`, `Whenever you arrive at a planet where a license is required, roll 1D6. On a 4+, the Sector Permit is accepted. You must roll for each license type, on each planet.`, EquipmentType.OnBoardItem),
-    SpareParts: () => new OnBoardItem(`Spare Parts`, `Add +1 when making a Repair attempt. If the roll is a natural 1, the Spare Parts are used up and must be erased from your roster.`, EquipmentType.OnBoardItem),
-    TeachBot: () => new OnBoardItem(`Teach-bot`, `A character engaging in the Train crew task will earn 1D6 additional XP. Single-use.`, EquipmentType.OnBoardItem),
-    Transcender: () => new OnBoardItem(`Transcender`, `The character activating this mysterious device receives +1 XP. The entire crew makes realizations about thier place in the cosmos. Add +2 story points. Single-use.`, EquipmentType.OnBoardItem)
-};
-const OnBoardItemList = Datalist(OnBoardItems);
-const ProtectiveDevices = {
-    BattleDress: () => new ProtectiveDevice(`Battle Dress`, `The character counts as +1 Reactions (maximum 4) and receives a Saving Throw of 5+`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
-    CamoCloak: () => new ProtectiveDevice(`Camo Cloak`, `If character is within 2" of Cover, they are counted as being in Cover. Does not apply if the shooter is within 4".`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
-    CombatArmor: () => new ProtectiveDevice(`Combat Armor`, `Saving Throw 5+`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
-    DeflectorField: () => new ProtectiveDevice(`Deflector Field`, `Automatically deflects a single ranged weapon's Hit per battle. After a Hit is scored, decide if you wish to use the field before any rolls for Toughness or armor are made.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
-    FlakScreen: () => new ProtectiveDevice(`Falk Screen`, `All Area weapons striking the wearer, whether through the initial shots or additional attacks fro the Area trait have their Damage reduced by -1 (to a cap of +0).`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
-    FlexArmor: () => new ProtectiveDevice(`Flex-armor`, `If the character did not move on their last activation, they count as +1 Toughness (to a maximum of 6).`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
-    FragVest: () => new ProtectiveDevice(`Frag Vest`, `The wearer receives a 6+ Saving Throw, improved to 5+ against any Area attack.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor),
-    ScreenGenerator: () => new ProtectiveDevice(`Screen Generator`, `Receives a 5+ Saving Throw against gunfire. No effect against Area or Melee attacks.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Screen),
-    StealthGear: () => new ProtectiveDevice(`Stealth Gear`, `Enemies firing from a range over 9" are -1 to Hit.`, EquipmentType.ProtectiveDevice, ProtectiveDeviceType.Armor)
-};
-const ProtectiveDeviceList = Datalist(ProtectiveDevices);
-const UtilityDevices = {
-    AutoSensor: () => new UtilityDevice(`Auto Sensor`, `If an enemy begins or ends a move within 4" and Line of Sight of the character, you may immediately fire one shot form any Pistol carried. The shot is resolved `, EquipmentType.UtilityDevice),
-    BattleVisor: () => new UtilityDevice(`Battle Visor`, `When shooting, the character may reroll any 1s on the firing dice.`, EquipmentType.UtilityDevice),
-    Communicator: () => new UtilityDevice(`Communicator`, `When making the Reaction roll each round, you may roll one additional die, then choose a die to discard.`, EquipmentType.UtilityDevice),
-    ConcealedBlade: () => new UtilityDevice(`Concealed Blade`, `If the character begins the round within 2" of an opponent, they may throw the blade as a Free Action before doing anything else. Roll to Hit normally, resolving the Hit with Damage +0. The blade can be used once per battle, and is replaced afterwards for free.`, EquipmentType.UtilityDevice),
-    Displacer: () => new UtilityDevice(`Displacer`, `Usable once permission instead of Moving. Aim anywhere in sight. The character teleports to a point 1D6" away in a random direction. If the teleport would end up within a solid obstacle, the device fails and must be Repaired before it can be used again. The character emerges on the same height as the aiming point, which may cause them to fall if they emerge in open air. The character may take a Combat Action after teleporting. If used by a Precursor character, you may establish two "landing points", and select to use either.`, EquipmentType.UtilityDevice),
-    DistractionBot: () => new UtilityDevice(`Distraction Bot`, `Usable once per battle as a Combat Action. Select an enemy within 12". Next time they would become active, they are unable to act, though they remove Stun markers as normal. Use a small marker to remember.`, EquipmentType.UtilityDevice),
-    GrappleLauncher: () => new UtilityDevice(`Grapple Launcher`, `As a Combat Action, the character may use the launcher to scale a terrain feature within 1". The character can ascend up to 12" but must reach a surface they can stand on.`, EquipmentType.UtilityDevice),
-    GravDampener: () => new UtilityDevice(`Grav Dampener`, `The character suffers no damage from faling and can descend from any height with no risk. If dropping more than 6", it counts as the character's Move for the round.`, EquipmentType.UtilityDevice),
-    HazardSuit: () => new UtilityDevice(`Hazard Suit`, `If the character takes a Hit from an environmental hazard, they receive a 5+ Saving Throw.`, EquipmentType.UtilityDevice),
-    HoverBoard: () => new UtilityDevice(`Hover Board`, `The character may use the board to move instead of walking. When used, the character can move up to 9" and can ignore any terrain that is man-height or lower. While hover-boarding, the character cannot engage in cobat, but can perform a non-Combat Action as needed.`, EquipmentType.UtilityDevice),
-    InstaWall: () => new UtilityDevice(`Insta-wall`, `May be used once per mission as a Combat Action. Place a marker within 3", then place a 2" long force wall oriented any way you like, as long as it touches the marker. The wall is man-height an impenetrable to attacks (but does not block sight or mental abilities). At the start of each subsequent round, a D6 is rolled. On a 6, the wall dissipates.`, EquipmentType.UtilityDevice),
-    JumpBelt: () => new UtilityDevice(`Jump Belt`, `Instead of Moving normally, the character may jump up to 9" directly forward and 3" upwards. Th character may take a Combat Action normally after landing.`, EquipmentType.UtilityDevice),
-    MotionTracker: () => new UtilityDevice(`Motion Tracker`, `Add +1 to all rolls to Seize the Initiative.`, EquipmentType.UtilityDevice),
-    MultiCutter: () => new UtilityDevice(`Multi-cutter`, `As a Combat Action, the character can cut a man-sized hole through any terrain feature up to 1" thick. The tool has no effect on force fields.`, EquipmentType.UtilityDevice),
-    RoboRabbitsFoot: () => new UtilityDevice(`Robo-rabbit's Foot`, `A character with Luck 0 counts as having Luck 1. If the character would die while carrying this, the foot is destroyed (and cannot be Repaired), the character does not roll on the injury table.`, EquipmentType.UtilityDevice),
-    ScannerBot: () => new UtilityDevice(`Scanner Bot`, `The crew adds +1 to all Seize the Initiative rolls.`, EquipmentType.UtilityDevice),
-    SnooperBot: () => new UtilityDevice(`Snooper Bot`, `May be deployed before a battle, if the Seize the Initiative roll would be penalized or negated. The penalty can be ignored, but the Bot is Damaged on a D6 roll of a 1.`, EquipmentType.UtilityDevice),
-    SonicEmitter: () => new UtilityDevice(`Sonic Emitter`, `Any enemy within 5" suffers -1 to all Hit rolls when shooting.`, EquipmentType.UtilityDevice),
-    SteelBoots: () => new UtilityDevice(`Steel Boots`, `If the character rolls a natural 5 or 6 in a Brawl and wins the Brawl, they may opt to kick instead of striking normally. This hits with Damage +0 and knocks them 1D3" directly backwards. If the opponent is kicked into another character, that character is knocked 1D3" in a random direction.`, EquipmentType.UtilityDevice),
-    TimeDistorter: () => new UtilityDevice(`Time Distorter`, `Activated as a Free Action. Select up to 3 enemy figures on the battlefield. They are frozen in time until the end of the following round. While in this state, they cannot Move, take Actions, or be affected by attacks or effects in any way. They are unaffected by Morale rolls as well. Single-use`, EquipmentType.UtilityDevice)
-};
-const UtilityDeviceList = Datalist(UtilityDevices);
-const WeaponMods = {
-    AssaultBlade: () => new WeaponMod(`Assault Blade`, `The weapon gains the Melee trait. Damage +1, and wins combat on a Draw.`, EquipmentType.WeaponMod, false),
-    BeamLight: () => new WeaponMod(`Beam Light`, `When using the weapon in conditions of reduced visibility, increase visibility by +3".`, EquipmentType.WeaponMod, true),
-    Bipod: () => new WeaponMod(`Bipod`, `The weapon recieve +1 to Hit at ranges over 8" when Aiming or when firing from Cover.`, EquipmentType.WeaponMod, false),
-    HotShotPack: () => new WeaponMod(`Hot Shot Pack`, `If fittedto a Blast Pistol, Blast Rifle, Hand Laser, or Infantry Laser, +1 Damage. Any natural 6 on the shooting dice causes an overheat, rendering the weapon inoperable for the rest of the fight.`, EquipmentType.WeaponMod, true),
-    CyberConfigurableNanoSludge: () => new WeaponMod(`Cyber-configurable Nano-sludge`, `The weapon receives a permanent +1 Hit bonus.`, EquipmentType.WeaponMod, true),
-    Stabilizer: () => new WeaponMod(`Stabilizer`, `Weapon may ignore Heavy trait.`, EquipmentType.WeaponMod, true),
-    ShockAttachment: () => new WeaponMod(`Shock Attachment`, `The weapon receives the Impact trait against targets within 8".`, EquipmentType.WeaponMod, true),
-    UpgradeKit: () => new WeaponMod(`Upgrade Kit`, `+2" Range increase.`, EquipmentType.WeaponMod, true)
-};
-const WeaponModList = Datalist(WeaponMods);
-const WeaponSights = {
-    LaserSight: () => new WeaponSight(`Laser Sight`, `The weapon receives thet Snap Shot trait.`, EquipmentType.WeaponSight, true),
-    QualitySight: () => new WeaponSight(`Quality Sight`, `+2" Range increase. Reroll 1s when firing only 1 shot.`, EquipmentType.WeaponSight, false),
-    SeekerSight: () => new WeaponSight(`Seeker Sight`, `The weapon receives a +1 to Hit if the shooter did not Move this round.`, EquipmentType.WeaponSight, false),
-    TrackerSight: () => new WeaponSight(`Tracker Sight`, `+1 to Hit if you fired at the same target during your previous round.`, EquipmentType.WeaponSight, false),
-    UnityBattleSight: () => new WeaponSight(`Unity Battle Sight`, `+1 to all Hit rolls.`, EquipmentType.WeaponSight, false)
-};
-const WeaponSightList = Datalist(WeaponSights);
-
-var _a$1;
-class EquipmentGenerator {
-}
-_a$1 = EquipmentGenerator;
-EquipmentGenerator.GenerateStash = (savvyUpgrades = 0) => {
-    const stash = new Array();
-    for (let i = 0; i < 3; i++) {
-        stash.push(savvyUpgrades > i
-            ? WeaponGenerator.GenerateHighTech()
-            : WeaponGenerator.GenerateMilitary());
-        stash.push(WeaponGenerator.GenerateLowTech());
-    }
-    stash.push(_a$1.GenerateGear());
-    stash.push(_a$1.GenerateGadget());
-    return stash;
-};
-EquipmentGenerator.GenerateGear = () => Generator(d100, [
-    new GeneratorOption([1, 4], WeaponMods.AssaultBlade()),
-    new GeneratorOption([5, 10], WeaponMods.BeamLight()),
-    new GeneratorOption([11, 15], WeaponMods.Bipod()),
-    new GeneratorOption([16, 20], Consumables.BoosterPills()),
-    new GeneratorOption([21, 24], ProtectiveDevices.CamoCloak()),
-    new GeneratorOption([25, 28], ProtectiveDevices.CombatArmor()),
-    new GeneratorOption([29, 33], UtilityDevices.Communicator()),
-    new GeneratorOption([34, 37], UtilityDevices.ConcealedBlade()),
-    new GeneratorOption([38, 42], OnBoardItems.FakeId()),
-    new GeneratorOption([43, 46], OnBoardItems.Fixer()),
-    new GeneratorOption([47, 52], ProtectiveDevices.FragVest()),
-    new GeneratorOption([53, 57], UtilityDevices.GrappleLauncher()),
-    new GeneratorOption([58, 61], UtilityDevices.HazardSuit()),
-    new GeneratorOption([62, 65], WeaponSights.LaserSight()),
-    new GeneratorOption([66, 69], OnBoardItems.LoadedDice()),
-    new GeneratorOption([70, 75], OnBoardItems.MedPatch()),
-    new GeneratorOption([76, 81], OnBoardItems.NanoDoc()),
-    new GeneratorOption([82, 85], OnBoardItems.Purifier()),
-    new GeneratorOption([86, 89], UtilityDevices.ScannerBot()),
-    new GeneratorOption([90, 92], OnBoardItems.SectorPermit()),
-    new GeneratorOption([93, 96], UtilityDevices.SteelBoots()),
-    new GeneratorOption([97, 100], WeaponSights.TrackerSight())
-]);
-EquipmentGenerator.GenerateGadget = () => Generator(d100, [
-    new GeneratorOption([1, 4], Implants.AICompanion()),
-    new GeneratorOption([5, 9], OnBoardItems.Analyzer()),
-    new GeneratorOption([10, 13], UtilityDevices.BattleVisor()),
-    new GeneratorOption([14, 17], Implants.BoostedArm()),
-    new GeneratorOption([18, 21], Implants.BoostedLeg()),
-    new GeneratorOption([22, 24], Implants.CyberHand()),
-    new GeneratorOption([25, 27], UtilityDevices.Displacer()),
-    new GeneratorOption([28, 31], UtilityDevices.DistractionBot()),
-    new GeneratorOption([32, 36], OnBoardItems.Duplicator()),
-    new GeneratorOption([37, 41], UtilityDevices.InstaWall()),
-    new GeneratorOption([42, 46], UtilityDevices.JumpBelt()),
-    new GeneratorOption([47, 50], Implants.NerveAdjuster()),
-    new GeneratorOption([51, 55], OnBoardItems.RepairBot()),
-    new GeneratorOption([56, 60], UtilityDevices.ScannerBot()),
-    new GeneratorOption([61, 65], ProtectiveDevices.ScreenGenerator()),
-    new GeneratorOption([66, 69], WeaponSights.SeekerSight()),
-    new GeneratorOption([70, 73], WeaponMods.ShockAttachment()),
-    new GeneratorOption([74, 79], UtilityDevices.SnooperBot()),
-    new GeneratorOption([80, 83], UtilityDevices.SonicEmitter()),
-    new GeneratorOption([84, 89], WeaponMods.Stabilizer()),
-    new GeneratorOption([90, 93], ProtectiveDevices.StealthGear()),
-    new GeneratorOption([94, 100], Consumables.StimPack())
-]);
-
 class CampaignResource {
     constructor({ credits = 0, storyPoints = 0, rumors = 0, patrons = 0, rivals = 0 } = {}) {
         this.consolidate = (resources) => resources.forEach(r => {
@@ -1582,6 +1715,13 @@ class CampaignResource {
         this.rivals = rivals;
     }
 }
+CampaignResource.Restore = (val) => new CampaignResource({
+    credits: val.credits,
+    storyPoints: val.storyPoints,
+    rumors: val.rumors,
+    patrons: val.patrons,
+    rivals: val.rivals
+});
 
 class CharacterProfile {
     constructor({ maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
@@ -1636,6 +1776,27 @@ class CharacterProfile {
         this.useImplants = useImplants;
         this.eventTarget = eventTarget;
     }
+    toJSON() {
+        return {
+            maxCombatSkill: this.maxCombatSkill,
+            maxReaction: this.maxReaction,
+            maxSpeed: this.maxSpeed,
+            maxToughness: this.maxToughness,
+            maxSavvy: this.maxSavvy,
+            maxLuck: this.maxLuck,
+            maxXp: this.maxXp,
+            reaction: this.reaction,
+            speed: this.speed,
+            combatSkill: this.combatSkill,
+            toughness: this.toughness,
+            savvy: this.savvy,
+            luck: this.luck,
+            xp: this.xp,
+            useConsumables: this.useConsumables,
+            useImplants: this.useImplants,
+            eventTarget: this.eventTarget
+        };
+    }
     get reaction() { return this._reaction; }
     set reaction(value) {
         this._reaction = value > this.maxReaction
@@ -1679,12 +1840,12 @@ class CharacterProfile {
             : value;
     }
 }
+CharacterProfile.Restore = (val) => new CharacterProfile(val);
 
 class Character {
-    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}) {
-        this._weapons = [];
-        this._devices = [];
-        this.gear = new Array();
+    constructor(species, { maxCombatSkill = 5, maxReaction = 6, maxSpeed = 8, maxToughness = 6, maxSavvy = 5, maxLuck = 1, maxXp = Number.MAX_VALUE, reaction = 1, speed = 4, combatSkill = 0, toughness = 3, savvy = 0, luck = 0, xp = 0, useConsumables = true, useImplants = true, eventTarget = true } = {}, { id = null, name = '', background = '', charClass = '', motivation = '', devices = [], equipment = new Array(), weapons = new Array(), isLeader = false, sidearm = null } = {}) {
+        this.equipment = new Array();
+        this.weapons = new Array();
         this.sidearm = null;
         this.isLeader = false;
         this.setRace = () => {
@@ -1723,9 +1884,11 @@ class Character {
             if (cd.effects && cd.effects.length > 0)
                 this.profile.applyEffects(cd.effects);
             if (cd.equipment && cd.equipment.length > 0)
-                this.gear.push(...cd.equipment);
+                this.equipment.push(...cd.equipment);
+            if (cd.weapons && cd.weapons.length > 0)
+                this.weapons.push(...cd.weapons);
         };
-        this.id = Symbol();
+        this.id = id !== null && id !== void 0 ? id : (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
         this.species = species;
         this.profile = new CharacterProfile({
             reaction, maxReaction,
@@ -1738,16 +1901,36 @@ class Character {
             useConsumables, useImplants,
             eventTarget
         });
+        this.name = name;
+        this.background = background;
+        this.charClass = charClass;
+        this.motivation = motivation;
+        this.devices = devices;
+        this.equipment = equipment;
+        this.weapons = weapons;
+        this.isLeader = isLeader;
+        this.sidearm = sidearm;
         this.race = this.setRace();
     }
-    get weapons() { return this._weapons; }
-    get devices() { return this._devices; }
 }
+Character.Restore = (val) => new Character(val.species, CharacterProfile.Restore(val.profile), {
+    id: val.id,
+    name: val.name,
+    background: val.background,
+    charClass: val.charClass,
+    motivation: val.motivation,
+    devices: val.devices.map((d) => UtilityDevice.Restore(d)),
+    equipment: val.equipment.map((e) => Equipment.Restore(e)),
+    weapons: val.weapons.map((w) => Weapon.Restore(w)),
+    isLeader: val.isLeader,
+    sidearm: val.sidearm ? Sidearm.Restore(val.sidearm) : null
+});
 
 class CharacterDetail {
-    constructor(detail, { effects = null, resources = new CampaignResource(), equipment = null } = {}) {
+    constructor(detail, { effects = null, resources = new CampaignResource(), equipment = null, weapons = null, } = {}) {
         this.resources = new CampaignResource();
         this.equipment = null;
+        this.weapons = null;
         this.mergeEffects = (cd) => {
             if (this.effects && cd.effects)
                 this.effects.push(...cd.effects);
@@ -1760,16 +1943,24 @@ class CharacterDetail {
             else if (cd.equipment)
                 this.equipment = cd.equipment;
         };
+        this.mergeWeapons = (cd) => {
+            if (this.weapons && cd.weapons)
+                this.weapons.push(...cd.weapons);
+            else if (cd.weapons)
+                this.weapons = cd.weapons;
+        };
         this.merge = (cd) => {
             this.detail = `${this.detail} : ${cd.detail}`;
             this.mergeEffects(cd);
             this.resources.consolidate([cd.resources]);
             this.mergeEquipment(cd);
+            this.mergeWeapons(cd);
         };
         this.detail = detail;
         this.effects = effects;
         this.resources = resources;
         this.equipment = equipment;
+        this.weapons = weapons;
     }
 }
 
@@ -1782,7 +1973,7 @@ const Backgrounds = {
         effects: [{ points: 1, stat: CharacterStat.Speed }]
     }),
     LowTechColony: () => new CharacterDetail(`Low-Tech Colony`, {
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     MiningColony: () => new CharacterDetail(`Mining Colony`, {
         effects: [{ points: 1, stat: CharacterStat.Toughness }]
@@ -1800,7 +1991,7 @@ const Backgrounds = {
         equipment: [EquipmentGenerator.GenerateGear()]
     }),
     LowerMegacityClass: () => new CharacterDetail(`Lower Megacity Class`, {
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     WealthyMerchantFamily: () => new CharacterDetail(`Wealthy Merchant Family`, {
         resources: new CampaignResource({ credits: dice({ six: 2 }).total })
@@ -1816,12 +2007,12 @@ const Backgrounds = {
     }),
     WarTornHellHole: () => new CharacterDetail(`War-Torn Hell-Hole`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
-        equipment: [WeaponGenerator.GenerateMilitary()]
+        weapons: [WeaponGenerator.GenerateMilitary()]
     }),
     TechGuild: () => new CharacterDetail(`Tech Guild`, {
         effects: [{ points: 1, stat: CharacterStat.Savvy }],
         resources: new CampaignResource({ credits: d6() }),
-        equipment: [WeaponGenerator.GenerateHighTech()]
+        weapons: [WeaponGenerator.GenerateHighTech()]
     }),
     SubjugatedColonyOnAlienWorld: () => new CharacterDetail(`Subjugated Colony on Alien World`, {
         equipment: [EquipmentGenerator.GenerateGadget()]
@@ -1835,7 +2026,7 @@ const Backgrounds = {
     }),
     PrimitiveOrRegressedWorld: () => new CharacterDetail(`Primitive or Regressed World`, {
         effects: [{ points: 1, stat: CharacterStat.Toughness }],
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     OrphanUtilityProgram: () => new CharacterDetail(`Orphan Utility Program`, {
         resources: new CampaignResource({
@@ -1857,10 +2048,10 @@ const Backgrounds = {
     }),
     WastelandNomads: () => new CharacterDetail(`Wasteland Nomads`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     AlienCulture: () => new CharacterDetail(`Alien Culture`, {
-        equipment: [WeaponGenerator.GenerateHighTech()]
+        weapons: [WeaponGenerator.GenerateHighTech()]
     })
 };
 const BackgroundList = Datalist(Backgrounds);
@@ -1968,14 +2159,14 @@ const Classes = {
     }),
     Mercenary: () => new CharacterDetail(`Mercenary`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-        equipment: [WeaponGenerator.GenerateMilitary()]
+        weapons: [WeaponGenerator.GenerateMilitary()]
     }),
     Agitator: () => new CharacterDetail(`Agitator`, {
         resources: new CampaignResource({ rivals: 1 })
     }),
     Primitive: () => new CharacterDetail(`Primitive`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }],
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     Artist: () => new CharacterDetail(`Artist`, {
         resources: new CampaignResource({ credits: d6() })
@@ -1994,7 +2185,7 @@ const Classes = {
     }),
     Ganger: () => new CharacterDetail(`Ganger`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     Scoundrel: () => new CharacterDetail(`Scoundrel`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }]
@@ -2010,12 +2201,12 @@ const Classes = {
     }),
     Troubleshooter: () => new CharacterDetail(`Troubleshooter`, {
         effects: [{ points: 1, stat: CharacterStat.Reactions }],
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     BountyHunter: () => new CharacterDetail(`Bounty Hunter`, {
         effects: [{ points: 1, stat: CharacterStat.Speed }],
         resources: new CampaignResource({ rumors: 1 }),
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     Nomad: () => new CharacterDetail(`Nomad`, {
         equipment: [EquipmentGenerator.GenerateGear()]
@@ -2030,7 +2221,7 @@ const Classes = {
     }),
     Scavenger: () => new CharacterDetail(`Scavenger`, {
         resources: new CampaignResource({ rumors: 1 }),
-        equipment: [WeaponGenerator.GenerateHighTech()]
+        weapons: [WeaponGenerator.GenerateHighTech()]
     })
 };
 const ClassList = Datalist(Classes);
@@ -2043,7 +2234,7 @@ const Motivations = {
     }),
     Glory: () => new CharacterDetail(`Glory`, {
         effects: [{ points: 1, stat: CharacterStat.CombatSkill }],
-        equipment: [WeaponGenerator.GenerateMilitary()]
+        weapons: [WeaponGenerator.GenerateMilitary()]
     }),
     Survival: () => new CharacterDetail(`Survival`, {
         effects: [{ points: 1, stat: CharacterStat.Toughness }]
@@ -2053,7 +2244,7 @@ const Motivations = {
     }),
     Adventure: () => new CharacterDetail(`Adventure`, {
         resources: new CampaignResource({ credits: d6() }),
-        equipment: [WeaponGenerator.GenerateLowTech()]
+        weapons: [WeaponGenerator.GenerateLowTech()]
     }),
     Truth: () => new CharacterDetail(`Truth`, {
         resources: new CampaignResource({
@@ -2099,8 +2290,9 @@ const Motivations = {
 const MotivationList = Datalist(Motivations);
 
 class Ship {
-    constructor(model, debt, hull, trait = null) {
+    constructor(model, debt, hull, trait = null, id = null) {
         this._damage = 0;
+        this.id = id !== null && id !== void 0 ? id : (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
         this.model = model;
         this.debt = debt;
         this.hull = hull;
@@ -2110,7 +2302,22 @@ class Ship {
     set damage(value) {
         this._damage = value;
     }
+    toJSON() {
+        return {
+            id: this.id,
+            model: this.model,
+            debt: this.debt,
+            hull: this.hull,
+            trait: this.trait,
+            damage: this.damage
+        };
+    }
 }
+Ship.Restore = (val) => {
+    const res = new Ship(val.model, val.debt, val.hull, val.trait, val.id);
+    res.damage = val.damage;
+    return res;
+};
 
 const Ships = {
     WornFreighter: () => new Ship("Worn freighter", d6() + 20, 30),
@@ -2147,7 +2354,7 @@ CharacterGenerator.DevelopCharacter = (character) => {
     if (character.race === CharacterRace.Bot) {
         character.background = 'NULL_REFERENCE_EXCEPTION';
         character.motivation = 'ROBOTS_ARE_NOT_SENTIENT';
-        character.class = 'ASSIGNED_FUNCTIONALITY';
+        character.charClass = 'ASSIGNED_FUNCTIONALITY';
         return { resources: new CampaignResource(), savvyUpgraded: false };
     }
     else {
@@ -2274,7 +2481,7 @@ CharacterGenerator.DevelopClass = (character) => {
             c = _a.GenerateClass();
             break;
     }
-    character.class = c.detail;
+    character.charClass = c.detail;
     character.applyDetail(c);
     return c;
 };
@@ -2402,34 +2609,20 @@ ShipGenerator.Generate = () => Generator(d100, [
     new GeneratorOption([96, 100], Ships.RetiredMilitaryPatrolShip())
 ]);
 
-class Campaign {
-    constructor(config, resources) {
-        this.id = Symbol();
-        this.name = config.name;
-        this.crewSize = config.crewSize;
-        this.useStory = config.useStory;
-        this.useStars = config.useStars;
-        this.difficulty = config.difficulty;
-        this.crew = config.crew;
-        this.ship = config.ship;
-        this.victory = config.victory;
-        this.resources = resources;
-    }
-}
-
 class Crew {
-    constructor() {
-        this.stash = [];
-        this._leader = null;
-        this._roster = new Array();
-        this.clearRoster = () => this._roster = this.roster.length > 0
-            ? this._roster = new Array()
+    constructor({ stash = new Array(), armory = new Array(), roster = new Array(), leader = null } = {}) {
+        this.clearRoster = () => this.roster = this.roster.length > 0
+            ? this.roster = new Array()
             : this.roster;
         this.addCharacter = (character) => !(this.roster.some(c => c.id === character.id))
             && this.roster.push(character);
         this.addCharacters = (characters) => characters.forEach(c => this.addCharacter(c));
-        this.removeCharacter = (character) => this._roster = this.roster.filter(c => !(c.id === character.id));
-        this.removeCharacters = (characters) => this._roster = this.roster.filter(c => !characters.includes(c));
+        this.removeCharacter = (character) => this.roster = this.roster.filter(c => !(c.id === character.id));
+        this.removeCharacters = (characters) => this.roster = this.roster.filter(c => !characters.includes(c));
+        this.stash = stash;
+        this.armory = armory;
+        this.roster = roster;
+        this._leader = leader;
     }
     get leader() { return this._leader; }
     set leader(character) {
@@ -2439,8 +2632,60 @@ class Crew {
         if (character)
             character.promoteLeader();
     }
-    get roster() { return this._roster; }
+    toJSON() {
+        return {
+            roster: this.roster,
+            stash: this.stash,
+            armory: this.armory,
+            leader: this.leader
+        };
+    }
 }
+Crew.Restore = (val) => new Crew({
+    roster: val.roster.map((c) => Character.Restore(c)),
+    stash: val.stash.map((e) => Equipment.Restore(e)),
+    armory: val.armory.map((w) => Weapon.Restore(w)),
+    leader: Character.Restore(val.leader)
+});
+
+class Campaign {
+    constructor({ name = '', crewSize = 6, useStory = true, useStars = true, difficulty = Difficulty.Normal, crew = new Crew(), ship = ShipGenerator.Generate(), victory = null } = {}, resources, id = null) {
+        this.id = id !== null && id !== void 0 ? id : (0,uuid__WEBPACK_IMPORTED_MODULE_3__["default"])();
+        this.name = name;
+        this.crewSize = crewSize;
+        this.useStory = useStory;
+        this.useStars = useStars;
+        this.difficulty = difficulty;
+        this.crew = crew;
+        this.ship = ship;
+        this.victory = victory;
+        this.resources = resources;
+    }
+    toJSON() {
+        return {
+            id: this.id,
+            name: this.name,
+            crewSize: this.crewSize,
+            useStory: this.useStory,
+            useStars: this.useStars,
+            difficulty: this.difficulty,
+            crew: this.crew,
+            ship: this.ship,
+            victory: this.victory,
+            resources: this.resources
+        };
+    }
+}
+Campaign.Restore = (val) => new Campaign({
+    name: val.name,
+    crewSize: val.crewSize,
+    useStory: val.useStory,
+    useStars: val.useStars,
+    difficulty: val.difficulty,
+    victory: val.victory,
+    ship: Ship.Restore(val.ship),
+    crew: Crew.Restore(val.crew)
+}, CampaignResource.Restore(val.resources), val.id);
 
 class CampaignConfig {
     constructor(name) {
@@ -2503,7 +2748,8 @@ class CampaignConfig {
                 : resources.storyPoints;
             resources.storyPoints = ((_a = resources.storyPoints) !== null && _a !== void 0 ? _a : 0) + this.initStoryPoints();
             resources.credits = ((_b = resources.credits) !== null && _b !== void 0 ? _b : 0) + this.crewSize;
-            this.crew.stash.push(...EquipmentGenerator.GenerateStash(this.savvyUpgrades));
+            this.crew.stash.push(...EquipmentGenerator.GenerateStash());
+            this.crew.armory.push(...WeaponGenerator.GenerateArmory());
             this.crew.leader = this.leader;
             console.log('Campaign Resources', resources);
             console.log('Savvy Upgrades', savvyUpgrades);
@@ -2594,13 +2840,13 @@ class CoreService {
     constructor() {
         this.ssnPattern = /^(?!(000|666|9))\d{3}-(?!(00))\d{2}-(?!(0000))\d{4}$/g;
         this.getUploadOptions = () => {
-            const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpHeaders();
+            const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders();
             headers.set('Accept', 'application/json');
             headers.delete('Content-Type');
             return headers;
         };
         this.getTextOptions = () => {
-            const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_3__.HttpHeaders();
+            const headers = new _angular_common_http__WEBPACK_IMPORTED_MODULE_4__.HttpHeaders();
             headers.set('Content-Type', 'text/plain');
             headers.delete('Pragma');
             return headers;
@@ -2611,8 +2857,8 @@ class CoreService {
             newValue = newValue.replace(regex, '');
             return newValue;
         };
-        this.generateInputObservable = (input) => (0,rxjs__WEBPACK_IMPORTED_MODULE_4__.fromEvent)(input.nativeElement, 'keyup')
-            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_5__.debounceTime)(300), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.map)((event) => event.target.value), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.distinctUntilChanged)());
+        this.generateInputObservable = (input) => (0,rxjs__WEBPACK_IMPORTED_MODULE_5__.fromEvent)(input.nativeElement, 'keyup')
+            .pipe((0,rxjs_operators__WEBPACK_IMPORTED_MODULE_6__.debounceTime)(300), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_7__.map)((event) => event.target.value), (0,rxjs_operators__WEBPACK_IMPORTED_MODULE_8__.distinctUntilChanged)());
     }
 }
 CoreService.ɵfac = function CoreService_Factory(t) { return new (t || CoreService)(); };
@@ -2629,7 +2875,7 @@ CoreService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["�
 class SnackerService {
     constructor(snackbar) {
         this.snackbar = snackbar;
-        this.config = new _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBarConfig();
+        this.config = new _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBarConfig();
         this.sendMessage = (message) => this.snackbar.open(message, 'Close', this.config);
         this.setClasses = (classes) => {
             classes.push('snacker');
@@ -2658,7 +2904,7 @@ class SnackerService {
         this.config.duration = duration;
     }
 }
-SnackerService.ɵfac = function SnackerService_Factory(t) { return new (t || SnackerService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBar)); };
+SnackerService.ɵfac = function SnackerService_Factory(t) { return new (t || SnackerService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBar)); };
 SnackerService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: SnackerService, factory: SnackerService.ɵfac, providedIn: 'root' });
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](SnackerService, [{
@@ -2666,7 +2912,7 @@ SnackerService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__
             args: [{
                     providedIn: 'root'
                 }]
-        }], function () { return [{ type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBar }]; }, null);
+        }], function () { return [{ type: _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBar }]; }, null);
 })();
 
 class ThemeService {
@@ -2693,7 +2939,7 @@ class ThemeService {
         this.setOverlayContainerTheme();
     }
 }
-ThemeService.ɵfac = function ThemeService_Factory(t) { return new (t || ThemeService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_9__.OverlayContainer)); };
+ThemeService.ɵfac = function ThemeService_Factory(t) { return new (t || ThemeService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_10__.OverlayContainer)); };
 ThemeService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: ThemeService, factory: ThemeService.ɵfac, providedIn: 'root' });
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ThemeService, [{
@@ -2701,152 +2947,152 @@ ThemeService.ɵprov = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["
             args: [{
                     providedIn: 'root'
                 }]
-        }], function () { return [{ type: _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_9__.OverlayContainer }]; }, null);
+        }], function () { return [{ type: _angular_cdk_overlay__WEBPACK_IMPORTED_MODULE_10__.OverlayContainer }]; }, null);
 })();
 
 class MaterialModule {
 }
 MaterialModule.ɵfac = function MaterialModule_Factory(t) { return new (t || MaterialModule)(); };
 MaterialModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: MaterialModule });
-MaterialModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_10__.DragDropModule,
-        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__.FlexLayoutModule,
-        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.GridModule,
-        _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_13__.MatAutocompleteModule,
-        _angular_material_badge__WEBPACK_IMPORTED_MODULE_14__.MatBadgeModule,
-        _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_15__.MatBottomSheetModule,
+MaterialModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_11__.DragDropModule,
+        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.FlexLayoutModule,
+        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_13__.GridModule,
+        _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_14__.MatAutocompleteModule,
+        _angular_material_badge__WEBPACK_IMPORTED_MODULE_15__.MatBadgeModule,
+        _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_16__.MatBottomSheetModule,
         _angular_material_button__WEBPACK_IMPORTED_MODULE_2__.MatButtonModule,
-        _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_16__.MatButtonToggleModule,
-        _angular_material_card__WEBPACK_IMPORTED_MODULE_17__.MatCardModule,
-        _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__.MatCheckboxModule,
-        _angular_material_chips__WEBPACK_IMPORTED_MODULE_19__.MatChipsModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatCommonModule,
-        _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_21__.MatDatepickerModule,
+        _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_17__.MatButtonToggleModule,
+        _angular_material_card__WEBPACK_IMPORTED_MODULE_18__.MatCardModule,
+        _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__.MatCheckboxModule,
+        _angular_material_chips__WEBPACK_IMPORTED_MODULE_20__.MatChipsModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatCommonModule,
+        _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__.MatDatepickerModule,
         _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__.MatDialogModule,
-        _angular_material_divider__WEBPACK_IMPORTED_MODULE_22__.MatDividerModule,
-        _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__.MatExpansionModule,
-        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_24__.MatFormFieldModule,
-        _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_25__.MatGridListModule,
-        _angular_material_icon__WEBPACK_IMPORTED_MODULE_26__.MatIconModule,
-        _angular_material_input__WEBPACK_IMPORTED_MODULE_27__.MatInputModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatLineModule,
-        _angular_material_list__WEBPACK_IMPORTED_MODULE_28__.MatListModule,
-        _angular_material_menu__WEBPACK_IMPORTED_MODULE_29__.MatMenuModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatNativeDateModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatOptionModule,
-        _angular_material_paginator__WEBPACK_IMPORTED_MODULE_30__.MatPaginatorModule,
-        _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_31__.MatProgressBarModule,
-        _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_32__.MatProgressSpinnerModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatPseudoCheckboxModule,
-        _angular_material_radio__WEBPACK_IMPORTED_MODULE_33__.MatRadioModule,
-        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatRippleModule,
-        _angular_material_select__WEBPACK_IMPORTED_MODULE_34__.MatSelectModule,
-        _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_35__.MatSidenavModule,
-        _angular_material_slider__WEBPACK_IMPORTED_MODULE_36__.MatSliderModule,
-        _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_37__.MatSlideToggleModule,
-        _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBarModule,
-        _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__.MatSortModule,
-        _angular_material_stepper__WEBPACK_IMPORTED_MODULE_39__.MatStepperModule,
-        _angular_material_table__WEBPACK_IMPORTED_MODULE_40__.MatTableModule,
-        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_41__.MatTabsModule,
-        _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_42__.MatToolbarModule,
-        _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_43__.MatTooltipModule,
-        _angular_material_tree__WEBPACK_IMPORTED_MODULE_44__.MatTreeModule] });
+        _angular_material_divider__WEBPACK_IMPORTED_MODULE_23__.MatDividerModule,
+        _angular_material_expansion__WEBPACK_IMPORTED_MODULE_24__.MatExpansionModule,
+        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_25__.MatFormFieldModule,
+        _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__.MatGridListModule,
+        _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__.MatIconModule,
+        _angular_material_input__WEBPACK_IMPORTED_MODULE_28__.MatInputModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatLineModule,
+        _angular_material_list__WEBPACK_IMPORTED_MODULE_29__.MatListModule,
+        _angular_material_menu__WEBPACK_IMPORTED_MODULE_30__.MatMenuModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatNativeDateModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatOptionModule,
+        _angular_material_paginator__WEBPACK_IMPORTED_MODULE_31__.MatPaginatorModule,
+        _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_32__.MatProgressBarModule,
+        _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_33__.MatProgressSpinnerModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatPseudoCheckboxModule,
+        _angular_material_radio__WEBPACK_IMPORTED_MODULE_34__.MatRadioModule,
+        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatRippleModule,
+        _angular_material_select__WEBPACK_IMPORTED_MODULE_35__.MatSelectModule,
+        _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_36__.MatSidenavModule,
+        _angular_material_slider__WEBPACK_IMPORTED_MODULE_37__.MatSliderModule,
+        _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_38__.MatSlideToggleModule,
+        _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBarModule,
+        _angular_material_sort__WEBPACK_IMPORTED_MODULE_39__.MatSortModule,
+        _angular_material_stepper__WEBPACK_IMPORTED_MODULE_40__.MatStepperModule,
+        _angular_material_table__WEBPACK_IMPORTED_MODULE_41__.MatTableModule,
+        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_42__.MatTabsModule,
+        _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_43__.MatToolbarModule,
+        _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_44__.MatTooltipModule,
+        _angular_material_tree__WEBPACK_IMPORTED_MODULE_45__.MatTreeModule] });
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](MaterialModule, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.NgModule,
             args: [{
                     exports: [
-                        _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_10__.DragDropModule,
-                        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__.FlexLayoutModule,
-                        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.GridModule,
-                        _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_13__.MatAutocompleteModule,
-                        _angular_material_badge__WEBPACK_IMPORTED_MODULE_14__.MatBadgeModule,
-                        _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_15__.MatBottomSheetModule,
+                        _angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_11__.DragDropModule,
+                        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.FlexLayoutModule,
+                        _angular_flex_layout__WEBPACK_IMPORTED_MODULE_13__.GridModule,
+                        _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_14__.MatAutocompleteModule,
+                        _angular_material_badge__WEBPACK_IMPORTED_MODULE_15__.MatBadgeModule,
+                        _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_16__.MatBottomSheetModule,
                         _angular_material_button__WEBPACK_IMPORTED_MODULE_2__.MatButtonModule,
-                        _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_16__.MatButtonToggleModule,
-                        _angular_material_card__WEBPACK_IMPORTED_MODULE_17__.MatCardModule,
-                        _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__.MatCheckboxModule,
-                        _angular_material_chips__WEBPACK_IMPORTED_MODULE_19__.MatChipsModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatCommonModule,
-                        _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_21__.MatDatepickerModule,
+                        _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_17__.MatButtonToggleModule,
+                        _angular_material_card__WEBPACK_IMPORTED_MODULE_18__.MatCardModule,
+                        _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__.MatCheckboxModule,
+                        _angular_material_chips__WEBPACK_IMPORTED_MODULE_20__.MatChipsModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatCommonModule,
+                        _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__.MatDatepickerModule,
                         _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__.MatDialogModule,
-                        _angular_material_divider__WEBPACK_IMPORTED_MODULE_22__.MatDividerModule,
-                        _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__.MatExpansionModule,
-                        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_24__.MatFormFieldModule,
-                        _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_25__.MatGridListModule,
-                        _angular_material_icon__WEBPACK_IMPORTED_MODULE_26__.MatIconModule,
-                        _angular_material_input__WEBPACK_IMPORTED_MODULE_27__.MatInputModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatLineModule,
-                        _angular_material_list__WEBPACK_IMPORTED_MODULE_28__.MatListModule,
-                        _angular_material_menu__WEBPACK_IMPORTED_MODULE_29__.MatMenuModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatNativeDateModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatOptionModule,
-                        _angular_material_paginator__WEBPACK_IMPORTED_MODULE_30__.MatPaginatorModule,
-                        _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_31__.MatProgressBarModule,
-                        _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_32__.MatProgressSpinnerModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatPseudoCheckboxModule,
-                        _angular_material_radio__WEBPACK_IMPORTED_MODULE_33__.MatRadioModule,
-                        _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatRippleModule,
-                        _angular_material_select__WEBPACK_IMPORTED_MODULE_34__.MatSelectModule,
-                        _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_35__.MatSidenavModule,
-                        _angular_material_slider__WEBPACK_IMPORTED_MODULE_36__.MatSliderModule,
-                        _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_37__.MatSlideToggleModule,
-                        _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBarModule,
-                        _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__.MatSortModule,
-                        _angular_material_stepper__WEBPACK_IMPORTED_MODULE_39__.MatStepperModule,
-                        _angular_material_table__WEBPACK_IMPORTED_MODULE_40__.MatTableModule,
-                        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_41__.MatTabsModule,
-                        _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_42__.MatToolbarModule,
-                        _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_43__.MatTooltipModule,
-                        _angular_material_tree__WEBPACK_IMPORTED_MODULE_44__.MatTreeModule
+                        _angular_material_divider__WEBPACK_IMPORTED_MODULE_23__.MatDividerModule,
+                        _angular_material_expansion__WEBPACK_IMPORTED_MODULE_24__.MatExpansionModule,
+                        _angular_material_form_field__WEBPACK_IMPORTED_MODULE_25__.MatFormFieldModule,
+                        _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__.MatGridListModule,
+                        _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__.MatIconModule,
+                        _angular_material_input__WEBPACK_IMPORTED_MODULE_28__.MatInputModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatLineModule,
+                        _angular_material_list__WEBPACK_IMPORTED_MODULE_29__.MatListModule,
+                        _angular_material_menu__WEBPACK_IMPORTED_MODULE_30__.MatMenuModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatNativeDateModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatOptionModule,
+                        _angular_material_paginator__WEBPACK_IMPORTED_MODULE_31__.MatPaginatorModule,
+                        _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_32__.MatProgressBarModule,
+                        _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_33__.MatProgressSpinnerModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatPseudoCheckboxModule,
+                        _angular_material_radio__WEBPACK_IMPORTED_MODULE_34__.MatRadioModule,
+                        _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatRippleModule,
+                        _angular_material_select__WEBPACK_IMPORTED_MODULE_35__.MatSelectModule,
+                        _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_36__.MatSidenavModule,
+                        _angular_material_slider__WEBPACK_IMPORTED_MODULE_37__.MatSliderModule,
+                        _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_38__.MatSlideToggleModule,
+                        _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBarModule,
+                        _angular_material_sort__WEBPACK_IMPORTED_MODULE_39__.MatSortModule,
+                        _angular_material_stepper__WEBPACK_IMPORTED_MODULE_40__.MatStepperModule,
+                        _angular_material_table__WEBPACK_IMPORTED_MODULE_41__.MatTableModule,
+                        _angular_material_tabs__WEBPACK_IMPORTED_MODULE_42__.MatTabsModule,
+                        _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_43__.MatToolbarModule,
+                        _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_44__.MatTooltipModule,
+                        _angular_material_tree__WEBPACK_IMPORTED_MODULE_45__.MatTreeModule
                     ]
                 }]
         }], null, null);
 })();
 (function () {
-    (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MaterialModule, { exports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_10__.DragDropModule,
-            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_11__.FlexLayoutModule,
-            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.GridModule,
-            _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_13__.MatAutocompleteModule,
-            _angular_material_badge__WEBPACK_IMPORTED_MODULE_14__.MatBadgeModule,
-            _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_15__.MatBottomSheetModule,
+    (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](MaterialModule, { exports: [_angular_cdk_drag_drop__WEBPACK_IMPORTED_MODULE_11__.DragDropModule,
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_12__.FlexLayoutModule,
+            _angular_flex_layout__WEBPACK_IMPORTED_MODULE_13__.GridModule,
+            _angular_material_autocomplete__WEBPACK_IMPORTED_MODULE_14__.MatAutocompleteModule,
+            _angular_material_badge__WEBPACK_IMPORTED_MODULE_15__.MatBadgeModule,
+            _angular_material_bottom_sheet__WEBPACK_IMPORTED_MODULE_16__.MatBottomSheetModule,
             _angular_material_button__WEBPACK_IMPORTED_MODULE_2__.MatButtonModule,
-            _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_16__.MatButtonToggleModule,
-            _angular_material_card__WEBPACK_IMPORTED_MODULE_17__.MatCardModule,
-            _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_18__.MatCheckboxModule,
-            _angular_material_chips__WEBPACK_IMPORTED_MODULE_19__.MatChipsModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatCommonModule,
-            _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_21__.MatDatepickerModule,
+            _angular_material_button_toggle__WEBPACK_IMPORTED_MODULE_17__.MatButtonToggleModule,
+            _angular_material_card__WEBPACK_IMPORTED_MODULE_18__.MatCardModule,
+            _angular_material_checkbox__WEBPACK_IMPORTED_MODULE_19__.MatCheckboxModule,
+            _angular_material_chips__WEBPACK_IMPORTED_MODULE_20__.MatChipsModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatCommonModule,
+            _angular_material_datepicker__WEBPACK_IMPORTED_MODULE_22__.MatDatepickerModule,
             _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__.MatDialogModule,
-            _angular_material_divider__WEBPACK_IMPORTED_MODULE_22__.MatDividerModule,
-            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_23__.MatExpansionModule,
-            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_24__.MatFormFieldModule,
-            _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_25__.MatGridListModule,
-            _angular_material_icon__WEBPACK_IMPORTED_MODULE_26__.MatIconModule,
-            _angular_material_input__WEBPACK_IMPORTED_MODULE_27__.MatInputModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatLineModule,
-            _angular_material_list__WEBPACK_IMPORTED_MODULE_28__.MatListModule,
-            _angular_material_menu__WEBPACK_IMPORTED_MODULE_29__.MatMenuModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatNativeDateModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatOptionModule,
-            _angular_material_paginator__WEBPACK_IMPORTED_MODULE_30__.MatPaginatorModule,
-            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_31__.MatProgressBarModule,
-            _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_32__.MatProgressSpinnerModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatPseudoCheckboxModule,
-            _angular_material_radio__WEBPACK_IMPORTED_MODULE_33__.MatRadioModule,
-            _angular_material_core__WEBPACK_IMPORTED_MODULE_20__.MatRippleModule,
-            _angular_material_select__WEBPACK_IMPORTED_MODULE_34__.MatSelectModule,
-            _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_35__.MatSidenavModule,
-            _angular_material_slider__WEBPACK_IMPORTED_MODULE_36__.MatSliderModule,
-            _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_37__.MatSlideToggleModule,
-            _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_8__.MatSnackBarModule,
-            _angular_material_sort__WEBPACK_IMPORTED_MODULE_38__.MatSortModule,
-            _angular_material_stepper__WEBPACK_IMPORTED_MODULE_39__.MatStepperModule,
-            _angular_material_table__WEBPACK_IMPORTED_MODULE_40__.MatTableModule,
-            _angular_material_tabs__WEBPACK_IMPORTED_MODULE_41__.MatTabsModule,
-            _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_42__.MatToolbarModule,
-            _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_43__.MatTooltipModule,
-            _angular_material_tree__WEBPACK_IMPORTED_MODULE_44__.MatTreeModule] });
+            _angular_material_divider__WEBPACK_IMPORTED_MODULE_23__.MatDividerModule,
+            _angular_material_expansion__WEBPACK_IMPORTED_MODULE_24__.MatExpansionModule,
+            _angular_material_form_field__WEBPACK_IMPORTED_MODULE_25__.MatFormFieldModule,
+            _angular_material_grid_list__WEBPACK_IMPORTED_MODULE_26__.MatGridListModule,
+            _angular_material_icon__WEBPACK_IMPORTED_MODULE_27__.MatIconModule,
+            _angular_material_input__WEBPACK_IMPORTED_MODULE_28__.MatInputModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatLineModule,
+            _angular_material_list__WEBPACK_IMPORTED_MODULE_29__.MatListModule,
+            _angular_material_menu__WEBPACK_IMPORTED_MODULE_30__.MatMenuModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatNativeDateModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatOptionModule,
+            _angular_material_paginator__WEBPACK_IMPORTED_MODULE_31__.MatPaginatorModule,
+            _angular_material_progress_bar__WEBPACK_IMPORTED_MODULE_32__.MatProgressBarModule,
+            _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_33__.MatProgressSpinnerModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatPseudoCheckboxModule,
+            _angular_material_radio__WEBPACK_IMPORTED_MODULE_34__.MatRadioModule,
+            _angular_material_core__WEBPACK_IMPORTED_MODULE_21__.MatRippleModule,
+            _angular_material_select__WEBPACK_IMPORTED_MODULE_35__.MatSelectModule,
+            _angular_material_sidenav__WEBPACK_IMPORTED_MODULE_36__.MatSidenavModule,
+            _angular_material_slider__WEBPACK_IMPORTED_MODULE_37__.MatSliderModule,
+            _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_38__.MatSlideToggleModule,
+            _angular_material_snack_bar__WEBPACK_IMPORTED_MODULE_9__.MatSnackBarModule,
+            _angular_material_sort__WEBPACK_IMPORTED_MODULE_39__.MatSortModule,
+            _angular_material_stepper__WEBPACK_IMPORTED_MODULE_40__.MatStepperModule,
+            _angular_material_table__WEBPACK_IMPORTED_MODULE_41__.MatTableModule,
+            _angular_material_tabs__WEBPACK_IMPORTED_MODULE_42__.MatTabsModule,
+            _angular_material_toolbar__WEBPACK_IMPORTED_MODULE_43__.MatToolbarModule,
+            _angular_material_tooltip__WEBPACK_IMPORTED_MODULE_44__.MatTooltipModule,
+            _angular_material_tree__WEBPACK_IMPORTED_MODULE_45__.MatTreeModule] });
 })();
 
 class CoreModule {
@@ -2854,7 +3100,7 @@ class CoreModule {
 CoreModule.ɵfac = function CoreModule_Factory(t) { return new (t || CoreModule)(); };
 CoreModule.ɵmod = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineNgModule"]({ type: CoreModule });
 CoreModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjector"]({ imports: [[
-            _angular_common__WEBPACK_IMPORTED_MODULE_45__.CommonModule,
+            _angular_common__WEBPACK_IMPORTED_MODULE_46__.CommonModule,
             MaterialModule
         ], MaterialModule] });
 (function () {
@@ -2868,7 +3114,7 @@ CoreModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
                         ...Pipes
                     ],
                     imports: [
-                        _angular_common__WEBPACK_IMPORTED_MODULE_45__.CommonModule,
+                        _angular_common__WEBPACK_IMPORTED_MODULE_46__.CommonModule,
                         MaterialModule
                     ],
                     exports: [
@@ -2882,7 +3128,7 @@ CoreModule.ɵinj = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵ�
         }], null, null);
 })();
 (function () {
-    (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [ConfirmDialog, BackdropDirective, BytesPipe, TruncatePipe], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_45__.CommonModule,
+    (typeof ngJitMode === "undefined" || ngJitMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsetNgModuleScope"](CoreModule, { declarations: [ConfirmDialog, BackdropDirective, BytesPipe, TruncatePipe], imports: [_angular_common__WEBPACK_IMPORTED_MODULE_46__.CommonModule,
             MaterialModule], exports: [ConfirmDialog, BackdropDirective, BytesPipe, TruncatePipe, MaterialModule] });
 })();
 
