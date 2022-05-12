@@ -52,6 +52,17 @@ export enum Difficulty {
   Insanity = "Insanity"
 }
 
+export enum EquipmentType {
+  Equipment = "Equipment",
+  ProtectiveDevice = "Protective Device",
+  WeaponMod = "Weapon Mod",
+  WeaponSight = "Weapon Sight",
+  Consumable = "Consumable",
+  Implant = "Implant",
+  UtilityDevice = "Utility Device",
+  OnBoardItem = "On-Board Item"
+}
+
 export enum ProtectiveDeviceType {
   Armor = `Armor`,
   Screen = `Screen`
@@ -99,4 +110,11 @@ export enum WeaponTrait {
   SnapShot = `Snapshot: +1 to Hit within 6".`,
   Stun = `Stun: All targets are automatically Stunned. No damage rolls ake place.`,
   Terrifying = `Terrifying: Any target hit must retreat 1D6" away from the firer.`
+}
+
+export enum WeaponType {
+  Weapon = "Weapon",
+  Sidearm = "Sidearm",
+  Pistol = "Pistol",
+  Melee = "Melee"
 }

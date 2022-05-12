@@ -1,32 +1,41 @@
-import { ProtectiveDeviceType } from '../../enums';
 import { v4 as uuid } from 'uuid';
+
+import {
+  EquipmentType,
+  ProtectiveDeviceType
+} from '../../enums';
 
 export abstract class Equipment {
   readonly id: string;
   readonly name: string;
   readonly description: string;
+  readonly type: EquipmentType;
 
   constructor(
     name: string,
     description: string,
+    type: EquipmentType,
     id: string | null = null
   ) {
     this.id = id ?? uuid();
     this.name = name;
     this.description = description;
+    this.type = type;
   }
 }
 
 export class ProtectiveDevice extends Equipment {
-  readonly type: ProtectiveDeviceType
+  readonly deviceType: ProtectiveDeviceType;
 
   constructor(
     name: string,
     description: string,
-    type: ProtectiveDeviceType
+    type: EquipmentType,
+    deviceType: ProtectiveDeviceType,
+    id: string | null = null
   ) {
-    super(name, description);
-    this.type = type;
+    super(name, description, type, id);
+    this.deviceType = deviceType;
   }
 }
 
@@ -36,9 +45,11 @@ export class WeaponMod extends Equipment {
   constructor(
     name: string,
     description: string,
-    allowPistol: boolean
+    type: EquipmentType,
+    allowPistol: boolean,
+    id: string | null = null
   ) {
-    super(name, description);
+    super(name, description, type, id);
     this.allowPistol = allowPistol;
   }
 }
@@ -50,10 +61,12 @@ export class WeaponSight extends Equipment {
   constructor(
     name: string,
     description: string,
+    type: EquipmentType,
     pistolOnly: boolean,
-    damaged: boolean = false
+    damaged: boolean = false,
+    id: string | null = null
   ) {
-    super(name, description);
+    super(name, description, type, id);
     this.pistolOnly = pistolOnly;
     this.damaged = damaged;
   }
