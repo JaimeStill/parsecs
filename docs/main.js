@@ -179,6 +179,10 @@ class HomeRoute {
                 reader.readAsText(files[0]);
             }
         };
+        this.clearCampaigns = () => {
+            this.store.clear();
+            this.data = this.store.getAll();
+        };
         this.deleteCampaign = (name) => {
             this.store.delete(name);
             this.data = this.store.getAll();
@@ -211,7 +215,7 @@ HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("loaded", function HomeRoute_Template_file_upload_loaded_13_listener($event) { return ctx.uploadSaves($event); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](14, "button", 8);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_14_listener() { return ctx.store.clear(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_14_listener() { return ctx.clearCampaigns(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](15, "Clear Saves");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](16, "section", 9)(17, "p", 2);
