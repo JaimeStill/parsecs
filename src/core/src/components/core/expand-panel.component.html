@@ -1,11 +1,11 @@
 <section fxLayout="column"
          fxLayoutAlign="start stretch"
          [class]="cardStyle"
-         (click)="expander.click()">
+         (click)="toggle()">
   <section fxLayout="row"
            fxLayoutAlign="space-between center">
     <h3 class="mat-subheading-1 bold my4 mx8">{{label}}</h3>
-    <button #expander mat-icon-button
+    <button mat-icon-button
             class="my4 mx8"
             (click)="toggle()">
       <mat-icon>{{icon()}}</mat-icon>
