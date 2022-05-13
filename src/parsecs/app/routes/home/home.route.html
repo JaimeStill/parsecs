@@ -43,9 +43,9 @@
       <section *ngIf="data && data.length > 0"
                fxLayout="row | wrap"
                fxLayoutAlign="start start"
-               fxLayoutGap="4px"
                class="p4">
         <campaign-card *ngFor="let c of data"
+                       class="m4"
                        [campaign]="c"
                        (remove)="deleteCampaign(c.name)"></campaign-card>
       </section>
