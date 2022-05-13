@@ -193,7 +193,7 @@ class HomeRoute {
     }
 }
 HomeRoute.ɵfac = function HomeRoute_Factory(t) { return new (t || HomeRoute)(); };
-HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 22, vars: 5, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p8"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "m4", "p4"], [1, "mat-title", "m4"], ["fxLayout", "column", "fxLayout", "start stretch", 1, "p4"], ["fxFlex", "", 1, "m4"], ["matInput", "", 3, "ngModel", "ngModelChange"], ["fxLayout", "row", "fxLayoutAlign", "start center", 1, "p4"], ["mat-stroked-button", "", 1, "m4", 3, "click"], ["label", "Upload Campaigns", 1, "m4", 3, "accept", "useDrop", "loaded"], ["mat-stroked-button", "", "color", "warn", 1, "m4", 3, "click"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p4"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start", "fxLayoutGap", "4px", "class", "p4", 4, "ngIf"], ["class", "mat-subheading-1 m4", 4, "ngIf"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start", "fxLayoutGap", "4px", 1, "p4"], [3, "campaign", "remove", 4, "ngFor", "ngForOf"], [3, "campaign", "remove"], [1, "mat-subheading-1", "m4"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
+HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: HomeRoute, selectors: [["home-route"]], decls: 22, vars: 5, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p8"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "m4", "p4"], [1, "mat-title", "m4"], ["fxLayout", "row", "fxLayout", "start center", 1, "p4"], ["fxFlex", "", 1, "m4"], ["matInput", "", 3, "ngModel", "ngModelChange"], ["mat-stroked-button", "", 1, "m4", 3, "click"], ["fxLayout", "row", "fxLayoutAlign", "start center", 1, "p4"], ["label", "Upload Campaigns", 1, "m4", 3, "accept", "useDrop", "loaded"], ["mat-stroked-button", "", "color", "warn", 1, "m4", 3, "click"], ["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p4"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start", "fxLayoutGap", "4px", "class", "p4", 4, "ngIf"], ["class", "mat-subheading-1 m4", 4, "ngIf"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start", "fxLayoutGap", "4px", 1, "p4"], [3, "campaign", "remove", 4, "ngFor", "ngForOf"], [3, "campaign", "remove"], [1, "mat-subheading-1", "m4"]], template: function HomeRoute_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "p", 2);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3, "Generate Campaign");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -202,12 +202,12 @@ HomeRoute.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵ
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "input", 5);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("ngModelChange", function HomeRoute_Template_input_ngModelChange_8_listener($event) { return ctx.name = $event; });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()()();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "div", 6)(10, "button", 7);
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_10_listener() { return ctx.initCampaign(); });
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](11, "Generate Campaign");
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "button", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](9, "button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_9_listener() { return ctx.initCampaign(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](10, "Generate Campaign");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]()();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 7)(12, "button", 6);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function HomeRoute_Template_button_click_12_listener() { return ctx.store.download(); });
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " Download Saves ");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
@@ -565,7 +565,7 @@ class ExpandPanelComponent {
     constructor() {
         this.label = 'Title';
         this.cardStyle = 'background-default';
-        this.collapsedIcon = 'keyboard_arrow_right';
+        this.collapsedIcon = 'keyboard_arrow_up';
         this.expandedIcon = 'keyboard_arrow_down';
         this.show = false;
         this.expand = new _angular_core__WEBPACK_IMPORTED_MODULE_0__.EventEmitter();
@@ -580,10 +580,12 @@ class ExpandPanelComponent {
     }
 }
 ExpandPanelComponent.ɵfac = function ExpandPanelComponent_Factory(t) { return new (t || ExpandPanelComponent)(); };
-ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ExpandPanelComponent, selectors: [["expand-panel"]], inputs: { label: "label", cardStyle: "cardStyle", collapsedIcon: "collapsedIcon", expandedIcon: "expandedIcon", show: "show" }, outputs: { expand: "expand" }, ngContentSelectors: _c0$1, decls: 8, vars: 5, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch"], ["fxLayout", "row", "fxLayoutAlign", "space-between center"], [1, "mat-subheading-1", "bold", "my4", "mx8"], ["mat-icon-button", "", 1, "my4", "mx8", 3, "click"], [4, "ngIf"]], template: function ExpandPanelComponent_Template(rf, ctx) {
+ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ExpandPanelComponent, selectors: [["expand-panel"]], inputs: { label: "label", cardStyle: "cardStyle", collapsedIcon: "collapsedIcon", expandedIcon: "expandedIcon", show: "show" }, outputs: { expand: "expand" }, ngContentSelectors: _c0$1, decls: 8, vars: 5, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 3, "click"], ["fxLayout", "row", "fxLayoutAlign", "space-between center"], [1, "mat-subheading-1", "bold", "my4", "mx8"], ["mat-icon-button", "", 1, "my4", "mx8", 3, "click"], [4, "ngIf"]], template: function ExpandPanelComponent_Template(rf, ctx) {
         if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "h3", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function ExpandPanelComponent_Template_section_click_0_listener() { return ctx.toggle(); });
+            _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "section", 1)(2, "h3", 2);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](3);
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "button", 3);
@@ -607,7 +609,7 @@ ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ExpandPanelComponent, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
-            args: [{ selector: 'expand-panel', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         [class]=\"cardStyle\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <h3 class=\"mat-subheading-1 bold my4 mx8\">{{label}}</h3>\r\n    <button mat-icon-button\r\n            class=\"my4 mx8\"\r\n            (click)=\"toggle()\">\r\n      <mat-icon>{{icon()}}</mat-icon>\r\n    </button>\r\n  </section>\r\n  <ng-content *ngIf=\"show\"></ng-content>\r\n</section>\r\n" }]
+            args: [{ selector: 'expand-panel', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         [class]=\"cardStyle\"\r\n         (click)=\"toggle()\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <h3 class=\"mat-subheading-1 bold my4 mx8\">{{label}}</h3>\r\n    <button mat-icon-button\r\n            class=\"my4 mx8\"\r\n            (click)=\"toggle()\">\r\n      <mat-icon>{{icon()}}</mat-icon>\r\n    </button>\r\n  </section>\r\n  <ng-content *ngIf=\"show\"></ng-content>\r\n</section>\r\n" }]
         }], null, { label: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
             }], cardStyle: [{
