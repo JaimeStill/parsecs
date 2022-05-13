@@ -580,7 +580,7 @@ class ExpandPanelComponent {
     }
 }
 ExpandPanelComponent.ɵfac = function ExpandPanelComponent_Factory(t) { return new (t || ExpandPanelComponent)(); };
-ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ExpandPanelComponent, selectors: [["expand-panel"]], inputs: { label: "label", cardStyle: "cardStyle", collapsedIcon: "collapsedIcon", expandedIcon: "expandedIcon", show: "show" }, outputs: { expand: "expand" }, ngContentSelectors: _c0$1, decls: 7, vars: 4, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "cursor-pointer", 3, "ngClass", "click"], ["fxLayout", "row", "fxLayoutAlign", "space-between center"], [1, "mat-subheading-1", "bold", "my4", "mx8"], [1, "my4", "mx8"], [4, "ngIf"]], template: function ExpandPanelComponent_Template(rf, ctx) {
+ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: ExpandPanelComponent, selectors: [["expand-panel"]], inputs: { label: "label", cardStyle: "cardStyle", collapsedIcon: "collapsedIcon", expandedIcon: "expandedIcon", show: "show" }, outputs: { expand: "expand" }, ngContentSelectors: _c0$1, decls: 7, vars: 4, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "cursor-pointer", 3, "ngClass", "click"], ["fxLayout", "row", "fxLayoutAlign", "space-between center", 1, "p4"], [1, "mat-subheading-1", "m4"], [1, "m4"], [4, "ngIf"]], template: function ExpandPanelComponent_Template(rf, ctx) {
         if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵprojectionDef"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "section", 0);
@@ -607,7 +607,7 @@ ExpandPanelComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](ExpandPanelComponent, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Component,
-            args: [{ selector: 'expand-panel', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         class=\"cursor-pointer\"\r\n         [ngClass]=\"cardStyle\"\r\n         (click)=\"toggle()\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <h3 class=\"mat-subheading-1 bold my4 mx8\">{{label}}</h3>\r\n    <mat-icon class=\"my4 mx8\">{{icon()}}</mat-icon>\r\n  </section>\r\n  <ng-content *ngIf=\"show\"></ng-content>\r\n</section>" }]
+            args: [{ selector: 'expand-panel', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         class=\"cursor-pointer\"\r\n         [ngClass]=\"cardStyle\"\r\n         (click)=\"toggle()\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\"\r\n           class=\"p4\">\r\n    <h3 class=\"mat-subheading-1 m4\">{{label}}</h3>\r\n    <mat-icon class=\"m4\">{{icon()}}</mat-icon>\r\n  </section>\r\n  <ng-content *ngIf=\"show\"></ng-content>\r\n</section>" }]
         }], null, { label: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_0__.Input
             }], cardStyle: [{
