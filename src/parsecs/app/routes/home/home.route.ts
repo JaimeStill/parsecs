@@ -49,6 +49,11 @@ export class HomeRoute implements OnInit {
     }
   }
 
+  clearCampaigns = () => {
+    this.store.clear();
+    this.data = this.store.getAll();
+  }
+
   deleteCampaign = (name: string) => {
     this.store.delete(name);
     this.data = this.store.getAll();
