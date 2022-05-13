@@ -969,6 +969,10 @@ div[class*=app-dark] .snacker div.mat-simple-snackbar-action {
   font-style: italic;
 }
 
+.no-display {
+  display: none;
+}
+
 .pre-wrap {
   white-space: pre-wrap;
 }
