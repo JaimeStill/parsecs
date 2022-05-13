@@ -12,7 +12,7 @@ import {
 export class ExpandPanelComponent {
   @Input() label: string = 'Title';
   @Input() cardStyle: string = 'background-default';
-  @Input() collapsedIcon: string = 'keyboard_arrow_right';
+  @Input() collapsedIcon: string = 'keyboard_arrow_up';
   @Input() expandedIcon: string = 'keyboard_arrow_down';
 
   @Input() show = false;
