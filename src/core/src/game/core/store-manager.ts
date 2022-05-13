@@ -64,6 +64,9 @@ export class StoreManager<T> {
       JSON.stringify(data)
     );
 
+  clear = () => this.entries()
+    .forEach(save => this.delete(save[0]));
+
   delete = (key: string) =>
     localStorage.removeItem(
       this.processKey(key)

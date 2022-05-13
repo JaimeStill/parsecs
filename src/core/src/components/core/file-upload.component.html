@@ -5,10 +5,10 @@
        [multiple]="multiple"
        (change)="fileChange($event)">
 <button *ngIf="!(useDrop)"
-        mat-icon-button
+        mat-stroked-button
         [class]="buttonClass"
         (click)="fileInput.click()">
-  <mat-icon [class]="iconClass">{{icon}}</mat-icon>
+  {{label}}
 </button>
 <section fxLayout="column"
          fxLayoutAlign="start stretch"

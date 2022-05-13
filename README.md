@@ -10,6 +10,7 @@
     - [ ] New Campaign
     - [ ] Campaign Cards
     - [ ] Search (campaign name, character search function for roster.some(c => c.search(val)))
+- [ ] Implement Patron / Rival generation and convert `CampaignResource.patrons` and `CampaignResource.rivals` from a number count to an array of records.
 - [ ] New Campaign Workflow (`/new-campaign`)
     - [ ] Initial Settings and Characters
     - [ ] Finalize and Route to Campaign

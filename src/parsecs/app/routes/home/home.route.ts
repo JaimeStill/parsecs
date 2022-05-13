@@ -15,16 +15,12 @@ import {
 })
 export class HomeRoute implements OnInit {
   name: string = 'Onyx Dawn';
-  campaign!: Campaign;
   cardSize: number | string = 'auto';
   store: StoreManager<Campaign> = new StoreManager('parsecs', Campaign.Restore);
   data!: Campaign[];
 
   ngOnInit() {
     this.initCampaign();
-    this.data = this.store.getAll();
-    console.log('saved campaigns', this.data);
-    console.log('campaign is saved', this.store.exists(this.campaign.name));
   }
 
   initCampaign = () => {
@@ -35,12 +31,8 @@ export class HomeRoute implements OnInit {
     c.leader = c.crew.roster[0];
     c.victory = c.victoryConditions[0].value;
 
-    this.campaign = c.finalize();
-  }
-
-  saveCampaign = () => {
-    this.campaign.name = this.name;
-    this.store.save(this.campaign.name, this.campaign);
+    const campaign = c.finalize();
+    this.store.save(campaign.name, campaign);
     this.data = this.store.getAll();
   }
 
@@ -55,5 +47,10 @@ export class HomeRoute implements OnInit {
 
       reader.readAsText(files[0]);
     }
+  }
+
+  deleteCampaign = (name: string) => {
+    this.store.delete(name);
+    this.data = this.store.getAll();
   }
 }

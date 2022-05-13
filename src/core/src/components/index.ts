@@ -1,7 +1,16 @@
+import { CampaignComponents } from './campaign';
+import { CharacterComponents } from './character';
 import { CoreComponents } from './core';
+import { ShipComponents } from './ship';
 
 export const Components = [
-  ...CoreComponents
+  ...CampaignComponents,
+  ...CharacterComponents,
+  ...CoreComponents,
+  ...ShipComponents
 ];
 
+export * from './campaign';
+export * from './character';
 export * from './core';
+export * from './ship';

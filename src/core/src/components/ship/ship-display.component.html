@@ -1,0 +1,15 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         [class]="cardStyle"
+         [style.width.px]="size">
+  <section fxLayout="row"
+           fxLayoutAlign="space-between center">
+    <p class="mat-body-strong m4">{{ship.model}}</p>
+    <p class="m4">Hull: {{ship.hull}}</p>
+  </section>
+  <section fxLayout="row"
+           fxLayoutAlign="space-between center">
+    <p class="m4">{{ship.debt}}</p>
+    <p class="m4">{{trait()}}</p>
+  </section>
+</section>

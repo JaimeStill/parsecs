@@ -1,0 +1,16 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         [class]="cardStyle"
+         [style.width.px]="size">
+  <section fxLayout="row"
+           fxLayoutAlign="space-between center">
+    <p class="mat-body-strong m4">{{character.name}}</p>
+    <p class="m4">Hull: {{race()}}</p>
+  </section>
+  <section fxLayout="row"
+           fxLayoutAlign="space-between center">
+    <p class="m4">{{character.motivation}}</p>
+    <p class="m4">{{character.charClass}}</p>
+  </section>
+  <p class="m4">{{character.background}}</p>
+</section>

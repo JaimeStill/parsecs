@@ -1,0 +1,14 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         [class]="cardStyle">
+  <section fxLayout="row"
+           fxLayoutAlign="space-between center">
+    <h3 class="mat-subheading-1 bold my4 mx8">{{label}}</h3>
+    <button mat-icon-button
+            class="my4 mx8"
+            (click)="toggle()">
+      <mat-icon>{{icon()}}</mat-icon>
+    </button>
+  </section>
+  <ng-content *ngIf="show"></ng-content>
+</section>

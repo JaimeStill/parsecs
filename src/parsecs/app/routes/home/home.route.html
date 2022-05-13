@@ -18,39 +18,34 @@
               (click)="initCampaign()">Generate Campaign</button>
       <button mat-stroked-button
               class="m4"
-              (click)="saveCampaign()">Save Campaign</button>
-      <button mat-stroked-button
-              class="m4"
               (click)="store.download()">
         Download Saves
       </button>
-    </div>
-    <div class="p4">
       <file-upload class="m4"
+                   label="Upload Campaigns"
                    [accept]="store.prefix"
+                   [useDrop]="false"
                    (loaded)="uploadSaves($event)"></file-upload>
+      <button mat-stroked-button
+              class="m4"
+              color="warn"
+              (click)="store.clear()">Clear Saves</button>
     </div>
     <section fxLayout="column"
              fxLayoutAlign="start stretch"
-             class="m4 p4">
+             class="p4">
       <p class="mat-title m4">Saved Campaigns</p>
-      <ng-container *ngIf="data && data.length > 0">
-        <p *ngFor="let c of data"
-           class="mx8 my4">{{c.name}}</p>
-      </ng-container>
+      <section *ngIf="data && data.length > 0"
+               fxLayout="row | wrap"
+               fxLayoutAlign="start start"
+               fxLayoutGap="4px"
+               class="p4">
+        <campaign-card *ngFor="let c of data"
+                       [campaign]="c"
+                       (remove)="deleteCampaign(c.name)"></campaign-card>
+      </section>
       <p *ngIf="!(data.length > 0)"
          class="mat-subheading-1 m4">No Campaigns Available</p>
     </section>
-    <ng-container *ngIf="campaign">
-      <mat-divider class="my12"></mat-divider>
-      <section fxLayout="column"
-               fxLayoutAlign="start stretch"
-               class="p4">
-        <p class="mat-subheading-2 m4">Current Campaign - {{campaign.name}}</p>
-        <pre class="m4 pre-wrap overflow"
-             [style.max-height.vh]="32"><code>
-{{campaign | json}}</code></pre>
-      </section>
-    </ng-container>
   </section>
 </section>

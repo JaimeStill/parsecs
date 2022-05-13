@@ -21,9 +21,8 @@ export class FileUploadComponent {
   @Input() multiple: boolean = false;
   @Input() accept: string = '*';
 
-  @Input() buttonClass: string = 'color-primary';
-  @Input() icon: string = 'file_upload';
-  @Input() iconClass: string = 'material-icons-outlined';
+  @Input() label: string = 'Upload';
+  @Input() buttonClass: string = 'color-default';
 
   @Input() dropWidth: number | string = 'auto';
   @Input() dropHeight: number | string = 140;
