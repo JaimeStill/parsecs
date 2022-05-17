@@ -2839,6 +2839,60 @@ class CampaignConfig {
     }
 }
 
+class CharacterDisplayComponent {
+    constructor() {
+        this.size = 408;
+        this.cardStyle = 'rounded card-outline-accent background-card p4';
+        this.race = () => `${this.character.race} - ${this.character.species}`;
+    }
+}
+CharacterDisplayComponent.ɵfac = function CharacterDisplayComponent_Factory(t) { return new (t || CharacterDisplayComponent)(); };
+CharacterDisplayComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CharacterDisplayComponent, selectors: [["character-display"]], inputs: { character: "character", size: "size", cardStyle: "cardStyle" }, decls: 13, vars: 9, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch"], ["fxLayout", "row", "fxLayoutAlign", "space-between center"], [1, "mat-body-strong", "m4"], [1, "m4"]], template: function CharacterDisplayComponent_Template(rf, ctx) {
+        if (rf & 1) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "p", 2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "p", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "section", 1)(7, "p", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "p", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p", 3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
+        }
+        if (rf & 2) {
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassMap"](ctx.cardStyle);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵstyleProp"]("width", ctx.size, "px");
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.name);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.race());
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.motivation);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.charClass);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.background);
+        }
+    }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutAlignDirective], encapsulation: 2 });
+(function () {
+    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](CharacterDisplayComponent, [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Component,
+            args: [{ selector: 'character-display', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         [class]=\"cardStyle\"\r\n         [style.width.px]=\"size\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"mat-body-strong m4\">{{character.name}}</p>\r\n    <p class=\"m4\">{{race()}}</p>\r\n  </section>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"m4\">{{character.motivation}}</p>\r\n    <p class=\"m4\">{{character.charClass}}</p>\r\n  </section>\r\n  <p class=\"m4\">{{character.background}}</p>\r\n</section>\r\n" }]
+        }], null, { character: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
+            }], size: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
+            }], cardStyle: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
+            }] });
+})();
+
 function CampaignBuilder_mat_option_15_Template(rf, ctx) {
     if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "mat-option", 9);
@@ -2846,10 +2900,10 @@ function CampaignBuilder_mat_option_15_Template(rf, ctx) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     }
     if (rf & 2) {
-        const difficulty_r2 = ctx.$implicit;
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", difficulty_r2);
+        const difficulty_r3 = ctx.$implicit;
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", difficulty_r3);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](difficulty_r2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](difficulty_r3);
     }
 }
 function CampaignBuilder_mat_option_22_Template(rf, ctx) {
@@ -2859,10 +2913,31 @@ function CampaignBuilder_mat_option_22_Template(rf, ctx) {
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
     }
     if (rf & 2) {
-        const v_r3 = ctx.$implicit;
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", v_r3.value);
+        const v_r4 = ctx.$implicit;
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", v_r4.value);
         _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
-        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](v_r3.key);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](v_r4.key);
+    }
+}
+function CampaignBuilder_section_25_character_display_1_Template(rf, ctx) {
+    if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelement"](0, "character-display", 14);
+    }
+    if (rf & 2) {
+        const c_r6 = ctx.$implicit;
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("character", c_r6);
+    }
+}
+function CampaignBuilder_section_25_Template(rf, ctx) {
+    if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "section", 12);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](1, CampaignBuilder_section_25_character_display_1_Template, 1, 1, "character-display", 13);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+    }
+    if (rf & 2) {
+        const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵnextContext"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx_r2.config.crew.roster);
     }
 }
 class CampaignBuilder {
@@ -2870,10 +2945,11 @@ class CampaignBuilder {
         this.difficulties = Object.keys(Difficulty);
         this.config = new CampaignConfig('');
         this.selectDifficulty = (d) => console.log(d);
+        console.log(this.config);
     }
 }
 CampaignBuilder.ɵfac = function CampaignBuilder_Factory(t) { return new (t || CampaignBuilder)(); };
-CampaignBuilder.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CampaignBuilder, selectors: [["campaign-builder"]], decls: 23, vars: 8, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p4"], [1, "m4"], ["matInput", "", 3, "ngModel", "ngModelChange"], ["fxLayout", "row", "fxLayoutAlign", "start center"], ["fxFlex", "", 1, "m4", 3, "ngModel", "ngModelChange"], ["fxFlex", "", 1, "m4"], [3, "ngModel", "ngModelChange", "selectionChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "ngModel", "ngModelChange"], [3, "value"]], template: function CampaignBuilder_Template(rf, ctx) {
+CampaignBuilder.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CampaignBuilder, selectors: [["campaign-builder"]], decls: 26, vars: 9, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch", 1, "p4"], [1, "m4"], ["matInput", "", 3, "ngModel", "ngModelChange"], ["fxLayout", "row", "fxLayoutAlign", "start center"], ["fxFlex", "", 1, "m4", 3, "ngModel", "ngModelChange"], ["fxFlex", "", 1, "m4"], [3, "ngModel", "ngModelChange", "selectionChange"], [3, "value", 4, "ngFor", "ngForOf"], [3, "ngModel", "ngModelChange"], [3, "value"], [1, "mat-subheading-2", "m4"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start", 4, "ngIf"], ["fxLayout", "row | wrap", "fxLayoutAlign", "start start"], ["class", "m4", 3, "character", 4, "ngFor", "ngForOf"], [1, "m4", 3, "character"]], template: function CampaignBuilder_Template(rf, ctx) {
         if (rf & 1) {
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "section", 0)(1, "mat-form-field", 1)(2, "mat-label");
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3, "Campaign");
@@ -2905,7 +2981,12 @@ CampaignBuilder.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](21, "None");
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](22, CampaignBuilder_mat_option_22_Template, 2, 2, "mat-option", 7);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()()();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()()();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](23, "p", 10);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](24, "Crew");
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtemplate"](25, CampaignBuilder_section_25_Template, 2, 1, "section", 11);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
         }
         if (rf & 2) {
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](4);
@@ -2924,13 +3005,15 @@ CampaignBuilder.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("value", null);
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
             _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngForOf", ctx.config.victoryConditions);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
+            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵproperty"]("ngIf", ctx.config.crew.roster.length > 0);
         }
-    }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutAlignDirective, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_5__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgModel, _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_7__.MatSlideToggle, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultFlexDirective, _angular_material_select__WEBPACK_IMPORTED_MODULE_8__.MatSelect, _angular_common__WEBPACK_IMPORTED_MODULE_9__.NgForOf, _angular_material_core__WEBPACK_IMPORTED_MODULE_10__.MatOption], encapsulation: 2 });
+    }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutAlignDirective, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__.MatFormField, _angular_material_form_field__WEBPACK_IMPORTED_MODULE_4__.MatLabel, _angular_material_input__WEBPACK_IMPORTED_MODULE_5__.MatInput, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.DefaultValueAccessor, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgControlStatus, _angular_forms__WEBPACK_IMPORTED_MODULE_6__.NgModel, _angular_material_slide_toggle__WEBPACK_IMPORTED_MODULE_7__.MatSlideToggle, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultFlexDirective, _angular_material_select__WEBPACK_IMPORTED_MODULE_8__.MatSelect, _angular_common__WEBPACK_IMPORTED_MODULE_9__.NgForOf, _angular_material_core__WEBPACK_IMPORTED_MODULE_10__.MatOption, _angular_common__WEBPACK_IMPORTED_MODULE_9__.NgIf, CharacterDisplayComponent], encapsulation: 2 });
 (function () {
     (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](CampaignBuilder, [{
             type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Component,
-            args: [{ selector: 'campaign-builder', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         class=\"p4\">\r\n  <mat-form-field class=\"m4\">\r\n    <mat-label>Campaign</mat-label>\r\n    <input matInput\r\n           [(ngModel)]=\"config.name\" />\r\n  </mat-form-field>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"start center\">\r\n    <mat-slide-toggle class=\"m4\"\r\n                      fxFlex\r\n                      [(ngModel)]=\"config.useStars\">Allow Stars of the Story?</mat-slide-toggle>\r\n    <mat-slide-toggle class=\"m4\"\r\n                      fxFlex\r\n                      [(ngModel)]=\"config.useStory\">Follow Story?</mat-slide-toggle>\r\n  </section>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"start center\">\r\n    <mat-form-field class=\"m4\"\r\n                    fxFlex>\r\n      <mat-label>Difficulty</mat-label>\r\n      <mat-select [(ngModel)]=\"config.difficulty\"\r\n                  (selectionChange)=\"selectDifficulty($event.value)\">\r\n        <mat-option *ngFor=\"let difficulty of difficulties\"\r\n                    [value]=\"difficulty\">{{difficulty}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field class=\"m4\"\r\n                    fxFlex>\r\n      <mat-label>Victory Condition</mat-label>\r\n      <mat-select [(ngModel)]=\"config.victory\">\r\n        <mat-option [value]=\"null\">None</mat-option>\r\n        <mat-option *ngFor=\"let v of config.victoryConditions\"\r\n                    [value]=\"v.value\">{{v.key}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </section>\r\n</section>\r\n" }]
-        }], null, null);
+            args: [{ selector: 'campaign-builder', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         class=\"p4\">\r\n  <mat-form-field class=\"m4\">\r\n    <mat-label>Campaign</mat-label>\r\n    <input matInput\r\n           [(ngModel)]=\"config.name\" />\r\n  </mat-form-field>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"start center\">\r\n    <mat-slide-toggle class=\"m4\"\r\n                      fxFlex\r\n                      [(ngModel)]=\"config.useStars\">Allow Stars of the Story?</mat-slide-toggle>\r\n    <mat-slide-toggle class=\"m4\"\r\n                      fxFlex\r\n                      [(ngModel)]=\"config.useStory\">Follow Story?</mat-slide-toggle>\r\n  </section>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"start center\">\r\n    <mat-form-field class=\"m4\"\r\n                    fxFlex>\r\n      <mat-label>Difficulty</mat-label>\r\n      <mat-select [(ngModel)]=\"config.difficulty\"\r\n                  (selectionChange)=\"selectDifficulty($event.value)\">\r\n        <mat-option *ngFor=\"let difficulty of difficulties\"\r\n                    [value]=\"difficulty\">{{difficulty}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n    <mat-form-field class=\"m4\"\r\n                    fxFlex>\r\n      <mat-label>Victory Condition</mat-label>\r\n      <mat-select [(ngModel)]=\"config.victory\">\r\n        <mat-option [value]=\"null\">None</mat-option>\r\n        <mat-option *ngFor=\"let v of config.victoryConditions\"\r\n                    [value]=\"v.value\">{{v.key}}</mat-option>\r\n      </mat-select>\r\n    </mat-form-field>\r\n  </section>\r\n  <p class=\"mat-subheading-2 m4\">Crew</p>\r\n  <section *ngIf=\"config.crew.roster.length > 0\"\r\n           fxLayout=\"row | wrap\"\r\n           fxLayoutAlign=\"start start\">\r\n    <character-display *ngFor=\"let c of config.crew.roster\"\r\n                       class=\"m4\"\r\n                       [character]=\"c\"></character-display>\r\n  </section>\r\n</section>\r\n" }]
+        }], function () { return []; }, null);
 })();
 
 function ExpandPanelComponent_ng_content_6_Template(rf, ctx) {
@@ -3044,60 +3127,6 @@ ShipDisplayComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODUL
             type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Component,
             args: [{ selector: 'ship-display', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         [class]=\"cardStyle\"\r\n         [style.width.px]=\"size\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"mat-body-strong m4\">{{ship.model}}</p>\r\n    <p class=\"m4\">Hull: {{ship.hull}}</p>\r\n  </section>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"m4\">{{ship.debt}}</p>\r\n    <p class=\"m4\">{{trait()}}</p>\r\n  </section>\r\n</section>\r\n" }]
         }], null, { ship: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
-            }], size: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
-            }], cardStyle: [{
-                type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
-            }] });
-})();
-
-class CharacterDisplayComponent {
-    constructor() {
-        this.size = 408;
-        this.cardStyle = 'rounded card-outline-accent background-card p4';
-        this.race = () => `${this.character.race} - ${this.character.species}`;
-    }
-}
-CharacterDisplayComponent.ɵfac = function CharacterDisplayComponent_Factory(t) { return new (t || CharacterDisplayComponent)(); };
-CharacterDisplayComponent.ɵcmp = /*@__PURE__*/ _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵdefineComponent"]({ type: CharacterDisplayComponent, selectors: [["character-display"]], inputs: { character: "character", size: "size", cardStyle: "cardStyle" }, decls: 13, vars: 9, consts: [["fxLayout", "column", "fxLayoutAlign", "start stretch"], ["fxLayout", "row", "fxLayoutAlign", "space-between center"], [1, "mat-body-strong", "m4"], [1, "m4"]], template: function CharacterDisplayComponent_Template(rf, ctx) {
-        if (rf & 1) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](0, "section", 0)(1, "section", 1)(2, "p", 2);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](4, "p", 3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](5);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](6, "section", 1)(7, "p", 3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](8);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]();
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](9, "p", 3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](10);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementStart"](11, "p", 3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtext"](12);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵelementEnd"]()();
-        }
-        if (rf & 2) {
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵclassMap"](ctx.cardStyle);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵstyleProp"]("width", ctx.size, "px");
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.name);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate1"]("Hull: ", ctx.race(), "");
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](3);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.motivation);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.charClass);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵadvance"](2);
-            _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵɵtextInterpolate"](ctx.character.background);
-        }
-    }, directives: [_angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutDirective, _angular_flex_layout_flex__WEBPACK_IMPORTED_MODULE_3__.DefaultLayoutAlignDirective], encapsulation: 2 });
-(function () {
-    (typeof ngDevMode === "undefined" || ngDevMode) && _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵsetClassMetadata"](CharacterDisplayComponent, [{
-            type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Component,
-            args: [{ selector: 'character-display', template: "<section fxLayout=\"column\"\r\n         fxLayoutAlign=\"start stretch\"\r\n         [class]=\"cardStyle\"\r\n         [style.width.px]=\"size\">\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"mat-body-strong m4\">{{character.name}}</p>\r\n    <p class=\"m4\">Hull: {{race()}}</p>\r\n  </section>\r\n  <section fxLayout=\"row\"\r\n           fxLayoutAlign=\"space-between center\">\r\n    <p class=\"m4\">{{character.motivation}}</p>\r\n    <p class=\"m4\">{{character.charClass}}</p>\r\n  </section>\r\n  <p class=\"m4\">{{character.background}}</p>\r\n</section>\r\n" }]
-        }], null, { character: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
             }], size: [{
                 type: _angular_core__WEBPACK_IMPORTED_MODULE_2__.Input
