@@ -1,6 +1,12 @@
+import { BehaviorSubject } from 'rxjs';
+
 export class StoreManager<T> {
+  private data = new BehaviorSubject<T[]>([]);
+
   readonly prefix: string;
   readonly restore: (data: any) => T;
+
+  data$ = this.data.asObservable();
 
   constructor(
     prefix: string,
@@ -58,19 +64,29 @@ export class StoreManager<T> {
       : null
   }
 
-  save = (key: string, data: T) =>
+  save = (key: string, data: T) => {
     localStorage.setItem(
       this.processKey(key),
       JSON.stringify(data)
     );
 
-  clear = () => this.entries()
-    .forEach(save => this.delete(save[0]));
+    this.data.next(this.getAll());
+  }
 
-  delete = (key: string) =>
+  clear = () => {
+    this.entries()
+      .forEach(save => this.delete(save[0]));
+
+    this.data.next(this.getAll());
+  }
+
+  delete = (key: string) => {
     localStorage.removeItem(
       this.processKey(key)
     );
+
+    this.data.next(this.getAll());
+  }
 
   download = () => {
     const link = document.createElement('a');
@@ -85,7 +101,9 @@ export class StoreManager<T> {
 
     try {
       if (this.verify(data)) {
-        this.store(data)
+        this.store(data);
+
+        this.data.next(this.getAll());
       }
     } catch (ex: any) {
       throw ex;

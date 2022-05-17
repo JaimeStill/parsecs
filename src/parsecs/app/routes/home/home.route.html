@@ -34,23 +34,28 @@
       <button mat-stroked-button
               class="m4"
               color="warn"
-              (click)="clearCampaigns()">Clear Saves</button>
+              (click)="store.clear()">Clear Saves</button>
     </div>
     <section fxLayout="column"
              fxLayoutAlign="start stretch"
              class="p4">
       <p class="mat-title m4">Saved Campaigns</p>
-      <section *ngIf="data && data.length > 0"
-               fxLayout="row | wrap"
-               fxLayoutAlign="start start"
-               fxLayoutGap="4px"
-               class="p4">
-        <campaign-card *ngFor="let c of data"
-                       [campaign]="c"
-                       (remove)="deleteCampaign(c.name)"></campaign-card>
-      </section>
-      <p *ngIf="!(data.length > 0)"
-         class="mat-subheading-1 m4">No Campaigns Available</p>
+      <ng-template #loading>
+        <mat-progress-bar mode="indeterminate"
+                          color="accent"></mat-progress-bar>
+      </ng-template>
+      <ng-container *ngIf="store.data$ | async as data else loading">
+        <section fxLayout="row | wrap"
+                 fxLayoutAlign="start start"
+                 fxLayoutGap="4px"
+                 class="p4">
+          <campaign-card *ngFor="let c of data"
+                         [campaign]="c"
+                         (remove)="store.delete(c.name)"></campaign-card>
+        </section>
+        <p *ngIf="!(data.length > 0)"
+           class="mat-subheading-1 m4">No Campaigns Available</p>
+      </ng-container>
     </section>
   </section>
 </section>
