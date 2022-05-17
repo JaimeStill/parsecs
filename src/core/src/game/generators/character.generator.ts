@@ -92,7 +92,6 @@ export abstract class CharacterGenerator {
 
   static DevelopBackground = (character: Character): CharacterDetail => {
     let b: CharacterDetail;
-    let roll: number;
 
     switch (character.species) {
       case CharacterSpecies.MysteriousPast:

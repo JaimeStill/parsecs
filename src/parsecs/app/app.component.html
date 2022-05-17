@@ -3,8 +3,15 @@
   <section fxLayout="row"
            fxLayoutAlign="start center"
            class="sticky-top p4">
-    <h1 class="mat-title m4"
+    <h1 class="mat-title m4 cursor-pointer"
+        routerLink="/"
         fxFlex>Parsecs</h1>
+    <button mat-icon-button
+            class="m4"
+            routerLink="/new-campaign"
+            matTooltip="New Campaign">
+      <mat-icon>add</mat-icon>
+    </button>
     <button mat-icon-button
             class="m4"
             [ngClass]="themer.isLight ? 'color-amber': 'color-text'"

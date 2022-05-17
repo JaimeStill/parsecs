@@ -1,0 +1,39 @@
+<section fxLayout="column"
+         fxLayoutAlign="start stretch"
+         class="p4">
+  <mat-form-field class="m4">
+    <mat-label>Campaign</mat-label>
+    <input matInput
+           [(ngModel)]="config.name" />
+  </mat-form-field>
+  <section fxLayout="row"
+           fxLayoutAlign="start center">
+    <mat-slide-toggle class="m4"
+                      fxFlex
+                      [(ngModel)]="config.useStars">Allow Stars of the Story?</mat-slide-toggle>
+    <mat-slide-toggle class="m4"
+                      fxFlex
+                      [(ngModel)]="config.useStory">Follow Story?</mat-slide-toggle>
+  </section>
+  <section fxLayout="row"
+           fxLayoutAlign="start center">
+    <mat-form-field class="m4"
+                    fxFlex>
+      <mat-label>Difficulty</mat-label>
+      <mat-select [(ngModel)]="config.difficulty"
+                  (selectionChange)="selectDifficulty($event.value)">
+        <mat-option *ngFor="let difficulty of difficulties"
+                    [value]="difficulty">{{difficulty}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="m4"
+                    fxFlex>
+      <mat-label>Victory Condition</mat-label>
+      <mat-select [(ngModel)]="config.victory">
+        <mat-option [value]="null">None</mat-option>
+        <mat-option *ngFor="let v of config.victoryConditions"
+                    [value]="v.value">{{v.key}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </section>
+</section>

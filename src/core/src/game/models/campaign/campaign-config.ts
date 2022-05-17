@@ -16,13 +16,11 @@ export class CampaignConfig {
   private readonly minCrew: number = 4;
   private readonly maxCrew: number = 6;
 
-  private _name: string = '';
   private _crewSize: number = 6;
   private _useStars: boolean = true;
   private _useStory: boolean = true;
   private _difficulty: Difficulty = Difficulty.Normal;
 
-  get name(): string { return this._name; }
   get crewSize(): number { return this._crewSize; }
   get useStars(): boolean { return this._useStars; }
   get useStory(): boolean { return this._useStory; }
@@ -32,6 +30,7 @@ export class CampaignConfig {
   readonly crewSizeOptions: number[] = [ 4, 5, 6 ]
   readonly savvyUpgradeOptions: number[] = [ 0, 1, 2, 3 ];
 
+  name: string;
   ship!: Ship;
   victory: VictoryCondition | null = null;
   leader: Character | null = null;
@@ -75,8 +74,6 @@ export class CampaignConfig {
 
     this.crew.addCharacters(CharacterGenerator.GenerateRoster(this.crewSize));
   }
-
-  set name(value: string) { this._name = value; }
 
   set crewSize(value: number) {
     this._crewSize = value > this.maxCrew
