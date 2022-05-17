@@ -19,4 +19,8 @@ export class CampaignBuilder {
   config: CampaignConfig = new CampaignConfig('');
 
   selectDifficulty = (d: Difficulty) => console.log(d);
+
+  constructor() {
+    console.log(this.config);
+  }
 }
