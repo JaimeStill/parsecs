@@ -5,8 +5,8 @@
            fxLayoutAlign="start stretch"
            class="m4 p4">
     <p class="mat-title m4">Generate Campaign</p>
-    <div fxLayout="column"
-         fxLayout="start stretch"
+    <div fxLayout="row"
+         fxLayoutAlign="start center"
          class="p4">
       <mat-form-field class="m4"
                       fxFlex>
@@ -14,13 +14,13 @@
         <input matInput
                [(ngModel)]="name" />
       </mat-form-field>
+      <button mat-stroked-button
+              class="m4"
+              (click)="initCampaign()">Generate Campaign</button>
     </div>
     <div fxLayout="row"
          fxLayoutAlign="start center"
          class="p4">
-      <button mat-stroked-button
-              class="m4"
-              (click)="initCampaign()">Generate Campaign</button>
       <button mat-stroked-button
               class="m4"
               (click)="store.download()">
